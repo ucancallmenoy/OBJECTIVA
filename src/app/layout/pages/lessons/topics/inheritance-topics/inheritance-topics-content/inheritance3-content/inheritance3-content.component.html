@@ -1,0 +1,153 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/types-of-inheritance-in-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/properties-inheritance.png" alt="">
+            <p>Inheritance in Java allows a class to acquire properties (fields) and behaviors (methods) of another class. This promotes reusability, modularity, and scalability in software design. Java supports different types of inheritance, each serving specific use cases. Let’s explore them in detail.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Single Inheritance</h1>
+            <p>Single inheritance is a fundamental concept in object-oriented programming where a class (child or subclass) inherits properties and methods from another class (parent or superclass). This allows the child class to reuse and extend the functionality of the parent class.</p>
+            <p>Ideal for creating a hierarchy where a child class specializes or extends the behavior of a single parent class.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method prints a message about eating.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method prints a message about barking.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog();
+        dog.eat();  <span class="comment">Inherited from Animal</span>
+        dog.bark(); <span class="comment">Defined in Dog</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Multilevel Inheritance</h1>
+            <p>Multilevel inheritance is a type of inheritance where a class inherits properties and methods from another class, which in turn inherits from another class. This creates a chain of inheritance, allowing a class to reuse and extend the functionality of multiple parent classes.</p>
+            <p>Represents an "is-a" relationship at multiple levels and it is always used to model relationships that naturally form a hierarchy.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method prints a message about eating.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method prints a message about barking.</span>
+    {{'}'}}
+{{'}'}}
+
+class Puppy extends Dog {{'{'}} 
+    void weep() {{'{'}} 
+        System.out.println("The puppy weeps."); <span class="comment">This method prints a message about weeping.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Puppy puppy = new Puppy();
+        puppy.eat();  <span class="comment">Inherited from Animal</span>
+        puppy.bark(); <span class="comment">Inherited from Dog</span>
+        puppy.weep(); <span class="comment">Defined in Puppy</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Hierarchical Inheritance</h1>
+            <p>Hierarchical inheritance is a type of inheritance where multiple classes inherit properties and methods from a single parent class. This allows each child class to reuse and extend the functionality of the parent class independently.</p>
+            <p>Useful when multiple classes share common properties and behaviors but have distinct functionalities.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method prints a message about eating.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method prints a message about barking.</span>
+    {{'}'}}
+{{'}'}}
+
+class Cat extends Animal {{'{'}} 
+    void meow() {{'{'}} 
+        System.out.println("The cat meows."); <span class="comment">This method prints a message about meowing.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog();
+        dog.eat();  <span class="comment">Inherited from Animal</span>
+        dog.bark(); <span class="comment">Defined in Dog</span>
+
+        Cat cat = new Cat();
+        cat.eat();  <span class="comment">Inherited from Animal</span>
+        cat.meow(); <span class="comment">Defined in Cat</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <img src="assets/why-no-multiple.png" alt="">
+            <h1>But why there is no Multiple Inheritance in Java?</h1>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <img src="assets/conflicts.png" alt="">
+            <p>Java doesn’t allow a class to inherit from multiple classes because it can create conflicts, like ambiguity in methods (known as the diamond problem). Interfaces are used instead.</p>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='inheritance'" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

@@ -1,0 +1,266 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/object-interactions.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/object-interact.png" alt="">
+            <h1>Object Interactions</h1>
+            <p>In object-oriented programming, objects often interact with each other. This interaction can happen in various ways, like calling methods between objects, passing data, or sharing sate.</p>
+            <p>Let’s go through each aspect of object interactions step by step.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/object-relationships.png" alt="">
+                    <h2>Object Relationships</h2>
+                    <p>Objects can be related to each other in various ways, depending on how they interact. There are a few common types of object relationships which are discussed from the previous lesson. Objects can interact with each other like people in real life.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/method-calls.png" alt="">
+                    <h2>Method Calls Between Objects</h2>
+                    <p>When two or more objects interact with each other, they typically do so by calling methods on each other. One object can call a method of another object, allowing communication between the objects.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/create-multiple.png" alt="">
+                    <h2>Creating Multiple Objects</h2>
+                    <p>In Java, you can create as many objects as you need from a class. Each object is an instance of a class and has its own state or attributes.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/object-communication.png" alt="">
+                    <h2>Object Communication</h2>
+                    <p>Objects communicate with each other by sending and receiving messages, typically by calling methods or sharing data. The interaction happens via method calls and passing data between objects.</p>
+                  </div>
+                  
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>How to implement it?</h1>
+            <p>Here are some example how to implement these object interactions in Java:</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Object Relationships</h1>
+            <pre class="line-numbers"><code class="language-java">
+<span class="comment">// Car and Driver relationship</span>
+public class Car {{'{'}}
+    private String model;
+    private boolean isStarted = false;
+
+    public Car(String model) {{'{'}}
+        this.model = model;
+    {{'}'}}
+
+    public void start() {{'{'}}
+        isStarted = true;
+        System.out.println(model + " is now running");
+    {{'}'}}
+
+    public boolean isRunning() {{'{'}}
+        return isStarted;
+    {{'}'}}
+{{'}'}}
+
+public class Driver {{'{'}}
+    private String name;
+    private Car car;
+
+    public Driver(String name) {{'{'}}
+        this.name = name;
+    {{'}'}}
+
+    <span class="comment">// Driver interacts with Car</span>
+    public void driveCar(Car car) {{'{'}}
+        this.car = car;
+        car.start();
+        System.out.println(name + " is driving " + car.model);
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+    <span class="comment">// Creating objects and their interactions</span>
+    Car myCar = new Car("Toyota");
+    Driver driver = new Driver("John");
+
+    <span class="comment">// Driver interacts with Car</span>
+    driver.driveCar(myCar);
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        <!-- Result Section -->
+        <h4>Results:</h4>
+        <p>Toyota is now running</p>
+        <p>John is driving the Toyota</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Method Calls Between Objects</h1>
+            <pre class="line-numbers"><code class="language-java">
+<span class="comment">// A Car object interaacts with an Engine object</span>
+class Engine {{'{'}}
+    void start() {{'{'}}
+        System.out.println("Engine started");
+    {{'}'}}
+{{'}'}}
+
+class Car {{'{'}}
+    Engine engine;
+    
+    <span class="comment">// Constructor to associate a Car with an Engine</span>
+    Car(Engine engine) {{'{'}}
+        this.engine = engine;
+    {{'}'}}
+
+    void drive() {{'{'}}
+        engine.start(); <span class="comment">// Calling the start method of Engine</span>
+        System.out.println("Car started");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Engine engine = new Engine();
+        Car car = new Car(engine); <span class="comment">// Car and Engine are related</span>
+        car.drive(); 
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        <!-- Result Section -->
+        <h4>Results:</h4>
+        <p>Engine started</p>
+        <p>Car started</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Creating Multiple Objects</h1>
+            <pre class="line-numbers"><code class="language-java">
+class Car {{'{'}}
+    String color;
+    int speed;
+
+    <span class="comment">// Constructor to initialize the Car object</span>
+    Car(String color, int speed) {{'{'}}
+        this.color = color;
+        this.speed = speed;
+    {{'}'}}
+
+    void drive() {{'{'}}
+        System.out.println(color " car is driving at " + speed + " mph");
+    {{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">// Creating multiple Car objects</span>
+        Car car1 = new Car("Red", 60);
+        Car car2 = new Car("Blue", 70);
+
+        myCar1.drive();
+        myCar2.drive();
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        <!-- Result Section -->
+        <h4>Results:</h4>
+        <p>Red car is driving at 60 mph</p>
+        <p>Blue car is driving at 70 mph</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>Object Communication</h1>
+            <pre class="line-numbers"><code class="language-java">
+class BankAccount {{'{'}}
+    private double balance;
+
+    BankAccount(double initialBalance) {{'{'}}
+        this.balance = initialBalance;
+    {{'}'}}
+
+    void deposit(double amount) {{'{'}}
+        balance += amount;
+        System.out.println("Deposited " + amount + ". New balance: " + balance);
+    {{'}'}}
+
+    double getBalance() {{'{'}}
+        return balance;
+    {{'}'}}
+{{'}'}}
+
+class Person {{'{'}}
+    String name;
+    BankAccount account;
+
+    Person(String name, BankAccount account) {{'{'}}
+        this.name = name;
+        this.account = account;
+    {{'}'}}
+
+    void depositMoney(double amount) {{'{'}}
+        account.deposit(amount);
+        System.out.println(name + " depositing money.");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        BankAccount account = new BankAccount(1000);
+        Person person = new Person("John", myAccount);
+
+        person.depositMoney(500);
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        <!-- Results -->
+        <h4>Results:</h4>
+        <p>Deposited 500.0. New balance: 1500.0</p>
+        <p>John depositing money.</p>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='introduction'" *ngIf="visibleSections === 8">BACK TO LESSONS</button>
+        </div>
+    </section>
+</div>

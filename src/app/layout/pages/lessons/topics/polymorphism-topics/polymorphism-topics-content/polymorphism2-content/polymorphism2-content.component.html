@@ -1,0 +1,196 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/compile-time-polymorphism.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Compile-time Polymorphism</h1>
+            <img src="assets/compile-polymorphism.png" alt="">
+            <p>Compile-time polymorphism means deciding which function or method to use at compile time, before the program runs. It's like giving the program multiple tools (methods) to do the same task, but which tool to use is decided early, based on the inputs or context.
+            <p>It is achieved through <strong>method overloading</strong> or <strong>operator overloading</strong>.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Method Overloading</h1>
+            <p>Method overloading occurs when two or more methods in the same class have the same name but different parameter lists (in terms of number, type, or order of parameters).</p>
+            <img src="assets/method-overloading.png" alt="">
+            <p>It's like a coffee machine that can make coffee with just a button press, or lets you specify the type of coffee or size depending on your choice.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+class Calculator {{'{'}}
+    <span class="comment">// Overloaded methods</span>
+    int add(int a, int b) {{'{'}}
+        return a + b;
+    {{'}'}}
+
+    double add(double a, double b) {{'{'}}
+        return a + b;
+    {{'}'}}
+
+    int add(int a, int b, int c) {{'{'}}
+        return a + b + c;
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(5, 10));        <span class="comment">// Output: 15</span>
+        System.out.println(calc.add(5.5, 10.5));    <span class="comment">// Output: 16.0</span>
+        System.out.println(calc.add(5, 10, 15));    <span class="comment">// Output: 30</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Constructor Overloading</h1>
+            <p>Constructor overloading happens when a class has multiple constructors with the same name but different parameter lists. This allows the creation of objects in different ways based on the given arguments.</p>
+            <img src="assets/constructor-overloading.png" alt="">
+            <p>It's like a hotel booking system where you can book a room with just a name, or add details like the number of nights, or even include meal preferences.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+class Person {{'{'}}
+    String name;
+    int age;
+
+    <span class="comment">// Default constructor</span>
+    Person() {{'{'}}
+        this.name = "John Doe";
+        this.age = 30;
+    {{'}'}}
+
+    <span class="comment">Constructor with one parameter</span>
+    Person(String name) {{'{'}}
+        this.name = name;
+        this.age = 30;
+    {{'}'}}
+
+    <span class="comment">Constructor with two parameters</span>
+    Person(String name, int age) {{'{'}}
+        this.name = name;
+        this.age = age;
+    {{'}'}}
+
+    void display() {{'{'}}
+        System.out.println("Name: " + name + ", Age: " + age);
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Person person1 = new Person();
+        Person person2 = new Person("Alice");
+        Person person3 = new Person("Bob", 25);
+
+        person1.display();    <span class="comment">// Output: Name: John Doe, Age: 30</span>
+        person2.display();    <span class="comment">// Output: Name: Alice, Age: 30</span>
+        person3.display();    <span class="comment">// Output: Name: Bob, Age: 25</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Operator Overloading</h1>
+            <p>Although Java does not support operator overloading explicitly like some other languages (e.g., C++), it can be mimicked by redefining the behavior of methods. However, the + operator is overloaded for string concatenation.</p>
+            <img src="assets/operator-overloading.png" alt="">
+            <p>It's like the "+" symbol, which can add numbers (2 + 3 = 5) or combine words ("Hello" + "World" = "HelloWorld").</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">'+' operator overloaded for numbers and strings</span>
+        int a = 10, b = 20;
+        String str1 = "Hello", str2 = "World";
+
+        System.out.println(a + b);        <span class="comment">// Output: 30</span>
+        System.out.println(str1 + str2);  <span class="comment">// Output: HelloWorld</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>Type Promotion</h1>
+            <p>Type promotion occurs when a smaller data type is automatically converted to a larger data type during method calls. This allows overloaded methods to accept parameters of varying types.</p>
+            <img src="assets/type-promotion.png" alt="">
+            <p>It's like a chef who can cook a dish with just the main ingredient, or add more ingredients to make it tastier.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+class TypePromotionDemo {{'{'}}
+    void display(int a) {{'{'}}
+        System.out.println("Integer: " + a);
+    {{'}'}}
+
+    void display(double a) {{'{'}}
+        System.out.println("Double: " + a);
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        TypePromotionDemo demo = new TypePromotionDemo();
+
+        demo.display(10);       <span class="comment">// Promotes int to match the int method</span>
+        demo.display(10.5);     <span class="comment">// Matches the double method directly</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='polymorphism'" *ngIf="visibleSections === 10">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

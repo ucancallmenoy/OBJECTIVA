@@ -1,0 +1,31 @@
+<div *ngIf="showBackgroundContainer" class="background-container">
+    <div class="container px-4 py-5" id="hanging-icons">
+      <h2 class="pb-2 border-bottom">ABSTRACTION</h2>
+      <div class="features-container">
+        <div class="feature-box" (click)="lesson1Overview()">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <div class="icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>Understanding Abstraction</h3>
+          <p>Gain insights into the concept of abstraction, its levels, benefits, and real-world examples.</p>
+        </div>
+        <div class="feature-box" (click)="lesson2Overview()">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Abstract Classes</h3>
+          <p>Learn about abstract classes, including their creation, methods, and practical applications.</p>
+        </div>
+        <div class="feature-box" (click)="lesson3Overview()">
+          <div class="icon"><i class="fas fa-cogs"></i></div>
+          <h3>Interfaces</h3>
+          <p>Understand what interfaces are, how to implement them, and how they compare to abstract classes.</p>
+        </div>
+        <div class="feature-box" (click)="lesson4Overview()">
+          <div class="icon"><i class="fab fa-java"></i></div>
+          <h3>Implementation in Java</h3>
+          <p>Explore the syntax and best practices for implementing abstraction using abstract classes and interfaces in Java.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  

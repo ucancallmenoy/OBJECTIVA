@@ -1,0 +1,58 @@
+<router-outlet></router-outlet>
+
+<div *ngIf="showBackgroundContainer" class="background-container">
+    <div class="container">
+      <div class="course-container">
+        <h3>Start Learning</h3>
+        <h1>Objet-Oriented Programming</h1>
+        <div class="course-item">
+          <div class="course-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>OBJECTIVA</h3>
+          <p>To build a solid foundation in understanding the four principles of object-oriented programming through an interactive and engaging website.</p>
+          <div class="course-details">
+            <span>5 TOPICS</span>
+          </div>
+        </div>
+      </div>
+      <div class="path-container">
+        <div class="course-path">
+          <h2>TOPICS</h2>
+          <div class="course-step-list">
+            <div class="course-step" (click)="introduction()">
+              <div class="step-icon">
+                  <i class="fas fa-info-circle"></i>
+              </div>  
+              <p>INTRODUCTION</p>
+            </div>
+            <div class="course-step" (click)="abstraction()">
+              <div class="step-icon">
+                  <i class="fas fa-layer-group"></i>
+              </div>
+              <p>ABSTRACTION</p>
+            </div>
+            <div class="course-step" (click)="encapsulation()">
+              <div class="step-icon">
+                  <i class="fas fa-shield-alt"></i>
+              </div>
+              <p>ENCAPSULATION</p>
+            </div>
+            <div class="course-step" (click)="inheritance()">
+              <div class="step-icon">
+                  <i class="fas fa-sitemap"></i>
+              </div>
+              <p>INHERITANCE</p>
+            </div>
+            <div class="course-step" (click)="polymorphism()">
+              <div class="step-icon">
+                  <i class="fas fa-random"></i>
+              </div>
+              <p>POLYMORPHISM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

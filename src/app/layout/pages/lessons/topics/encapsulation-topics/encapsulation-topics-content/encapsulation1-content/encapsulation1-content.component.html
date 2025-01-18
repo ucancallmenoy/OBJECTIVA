@@ -1,0 +1,125 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/understanding-encapsulation.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>What is Encapsulation?</h1>
+            <p>Encapsulation means putting data and the functions that work on that data together in one unit, called a class. It also controls who can access the data and functions by using clear rules.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/shield.png" alt="">
+            <p>Encapsulation acts like a shield that blocks outside access to the class's data and functions, keeping them safe and secure.</p>
+        </div>
+        
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <img src="assets/data-hiding.png" alt="">
+            <h1>Data Hiding and Security</h1>
+            <p>Encapsulation is closely linked to data hiding, where internal details of an object are concealed from the outside. This helps:</p>
+            <li>Protect sensitive information.</li>
+            <li>Prevent accidental interference with the object's state.</li>
+            <li>Provide a clear and structured way to interact with data through methods.</li>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <p>Imagine an ATM: You interact with its buttons and screen (methods) without knowing the inner workings of its hardware (data hiding).</p>
+            <img src="assets/atm-machine.png" alt="">
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>What are the benefits of encapsulation?</h1>
+            <p>The main benefit of encapsulation is that it lets you <strong>re-factor</strong> or improve the code inside a class without messing up other parts of the program. This makes the code easier to update and maintain.</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/security.png" alt="">
+                    <h2>Security</h2>
+                    <p>Restricts unauthorized access to the object's state.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/flexibility.png" alt="">
+                    <h2>Flexibility</h2>
+                    <p>You can change the internal logic of methods without affecting external code.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/maintainability.png" alt="">
+                    <h2>Maintainability</h2>
+                    <p>By keeping data and behavior in one place, encapsulation simplifies debugging and updates.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/reusability.png" alt="">
+                    <h2>Reusability</h2>
+                    <p>Encapsulated classes can be reused without worrying about external interference. </p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Real-world examples of encapsulation</h1>
+            <p>Here are some of the real-world examples of the concept of encapsulation:</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <img src="assets/bank-account.png" alt="">
+            <p><strong>Bank Account</strong>: Your balance is private, but you can deposit or withdraw money using specific methods.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <img src="assets/mobile-phone.gif" alt="">
+            <p><strong>Mobile Phone</strong>: Internal components like the processor are hidden. You interact through a touchscreen or buttons.</p>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='encapsulation'" *ngIf="visibleSections === 9">BACK TO LESSONS</button>
+        </div>
+    </section>
+
+
+</div>

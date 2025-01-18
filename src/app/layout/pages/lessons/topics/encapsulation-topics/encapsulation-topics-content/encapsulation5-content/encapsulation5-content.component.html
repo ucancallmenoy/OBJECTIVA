@@ -1,0 +1,304 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/data-validation.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/important-data-validation.png" alt="">
+            <h1>Data Validation</h1>
+            <p>Let's start by understanding why data validation is crucial in encapsulation. </p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+        </div>
+    </section>
+    
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/security-guard-encapsulation.png" alt="">
+            <p>Think of data validation as a security guard and quality control inspector combined - it ensures that only valid data enters our encapsulated classes and that the object always remains in a consistent state.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <img src="assets/validating-inputs-encapsulation.png" alt="">
+            <h1>Validating user inputs</h1>
+            <p>User input validation is like having a security guard at the entrance of a building. Before any data enters our system, we need to verify that it meets our requirements and won't cause problems.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <p>There are several layers of validation we need to consider:</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/type-encapsulation.png" alt="">
+                    <h2>Type Validation</h2>
+                    <p>Ensuring the data is of the correct type</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/format-encapsulation.png" alt="">
+                    <h2>Format Validation</h2>
+                    <p>Checking if the data follows required patterns</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/range-encapsulation.png" alt="">
+                    <h2>Range Validation</h2>
+                    <p>Verifying values fall within acceptable limits</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/business-encapsulation.png" alt="">
+                    <h2>Business Rule Validation</h2>
+                    <p>Ensuring data meets specific business requirements</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <p>Here's a simple example with a Student class:</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    private String name;
+    private int age;
+    private String email;
+
+    <span class="comment">// Setting name with basic validation</span>
+    public void setName(String name) {{'{'}}
+        <span class="comment">// Check if name is empty or null</span>
+        if (name == null || name.trim().isEmpty()) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Name cannot be empty");
+        {{'}'}}
+        <span class="comment">// If valid, save it</span>
+        this.name = name.trim(); <span class="comment">// trim() removes extra spaces</span>
+    {{'}'}}
+
+    <span class="comment">// Setting age with simple range check</span>
+    public void setAge(int age) {{'{'}}
+        <span class="comment">// Check if age is within a valid range</span>
+        if (age < 5 || age > 120) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Age must be between 5 and 120");
+        {{'}'}}
+        <span class="comment">// If valid, save it</span>
+        this.age = age;
+    {{'}'}}
+
+    <span class="comment">// Setting email with format validation</span>
+    public void setEmail(String email) {{'{'}}
+        <span class="comment">// Check if email is empty</span>
+        if (email == null || email.trim().isEmpty()) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Email cannot be empty");
+        {{'}'}}
+        <span class="comment">// Check if email has {{'@'}} symbol (very basic check)</span>
+        if (!email.contains("{{'@'}}")) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Email must contain {{'@'}}");
+        {{'}'}}
+        <span class="comment">// If valid, save it</span>
+        this.email = email.trim();
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <img src="assets/maintaining-car-encapsulation.png" alt="">
+            <h1>Preventing invalid states</h1>
+            <p>Preventing invalid states is about maintaining the integrity of our objects throughout their lifecycle. It's like maintaining a car - we need to ensure all parts work together correctly and stay in a valid state.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <p>Sometimes we need to make sure our object stays in a valid state - like making sure a bank account doesn't go negative. Here's a simple example:</p>
+            <pre class="line-numbers"><code class="language-java">
+public class BankAccount {{'{'}}
+    private double balance;
+    private booelan isActive;
+
+    <span class="comment">// Constructor to initialize the account</span>
+    public BankAccount() {{'{'}}
+        this.balance = 0.0;
+        this.isActive = true;
+    {{'}'}}
+
+    <span class="comment">// Method to deposit money</span>
+    public void deposit(double amount) {{'{'}}
+        <span class="comment">// Check if the account is active</span>
+        if (!isActive) {{'{'}}
+            <span class="comment">// Throw an exception if inactive</span>
+            throw new IllegalStateException("Account is inactive");
+        {{'}'}}
+
+        <span class="comment">// Check if the amount is positive</span>
+        if (amount <= 0) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Amount must be positive");
+        {{'}'}}
+
+        <span class="comment">// If all checks, add the money</span>
+        balance += amount;
+    {{'}'}}
+
+    <span class="comment">// Method to withdraw money</span>
+    public void withdraw(double amount) {{'{'}}
+        <span class="comment">// Check if the account is active</span>
+        if (!isActive) {{'{'}}
+            <span class="comment">// Throw an exception if inactive</span>
+            throw new IllegalStateException("Account is inactive");
+        {{'}'}}
+
+        <span class="comment">// Check if the amount is positive</span>
+        if (amount <= 0) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Amount must be positive");
+        {{'}'}}
+
+        <span class="comment">// Check if there's enough money</span>
+        if (amount > balance) {{'{'}}
+            <span class="comment">// Throw an exception if invalid</span>
+            throw new IllegalArgumentException("Insufficient funds");
+        {{'}'}}
+
+        <span class="comment">// If all checks, withdraw the money</span>
+        balance -= amount;
+    {{'}'}}
+
+    <span class="comment">Get current balance</span>
+    public double getBalance() {{'{'}}
+        return balance;
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+        </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>Common practices for validation in Java</h1>
+            <p>Here's a simple example showing common ways to validate data:</p>
+            <p>This program demonstrates encapsulation by creating a `Product` class with private fields for name, price, and quantity. The program prevents invalid states such as empty names, negative prices, and quantities exceeding specified limits.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Product {{'{'}}
+    private String name;
+    private double price;
+    private int quantity;
+
+    <span class="comment">// Constructor with validation</span>
+    public Product(String name, double price, int quantity) {{'{'}}
+        <span class="comment">// Validate all inputs before creating object</span>
+        validateName(name);
+        validatePrice(price);
+        validateQuantity(quantity);
+
+        <span class="comment">// If all valid, save the data</span>
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    {{'}'}}
+
+    <span class="comment">// Simple validation methods</span>
+    private void validateName(String name) {{'{'}}
+        if (name == null || name.trim().isEmpty()) {{'{'}}
+            throw new IllegalArgumentException("Name cannot be empty");
+        {{'}'}}
+        if (name.length() > 50) {{'{'}}
+            throw new IllegalArgumentException("Name is too long");
+        {{'}'}}
+    {{'}'}}
+
+    private void validatePrice(double price) {{'{'}}
+        if (price <= 0) {{'{'}}
+            throw new IllegalArgumentException("Price must be positive");
+        {{'}'}}
+        if (price > 1000) {{'{'}}
+            throw new IllegalArgumentException("Price is too high");
+        {{'}'}}
+    {{'}'}}
+
+    private void validateQuantity(int quantity) {{'{'}}
+        if (quantity < 0) {{'{'}}
+            throw new IllegalArgumentException("Quantity must be positive");
+        {{'}'}}
+        if (quantity > 100) {{'{'}}
+            throw new IllegalArgumentException("Quantity is too high");
+        {{'}'}}
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+        </div>
+    </section> 
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <p>To use these classes, you would do something like this:</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        try {{'{'}}
+            <span class="comment">// Creating a student</span>
+            Student student = new Student();
+            student.setName("Juan");
+            student.setAge(25);
+            student.setEmail("juan{{'@'}}school.com");
+
+            <span class="comment">// Creating a bank account</span>
+            BankAccount account = new BankAccount();
+            account.deposit(100);
+            account.withdraw(50);
+
+            <span class="comment">// Creating a product</span>
+            Product product = new Product("Ballpen", 50.50, 10);
+        {{'}'}} catch (IllegalArgumentException e) {{'{'}}
+            <span class="comment">// Handle any validation errors</span>
+            System.out.println("Error: " + e.getMessage());
+        {{'}'}}
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='encapsulation'" *ngIf="visibleSections === 10">CLICK ME</button>
+        </div>
+    </section>
+</div>

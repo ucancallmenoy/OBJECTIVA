@@ -1,0 +1,271 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/implementation-in-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Implementation in Java</h1>
+            <p>Abstract Class Syntax</p>
+            <pre class="line-numbers"><code class="language-java">
+abstract class Vehicle {{'{'}}
+    abstract void fuel();
+    void run() {{'{'}}
+        System.out.println("Vehicle is running");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+            <p>Interface Syntax</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Playable {{'{'}}
+    void play();
+{{'}'}}
+class Game implements Playable {{'{'}}
+    public void play() {{'{'}}
+        System.out.println("Game is being played");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>How to implement it</h1>
+            <p>Let's say you are tasked to combine abstract classes, interfaces, and multipla interfaces to create a program where vehicles can start, stop, and display their fuel type. Also, some vehicles may have additional capabilities, like GPS.</p>
+            <p>Here's how you can implement it:</p>
+            <pre class="line-numbers"><code class="language-java">
+<span class="comment">// Interface for basic vehicle operations</span>
+interface Vehicle {{'{'}}
+    void start();
+    void stop();
+{{'}'}}
+
+<span class="comment">// Interface for GPS navigation</span>
+interface GPS {{'{'}}
+    void navigate();
+{{'}'}}
+
+<span class="comment">// Abstract class for shared functionality</span>
+abstract class FuelVehicle implements Vehicle {{'{'}}
+    abstract void fuelType(); <span class="comment">// Abstract method for fuel type</span>
+    
+    public void start() {{'{'}}
+        System.out.println("Vehicle is starting");
+    {{'}'}}
+
+    public void stop() {{'{'}}
+        System.out.println("Vehicle is stopping");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Car class implementing both interfaces</span>
+class Car extends FuelVehicle implements GPS {{'{'}}
+    public void fuelType() {{'{'}}
+        System.out.println("Car uses petrol");
+    {{'}'}}
+
+    public void navigate() {{'{'}}
+        System.out.println("Car navigation system is on");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Bike class only implements FuelVehicle</span>
+class Bike extends FuelVehicle {{'{'}}
+    public void fuelType() {{'{'}}
+        System.out.println("Bike uses diesel");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Main class to test the implementation</span>
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        FuelVehicle myCar = new Car();
+        FuelVehicle myBike = new Bike();
+
+        System.out.println("Car:");
+        myCar.start();
+        myCar.fuelType();
+        ((Car) myCar).navigate(); <span class="comment">// Type casting to access GPS</span>
+        myCar.stop();
+
+        System.out.println("\nBike:");
+        myBike.start();
+        myBike.fuelType();
+        myBike.stop();
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Best Practices</h1>
+            <p>When implementing abstract classes and interfaces, follow these best practices:</p>
+            <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/abstract-00.png" alt="">
+                    <p>Use abstract classes for shared functionality with variation.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/interface-00.png" alt="">
+                    <p>Use interfaces to define contracts for unrelated classes.</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Common Use Cases</h1>
+            <p>Abstract classes and interfaces are used in many real-world scenarios because they help in creating a clear separation between the internal workings of an object and the external interface, leading to more robust, maintainable, and secure code.</p>
+            <p>Here are some examples:</p>
+            <div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/interface-0000.png" alt="">
+                    <h2>Interfaces</h2>
+                    <p>When enforcing rules, like ensuring all classes that implement Playable have a play() method.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/abstract-0000.png" alt="">
+                    <h2>Abstract Classes</h2>
+                    <p>When building a base class for similar objects, like a Vehicle class for Car, Bike, etc.</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls3" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls3" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <p>But how do you write these in code?</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <p>In abstract class:</p>
+            <pre class="line-numbers"><code class="language-java">
+<span class="comment">// Abstract class Vehicle</span>
+abstract class Vehicle {{'{'}}
+    abstract void startEngine();
+
+    void stopEngine() {{'{'}}
+        System.out.println("Engine stopped.");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Concrete class Car extending Vehicle</span>
+class Car extends Vehicle {{'{'}}
+    {{'@'}}Override
+    void startEngine() {{'{'}}
+        System.out.println("Car engine started.");
+    {{'}'}}
+{{'}'}}
+
+<span class="commen">// Concrete class Bike extending Vehicle</span>
+class Bike extends Vehicle {{'{'}}
+    {{'@'}}Override
+    void startEngine() {{'{'}}
+        System.out.println("Bike engine started.");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Main class to test the implementation</span>
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Vehicle car = new Car();
+        car.startEngine();
+        car.stopEngine();
+
+        Vehicle bike = new Bike();
+        bike.startEngine();
+        bike.stopEngine();
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <p>In interface:</p>
+            <pre class="line-numbers"><code class="language-java">
+<span class="comment">// Interface Playable</span>
+interface Playable {{'{'}}
+    void play();
+{{'}'}}
+
+<span class="comment">// Class Game implementing Playable</span>
+class Game implements Playable {{'{'}}
+    {{'@'}}Override
+    public void play() {{'{'}}
+        System.out.println("Playing the game.");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Class Music implementing Playable</span>
+class Music implements Playable {{'{'}}
+    {{'@'}}Override
+    public void play() {{'{'}}
+        System.out.println("Playing the music.");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Main class to test the interface implementation</span>
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Playable game = new Game();
+        game.play();
+
+        Playable music = new Music();
+        music.play();
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='abstraction'" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+</div>
+

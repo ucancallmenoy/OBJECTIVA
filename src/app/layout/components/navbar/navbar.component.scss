@@ -1,0 +1,167 @@
+/* NAVIGATION BAR */
+.nav-bar {
+    height: 69px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    padding: 12px 25px;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
+    border: 1px solid #000000;
+}
+.nav-bar .dropdown {
+    position: relative;
+    display: inline-block;
+}
+.nav-bar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    border: 1px solid #000000;
+    z-index: 1;
+}
+
+.nav-bar .dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-bar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Sticky and hidden navbar behaviors */
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    top: -100px;
+}
+
+/* Logo */
+.logo img {
+    width: 59px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/* .logo img:hover {
+    transform: translateX(10px);
+    transition: 0.5s;
+} */
+
+/* Align menu to the left, right next to the logo */
+.menu {
+    display: flex;
+    margin-left: 50px; /* Adds a small space between the logo and the menu items */
+}
+
+.menu li {
+    padding-left: 50px;
+}
+
+.menu li a {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    transition: 0.15s ease-in-out;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: rgb(0, 0, 0);
+    transition: 0.15s ease-in-out;
+}
+
+.menu li a:hover:after {
+    width: 100%;
+}
+
+/* Menu icons */
+.open-menu,
+.close-menu {
+    position: absolute;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: none;
+}
+
+.open-menu {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.close-menu {
+    top: 20px;
+    right: 20px;
+}
+
+#check {
+    display: none;
+}
+
+/* ACCOUNT */
+.account-info {
+    margin-left: auto;
+    margin-right: 50px;
+    display: flex; /* Use flexbox for account info */
+    align-items: center; /* Center items vertically */
+    cursor: pointer;
+    position: relative;
+}
+.account-info:hover{
+    color: #7c7c7c;
+}
+
+.account-icon {
+    width: 30px; /* Icon size */
+    height: 30px; /* Icon size */
+    margin-top: 12px;
+}
+
+.account-popup a {
+    display: block;
+    padding: 8px 0;
+    color: #000;
+    text-decoration: none;
+
+}
+
+.account-popup a:hover {
+    font-weight: 500;
+}
+.account-popup {
+    position: absolute;
+    top: 60px; /* Adjust according to your header height */
+    background-color: white;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 200px; /* Adjust width as needed */
+    z-index: 1000;
+    font-size: 14px;
+    color: black;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out; /* Smooth transition */
+}

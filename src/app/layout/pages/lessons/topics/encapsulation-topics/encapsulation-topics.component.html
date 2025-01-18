@@ -1,0 +1,40 @@
+<div *ngIf="showBackgroundContainer" class="background-container">    
+    <div class="container px-4 py-5" id="hanging-icons">
+      <h2 class="pb-2 border-bottom">ENCAPSULATION</h2>
+      <div class="features-container">
+        <div class="feature-box" (click)="lesson1Overview()">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <div class="icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Understanding Encapsulation</h3>
+          <p>Discover the concept of encapsulation, its benefits, data hiding, and real-world examples.</p>
+        </div>
+        <div class="feature-box" (click)="lesson2Overview()">
+          <div class="icon"><i class="fas fa-key"></i></div>
+          <h3>Access Modifiers</h3>
+          <p>Learn about access control in Java using public, private, protected, and default modifiers.</p>
+        </div>
+        <div class="feature-box" (click)="lesson3Overview()">
+          <div class="icon"><i class="fas fa-tools"></i></div>
+          <h3>Getters and Setters</h3>
+          <p>Understand the purpose, implementation, and best practices for getters and setters.</p>
+        </div>
+        <div class="feature-box" (click)="lesson4Overview()">
+          <div class="icon"><i class="fas fa-tools"></i></div>
+          <h3>Java Bean Standard</h3>
+          <p>Understand the purpose, implementation, and best practices for getters and setters.</p>
+        </div>
+        <div class="feature-box" (click)="lesson5Overview()">
+          <div class="icon"><i class="fas fa-check-circle"></i></div>
+          <h3>Data Validation</h3>
+          <p>Learn techniques for validating user inputs and ensuring robust encapsulated classes.</p>
+        </div>
+        <div class="feature-box" (click)="lesson6Overview()">
+          <div class="icon"><i class="fab fa-java"></i></div>
+          <h3>Implementation in Java</h3>
+          <p>Understand how to implement encapsulation in Java with examples and best practices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  

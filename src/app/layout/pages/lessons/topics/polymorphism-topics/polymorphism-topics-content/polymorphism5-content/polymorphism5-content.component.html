@@ -1,0 +1,160 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/polymorphism-with-interfaces.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Using Interfaces for Polymorphism</h1>
+            <p>An interface is like a contract that says, "any class that implements this interface must have certain methods." When different classes implement the same interface, they can provide their own version of the methods. This lets you use the same interface to call different methods from different classes.</p>
+            <img src="assets/appliance-polymorphism.png" alt="">
+            <p>It's like different appliances (classes) having a power button (interface method), but each appliance operates differently when turned on.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <p>To implemet it, follow this:</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Appliance {{'{'}}  
+    void turnOn(); <span class="comment">// All appliances must implement this method</span>  
+{{'}'}}  
+
+class Fan implements Appliance {{'{'}}  
+    {{'@Override'}} 
+    public void turnOn() {{'{'}}  
+        System.out.println("Fan is spinning");  
+    {{'}'}}  
+{{'}'}}  
+
+class Light implements Appliance {{'{'}}  
+    {{'@Override'}}
+    public void turnOn() {{'{'}}  
+        System.out.println("Light is glowing");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Appliance appliance1 = new Fan(); <span class="comment">// Polymorphism: Appliance reference</span>  
+        Appliance appliance2 = new Light();  
+
+        appliance1.turnOn(); <span class="comment">// Output: Fan is spinning</span>  
+        appliance2.turnOn(); <span class="comment">// Output: Light is glowing</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Achieving Loose Coupling with Interfaces</h1>
+            <p>Loose coupling means your code is flexible and doesn't depend too much on specific details. Using interfaces helps because your classes only need to know about the interface, not the actual class doing the work.</p>
+            <img src="assets/achieving-polymorphism.png" alt="">
+            <p>It's like a universal charger that can charge different devices (phone, tablet, etc.) because they all follow the same charging protocol (interface).</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <p>How to implement it?</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Charger {{'{'}}  
+    void charge(); <span class="comment">// Common method for charging</span>  
+{{'}'}}  
+
+class Phone implements Charger {{'{'}}  
+    {{'@Override'}}
+    public void charge() {{'{'}}  
+        System.out.println("Phone is charging");  
+    {{'}'}}  
+{{'}'}}  
+
+class Tablet implements Charger {{'{'}}  
+    {{'@Override'}}
+    public void charge() {{'{'}}  
+        System.out.println("Tablet is charging");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Charger device = new Phone(); <span class="comment">// Loose coupling: Easy to swap with other classes</span>  
+        device.charge(); <span class="comment">// Output: Phone is charging</span>  
+
+        device = new Tablet();  
+        device.charge(); <span class="comment">// Output: Tablet is charging</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Interface-Based Polymorphism</h1>
+            <p>With interfaces, you can treat different objects the same way. Even though they are different classes, they can still be treated as the same type (the interface).</p>
+            <img src="assets/workers-polymorphism.png" alt="">
+            <p>It's like hiring workers (interface) to do a task, where the worker could be a painter, plumber, or electrician (different implementations).</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <p>How to implement it?</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Worker {{'{'}}  
+    void doWork(); <span class="comment">// Define the task</span>  
+{{'}'}}  
+
+class Painter implements Worker {{'{'}}  
+    {{'@Override'}}
+    public void doWork() {{'{'}}  
+        System.out.println("Painter is painting the wall");  
+    {{'}'}}  
+{{'}'}}  
+
+class Electrician implements Worker {{'{'}}  
+    {{'@Override'}}
+    public void doWork() {{'{'}}  
+        System.out.println("Electrician is fixing the wiring");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Worker worker = new Painter(); <span class="comment">// Interface-based polymorphism</span>  
+        worker.doWork(); <span class="comment">// Output: Painter is painting the wall</span>  
+
+        worker = new Electrician();  
+        worker.doWork(); <span class="comment">// Output: Electrician is fixing the wiring</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='polymorphism'" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

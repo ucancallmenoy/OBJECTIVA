@@ -1,0 +1,88 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/method-overriding.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/what-method-overriding.png" alt="">
+            <h1>What is Method Overriding?</h1>
+            <p>Method overriding occurs when a subclass provides a specific implementation for a method that is already defined in its superclass. </p>
+            <p>The signature of the overridden method in the subclass must match the one in the superclass, and it allows the subclass to modify the behavior of the method as required.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/overriding-vs-overloading.png" alt="">
+            <h1>Overriding vs. Overloading</h1>
+            <p>Method Overriding and Method Overloading are both ways to define methods in Java, but they have distinct differences.</p>
+            <li>Method Overloading: Multiple methods with the same name but different parameters in the same class.</li>
+            <li>Method Overriding: A subclass provides a specific implementation for a method that is already defined in its superclass.</li>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>The {{'@Override'}} annotation</h1>
+            <p>The {{'@Override'}} annotation is used to indicate that a method in a subclass is intended to override a method in its superclass. While this annotation is not mandatory, it helps with readability and also allows the compiler to check that you are correctly overriding a method.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Parent {{'{'}}
+    void display() {{'{'}}
+        System.out.println("Parent's display()");
+    {{'}'}}
+{{'}'}}
+
+class Child extends Parent {{'{'}}
+    {{'@Override'}}
+    void display() {{'{'}}
+        System.out.println("Child's display()");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Using 'super' in inheritance</h1>
+            <p>The super keyword is used to refer to the immediate parent class. It can be used to call methods, constructors, and access fields from the superclass.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Parent {{'{'}}
+    void display() {{'{'}}
+        System.out.println("Parent's display()");
+    {{'}'}}
+{{'}'}}
+
+class Child extends Parent {{'{'}}
+    void display() {{'{'}}
+        super.display();
+        System.out.println("Child's display()");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Child child = new Child();
+        child.display();   
+        <span class="comment">// Output: Parent's display()</span>
+        <span class="comment">// Output: Child's display()</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='inheritance'" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+</div>

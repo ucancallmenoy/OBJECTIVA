@@ -1,0 +1,123 @@
+.lesson-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    }
+  
+    .header {
+    text-align: center;
+    }
+  
+  
+    .interactive-image {
+      margin-top: 100px;
+      cursor: pointer;
+      height: auto;
+      width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .lesson-section {
+      margin-bottom: 30px;
+      animation: fadeIn 0.8s ease-in-out;
+      border-radius: 5px;
+      padding: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  
+    button {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      margin-top: 15px;
+      border: 1px solid #0a102d;
+    }
+    
+    button:hover {
+      color: #ffffff;
+      background-color: #0a102d;
+    }
+  
+    /* CONTENT CONTAINER */
+    .content-container {
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    
+    h1 {
+      margin-top: 15px;
+      font-size: 2.1rem;
+      font-weight: bold;
+    }
+    p{
+      font-size: 1.3rem;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .carousel-control-prev {
+        left: 10px;
+      }
+      
+      .carousel-control-next {
+        right: 10px;
+      }
+      
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        background: none;
+      }
+      
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        filter: invert(100%);
+      }
+      .carousel-control-prev,
+.carousel-control-next {
+  border: none;
+  background: none;
+  color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+      .comment {
+        color: rgb(194, 194, 194);
+      }
+pre{
+  border: 1px solid #adadad;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}

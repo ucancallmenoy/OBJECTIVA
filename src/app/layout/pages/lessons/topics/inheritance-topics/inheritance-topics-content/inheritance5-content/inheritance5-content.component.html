@@ -1,0 +1,204 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/advanced-inheritance-concepts.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/learning-inheritance.png" alt="">
+            <p>While basic inheritance allows for the reuse of properties and methods, advanced inheritance concepts provide tools and techniques to handle complex scenarios.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>The 'final' keyword</h1>
+            <p>The keyword final has three uses. First, it can be used to create the equivalent of a named constant. This use was described in the preceding chapter. The other two uses of final apply to inheritance. </p>
+            <p>The <strong>final</strong> keyword in Java has three main uses in inheritance</p>
+            <ol>
+                <li style="--accent-color:#0D6EFD">
+                    <div class="icon"><i class="fas fa-sitemap"></i></div>
+                    <div class="title">Final Classes</div>
+                    <div class="descr">Prevents a class from being inherited.</div>
+                </li>
+                <li style="--accent-color:#6710F5">
+                    <div class="icon"><i class="fas fa-sitemap"></i></div>
+                    <div class="title">Final Methods</div>
+                    <div class="descr">Prevents a method from being overridden.</div>
+                </li>
+                <li style="--accent-color:#6F42C1">
+                    <div class="icon"><i class="fas fa-sitemap"></i></div>
+                    <div class="title">Final Variables</div>
+                    <div class="descr">Creates constants that cannot be modified..</div>
+                </li>
+            </ol>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Final Classes</h1>
+            <p>A <strong>final</strong> class cannot have subclasses, ensuring it remains unaltered.</p>
+            <pre class="line-numbers"><code class="language-java">
+final class Animal {{'{'}}
+    void eat() {{'{'}}
+        System.out.println("This animal eats food.");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// This will generate a compilation error</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Final Methods</h1>
+            <p>A <strong>final</strong> method cannot be overridden by subclasses, preserving its functionality.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    final void sound() {{'{'}}
+        System.out.println("Some generic sound");
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}}
+    <span class="comment">// This will cause a compilation error</span>
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Final Variables</h1>
+            <p>A <strong>final</strong> variable is a constant that cannot be modified after initialization.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    final int legs = 4;
+
+    void display() {{'{'}}
+        legs = 2; <span class="comment">// This will generate a compilation error</span>
+        System.out.println("This animal has " + legs + " legs.");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>The Object class</h1>
+            <p>The Object class is the root class of all classes in Java. Every class in Java implicitly inherits from the Object class, even if no explicit inheritance is specified.</p>
+            <p><strong>toString()</strong>: Converts an object to a string representation</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    String name = "Dog";
+
+    {{'@Override'}}
+    public String toString() {{'{'}}
+        return "Animal name: " + name;
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Animal animal = new Animal();
+        System.out.println(animal.toString()); <span class="comment">// Output: Animal name: Dog</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+            <p><strong>equals()</strong>: Compare two objects for equality</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    String name;
+
+    Animal(String name) {{'{'}}
+        this.name = name;
+    {{'}'}}
+
+    {{'@Override'}}
+    public boolean equals(Object obj) {{'{'}}
+        if (this == obj) return true;
+        if (obj instanceof Animal) {{'{'}}
+            Animal other = (Animal) obj;
+            return this.name.equals(other.name); <span class="comment">// Compare the name of two objects</span>
+        {{'}'}}
+        return false;
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+            <p><strong>hashCode()</strong>: Provides a unique integer for each project</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    String name;
+    
+    Animal(String name) {{'{'}}
+        this.name = name;
+    {{'}'}}
+
+    {{'@Override'}}
+    public int hashCode() {{'{'}}
+        return Objects.hash(name); <span class="comment">// Returns a unique integer for each object</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+            <p><strong>getClass()</strong>: Returns the runtime class of an object</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    String name = "Dog";
+
+    public void displayClass() {{'{'}}
+        System.out.println("Class of the object: " + this.getClass().getName()); <span class="comment">// Returns the class name</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>The 'instanceof' Operator</h1>
+            <p>The instanceof operator is used to check whether an object is an instance of a specific class or subclass, or an implementation of a specific interface</p>
+            <p>It is commonly used to avoid ClassCastException when casting objects.</p>
+            <p>Syntax:</p>
+            <pre class="line-numbers"><code class="language-java">
+object instanceof ClassName
+            </code></pre>
+            <p>Example:</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} {{'}'}}
+    class Dog extends Animal {{'{'}} {{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Animal animal = new Dog();
+        System.out.println(animal instanceof Dog);      <span class="comment">// Output: true</span>
+        System.out.println(animal instanceof Animal);   <span class="comment">// Output: true</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='inheritance'" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

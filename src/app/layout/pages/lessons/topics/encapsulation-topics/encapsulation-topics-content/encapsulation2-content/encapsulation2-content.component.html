@@ -1,0 +1,206 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/access-modifiers.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Access Modifiers (Public, Private, Protected)</h1>
+            <img src="assets/access-modifiers.png" alt="">
+            <p>In Java, access modifiers help to restrict the scope of a class, constructor, variables, method, or data member. It also provides security, accessibility, etc to the user depending upon the access modifier used with the element.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Types of Access Modifiers</h1>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/default.png" alt="">
+                    <h2 class="header">Default</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/private.png" alt="">
+                    <h2 class="header">Private</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/protected.png" alt="">
+                    <h2 class="header">Protected</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/public.png" alt="">
+                    <h2 class="header">Public</h2>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Default Access Modifier</h1>
+            <p>When a class, method, or data member does not have a specified access modifier, it uses the default access modifier. This means that these members, by default, can only be accessed within the same package.</p>
+            <h4>File: <strong>Animal.java</strong></h4>
+            <pre class="line-numbers"><code class="language-java">
+package mypackage;
+
+class Animal {{'{'}}    <span class="comment">// No access modifier, so it's default</span>
+    String name; <span class="comment">// Default access</span>
+    int age;     <span class="comment">// Default access</span>
+
+    void displayInfo() {{'{'}} <span class="comment">// Default access</span>
+        System.out.println("Name " + name ", Age: " + age);
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <h4>File: <strong>Main.java</strong></h4>
+            <pre class="line-numbers"><code class="language-java">
+package mypackage;
+
+public class Main {{'{'}}
+    public static void main (String[] args) {{'{'}}
+        Animal animal = new Animal(); <span class="comment">// Accessible because it's in the same package</span>
+        animal.name = "Dog";
+        animal.age = 5;
+        animal.displayInfo(); 
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <!-- Result Section -->
+            <h4>Result:</h4>
+            <p>Name: Dog, Age: 5</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Private Access Modifier</h1>
+            <p>The private access modifier is defined using the private keyword. Methods or data members marked as private can only be accessed within the class where they are declared.</p>
+            <p>Any other class of the same package will not be able to access these members.</p>
+            <pre class="line-numbers"><code class="language-java">
+package p1;
+
+<span class="comment">// Class First</span>
+class First {{'{'}}
+    private void display() {{'{'}}
+        System.out.println("Objectiva");
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Class Second</span>
+class Second {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        First obj = new First();
+        <span class="comment">// Trying to access private method of another class</span>
+        obj.display(); 
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result</h4>
+             <p>ERROR: display() has private access in First</p>
+            
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Protected Access Modifier</h1>
+            <p>The protected access modifier is defined using the protected keyword. Methods or data members declared as protected can be accessed within the same package or by subclasses in other packages. It is accessible in the same package or subclasses</p>
+            <p>In this example, we will create two packages, <strong>p1</strong> and <strong>p2</strong>. First, class <strong>First</strong> in <strong>p1</strong> is made public to allow access from <strong>p2</strong>. The display method in class <strong>First</strong> is protected, and the <strong>Second</strong> class inherits from class <strong>First</strong>. The protected method is then accessed by creating an object of class Second.</p>
+            <h4>First Program</h4>
+            <pre class="line-numbers"><code class="language-java">
+package p1;
+
+<span class="comment">// Class First</span>
+class First {{'{'}}
+    protected void display() {{'{'}}
+        System.out.println("Object-Oriented Programming");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+              <h4>Second Program</h4>
+              <pre class="line-numbers"><code class="language-java">
+package p2;
+
+<span class="comment">// Importing all classes in package p1</span>
+import p1.*;
+
+<span class="comment">// Class Second is subclass of First</span>
+class Second extends First {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Second obj = new Second();
+        obj.display(); // Accessing protected method
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>Object-Oriented Programming</p>
+            
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Public Access Modifier</h1>
+            <p>Public access modifier is used to define the visibility or accessibility of a class, method, or data member. When a class, method, or variable is declared as public, it means that it can be accessed from any other class or package within the program.</p>
+            <p>Example:</p>
+            <h4>First Program</h4>
+            <pre class="line-numbers"><code class="language-java">
+package p1;
+
+public class First {{'{'}}
+    public void display() {{'{'}}
+        System.out.println("Java");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <h4>Second Program</h4>
+            <pre class="line-numbers"><code class="language-java">
+package p2;
+import p1.*;
+
+class Second {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        First obj = new First();
+            bj.display();
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>Java</p>
+           
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='encapsulation'" *ngIf="visibleSections === 7">BACK TO LESSONS</button>
+        </div>
+    </section>
+    
+</div>

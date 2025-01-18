@@ -1,0 +1,187 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/understanding-abstraction.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/what-abstraction.png" alt="">
+            <h1>What is abstraction?</h1>
+            <p>It is a process of hiding the implementation details and showing only functionality to the user. Another way, it shows only important things to the user and hides the internal details. </p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/mask-abstraction.png" alt="">
+            <p>It is like hiding your true feelings behind a mask so that you can't show your emotions inside.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Levels of Abstraction</h1>
+            <p>There are three levels of abstraction:</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/level3.png" alt="">
+                    <h2>High-Level Abstraction</h2>
+                    <p>Deals with the "what" of the system, focusing on user interaction and overall system behavior.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/level2.png" alt="">
+                    <h2>Mid-Level Abstraction</h2>
+                    <p>Involves system components and their responsibilities, typically focusing on subsystems or modules.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/level1.png" alt="">
+                    <h2>Low-Level Abstraction</h2>
+                    <p>Details the "how," dealing with specific implementation, such as code and algorithms.</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <p>But where does these levels of abstractions are commonly used?</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>High-Level Abstraction</h1>
+            <p>Typically, interfaces or abstract classes represents high-level abstractions. These define contracts or templates that classes must follow, but they do not specify how those contracts are carried out.</p>
+            <p>Example: An interface like <strong>Shade</strong> with methods like <strong>draw()</strong> and <strong>area()</strong>. The interface defines what actions a shape can perform, but the specifics of how it's done are left to the implementing classes</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Shape {{'{'}}
+    void draw();
+    double area();
+{{'}'}}
+            </code></pre>   
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Mid-Level Abstraction</h1>
+            <p>Abstract classes provide this level of abstraction. They can have both abstract and concrete methods, offering a mix of shared functionality and customization</p>
+            <p>An abstract class <strong>Animal</strong> may provide <strong>breathe()</strong> method (concrete) but leave the <strong>makeSound()</strong> method abstract to be implemented by subclasses like <strong>Dog</strong> or <strong>Cat</strong></p>
+            <pre class="line-numbers"><code class="language-java">
+abstract class Animal {{'{'}}
+    abstract void makeSound();
+
+    void breathe() {{'{'}}
+        System.out.println("Breathing...");
+    {{'}'}}
+{{'}'}}
+            </code></pre>   
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>Low-Level Abstraction</h1>
+            <p>Concrete classes implement low-level abstraction, where all methods are defined, and the actual behavior is fully specified.</p>
+            <p>A <strong>Dog</strong> class that extends <strong>Animal</strong> and provides a specific implementation of <strong>makeSound()</strong>.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Dog extends Animal {{'{'}}
+    void makeSound() {{'{'}}
+        System.out.println("Barking...");
+    {{'}'}}
+{{'}'}}
+            </code></pre>   
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>What are the benefits of Abstraction?</h1>
+            <p>Abstraction provides several benefits:</p>
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/simplifies-abstraction.png" alt="">
+                    <h2>Simplifies Complexity</h2>
+                    <p>Focuses on essential details, hiding unnecessary ones for easier understanding</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/enhances-abstraction.png" alt="">
+                    <h2>Enahances Reusability</h2>
+                    <p>Abstract classes and interfaces provide reusable and extendable code structures</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/improves-abstraction.png" alt="">
+                    <h2>Improves Maintainability</h2>
+                    <p>Changes in implementation don't affect high-level abstractions, making updates easier</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/encourages-abstraction.png" alt="">
+                    <h2>Encourages Modularity</h2>
+                    <p>Breaks down systems into manageable, independent components</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/supports-abstraction.png" alt="">
+                    <h2>Supports Scalability</h2>
+                    <p>Allows adding new functionality without altering existing code significantly</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <h1>Real-world examples of Abstraction</h1>
+            <img src="assets/sms-abstraction.gif" alt="">
+            <p>Sending SMS, you just type the text and send the message, but you don’t know the internal process about the message delivery.</p>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='abstraction'" *ngIf="visibleSections === 10">CLICK ME</button>
+          </div>
+    </section>
+</div>
+

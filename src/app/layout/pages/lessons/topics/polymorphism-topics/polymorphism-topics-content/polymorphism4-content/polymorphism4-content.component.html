@@ -1,0 +1,163 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/advanced-polymorphic-concepts.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Abstract Classes and Polymorphism</h1>
+            <p>An abstract class is a class that cannot be instantiated directly and may contain abstract methods (methods without implementation).</p>
+            <p><strong>Subclasses</strong> are required to provide the implementation of these abstract methods.</p>
+            <p><strong>Polymorphism</strong> works with abstract classes as it allows references of the abstract class type to point to objects of any subclass that provides implementations of the abstract methods.</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/bball-polymorphism.png" alt="">
+                    <p>Abstract classes allow for defining a common interface while leaving the specific implementation to the subclasses. It's like setting a rule in a game (common interface) where each player (subclass) decides their unique strategy (specific implementation) to follow the rule.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/assigning-polymorphism.png" alt="">
+                    <p>This enables runtime polymorphism, as the appropriate method in the subclass gets invoked during execution. It's like a manager assigning tasks to employees (method calls), and each employee (subclass) performs the task differently based on their role during execution.</p>
+                  </div>        
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <p>This is how to implement it:</p>
+            <pre class="line-numbers"><code class="language-java">
+abstract class Animal {{'{'}}  
+    abstract void sound(); <span class="comment">// Abstract method with no implementation</span>  
+{{'}'}}  
+
+class Dog extends Animal {{'{'}}  
+    {{'@Override'}}
+    void sound() {{'{'}}  
+        System.out.println("Dog barks");  
+    {{'}'}}  
+{{'}'}}  
+
+class Cat extends Animal {{'{'}}  
+    {{'@Override'}}
+    void sound() {{'{'}}  
+        System.out.println("Cat meows");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Animal animal1 = new Dog(); <span class="comment">// Polymorphism: Animal reference, Dog object</span>  
+        Animal animal2 = new Cat();  
+
+        animal1.sound(); <span class="comment">// Output: Dog barks</span>  
+        animal2.sound(); <span class="comment">// Output: Cat meows</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Type Casting</h1>
+            <p>Type casting in Java allows you to convert objects from one type to another. It is often used in polymorphism to convert a reference of a parent class to a reference of a subclass (downcasting) or the reverse (upcasting).</p>
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/dog-polymorphism.png" alt="">
+                    <p>Upcasting is automatically done when you assign a subclass object to a superclass reference. It's like referring to a specific breed of dog (subclass) as just a dog (superclass) without losing the essence that it’s a dog.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/breed-polymorphism.png" alt="">
+                    <p>Downcasting requires explicit casting and should be done carefully because if the object is not of the expected type, it will throw a ClassCastException. It's like assuming a dog (superclass reference) is a specific breed (subclass) and carefully checking its breed to avoid mistakes, as it might not belong to that breed</p>
+                  </div>        
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>instaceof Operator</h1>
+            <p>The instanceof operator is used to test whether an object is an instance of a particular class or interface. This is especially useful when performing downcasting to ensure that the object is of the type you expect, preventing runtime errors like ClassCastException.</p>
+            <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/car-polymorphism.png" alt="">
+                    <p>It returns true if the object is an instance of the specified class or its subclass. It's like checking if a vehicle is a car (specific class or subclass) and confirming that it indeed is.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/catdog-polymorphism.png" alt="">
+                    <p>It returns false if the object is not of the specified type. It's like checking if a dog (object) is a cat (another type), and the answer is no because they are completely different types.</p>
+                  </div>        
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <p>How to implement it?</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} {{'}'}}  
+
+class Dog extends Animal {{'{'}} {{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Animal myAnimal = new Dog();  
+
+        if (myAnimal instanceof Dog) {{'{'}}  
+            System.out.println("myAnimal is an instance of Dog"); <span class="comment">// Output: myAnimal is an instance of Dog</span>  
+        {{'}'}}  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='polymorphism'" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

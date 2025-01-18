@@ -1,0 +1,41 @@
+<div *ngIf="showBackgroundContainer" class="background-container">
+    <div class="container px-4 py-5" id="hanging-icons">
+      <h2 class="pb-2 border-bottom">INHERITANCE</h2>
+      <div class="features-container">
+        <div class="feature-box" (click)="lesson1Overview()">
+          <div class="check-icon"><i class="fas fa-check"></i></div>
+          <div class="icon"><i class="fas fa-tree"></i></div>
+          <h3>Understanding Inheritance</h3>
+          <p>Explore the concept, types, benefits, and real-world applications of inheritance in programming.</p>
+        </div>
+        <div class="feature-box" (click)="lesson2Overview()">
+          <div class="icon"><i class="fas fa-user-friends"></i></div>
+          <h3>Single Inheritance</h3>
+          <p>Learn about parent and child classes, the super keyword, and constructor chaining.</p>
+        </div>
+        <div class="feature-box" (click)="lesson3Overview()">
+          <div class="icon"><i class="fas fa-layer-group"></i></div>
+          <h3>Types of Inheritance in Java</h3>
+          <p>Understand single, multilevel, and hierarchical inheritance and why Java lacks multiple inheritance.</p>
+        </div>
+        <div class="feature-box" (click)="lesson4Overview()">
+          <div class="icon"><i class="fas fa-sync-alt"></i></div>
+          <h3>Method Overriding</h3>
+          <p>Discover the difference between overriding and overloading, and the use of the  &#64;Override annotation.</p>
+        </div>
+        <div class="feature-box" (click)="lesson5Overview()">
+          <div class="icon"><i class="fas fa-cogs"></i></div>
+          <h3>Advanced Inheritance Concepts</h3>
+          <p>Dive into the final keyword, Object class, and the instanceof operator for advanced inheritance techniques.</p>
+        </div>
+        <div class="feature-box" (click)="lesson6Overview()">
+          <div class="icon"><i class="fab fa-java"></i></div>
+          <h3>Implementation in Java</h3>
+          <p>Learn the syntax and best practices for implementing inheritance in Java with examples and use cases.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  
+  

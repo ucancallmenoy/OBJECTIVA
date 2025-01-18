@@ -1,0 +1,253 @@
+<div class="lesson-container" >
+    <!-- Header Section -->
+    <header class="header">
+      <img src="assets/intro-to-oop.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+  
+    <!-- Section 1: What is Programming -->
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+      <div class="content-container">
+        <h1>What is Programming?</h1>
+        <p>Programming is the process of writing instructions for a computer to follow or creating a computer program.</p>
+        <img src="assets/computer-program.png" alt="">
+        <p>It is used to solve problems and automate computational processes.</p>
+        <p>There is a classification, style or way of programming that is called <strong>programming paradigms</strong>. It is an approach to solve problems by using programming languages.</p>
+  
+        <div class="button-container">
+          <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">PROGRAMMING PARADIGMS</button>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Section 2: Programming Paradigms -->
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+      <div class="content-container">
+        <h1>These are the different programming paradigms</h1>
+        <ul>
+          <li style="--accent-color:#0B374D">
+            <div class="icon"><i class="fa-solid fa-cube"></i></div>
+            <div class="title">Object-Oriented Programming</div>
+            <div class="descr">A paradigm based on the concept of objects, which can contain data and code.</div>
+          </li>
+          <li style="--accent-color:#1286A8">
+            <div class="icon"><i class="fa-solid fa-percent"></i></div>
+            <div class="title">Functional Programming</div>
+            <div class="descr">A paradigm where programs are constructed by applying and composing functions.</div>
+          </li>
+          <li style="--accent-color:#D2B53B">
+            <div class="icon"><i class="fa-solid fa-list"></i></div>
+            <div class="title">Procedural Programming</div>
+            <div class="descr">A paradigm derived from structured programming, based on the concept of procedure calls.</div>
+          </li>
+          <li style="--accent-color:#DA611E">
+            <div class="icon"><i class="fa-solid fa-code"></i></div>
+            <div class="title">Declarative Programming</div>
+            <div class="descr">A paradigm that expresses the logic of a computation without describing its control flow.</div>
+          </li>
+          <li style="--accent-color:#AC2A1A">
+            <div class="icon"><i class="fa-solid fa-terminal"></i></div>
+            <div class="title">Imperative Programming</div>
+            <div class="descr">A paradigm that uses statements that change a program's state.</div>
+          </li>
+        </ul>
+  
+        <div class="button-container">
+          <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">WHY DO WE NEED PROGRAMMING PARADIGMS</button>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Section 3: Why Programming Paradigms -->
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+      <div class="content-container"> 
+        <h1>Why do programmers need programming paradigms?</h1>
+        <div class="row mb-2">
+          <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">Structure</strong>
+                <h3 class="mb-0">Programming Paradigms</h3>
+                <p class="card-text mb-auto">Programming paradigms provide structured methods to solve computational problems by organizing code effectively. They help us manage complexity in software development by breaking down intricate challenges into more manageable parts, promoting code reusability, and creating more maintainable and readable solutions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success">Efficiency</strong>
+                <h3 class="mb-0">Simplifying Code</h3>
+                <p class="card-text mb-auto">Programming paradigms act as guides for organizing instructions, making complex problems manageable. They simplify complex challenges and empower developers to craft effective software solutions by offering structured methods to create readable, maintainable, and efficient code.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+      </div>
+    </section>
+  
+    <!-- WHAT IS OBJECT-ORIENTED PROGRAMMING -->
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+      <div class="content-container">
+        <h1>What is Object-Oriented Programming?</h1>
+        <p>Object-Oriented Programming (OOP) is an extension of procedural programming in which you take a slightly different approach to writing programs.</p>
+        <img src="assets/oop1.png" alt="">
+        <p>It is a way of writing computer code that organizes software design around “objects” – which are digital blueprints that combine data and actions, similar to real-world objects have characteristics and behaviors.</p>
+  
+        <!-- INVOLVES -->
+        <div class="container px-4 py-5" id="hanging-icons" style="margin-bottom: -20rem;">
+          <h2 class="pb-2 border-bottom">Writing object-oriented programming involves:</h2>
+          <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="col d-flex align-items-start">
+              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+              </div>
+              <div>
+                <h2>Creating Classes</h2>
+                <p>Creating classes, which are blueprints for objects</p>
+              </div>
+            </div>
+            <div class="col d-flex align-items-start">
+              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <i class="fas fa-cube fa-2x"></i>
+              </div>
+              <div>
+                <h2>Creating Objects</h2>
+                <p>Creating objects, which are specific instances of those classes</p>
+              </div>
+            </div>
+            <div class="col d-flex align-items-start">
+              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                <i class="fas fa-cogs fa-2x"></i>
+              </div>
+              <div>
+                <h2>Defining Methods</h2>
+                <p>Defining methods, which are functions that operate on the data within objects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">HISTORY OF OBJECT-ORIENTED PROGRAMMING</button>
+      </div>
+    </section>
+  
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+      <div class="content-container">
+        <div class="certificate">
+          <h1 class="history">History of Object-Oriented Programming</h1>
+          <div class="cert-timeline">
+              <div class="cert-container left-container slide-in-left">
+                  <div class="cert-text-box">
+                      <h2>The Birth of Object-Oriented Concepts</h2>
+                      <small>1962</small>
+                      <p>Simula introduces the first concepts of classes and objects, laying the groundwork for Object-Oriented Programming.</p>
+                      <span class="left-container-arrow"></span>
+                  </div>
+              </div>
+  
+              <div class="cert-container right-container slide-in-right">
+                  <div class="cert-text-box">
+                      <h2>The Evolution of OOP with Smalltalk</h2>
+                      <small>1972</small>
+                      <p>Allan Kay develops Smalltalk, refining and popularizing object-oriented concepts at Xerox PARC.</p>
+                      <span class="right-container-arrow"></span>
+                  </div>
+              </div>
+  
+              <div class="cert-container left-container slide-in-left">
+                  <div class="cert-text-box">
+                      <h2>The Introduction of C++</h2>
+                      <small>1983</small>
+                      <p>Bjarne Stroustrup creates C++, adding object-oriented features to C and making OOP more accessible to programmers.</p>
+                      <span class="left-container-arrow"></span>
+                  </div>
+              </div>
+  
+              <div class="cert-container right-container slide-in-right">
+                  <div class="cert-text-box">
+                      <h2>Java Brings OOP to the Mainstream</h2>
+                      <small>1995</small>
+                      <p>Java is developed by James Gosling, spreading OOP principles and becoming a dominant language for enterprise software.</p>
+                      <span class="right-container-arrow"></span>
+                  </div>
+              </div>
+  
+              <div class="cert-container left-container slide-in-left">
+                  <div class="cert-text-box">
+                      <h2>OOP Becomes a Programming Standard</h2>
+                      <small>2000</small>
+                      <p>Object-Oriented Programming becomes a standard programming paradigm, with most modern languages incorporating object-oriented features.</p>
+                      <span class="left-container-arrow"></span>
+                  </div>
+              </div>
+  
+          </div>
+          
+      </div>
+      </div>
+      <p *ngIf="visibleSections === 6">Click the Car for an example of object-oriented programming concepts</p>
+      <img src="assets/car-example.gif" (click)="showNextSection('s6')" *ngIf="visibleSections === 6" class="interactive-image" alt="What is Programming?">
+    </section>
+  
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+      <div class="content-container">
+        <h1>Example of an Object-Oriented Programming concepts</h1>
+        <p>Here is an example of object-oriented programming concepts in real life object</p>
+        <img src="assets/car-moving.gif" alt="">
+        <p>Imagine a car as an object in OOP. The <strong>CAR</strong> class would define the common attributes and behaviors that all cars have, like make, model, color, and the ability to start, accelerate, and brake.</p>
+        <p>From this <strong>CAR</strong> class blueprint, you can create specific car objects, like a <strong>Honda Civic</strong> or <strong>Toyota Corolla</strong>. Each of these car objects would have their own unique values for the attributes, like <strong>red</strong> for their <strong>color</strong> and <strong>2003</strong> for their <strong>model year</strong>, but they would all share the same underlying car-related capabilities in the class. </p>
+      </div>
+      <div class="button-container">
+        <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">BENEFITS OF OBJECT-ORIENTED PROGRAMMING</button>
+      </div>
+    </section>
+  
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+      <div class="content-container">
+        <h1>Why choose object-oriented programming? What are the benefits of using it?</h1>
+      <ol class="olcards">
+          <li>
+              <div class="content">
+                  <div class="icon">✔</div>
+                  <div class="title">Improved Code Organization</div>
+                  <div class="text">OOP allows grouping related data and behaviors into objects, making the code more structured and easier to understand.</div>
+              </div>
+          </li>
+          <li>
+              <div class="content">
+                  <div class="icon">✔</div>
+                  <div class="title">Code Reusability</div>
+                  <div class="text">OOP promotes the use of inheritance and polymorphism to create reusable components, reducing redundant code.</div>
+              </div>
+          </li>
+          <li>
+              <div class="content">
+                  <div class="icon">✔</div>
+                  <div class="title">Maintainability</div>
+                  <div class="text">OOP makes it easier to update and debug applications by encapsulating functionality within objects and clearly defining interfaces.</div>
+              </div>
+          </li>
+          <li>
+              <div class="content">
+                  <div class="icon">✔</div>
+                  <div class="title">Industry Standards and Popularity</div>
+                  <div class="text">OOP is widely adopted in industry, ensuring compatibility with existing frameworks and tools, and facilitating team collaboration.</div>
+              </div>
+          </li>
+      <li>
+              <div class="content">
+                  <div class="icon">✔</div>
+                  <div class="title">Enhanced Testing</div>
+                  <div class="text">OOP simplifies testing by isolating functionalities within objects, enabling efficient unit and integration testing.</div>
+              </div>
+          </li>
+      </ol>
+      </div>
+    </section>
+    <div class="button-container">
+      <button onclick="location.href='introduction'" *ngIf="visibleSections === 8">BACK TO LESSONS</button>
+    </div>
+  </div>

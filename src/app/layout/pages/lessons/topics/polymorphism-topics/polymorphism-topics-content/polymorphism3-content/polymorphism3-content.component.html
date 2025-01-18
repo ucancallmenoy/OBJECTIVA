@@ -1,0 +1,227 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/runtime-polymorphism.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Runtime Polymorphism</h1>
+            <p>Runtime Polymorphism (or dynamic polymorphism) is when a program decides which version of a method to call while the program is running, not before.</p>
+            <p>It’s commonly achieved through <strong>method overriding</strong> in inheritance, where a child class provides its own implementation of a method defined in a parent class.</p>
+            <img src="assets/runtime-polymorphism.png" alt="">
+            <p>In simple words, it's like having a general instruction (e.g., "serve food") that can be carried out differently depending on who is performing it (like a waiter, chef, or delivery person) during the actual execution. The decision happens at runtime, based on the specific object being used.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Method Overriding</h1>
+            <p>Method Overriding happens when a subclass defines a method that has the same name, return type, and parameters as a method in its parent class. The overridden method in the subclass is called based on the object type at runtime.</p>
+            <img src="assets/method-overriding.png" alt="">
+            <p>It's like a child class in a family business redefining how a task (e.g., customer service) is done differently from the parent class, but the task's name and purpose stay the same.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    void sound() {{'{'}}
+        System.out.println("Animal makes a sound");
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}}
+    {{'@Override'}}
+    void sound() {{'{'}}
+        System.out.println("Dog barks");
+    {{'}'}}
+{{'}'}}
+
+class Cat extends Animal {{'{'}}
+    {{'@Override'}}
+    void sound() {{'{'}}
+        System.out.println("Cat meows");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Animal myAnimal = new Animal();    <span class="comment">// Create a Animal object</span>
+
+        myAnimal = new Dog();
+        myAnimal.sound();          <span class="comment">// Output: Dog barks</span>
+
+        myAnimal = new Cat();
+        myAnimal.sound();          <span class="comment">// Output: Cat meows</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Virtual Methods</h1>
+            <p>A virtual method is a method in the parent class that can be overridden in the subclass. In Java, all non-static and non-final methods are by default virtual. This means the JVM determines which method to execute based on the object's actual type, enabling runtime polymorphism.</p>
+            <img src="assets/virtual-methods.png" alt="">
+            <p>It's like a restaurant menu listing a general item like "pasta," but the specific preparation (e.g., Alfredo or Marinara) depends on which chef (child class) is in the kitchen.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <p>How about coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+class Vehicle {{'{'}}  
+    void drive() {{'{'}}  
+        System.out.println("Vehicle is driving");  
+    {{'}'}}  
+{{'}'}}  
+
+class Car extends Vehicle {{'{'}}  
+    {{'@Override'}}  
+    void drive() {{'{'}}  
+        System.out.println("Car is driving fast");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Vehicle vehicle = new Car(); <span class="comment">// Runtime decides to use Car's drive()</span>  
+        vehicle.drive(); <span class="comment">// Output: Car is driving fast</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Dynamic Method Dispatch</h1>
+            <p>Dynamic method dispatch is the process where the call to an overridden method is resolved at runtime. This allows the program to determine the correct method to invoke based on the actual object type, even when using a reference of the parent type.</p>
+            <img src="assets/dynamic-method-dispatch.png" alt="">
+            <p>It's like a customer at a hotel calling for "room service," and the hotel system deciding at runtime whether to send a waiter, a housekeeping staff, or a technician based on the specific request.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+class Shape {{'{'}}  
+    void draw() {{'{'}}  
+        System.out.println("Drawing a shape");  
+    {{'}'}}  
+{{'}'}}  
+
+class Circle extends Shape {{'{'}}  
+    {{'@Override'}}  
+    void draw() {{'{'}}  
+        System.out.println("Drawing a circle");  
+    {{'}'}}  
+{{'}'}}  
+
+class Rectangle extends Shape {{'{'}}  
+    {{'@Override'}}  
+    void draw() {{'{'}}  
+        System.out.println("Drawing a rectangle");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Shape shape;  
+
+        shape = new Circle(); <span class="comment">// Runtime decides to use Circle's draw()</span>  
+        shape.draw(); <span class="comment">// Output: Drawing a circle</span>  
+
+        shape = new Rectangle(); <span class="comment">// Runtime decides to use Rectangle's draw()</span>  
+        shape.draw(); <span class="comment">// Output: Drawing a rectangle</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>Late Binding</h1>
+            <p>Late binding, also known as dynamic binding, refers to the process where the method to be executed is determined during runtime rather than at compile time. This is the underlying mechanism that makes overriding methods and dynamic method dispatch possible.</p>
+            <li>Methods that are overridden are resolved using late binding.</li>
+            <li>Methods that are static, private, or final use early binding, meaning they are resolved at compile time.</li>
+            <img src="assets/late-binding.png" alt="">
+            <p>It's like booking a taxi using a ride-hailing app where the exact car and driver (specific implementation) are only assigned to you when the ride request is processed at the time of pickup.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <p>How about in coding?</p>
+            <pre class="line-numbers"><code class="language-java">
+abstract class Payment {{'{'}}  
+    abstract void processPayment();  
+{{'}'}}  
+
+class CreditCard extends Payment {{'{'}}  
+    {{'@Override'}}  
+    void processPayment() {{'{'}}  
+        System.out.println("Processing payment with Credit Card");  
+    {{'}'}}  
+{{'}'}}  
+
+class PayPal extends Payment {{'{'}}  
+    {{'@Override'}}  
+    void processPayment() {{'{'}}  
+        System.out.println("Processing payment with PayPal");  
+    {{'}'}}  
+{{'}'}}  
+
+public class Main {{'{'}}  
+    public static void main(String[] args) {{'{'}}  
+        Payment payment;  
+
+        payment = new CreditCard(); <span class="comment">// Late binding to CreditCard's processPayment()</span>  
+        payment.processPayment(); <span class="comment">// Output: Processing payment with Credit Card</span>  
+
+        payment = new PayPal(); <span class="comment">// Late binding to PayPal's processPayment()</span>  
+        payment.processPayment(); <span class="comment">// Output: Processing payment with PayPal</span>  
+    {{'}'}}  
+{{'}'}}  
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='polymorphism'" *ngIf="visibleSections === 10">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

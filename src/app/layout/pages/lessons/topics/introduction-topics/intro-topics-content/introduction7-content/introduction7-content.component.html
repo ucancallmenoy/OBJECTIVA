@@ -1,0 +1,260 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/java-class.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/java-lib.png" alt="">
+            <h1>Java Class Libraries Overview</h1>
+            <p>Java Class Libraries provide a wide range of pre-written classes and methods that you can use in your program. These libraries help in avoiding reinventing the wheel by offering many features like string manipulation, mathematical functions, file handling, and many more.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Built-in classses</h1>
+            <p>Java comes with a large collection of built-in classes that are ready to use. Some of the most used build-in classes are:</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/string-class.png" alt="">
+                    <h2>String Class</h2>
+                    <p>The String class handles text and provides methods to manipulate strings like concatenating, finding the length, and converting text to uppercase or lowercase.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/math-class.png" alt="">
+                    <h2>Math Class</h2>
+                    <p>The Math class provides basic mathematic operations, such as generating random numbers, calculating square roots, and performing power calculations.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/arraylist.png" alt="">
+                    <h2>ArrayList</h2>
+                    <p>The ArrayList class is a part of Java’s Collections Framework. It allows you to store a list of elements in a dynamic array, which can grow and shrink as elements are added or removed</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/scanner.png" alt="">
+                    <h2>Scanner</h2>
+                    <p>The Scanner class is used to take input from the user. It can read data of various types, such as strings, integers, and doubles.</p>
+                  </div>
+                  
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>How to implement it in coding?</h1>
+            <p>Here are some examples how to implement these built-in classes</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>String Class</h1>
+            <pre class="line-numbers"><code class="language-java">
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        String text = "Hello, World!";
+        System.out.println(text);
+    {{'}'}}
+{{'}'}}
+        </code></pre>
+        <!-- Result Section -->
+        <h4>Result:</h4>
+        <p>Hello, World!</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Math Class</h1>
+            <pre class="line-numbers"><code class="language-java">
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        int x = 10;
+        int y = 20;
+        int sum = x + y;
+        System.out.println("The sum of x and y is: " + sum);
+        double result = Math.pow(2, 3);
+        System.out.println(result);
+    {{'}'}}
+{{'}'}}
+        </code></pre>
+        <!-- Result Section -->
+        <h4>Result:</h4>
+        <p>30</p>
+        <p>8.0</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>ArrayList</h1>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.ArrayList;
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        ArrayList{{'<'}}String{{'>'}} fruits = new ArrayListString{{"<>"}}();
+
+        <span class="comment">// Adding elements to ArrayList</span>
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Mango");
+
+        <span class="comment">// Accessing elements</span>
+        System.out.println(fruits.get(0));
+        <span class="comment">// ArrayList size</span>
+        System.out.println(fruits.size());
+
+    {{'}'}}
+{{'}'}}
+        </code></pre>
+        <!-- Result Section -->
+        <h4>Result:</h4>
+        <p>Apple</p>
+        <p>3</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>Scanner</h1>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.Scanner;
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your name: ");
+        String name = scanner.nextLine(); <span class="comment">Read a string</span>
+
+        System.out.println("Enter your age: ");
+        int age = scanner.nextInt(); <span class="comment">Read an integer</span>
+
+        System.out.println("Enter your weight: ");
+        double weight = scanner.nextDouble(); <span class="comment">Read a double</span>
+
+        System.out.println("Hello " + name + ", you are " + age + " years old and your weight is " + weight + "kg.");
+
+        scanner.close(); <span class="comment">Close the scanner</span>
+
+    {{'}'}}
+{{'}'}}
+        </code></pre>
+        <!-- Result Section -->
+        <h4>Inputs:</h4>
+        <p>Patrick</p>
+        <p>21</p>
+        <p>80.0</p>
+        <h4>Result:</h4>
+        <p>Hello Patrick, you are 21 years old and your weight is 80.0kg</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>Understanding API documentation</h1>
+            <p>The Java API Documentation provides a detailed reference for each class in the Java Standard Library. It includes information about the methods a class provides, how to use them, and the parameters they accept. API documentation shows class purpose, available methods, parameters and return types, and usage examples.</p>
+            <p>How to read documentation:</p>
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/look-method.png" alt="">
+                    <h2 style="text-align: center;">Look for method signatures</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/check-param.png" alt="">
+                    <h2 style="text-align: center;">Check parameters type</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/understand-return.png" alt="">
+                    <h2 style="text-align: center;">Understand return types</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/read-descrip.png" alt="">
+                    <h2 style="text-align: center;">Read method descriptions</h2>
+                  </div>
+                  
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <h1>Using existing classes in your programs</h1>
+            <p>You can easily use these built-in classes in your programs like ArrayList and Scanner.</p>
+            <h3>Example:</h3>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        ArrayList{{'<'}}String{{'>'}} names = new ArrayListString{{"<>"}}();
+        Scanner scanner = new Scanner(System.in);
+
+        <span class="comment">// Collecting 3 names from the user</span>
+        for (int i = 0, i < 3, i++) {{'{'}}
+            System.out.println("Enter name " + (i + 1) + ": ");
+            String name = scanner.nextLine();  <span class="comment">// Read user input</span>
+            names.add(name);                   <span class="comment">// Add name to the ArrayList</span>
+        {{'}'}}
+
+        <span class="comment">// Displaying the names</span>
+        System.out.println("Names entered by the user: ");
+        scanner.close();
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='introduction'" *ngIf="visibleSections === 10">BACK TO LESSONS</button>
+          </div>
+    </section>
+</div>

@@ -1,0 +1,311 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/class-structure.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Basic class structure</h1>
+            <p>Understanding the structure of classes and how they interact with access modifiers, instance/static members, and methods is essential in writing robust Java programs.</p>
+            <p>A <strong>class</strong> in Java serves as a blueprint for creating objects, encapsulating data (fields) and behaviors (methods). Classes are the foundation of object-oriented programming in Java.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">FIELDS</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h2>Fields</h2>
+            <p>It represents the state or properties of an object. For example, a class “Car” might have fields like “color”, “make”, and “speed”.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Car {{'{'}}
+    String color; <span class="comment">// Field to store the car's color</span>
+    int speed;    <span class="comment">// Field to store the car's speed></span>
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h2>Constructors</h2>
+            <p>It is a special method that initializes the fields of a class. Constructors are called automatically when creating an object.</p>
+            <pre class="line-numbers"><code class="language-java">
+<span class="comment">// Constructor to initialize the fields</span>
+public Car(String color, int speed) {{'{'}}
+    this.color = color;
+    this.speed = speed;
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h2>Methods</h2>
+            <p>Methods define behaviors or actions that the object can perform. For example, a “Car” class might have methods like “drive()” or “stop()”.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Car {{'{'}}
+    public void drive() {{'{'}}
+        System.out.println("Car is driving");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h2>Example of Class</h2>
+            <p>Let's put it all together in a complete example of a Car class.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Car {{'{'}}
+    <span class="comment">// Fields</span>
+    String color;
+    int speed;
+
+    <span class="comment">// Constructor</span>
+    public Car(String color, int speed) {{'{'}}
+        this.color = color;
+        this.speed = speed;
+    {{'}'}}
+
+    <span class="comment">// Method</span>
+    public void drive() {{'{'}}
+        System.out.println("The " + color + " car is driving at " + speed + " mph");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+<!-- start -->
+    
+<!-- end -->
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Instance <strong>vs</strong> Static Members</h1>
+            <img src="assets/instance-static.png" alt="">
+            <p>Java classes can have <strong>instance</strong> members and <strong>static</strong> members, each serving distinct purposes.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>Instance Members</h1>
+            <p>Instance members belong to an instance of the class. Each object has its own copy of instance variables. Before we define our instance member, we should know class are references types, a variable of a class object holds a reference to the address of the object.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Car {{'{'}}
+    <span class="comment">// Instance variables (members)</span>
+    String color;   <span class="comment">// Each car objects can have a different color</span>
+    int speed;      <span class="comment">// Each car objects can have a different speed</span>
+
+    <span class="comment">// Constructor to initialize instance variables</span>
+    public Car(String color, int speed){{'{'}}
+        this.color = color;   <span class="comment">// Assigning color value to the instance variable</span>
+        this.speed = speed;   <span class="comment">// Assigning speed value to the instance variable</span>
+    {{'}'}}
+
+    <span class="comment">// Instance method</span>
+    public void drive() {{'{'}}
+        <span class="comment">// Instance methods belong to the objects and can access instance variables</span>
+        System.out.println("The " + color + " car is driving at " + speed + " mph");
+    {{'}'}}
+{{'}'}}
+                
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">// Creating instance of the Car class with unique attributes</span>
+        <span class="comment">// Creates a car object with color Red and speed 60</span>
+        Car car1 = new Car("Red", 60);
+        <span class="comment">// Creates a car object with color Blue and speed 80</span>
+        Car car2 = new Car("Blue", 80);  
+
+        <span class="comment">// Calling the instance method for each car object</span>
+        car1.drive();
+        car2.drive();
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>The Red car is driving at 60 mph</p>
+             <p>The Blue car is driving at 80 mph</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <h1>Static Members</h1>
+            <p>Static members belong to the class rather than any instance. It is shared among all objects of the class. A static member can be accessed through the class itself, even if no instance of the class exists. Static members are always referenced by the class name, not by an instance.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Car {{'{'}}
+    <span class="comment">// Static variable (member)</span>
+    static int totalCars = 0;   <span class="comment">// Tracks the total number of car instances</span>
+
+    <span class="comment">// Constructor to increment the static variable whenever a new object is created</span>
+    public Car() {{'{'}}
+        totalCars++;    <span class="comment">// Increment the static variable each time a Car object is created</span>
+    {{'}'}}
+
+    <span class="comment">// Static method</span>
+    public static void displayTotalCars() {{'{'}}
+        <span class="comment">// Static method can accesss static members directly</span>
+        System.out.println("Total number of cars: " + totalCars);
+    {{'}'}}
+{{'}'}}
+                
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">// Creating instances of the Car class</span>
+        <span class="comment">// Creates a car object, increments totalCars by 1</span>
+        Car car1 = new Car();   
+        <span class="comment">// Creates a car object, increments totalCars by 2</span>
+        Car car2 = new Car();   
+
+        <span class="comment">// Calling static method on the class (no need for an instance)</span>
+        Car.displayTotalCars();
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>Total numbers of cars: 2</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+            <img src="assets/method-param.png" alt="">
+            <h1>Method Parameters and Return Types</h1>
+            <p>Method parameters are the values you give to a method when you call it. They act like “inputs” for the method, and the method uses these inputs to do something or calculate something. You define parameters in the method, and when you call the method, you give it the actual values called arguments. You can add as many parameters as you want, as long it has a comma to separate them.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s10')" *ngIf="visibleSections === 10">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s10" class="lesson-section" *ngIf="visibleSections >= 11">
+        <div class="content-container">
+            <p>Imagine you're at a pizza shop, and you're placing an order. You have two choices to make: the size of the pizza and the topping you want.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class PizzaShop {{'{'}}
+    <span class="comment">// The method has two parameters: size and topping</span>
+    public void orderPizza(String size, String topping) {{'{'}}
+        System.out.println("You ordered a " + size + " pizza with " + topping + " topping.");
+    {{'}'}}
+                
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">// Create a PizzaShop object</span>
+        PizzaShop myPizzaShop = new PizzaShop(); 
+        <span class="comment">// Call the method with arguments</span>
+        myPizzaShop.orderPizza("Large", "Pepperoni"); 
+        <span class="comment">// Call the method with different arguments</span>
+        myPizzaShop.orderPizza("Medium", "Mushroom"); 
+    {{'}'}}
+{{'}'}}
+                
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>You ordered a Large pizza with Pepperoni topping.</p>
+             <p>You ordered a Medium pizza with Mushroom topping.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s11')" *ngIf="visibleSections === 11">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s11" class="lesson-section" *ngIf="visibleSections >= 12">
+        <div class="content-container">
+            <img src="assets/return-type.png" alt="">
+            <h1>Return Types</h1>
+            <p>Return types tell you what kind of value a method will give back after it finishes. If a method does not need to return anything, we use “void”. If the method needs to give back a value like a number or text, we specify the type of that value like “int” for integers or “double for decimal numbers.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s12')" *ngIf="visibleSections === 12">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s12" class="lesson-section" *ngIf="visibleSections >= 13">
+        <div class="content-container">
+            <h1>Example with No Return Value (Void)</h1>
+            <p>Imagine you're sending a text message to a friend. You don’t need a response; you’re just informing them about something.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class TextMessage {{'{'}}
+    <span class="comment">// No return value, just sends a message</span>
+    public void sendMessage(String message) {{'{'}}
+        System.out.println("Message sent: " + message);
+    {{'}'}}
+                
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">// Create a TextMessage object</span>
+        TextMessage myMessage = new TextMessage(); 
+        <span class="comment">// Call the method to send a message</span>
+        myMessage.sendMessage("Hey! I'll meet you at 5 PM."); 
+    {{'}'}}
+{{'}'}}
+                
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>Message sent: Hey! I'll meet you at 5 PM.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s13')" *ngIf="visibleSections === 13">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s13" class="lesson-section" *ngIf="visibleSections >= 14">
+        <div class="content-container">
+            <h1>Example with Return Value</h1>
+            <p>Imagine you're checking the weather app to know the temperature. You need the app to return the current temperature to you.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class WeatherApp {{'{'}}
+    <span class="comment">// Returns the current temperature</span>
+    public int getTemperature() {{'{'}}
+        return 75; <span class="comment">// Return the temperature (in Fahrenheit)</span>
+    {{'}'}}
+                
+    public static void main(String[] args) {{'{'}}
+        <span class="comment">// Create a WeatherApp object</span>
+        WeatherApp myWeatherApp = new WeatherApp(); 
+        <span class="comment">// Store the returned value</span>
+        int temperature = myWeatherApp.getTemperature(); 
+        <span class="comment">// Display the result</span>
+        System.out.println("The current temperature is " + temperature + "°F."); 
+    {{'}'}}
+{{'}'}}
+                
+              </code></pre>
+            <!-- Result Section -->
+             <h4>Result:</h4>
+             <p>The current temperature is 75°F.</p>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='introduction'" *ngIf="visibleSections === 14">BACK TO LESSONS</button>
+        </div>
+    </section>
+</div>

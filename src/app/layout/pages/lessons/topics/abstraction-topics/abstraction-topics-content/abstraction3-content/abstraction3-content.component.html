@@ -1,0 +1,126 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/interfaces.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/interface.png" alt="">
+            <h1>What are interfaces?</h1>
+            <p>An interface in Java is like a list of rules or tasks that a class must follow. It’s similar to a class but only contains method names (without actual code). When a class uses an interface, it agrees to provide its own code for all the methods in the interface.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <img src="assets/interface-1.png" alt="">
+            <h1>Interface implementation</h1>
+            <p>To use an interface, a class adds the word <strong>implements</strong> in its definition. This means the class is agreeing to follow the rules and provide code for all the methods listed in the interface.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <img src="assets/interface-2.png" alt="">
+            <h1>Multiple Interfaces</h1>
+            <p>In Java, multiple interfaces refer to the ability of a class or interface to implement or extend more than one interface.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <p>Now, how to implement these type of interfaces?</p>
+            <p>An interface is like a contract that specifies what a class must do, but not how it does it.</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Vehicle {{'{'}}
+    void start(); <span class="comment">// Method without a body</span>
+    void stop();
+{{'}'}}
+            </code></pre>
+            <p>A class can implement an interface and provide the body for its methods.</p>
+            <pre class="line-numbers"><code class="language-java">
+                class Car implements Vehicle {{'{'}}
+    public void start() {{'{'}}
+        System.out.println("Car is starting");
+    {{'}'}}
+    public void stop() {{'{'}}
+        System.out.println("Car is stopping");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+            <p>A class can implement multiple interfaces.</p>
+            <pre class="line-numbers"><code class="language-java">
+interface Camera {{'{'}}
+    void takePhoto();
+{{'}'}}
+interface GPS {{'{'}}
+    void navigate();
+{{'}'}}
+class Smartphone implements Camera, GPS {{'{'}}
+    public void takePhoto() {{'{'}}
+        System.out.println("Photo taken.");
+    {{'}'}}
+    public void navigate() {{'{'}}
+        System.out.println("Navigating to destination.");
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <img src="assets/interface-abstract.png" alt="">
+            <h1>Interfaces vs Abstract Class</h1>
+            <p>Interfaces are used when you want to define what a class should do, but not how it does it. Abstract classes are used when you want to define common behavior that multiple subclasses can share.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <p>But when to use which?</p>
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/interface-0.png" alt="">
+                    <h2>Interface</h2>
+                    <p>When defining a contract for unrelated classes or enabling multiple inheritance</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/abstract-0.png" alt="">
+                    <h2>Abstract Class</h2>
+                    <p>When creating a base for related classes with shared behavior or fields</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='abstraction'" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+</div>
+

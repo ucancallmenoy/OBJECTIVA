@@ -1,0 +1,214 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/understanding-encapsulation.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/what-polymorphism.png" alt="">
+            <h1>What is polymorphism?</h1>
+            <p>It means ability of one type to take more than one form. This can also be applied in Java where in sub-classes of a class can define their own unique behaviors and yet share some of the common functionalities of the parent class.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Types of Polymorphism</h1>
+            <ol class="alternating-colors">
+                <li>
+                  <strong>Static Polymorphism</strong>
+                  <p>a compile-time polymorphism, achieved through method overloading or operator overloading.</p>
+                </li>
+                <li>
+                  <strong>Dynamic Polymorphism</strong>
+                  <p>a runtime polymorphism, achieved through method overriding using inheritance.</p>
+                </li>
+              </ol>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Static Polymorphism</h1>
+            <p>It is also known as Compile-Time Polymorphism or Method Overloading, occurs when multiple methods in the same class share the same name but have different parameter lists. These differences may involve the number, type, or order of parameters.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Calculator {{'{'}}
+    <span class="comment">// Method with one parameter</span>
+    int add(int a) {{'{'}} 
+        return a + 10; 
+    {{'}'}}
+
+    <span class="comment">// Method with two parameters</span>
+    int add(int a, int b) {{'{'}}
+        return a + b;
+    {{'}'}}
+
+    <span class="comment">// Method with three parameters</span>
+    int add(int a, int b, int c) {{'{'}}
+        return a + b + c;
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(5));            <span class="comment">// Calls the first method: 15</span>
+        System.out.println(calc.add(5, 10));        <span class="comment">// Calls the second method: 15</span>
+        System.out.println(calc.add(5, 10, 15));    <span class="comment">// Calls the third method: 30</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Dynamic Polymorphism</h1>
+            <p>also known as Runtime Polymorphism or Method Overriding, happens when a subclass provides a specific implementation for a method already defined in its parent class. Dynamic polymorphism is a programming concept that allows code to adapt to changing circumstances.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    void sound() {{'{'}}
+        System.out.println("Animal makes a sound");
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}}
+    {{'@Override'}}
+    void sound() {{'{'}}
+        System.out.println("Dog barks");
+    {{'}'}}
+{{'}'}}
+
+class Cat extends Animal {{'{'}}
+    {{'@Override'}}
+    void sound() {{'{'}}
+        System.out.println("Cat meows");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Animal myAnimal = new Animal();    <span class="comment">// Create a Animal object</span>
+        
+        myAnimal = new Dog();       
+        myAnimal.sound();          <span class="comment">// Output: Dog barks</span>
+
+        myAnimal = new Cat();         
+        myAnimal.sound();          <span class="comment">// Output: Cat meows</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Benefits of Polymorphism</h1>
+            <p>Here are some of the benefits of using polymorphism:</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/reusability-polymorphism.png" alt="">
+                    <h2>Reusability</h2>
+                    <p>You can use the same code for different tasks. For example, one method can work for different types of objects without rewriting it.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/easier-polymorphism.png" alt="">
+                    <h2>Easier Maintenance</h2>
+                    <p>Since polymorphism simplifies the structure of the code, it’s easier to update or fix issues without affecting other parts.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/behavior-polymorphism.png" alt="">
+                    <h2>Dynamic Behavior</h2>
+                    <p>The program can decide at runtime which method or behavior to use, based on the object.</p>
+                  </div> 
+                  <div class="carousel-item">
+                    <img src="assets/less-polymorphism.png" alt="">
+                    <h2>Less Complex Code</h2>
+                    <p>Polymorphism reduces repetitive code by letting objects share methods and behave differently as needed.</p>
+                  </div> 
+                  <div class="carousel-item">
+                    <img src="assets/extensibility-polymorphism.png" alt="">
+                    <h2>Extensibility</h2>
+                    <p>It’s easy to expand the program by adding new types of objects or behaviors without modifying what’s already there.</p>
+                  </div>                
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Real-world examples of polymorphism</h1>
+            <p>An employee class may have a work() method. Subclasses like Manager, Engineer, and Intern can override work() to describe their specific tasks.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Employee {{'{'}}
+    void work() {{'{'}}
+        System.out.println("Employee is working");
+    {{'}'}}
+{{'}'}}
+
+class Manager extends Employee {{'{'}}
+    {{'@Override'}}
+    void work() {{'{'}}
+        System.out.println("Manager is managing");
+    {{'}'}}
+{{'}'}}
+
+class Engineer extends Employee {{'{'}}
+    {{'@Override'}}
+    void work() {{'{'}}
+        System.out.println("Engineer is developing a software");
+    {{'}'}}
+{{'}'}}
+
+class Intern extends Employee {{'{'}}
+    {{'@Override'}}
+    void work() {{'{'}}
+        System.out.println("Intern is learning");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Employee manager = new Manager();
+        Employee engineer = new Engineer();
+        Employee intern = new Intern();
+
+        manager.work();    <span class="comment">// Output: Manager is managing</span>
+        engineer.work();   <span class="comment">// Output: Engineer is developing a software</span>
+        intern.work();     <span class="comment">// Output: Intern is learning</span>
+    {{'}'}}
+{{'}'}}
+        
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='polymorphism'" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+
+</div>

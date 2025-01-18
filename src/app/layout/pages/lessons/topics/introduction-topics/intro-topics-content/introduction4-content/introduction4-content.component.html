@@ -1,0 +1,135 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/basic-oop-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Creating Classes</h1>
+            <p>Classes are the blueprint for creating objects. It defines the structure and behavior of objects and contains variables and methods</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    <span class="comment">// Class definiton for a student</span>
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">INSTANCE VARIABLES</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Instance Variables</h1>
+            <p>It is the variables declared inside a class. Each object has its own copy of these variables and it represents the state of an objet.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        String name;    <span class="comment">// Student's name</span>
+        int age;        <span class="comment">// Student's age</span>
+        double gpa;     <span class="comment">// Student's GPA</span>
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">METHODS</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Methods</h1>
+            <p>These are the functions defined inside a class that perform actions or computations. It can access and modify instance variables.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    <span class="comment">// Method to calculate academic standing</span>
+    public String getAcademicStatus() {{'{'}}
+        if (gpa >= 3.5) {{'{'}}
+            return "Dean's List";
+        {{'}'}} else if (gpa >= 3.0) {{'{'}}
+            return "Honors";
+        {{'}'}} else if (gpa >= 2.0) {{'{'}}
+            return "Good Standing";
+        {{'}'}} else {{'{'}}
+            return "Probation";
+        {{'}'}}
+    {{'}'}}
+
+    <span class="comment">// Method with parameters</span>
+    public void updateGPA(double newGPA) {{'{'}}
+        this.gpa = newGPA;
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CONSTRUCTORS</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Constructors</h1>
+            <p>It is a special method used to initialize objects. It is called when an object is created and has the same name as the class. It can set initial values for instance variables</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Student {{'{'}}
+    <span class="comment">// Default constructor</span>
+    public Student() {{'{'}}
+        name = "Ako Lang Toh";
+        age = 18;
+        gpa = 4.0;
+    {{'}'}}
+
+    <span class="comment">// Parameterized constructor</span>
+    public Student(String name, int age, double gpa) {{'{'}}
+        this.name = name;
+        this.age = age;
+        this.gpa = 4.0;
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CREATING OBJECTS USING "NEW"</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Creating objects using <strong>new</strong></h1>
+            <p>Use the <strong>new</strong> keyword to create an instance of a class. It allocates memory and calls the constructor.</p>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.Scanner; <span class="comment">// this is the import statement</span>
+public class HelloWorld {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        System.out.println("Hello, World!");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">THE <strong>this</strong> KEYWORD</button>
+        </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>The <strong>this</strong> keyword</h1>
+            <p>The keyword <strong>this</strong> refers to the current object instance. It is used to distinguish between instance variables and parameters, and it can call other constructors within a constructor.</p>
+            <pre class="line-numbers"><code class="language-java">
+import java.util.Scanner; <span class="comment">// this is the import statement</span>
+public class HelloWorld {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        System.out.println("Hello, World!");
+    {{'}'}}
+{{'}'}}
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='introduction'" *ngIf="visibleSections === 7">BACK TO LESSONS</button>
+        </div>
+    </section>
+
+</div>

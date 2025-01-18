@@ -1,0 +1,219 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/implementation-in-java.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <h1>Syntax for Inheritance</h1>
+            <p>In Java, inheritance is implemented using the <strong>extends</strong> keyword. The child class inherits properties and methods from the parent class, allowing it to reuse and extend the functionality of the parent class.</p>
+            <p>Here is the syntax for inheritance in Java:</p>
+            <pre class="line-numbers"><code class="language-java">
+class ParentClass {{'{'}}
+    <span class="comment">// Parent class properties and methods</span>
+{{'}'}}
+
+class ChildClass extends ParentClass {{'{'}}
+    <span class="comment">// Child class properties and methods</span>
+    <span class="comment">// Inherits all non-private fields and methods from ParentClass</span>
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>Example of Inheritance</h1>
+            <p>Let’s start with a simple example to demonstrate the concept.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); <span class="comment">This method describes eating behavior.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void bark() {{'{'}} 
+        System.out.println("The dog barks."); <span class="comment">This method describes barking behavior.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog(); <span class="comment">Creating an object of the Dog class.</span>
+        dog.eat(); <span class="comment">Inherited from the Animal class.</span>
+        dog.bark(); <span class="comment">Defined in the Dog class.</span>
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Output:</span>
+<span class="comment">// This animal eats food.</span>
+<span class="comment">// The dog barks.</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <h1>Constructor Chaining in Inheritance</h1>
+            <p>When creating an object of a child class, the constructor of the parent class is called first. This is called constructor chaining.</p>
+            <p>Here is an example of constructor chaining in inheritance:</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    Animal() {{'{'}} 
+        System.out.println("Animal constructor called."); <span class="comment">Parent class constructor.</span>
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    Dog() {{'{'}} 
+        System.out.println("Dog constructor called."); <span class="comment">Child class constructor.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog(); <span class="comment">Creating an object of the Dog class.</span>
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Output:</span>
+<span class="comment">// Animal constructor called.</span>
+<span class="comment">// Dog constructor called.</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Using the 'super' keyword</h1>
+            <p>The <strong>super</strong> keyword is used to refer to the immediate parent class. It can be used to call methods, constructors, and access fields from the superclass.</p>
+            <p>Here is an example of using the <strong>super</strong> keyword in inheritance:</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}} 
+    void eat() {{'{'}} 
+        System.out.println("This animal eats food."); 
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}} 
+    void eat() {{'{'}} 
+        super.eat(); <span class="comment">Calls the eat method of the Animal class.</span>
+        System.out.println("The dog eats bones."); <span class="comment">Adds additional behavior.</span>
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}} 
+    public static void main(String[] args) {{'{'}} 
+        Dog dog = new Dog();
+        dog.eat(); 
+    {{'}'}}
+{{'}'}}
+
+<span class="comment">// Output:</span>
+<span class="comment">// This animal eats food.</span>
+<span class="comment">// The dog eats bones.</span>
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Best Practices in Inheritance</h1>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/use-inheritance.png" alt="">
+                    <h2>Use Inheritance for "is-a" relationships:</h2>
+                    <p>Ensure the child class is a specialized version of the parent class.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/unnecessary-inheritance.png" alt="">
+                    <h2>Avoid unnecessary inheritance</h2>
+                    <p>Overusing inheritance can make your code harder to maintain.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/favor-inheritance.png" alt="">
+                    <h2>Favor Composition over Inheritance</h2>
+                    <p>If one class "has-a" another class, prefer composition.</p>
+                  </div>       
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <img src="assets/common-use-inheritance.png" alt="">
+            <h1>Common Use Cases of Inheritance</h1>
+            <p>Inheritance is commonly used in the following scenarios:</p>
+            <li>Creating a hierarchy of classes with shared properties and methods.</li>
+            <li>Implementing polymorphism and method overriding.</li>
+            <li>Reusing code and promoting code reusability.</li>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
+        <div class="content-container">
+
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s10')" *ngIf="visibleSections === 10">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s10" class="lesson-section" *ngIf="visibleSections >= 11">
+        <div class="content-container">
+
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s11')" *ngIf="visibleSections === 11">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

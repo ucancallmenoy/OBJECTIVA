@@ -1,0 +1,173 @@
+<main>
+    <div class="first-container">
+        <h2>Start Learning</h2>
+        <h1>Object-Oriented Programming</h1>
+        <h2>Four Principles</h2>
+        <div class="difficulty-options">
+            <span class="option" (click)="selectDifficulty('abstraction')">Abstraction</span>
+            <span class="option" (click)="selectDifficulty('encapsulation')">Encapsulation</span>
+            <span class="option" (click)="selectDifficulty('inheritance')">Inheritance</span>
+            <span class="option" (click)="selectDifficulty('polymorphism')">Polymorphism</span> 
+        </div>
+        <div class="selected-line"></div>
+        <div class="difficulty-container">
+            <div *ngIf="selectedDifficulty === 'abstraction'">
+                <div class="lesson-container">
+                    <div class="card-container">
+                        <div class="face face1">
+                            <div class="content">
+                                <img src="assets/sketch.png" alt="">
+                                <h3>Abstraction 1</h3>
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <div class="content">
+                                <p>Lorem Ipsum</p>
+                                <a href="#">Learn Lesson</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-container">
+                        <div class="face face1">
+                            <div class="content">
+                                <img src="assets/sketch.png" alt="">
+                                <h3>Abstraction 1</h3>
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <div class="content">
+                                <p>Lorem Ipsum</p>
+                                <a href="#">Learn Lesson</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-container">
+                        <div class="face face1">
+                            <div class="content">
+                                <img src="assets/sketch.png" alt="">
+                                <h3>Abstraction 1</h3>
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <div class="content">
+                                <p>Lorem Ipsum</p>
+                                <a href="#">Learn Lesson</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedDifficulty === 'encapsulation'">
+                <div class="lesson-home">
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>ENCAPSULATION 1</h1>
+                            <p>Lorem ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+            
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>ENCAPSULATION 2</h1>
+                            <p>Lorem ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+            
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>ENCAPSULATION 3</h1>
+                            <p>Loren ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedDifficulty === 'inheritance'">
+                <div class="lesson-home">
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>INHERITANCE 1</h1>
+                            <p>Lorem ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+            
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>INHERITANCE 2</h1>
+                            <p>Lorem ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+            
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>INHERITANCE 3</h1>
+                            <p>Loren ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedDifficulty === 'polymorphism'">
+                <div class="lesson-home">
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>POLYMORPHISM 1</h1>
+                            <p>Lorem ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+            
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>POLYMORPHISM 2</h1>
+                            <p>Lorem ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+            
+                    <div class="lesson-home-card">
+                        <i class="fas fa-brain fa-3x"></i>
+                        <div class="lesson-home-content">
+                            <h1>POLYMORPHISM 3</h1>
+                            <p>Loren ipsum</p>
+                            <button class="lesson-button">Learn</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <div class="quiz-container">
+        <div class="quiz-section">
+            <div class="content">
+              <div class="header">
+                <div class="logo">Objectiva <span>QUIZ</span></div>
+              </div>
+              <h1>Test your skills and knowledge</h1>
+              <p>With Objectiva's quizes, assess and strengthen your expertise, all while keeping learning!</p>
+              <button class="cta-button" (click)="toQuiz()">Explore Quiz</button>
+            </div>
+            
+            <div class="logos">
+              <img src="assets/logo.png" alt="logo">
+            </div>
+          </div>
+    </div>
+
+    
+</main>

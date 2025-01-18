@@ -1,0 +1,173 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/single-inheritance.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/single-inheritance.png" alt="">
+            <h1>Single Inheritance</h1>
+            <p>Single inheritance is a fundamental concept in object-oriented programming where a class (child or subclass) inherits properties and methods from another class (parent or superclass). This allows the child class to reuse and extend the functionality of the parent class.</p>
+            <li>Parent Class (Superclass): The class that provides its properties and behaviors to the child class.</li>
+            <li>Child Class (Subclass): The class that inherits and can modify or add new behaviors.</li>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <h1>How does single inheritance works?</h1>
+            <p>In Java, a child class is created using the extends keyword to inherit from a parent class.</p>
+            <p>For example, the following code snippet demonstrates a parent class called Animal and a child class called Dog that inherits from the Animal class.</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Animal {{'{'}}
+    public void eat() {{'{'}}
+        System.out.println("Animal is eating");
+    {{'}'}}
+{{'}'}}
+
+public class Dog extends Animal {{'{'}}
+    public void bark() {{'{'}}
+        System.out.println("Dog is barking");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Dog dog = new Dog();
+        dog.eat();  <span class="comment">// Output: Animal is eating</span>
+        dog.bark(); <span class="comment">// Output: Dog is barking</span>
+    {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <img src="assets/parent-child.png" alt="">
+            <h1>Parent and Child Classes</h1>
+            <p>The parent class provides base functionality while the child class inherits and can add or override behaviors.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>The super keyword</h1>
+            <p>It is used to refer to the parent class's methods or constructors</p>
+            <p>For example, the following code snippet demonstrates how to use the super keyword to call the parent class's constructor.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    void sound() {{'{'}}
+        System.out.println("Some generic sound");
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}}
+    void sound() {{'{'}}
+        super.sound(); <span class="comment">// Calls the parent class's method</span>
+        System.out.println("Bark");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Dog dog = new Dog();
+        dog.sound();   <span class="comment">// Output: Some generic sound Bark</span>
+    {{'}'}}
+{{'}'}}
+
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Constructor Chaining</h1>
+            <p>It is a process of calling one constructor from another constructor with respect to the current object.</p>
+            <p>Use <strong>super()</strong> explicitly to call a specific parent constructor.</p>
+            <p>For example, the following code snippet demonstrates how to use constructor chaining in Java.</p>
+            <pre class="line-numbers"><code class="language-java">
+class Animal {{'{'}}
+    Animal() {{'{'}}
+        System.out.println("Animal is created");
+    {{'}'}}
+{{'}'}}
+
+class Dog extends Animal {{'{'}}
+    Dog() {{'{'}}
+        super(); <span class="comment">// Calls the parent class's constructor</span>
+        System.out.println("Dog is created");
+    {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+    public static void main(String[] args) {{'{'}}
+        Dog dog = new Dog();
+        <span class="comment">// Output: Animal is created</span>
+        <span class="comment">// Output: Dog is created</span>
+    {{'}'}}
+{{'}'}}
+
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Best Practices in Single Inheritance</h1>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/ensure-inheritance.png" alt="">
+                    <h2>Use Proper "is-a" Relationships</h2>
+                    <p>Ensure the child class is a specialized version of the parent class (e.g., a Dog is-a type of Animal).</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/minimize-inheritance.png" alt="">
+                    <h2>Minimize Overriding</h2>
+                    <p>Only override parent class methods if absolutely necessary, to avoid confusion.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/leverage-inheritance.png" alt="">
+                    <h2>Leverage 'super' Wisely</h2>
+                    <p>Use 'super' to access parent class methods or constructors when required.</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/avoid-inheritance.png" alt="">
+                    <h2>Avoid Deep Hierarchies</h2>
+                    <p>Keep the inheritance structure simple and avoid unnecessary levels of inheritance.</p>
+                  </div>         
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='inheritance'" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+</div>

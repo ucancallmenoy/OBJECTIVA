@@ -1,0 +1,219 @@
+<div class="lesson-container">
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/getters-setters.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">
+    </header>
+
+    <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
+        <div class="content-container">
+            <img src="assets/purpose-getters-setters.png" alt="">
+            <h1>What is the purpose of <strong>getters</strong> and <strong>setters</strong>?</h1>
+            <p>Getters and setters are methods that provide controlled access to class properties.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
+        <div class="content-container">
+            <p>They are fundamental to encapsulation by allowing you to:</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/control-encapsulation.png" alt="">
+                    <p class="header">Control how values are accessed and modified</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/add-encapsulation.png" alt="">
+                    <p class="header">Add validation logic</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/maintain-encapsulation.png" alt="">
+                    <p class="header">Maintain flexibility to change internal implementation</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/support-encapsulation.png" alt="">
+                    <p class="header">Support proper encapsulation principles</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+    
+    <section id="s3" class="lesson-section" *ngIf="visibleSections >= 4">
+        <div class="content-container">
+            <img src="assets/naming-encapsulation.png" alt="">
+            <h1>Naming conventions</h1>
+            <p>Getters and setters are named according to the property they access or modify. The naming convention is to use the word <strong>get</strong> followed by the property name for getters and <strong>set</strong> followed by the property name for setters.</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s4" class="lesson-section" *ngIf="visibleSections >= 5">
+        <div class="content-container">
+            <h1>Getters</h1>
+            <pre class="line-numbers"><code class="language-java">
+
+get[PropertyName]() 
+is[PropertyName]()  <span class="comment">// for booleans</span>
+              </code></pre>
+              <h1>Setters</h1>
+              <pre class="line-numbers"><code class="language-java">
+set[PropertyName](TypeValue)
+              </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s5" class="lesson-section" *ngIf="visibleSections >= 6">
+        <div class="content-container">
+            <h1>Best practices</h1>
+            <p>When using getters and setters, it's best to:</p>
+            <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/always-encapsulation.png" alt="">
+                    <p class="header">Always validate input in setters</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/simple-encapsulation.png" alt="">
+                    <p class="header">Keep methods simple and focused</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/immutable-encapsulation.png" alt="">
+                    <p class="header">Consider making immutable fields (no setter)</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/meaningful-encapsulation.png" alt="">
+                    <p class="header">Use meaningful names</p>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/lazy-encapsulation.png" alt="">
+                    <p class="header">Consider lazy initialization in getters</p>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections >= 7">
+        <div class="content-container">
+            <h1>Validation in setters</h1>
+            <p>Validation in setters is the process of ensuring that any data assigned to an object's private fields through setter methods meets specific criteria. This mechanism prevents invalid, inconsistent, or harmful data from being stored in the object's state, thereby maintaining data integrity.</p>
+            <p>Example: Validating string content if a string value is not empty or null</p>
+            <pre class="line-numbers"><code class="language-java">
+public void setName(String name) {{'{'}}
+  if (name != null && !name.trim().isEmpty()) {{'{'}}
+      this.name = name;
+  {{'}'}}
+  else {{'{'}}
+      throw new IllegalArgumentException("Name cannot be empty or null");
+  {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+            <h1>Real-world examples</h1>
+            <img src="assets/real-world-getters-setters.png" alt="">
+            <p>Think of getters and setters like a safe deposit box at a bank. The box (private variable) is locked away, but you have special ways to put things in (setters) and take things out (getters).</p>
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+            <p>Here is a simple example using a Person class:</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Person {{'{'}}
+  <span class="comment">// Private variables - these are the "hidden" from outside the class</span>
+  private String name;
+  private int age;
+
+  <span class="comment">// Getters for name</span>
+  public String getName() {{'{'}}
+    return name;
+  {{'}'}}
+
+  <span class="comment">// Setters for name</span>
+  public void setName(String name) {{'{'}}
+    this.name = name;
+  {{'}'}}
+
+  <span class="comment">// Getters for age</span>
+  public int getAge() {{'{'}}
+    return age;
+  {{'}'}}
+
+  <span class="comment">// Setters for age with a basic check</span>
+  public void setAge(int age) {{'{'}}
+    <span class="comment">// We can add simple checks in our setters</span>
+    if (age => 0 && age <= 120) {{'{'}}
+      this.age = age;
+    {{'}'}}
+    else {{'{'}}  
+      throw new IllegalArgumentException("Age must be between 0 and 120");
+    {{'}'}}
+  {{'}'}}
+{{'}'}}
+            </code></pre>
+            <p>Let's see how to use this class:</p>
+            <pre class="line-numbers"><code class="language-java">
+public class Main {{'{'}}
+  public static void main(String[] args) {{'{'}}
+    <span class="comment">// Create a new Person</span>
+    Person person = new Person();
+
+    <span class="comment">// Using setters to give values</span>
+    person.setName("John Doe");
+    person.setAge(25);
+
+    <span class="comment">// Using getters to read values</span>
+    System.out.println("Name:" + person.getName()); <span class="comment">// Output: Name: John Doe</span>
+    System.out.println("Age:" + person.getAge()); <span class="comment">// Output: Age: 25</span>
+
+    <span class="comment">// Using setters to give invalid values</span>
+    person.setAge(150); <span class="comment">// Throws an exception: Age must be between 0 and 120</span>
+  {{'}'}}
+{{'}'}}
+            </code></pre>
+        </div>
+        <div class="button-container">
+          <button onclick="location.href='encapsulation'" *ngIf="visibleSections === 9">BACK TO LESSONS</button>
+        </div>
+    </section>
+</div>
