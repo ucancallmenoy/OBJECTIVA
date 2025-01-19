@@ -1,0 +1,159 @@
+.vh-100 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  .row {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+  }
+  
+  .image-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .image-col img {
+    max-width: 100%;
+    height: auto;
+    
+  }
+  
+  .form-col {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+  }
+  
+  .social-signin {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .divider p {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #666;
+  }
+  
+  .divider:before,
+  .divider:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #eee;
+  }
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Focus effect on input */
+  .form-group input:focus {
+    border-color: #696969;
+  }
+  
+  /* Positioning and styling for label */
+  .form-group label {
+    position: absolute;
+    left: 12px;
+    top: 18px;
+    font-size: 0.85rem;
+    color: #555;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* Move label up when input is focused or has text */
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label {
+    top: -8px;
+    left: 10px;
+    font-size: 0.75rem;
+    color: #696969;
+  }
+  
+  .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+  }
+  
+  .forgot-password {
+    color: #676767;
+    text-decoration: none;
+  }
+  
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #696969;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .login-btn:hover{
+    background-color: #494949;
+  }
+  
+  .register {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .register-link {
+    color: #dc3545;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000000;
+    font-size: 1rem;
+}
