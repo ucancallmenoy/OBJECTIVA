@@ -14,7 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
     NavbarComponent,
     LessonsComponent,
     LayoutComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,

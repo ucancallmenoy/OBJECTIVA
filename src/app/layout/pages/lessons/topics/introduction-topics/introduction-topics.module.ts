@@ -18,7 +18,6 @@ import { Introduction5ContentComponent } from './intro-topics-content/introducti
 import { Introduction6ContentComponent } from './intro-topics-content/introduction6-content/introduction6-content.component';
 import { Introduction7ContentComponent } from './intro-topics-content/introduction7-content/introduction7-content.component';
 import { Introduction8ContentComponent } from './intro-topics-content/introduction8-content/introduction8-content.component';
-import { Introduction0ContentComponent } from './intro-topics-overview/introduction1-overview/introduction0-content/introduction0-content.component';
 
 
 @NgModule({
@@ -39,7 +38,6 @@ import { Introduction0ContentComponent } from './intro-topics-overview/introduct
     Introduction6ContentComponent,
     Introduction7ContentComponent,
     Introduction8ContentComponent,
-    Introduction0ContentComponent
   ],
   imports: [
     CommonModule,

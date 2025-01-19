@@ -18,12 +18,9 @@ import { Introduction5ContentComponent } from './intro-topics-content/introducti
 import { Introduction6ContentComponent } from './intro-topics-content/introduction6-content/introduction6-content.component';
 import { Introduction7ContentComponent } from './intro-topics-content/introduction7-content/introduction7-content.component';
 import { Introduction8ContentComponent } from './intro-topics-content/introduction8-content/introduction8-content.component';
-import { Introduction0ContentComponent } from './intro-topics-overview/introduction1-overview/introduction0-content/introduction0-content.component';
 const routes: Routes = [
   //OVERVIEW ROUTES
-    {path:'introduction-to-OOP-overview', component: Introduction1OverviewComponent, children: [
-      {path:'intro1content', component: Introduction0ContentComponent},
-    ]},
+    {path:'introduction-to-OOP-overview', component: Introduction1OverviewComponent},
     {path:'understanding-object-and-classes-overview', component: Introduction2OverviewComponent},
     {path:'introduction-to-java-overview', component: Introduction3OverviewComponent},
     {path:'Basic-OOP-concepts-in-java-overview', component: Introduction4OverviewComponent},
