@@ -1,0 +1,57 @@
+<section class="vh-100">
+  <div class="container">
+    <div class="row">
+      <div class="col image-col">
+        <img src="assets/objectiva.png" alt="Sample image" class="img-fluid">
+      </div>
+      <div class="col form-col">
+        @if(isLoginView){
+          <form>
+            <h1>O B J E C T I V A</h1>
+            <div class="divider">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder=" ">
+                <label for="email">Email address</label>
+              </div>
+              <div class="form-group password-group">
+                <input [type]="passwordFieldType" id="password" placeholder=" ">
+                <label for="password">Password</label>
+                <i class="toggle-password fas" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePasswordVisibility()"></i>
+            </div>
+              
+            <button type="button" class="btn login-btn" (click)="homepage()">Login</button>
+            <p class="register">Don't have an account? <a class="register-link" (click)="isLoginView = false">Register</a></p>
+          </form>
+        }@else {
+          <form>
+            <h1>O B J E C T I V A</h1>
+            <div class="divider">
+            </div>
+              <div class="form-group">
+                <input type="text" id="fname" placeholder=" ">
+                <label for="fname">First Name</label>
+              </div>
+              <div class="form-group">
+                <input type="text" id="lname" placeholder=" ">
+                <label for="lname">Last Name</label>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" placeholder=" ">
+                <label for="email">Email address</label>
+              </div>
+              <div class="form-group password-group">
+                <input [type]="passwordFieldType" id="password" placeholder=" ">
+                <label for="password">Password</label>
+                <i class="toggle-password fas" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePasswordVisibility()"></i>
+            </div>
+              
+            <button type="button" class="btn login-btn" (click)="isLoginView = true">Register</button>
+            <p class="register">Already have an account? <a class="register-link" (click)="isLoginView = true">Login</a></p>
+          </form>
+        }
+        
+      </div>
+    </div>
+  </div>
+</section>
