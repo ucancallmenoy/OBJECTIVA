@@ -1,23 +1,35 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LessonProgressService } from '../../../../../services/lesson-progress.service';
 
 @Component({
   selector: 'app-polymorphism-topics',
   templateUrl: './polymorphism-topics.component.html',
   styleUrl: './polymorphism-topics.component.scss'
 })
-export class PolymorphismTopicsComponent {
-  constructor(private router: Router) {}
+export class PolymorphismTopicsComponent implements OnInit {
+  constructor(private router: Router, private progressService: LessonProgressService) {} 
+  lessonProgress: { [key: string]: boolean } = {}; // copy
 
   showBackgroundContainer: boolean = false;
 
   ngOnInit(): void {
+    
     // Subscribe to the router's URL to track the current path
     this.router.events.subscribe(() => {
       // Check the current URL
       const currentUrl = this.router.url;
       // If the URL is '/lessons/introduction-topics', do not show the background container
       this.showBackgroundContainer = currentUrl === '/lessons/topics/polymorphism';
+    });
+    this.loadProgress();
+  }
+  loadProgress() {
+    this.progressService.getProgress().subscribe({
+      next: (response) => {
+        this.lessonProgress = response.data;
+      },
+      error: (error) => console.error('Error loading progress:', error)
     });
   }
   

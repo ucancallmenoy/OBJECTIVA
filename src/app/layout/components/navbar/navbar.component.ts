@@ -1,6 +1,7 @@
 import { Component, Input, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private router: Router, private elementRef: ElementRef) {}
+  constructor(private router: Router, private elementRef: ElementRef, private authService: AuthService) {}
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
@@ -26,7 +27,8 @@ export class NavbarComponent {
 
   logout() {
     console.log('Logout');
-    this.router.navigate(['/login-register']);
+    this.authService.logout(); // This will clear token and redirect to login
+    this.showAccount = false; // Hide the account popup
   }
 
   homepage() {

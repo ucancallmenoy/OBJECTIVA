@@ -1,19 +1,28 @@
 import { Component } from '@angular/core';
-
+import { LessonProgressService } from '../../../../../../../services/lesson-progress.service';
 @Component({
   selector: 'app-abstraction1-content',
   templateUrl: './abstraction1-content.component.html',
   styleUrl: './abstraction1-content.component.scss'
 })
 export class Abstraction1ContentComponent {
-// Track the visible sections
-visibleSections: number = 1;
+  constructor(private progressService: LessonProgressService) {}
 
-// Method to show the next section
-showNextSection(sectionId: string) {
-  this.visibleSections++;
-  setTimeout(() => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-  }, 100); // Delay to ensure DOM updates
-}
+  // Track the visible sections
+  visibleSections: number = 1;
+  
+  // Method to show the next section
+  showNextSection(sectionId: string) {
+    this.visibleSections++;
+    setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }, 100); // Delay to ensure DOM updates
+  
+    if (this.visibleSections === 10) { // Change the number of depending on the last number of the button
+      this.progressService.updateProgress('abstraction-lesson-1', true).subscribe({
+        next: (response) => console.log('Progress updated successfully'),
+        error: (error) => console.error('Error updating progress:', error)
+      });
+    }
+  }
 }
