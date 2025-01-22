@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '../../../services/quiz.service';
+import { QuizService } from '../../../../services/quiz.service';
 
 interface QuizItem {
   id: string;
@@ -9,47 +9,47 @@ interface QuizItem {
   totalQuestions: number;
   url: string;
 }
-
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrl: './quiz.component.scss'
+  selector: 'app-topics',
+  templateUrl: './topics.component.html',
+  styleUrl: './topics.component.scss'
 })
-export class QuizComponent implements OnInit{
-  quizzes: QuizItem[] = [
+export class TopicsComponent implements OnInit{
+  
+quizzes: QuizItem[] = [
     {
       id: 'introduction-oop',
       title: 'Introduction to OOP',
       description: 'Test your knowledge of OOP fundamentals.',
-      totalQuestions: 10,
+      totalQuestions: 25,
       url: '/quiz-topics/quiz-introduction-oop'
     },
     {
       id: 'introduction-java',
       title: 'Introduction to Java',
       description: 'Understand Java basics and concepts.',
-      totalQuestions: 10,
+      totalQuestions: 25,
       url: '/quiz-topics/quiz-introduction-java'
     },
     {
       id: 'abstraction',
       title: 'Abstraction',
       description: 'Understand Java basics and concepts.',
-      totalQuestions: 20,
+      totalQuestions: 25,
       url: '/quiz-topics/quiz-abstraction'
     },
     {
       id: 'encapsulation',
       title: 'Encapsulation',
       description: 'Understand Java basics and concepts.',
-      totalQuestions: 20,
+      totalQuestions: 25,
       url: '/quiz-topics/quiz-encapsulation'
     },
     {
       id: 'inheritance',
       title: 'Inheritance',
       description: 'Understand Java basics and concepts.',
-      totalQuestions: 20,
+      totalQuestions: 25,
       url: '/quiz-topics/quiz-inheritance'
     },
     {

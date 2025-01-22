@@ -7,10 +7,13 @@ import { EncapsulationTopicsModule } from './encapsulation-topics/encapsulation-
 import { InheritanceTopicsModule } from './inheritance-topics/inheritance-topics.module';
 import { IntroductionTopicsModule } from './introduction-topics/introduction-topics.module';
 import { PolymorphismTopicsModule } from './polymorphism-topics/polymorphism-topics.module';
+import { TopicsComponent } from './topics.component';
 
 @NgModule({
   declarations: [
     
+  
+    TopicsComponent
   ],
   imports: [
     CommonModule,

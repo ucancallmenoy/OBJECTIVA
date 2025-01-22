@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './quiz.component';
+import { TopicsComponent } from './topics/topics.component';
 
 const routes: Routes = [
-  {path: '', component: QuizComponent},
+  {path: '', redirectTo: 'topics', pathMatch: 'full'},
+  {
+    path: '', component: QuizComponent, children: [
+      {path: 'topics', component : TopicsComponent, loadChildren: () => import('./topics/topics.module').then(m => m.TopicsModule)}, 
+      
+    ]
+  }
 
 ];
 

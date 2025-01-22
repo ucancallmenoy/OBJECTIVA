@@ -1,0 +1,22 @@
+
+<div class="background-container">
+    <div class="container">
+      <h1>OOP Quiz Dashboard</h1>
+  <ul class="quiz-list">
+    <li class="quiz-item" *ngFor="let quiz of quizzes">
+      <div class="quiz-details">
+        <p class="quiz-title">{{ quiz.title }}</p>
+        <p class="quiz-description">{{ quiz.description }}</p>
+      </div>
+      <div class="quiz-score">
+        <span>{{quiz.score}} / {{ quiz.totalQuestions }}</span>
+      </div>
+      <div class="quiz-actions">
+        <button class="action-btn" (click)="startQuiz(quiz.id)">
+          <i class="fas fa-redo"></i> {{ quiz.score !== undefined ? 'Retake' : 'Take' }}
+        </button>
+      </div>
+    </li>
+  </ul>
+    </div>
+  </div>

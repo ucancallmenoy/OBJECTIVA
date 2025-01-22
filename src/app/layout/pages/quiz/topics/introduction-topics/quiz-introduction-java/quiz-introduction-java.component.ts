@@ -1,52 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-interface QuizData {
-  question: string;
-  a: string;
-  b: string;
-  c: string;
-  d: string;
-  correct: string;
-}
+import { quizData,QuizData } from './quiz-data';
+import { Router } from '@angular/router';
+import { QuizService } from '../../../../../../services/quiz.service';
 @Component({
   selector: 'app-quiz-introduction-java',
   templateUrl: './quiz-introduction-java.component.html',
   styleUrl: './quiz-introduction-java.component.scss'
 })
 export class QuizIntroductionJavaComponent implements OnInit{
-quizData: QuizData[] = [
-    {
-      question: 'Which language runs in a web browser?',
-      a: 'Java',
-      b: 'C',
-      c: 'Python',
-      d: 'JavaScript',
-      correct: 'd',
-    },
-    {
-      question: 'What does CSS stand for?',
-      a: 'Central Style Sheets',
-      b: 'Cascading Style Sheets',
-      c: 'Cascading Simple Sheets',
-      d: 'Cars SUVs Sailboats',
-      correct: 'b',
-    },
-    {
-      question: 'What does HTML stand for?',
-      a: 'Hypertext Markup Language',
-      b: 'Hypertext Markdown Language',
-      c: 'Hyperloop Machine Language',
-      d: 'Helicopters Terminals Motorboats Lamborghinis',
-      correct: 'a',
-    },
-    {
-      question: 'What year was JavaScript launched?',
-      a: '1996',
-      b: '1995',
-      c: '1994',
-      d: 'none of the above',
-      correct: 'b',
-    },
-  ];
+constructor(
+    private quizService: QuizService,
+    private router: Router
+  ) {}
+
+  quizData: QuizData[] = quizData;
 
   currentQuiz = 0;
   score = 0;
@@ -55,7 +22,13 @@ quizData: QuizData[] = [
   answerOptions: { id: string; text: string }[] = [];
 
   ngOnInit(): void {
+    this.quizData = this.getRandomQuestions(quizData, 25);
     this.loadQuiz();
+  }
+
+  getRandomQuestions(data: QuizData[], count: number): QuizData[] {
+    const shuffled = data.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
   }
 
   loadQuiz(): void {
@@ -71,20 +44,26 @@ quizData: QuizData[] = [
 
   onSubmit(): void {
     if (this.selectedAnswer) {
-      // Check if the selected answer is correct
       if (this.selectedAnswer === this.quizData[this.currentQuiz].correct) {
         this.score++;
       }
 
-      // Move to the next question or display the score
       this.currentQuiz++;
       if (this.currentQuiz < this.quizData.length) {
         this.loadQuiz();
       } else {
         this.showScore = true;
+        // Save the quiz score
+        this.quizService.saveScore('introduction-java', this.score, this.quizData.length)
+          .subscribe({
+            next: (response) => {
+              console.log('Score saved successfully');
+            },
+            error: (error) => {
+              console.error('Error saving score:', error);
+            }
+          });
       }
-    } else {
-      alert('Please select an answer!');
     }
   }
 
@@ -93,5 +72,8 @@ quizData: QuizData[] = [
     this.score = 0;
     this.showScore = false;
     this.loadQuiz();
+  }
+  backtoQuiz(){
+    this.router.navigate(['/quiz']); 
   }
 }
