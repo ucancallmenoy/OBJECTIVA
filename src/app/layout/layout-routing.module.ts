@@ -13,7 +13,9 @@ const routes: Routes = [
       {path: 'quiz', loadChildren: () => import('./pages/quiz/quiz.module').then(m => m.QuizModule)},
     ]
   },
-  { path: '**', redirectTo: 'home' }  
+  // QUIZ CONTENT - WITHOUT HEADER NAVIGATION
+  {path: 'quiz-topics', loadChildren: () => import('./pages/quiz/topics/topics.module').then(m => m.TopicsModule)},
+  { path: '**', redirectTo: 'home' }
 ];
 
 

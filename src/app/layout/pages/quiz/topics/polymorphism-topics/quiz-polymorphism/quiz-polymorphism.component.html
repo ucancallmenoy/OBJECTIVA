@@ -1,0 +1,29 @@
+<body>
+    <div class="quiz-container">
+        <!-- Score Section -->
+        <div class="score-header" *ngIf="showScore">
+          <h2>Your Score</h2>
+          <p>{{ score }}/{{ quizData.length }} questions correctly answered</p>
+          <button (click)="resetQuiz()">Reload</button>
+        </div>
+      
+        <!-- Quiz Section -->
+        <div class="quiz-header" *ngIf="!showScore">
+          <h2>{{ quizData[currentQuiz].question }}</h2>
+          <div class="answers-grid">
+            <div class="answer-container" *ngFor="let option of answerOptions">
+              <input
+                type="radio"
+                name="answer"
+                [id]="option.id"
+                [(ngModel)]="selectedAnswer"
+                [value]="option.id"
+              />
+              <label [for]="option.id">{{ option.text }}</label>
+            </div>
+          </div>
+          <button [disabled]="!selectedAnswer" (click)="onSubmit()">Submit</button>
+        </div>
+      </div>
+      
+</body>
