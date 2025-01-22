@@ -1,0 +1,111 @@
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeaea;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+
+  /* Quiz List */
+  .quiz-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .quiz-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #ddd;
+    position: relative;
+  }
+
+  .quiz-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #eeeeee, #e0e0e0);
+  }
+
+  .quiz-details {
+    max-width: 60%;
+  }
+
+  .quiz-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2c3e50;
+  }
+
+  .quiz-description {
+    font-size: 14px;
+    color: #7f8c8d;
+  }
+
+  .quiz-score {
+    text-align: center;
+  }
+
+  .quiz-score span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .progress-bar {
+    width: 100px;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .progress {
+    height: 100%;
+    background: #3498db;
+  }
+
+  .quiz-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .action-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+
+  .action-btn i {
+    margin-right: 6px;
+  }
