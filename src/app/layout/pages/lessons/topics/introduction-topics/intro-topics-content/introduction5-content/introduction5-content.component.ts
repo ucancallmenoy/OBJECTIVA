@@ -19,7 +19,7 @@ showNextSection(sectionId: string) {
   }, 100); // Delay to ensure DOM updates
 
   if (this.visibleSections === 14) { // Change the number of depending on the last number of the button
-    this.progressService.updateProgress('intro-lesson-3', true).subscribe({
+    this.progressService.updateProgress('intro-lesson-5', true).subscribe({
       next: (response) => console.log('Progress updated successfully'),
       error: (error) => console.error('Error updating progress:', error)
     });

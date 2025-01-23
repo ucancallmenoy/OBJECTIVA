@@ -3,9 +3,10 @@
       <!-- Score Section -->
       <div class="score-header" *ngIf="showScore">
         <h2>Your Score</h2>
-        <p>{{ score }}/{{ quizData.length }} questions correctly answered</p>
-        <button (click)="resetQuiz()">Reload</button>
-        <button (click)="backtoQuiz()">Back to Quiz</button>
+        <p class="score">{{ score }}/{{ quizData.length }} questions correctly answered</p>
+        <p class="feedback">{{feedback}}</p>
+        <button (click)="resetQuiz()">Restart Quiz</button>
+        <button (click)="backtoQuiz()">Back to Dashboard</button>
       </div>
     
       <!-- Quiz Section -->

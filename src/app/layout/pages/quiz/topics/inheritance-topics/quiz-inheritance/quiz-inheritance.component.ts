@@ -67,6 +67,21 @@ export class QuizInheritanceComponent implements OnInit{
         }
       }
     }
+
+    feedback: string = '';
+  generateFeedback(): void {
+    let feedback: string;
+    if (this.score <= 5) {
+      feedback = 'You need to improve your understanding of the basics.';
+    } else if (this.score <= 10) {
+      feedback = 'You have a fair understanding, but there is room for improvement.';
+    } else if (this.score <= 15) {
+      feedback = 'Good job! You have a solid understanding of the material.';
+    } else {
+      feedback = 'Excellent! You have a great understanding of the material.';
+    }
+    this.feedback = feedback;
+  }
   
     resetQuiz(): void {
       this.currentQuiz = 0;
