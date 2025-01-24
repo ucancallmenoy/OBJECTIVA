@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../../../services/quiz.service';
+import { Router } from '@angular/router';
 
 interface QuizItem {
   id: string;
@@ -56,13 +57,13 @@ quizzes: QuizItem[] = [
       id: 'polymorphism',
       title: 'Polymorphism',
       description: 'Test your knowledge of Polymorphism.',
-      totalQuestions: 20,
+      totalQuestions: 25,
       url: '/quiz-topics/quiz-polymorphism'
     }
     // Add other quizzes here
   ];
 
-  constructor(private quizService: QuizService) {}
+  constructor(private quizService: QuizService, private router: Router) {}
 
   ngOnInit() {
     this.loadScores();
@@ -71,7 +72,7 @@ quizzes: QuizItem[] = [
   startQuiz(quizId: string): void {
     const quiz = this.quizzes.find(q => q.id === quizId);
     if (quiz) {
-      window.location.href = quiz.url; // Navigate to the quiz URL
+      this.router.navigate([quiz.url]); // Navigate to the quiz URL using routerLink
     }
   }
 

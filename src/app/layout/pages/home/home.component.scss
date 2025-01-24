@@ -122,9 +122,10 @@ hr {
 
   .lesson-container .card-container .face.face1 .content h3{
     margin: 10px 0 0;
-    padding: 0;
+    padding: 10px;
     color: black;
     text-align: center;
+    font-size: 1.5rem;
   }
 
   .lesson-container .card-container .face.face2{
@@ -143,6 +144,7 @@ hr {
   .lesson-container .card-container .face.face2 .content p{
     margin: 0;
     padding: 0;
+    font-size: 20px;
   }
   .lesson-container .card-container .face.face2 .content a{
     margin: 15px 0 0;

@@ -145,14 +145,6 @@ export const quizData: QuizData[] = [
             correct: "b"
         },
         {
-            question: "Which Java Bean standard defines getter methods for Boolean values?",
-            a: "set[PropertyName]()",
-            b: "get[PropertyName]()",
-            c: "is[PropertyName]()",
-            d: "fetch[PropertyName]()",
-            correct: "c"
-        },
-        {
             question: "Why should fields in an encapsulated class be private?",
             a: "To restrict unauthorized access.",
             b: "To increase program length.",

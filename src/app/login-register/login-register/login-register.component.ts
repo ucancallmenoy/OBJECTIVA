@@ -59,8 +59,6 @@ export class LoginRegisterComponent {
         last_name: this.registerForm.get('lastName')?.value,
         email: this.registerForm.get('email')?.value,
         password: this.registerForm.get('password')?.value,
-        
-        // Add any other required fields your API expects
       };
     
       this.authService.register(registrationData).subscribe({
@@ -71,7 +69,7 @@ export class LoginRegisterComponent {
           this.registerForm.reset();
         },
         error: (error) => {
-          console.log('Registration error:', error);  // Add this line
+          console.log('Registration error:', error);
           if (error.error && error.error.errors) {
             // Handle validation errors
             const validationErrors = error.error.errors;
