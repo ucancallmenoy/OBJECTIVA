@@ -5,36 +5,15 @@
             <input type="checkbox" id="check">
             <span class="menu">
                 <li><a routerLink="/home">Home</a></li>
-                <li><a routerLink="/lessons">Lessons</a>
-                    <!-- <ul class="dropdown-content">
-                        <li><a href="introduction">Introduction</a></li>
-                        <li><a href="abstraction">Abstraction</a></li>
-                        <li><a href="encapsulation">Encapsulation</a></li>
-                        <li><a href="inheritance">Inheritance</a></li>
-                        <li><a href="polymorphism">Polymorphism</a></li>
-                    </ul> -->
-                </li>
-                <!-- <li class="dropdown"> -->
-                <li><a href="exercises">Exercises</a>
-                    <!-- <ul class="dropdown-content">
-                        <li><a href="exercise1">Exercise 1</a></li>
-                        <li><a href="exercise2">Exercise 2</a></li>
-                        <li><a href="exercise3">Exercise 3</a></li>D
-                    </ul> -->
-                </li>
-                <li><a routerLink="/quiz">Quiz</a>
-                    <!-- <ul class="dropdown-content">
-                        <li><a href="quiz1">Quiz 1</a></li>
-                        <li><a href="quiz2">Quiz 2</a></li>
-                        <li><a href="quiz3">Quiz 3</a></li>
-                    </ul> -->
-                </li>
+                <li><a routerLink="/lessons">Lessons</a></li>
+                <li><a routerLink="/exercises">Exercises</a></li>
+                <li><a routerLink="/quiz">Quiz</a></li>
                 <li><a href="about">About</a></li>
                 <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
             </span>
             <div class="account-info" (click)="toggleAccount($event)" #accountContainer>
                 <i class="fas fa-user account-icon"></i>
-                <span class="account-name">John Lang Par</span>
+                <span class="account-name">{{ userName }}</span>
                 <div class="account-popup" *ngIf="showAccount">
                     <a (click)="openAccountSettings()">Account Settings</a>
                     <a (click)="logout()">Logout</a>

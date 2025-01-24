@@ -20,42 +20,42 @@ quizzes: QuizItem[] = [
     {
       id: 'introduction-oop',
       title: 'Introduction to OOP',
-      description: 'Test your knowledge of OOP fundamentals.',
+      description: 'Test your knowledge of OOP concepts.',
       totalQuestions: 25,
       url: '/quiz-topics/quiz-introduction-oop'
     },
     {
       id: 'introduction-java',
       title: 'Introduction to Java',
-      description: 'Understand Java basics and concepts.',
+      description: 'Test your knowledge of Java concepts.',
       totalQuestions: 25,
       url: '/quiz-topics/quiz-introduction-java'
     },
     {
       id: 'abstraction',
       title: 'Abstraction',
-      description: 'Understand Java basics and concepts.',
+      description: 'Test your knowledge of Abstraction concepts.',
       totalQuestions: 25,
       url: '/quiz-topics/quiz-abstraction'
     },
     {
       id: 'encapsulation',
       title: 'Encapsulation',
-      description: 'Understand Java basics and concepts.',
+      description: 'Test your knowledge of Encapsulation concepts.',
       totalQuestions: 25,
       url: '/quiz-topics/quiz-encapsulation'
     },
     {
       id: 'inheritance',
       title: 'Inheritance',
-      description: 'Understand Java basics and concepts.',
+      description: 'Test your knowledge of Inheritance concepts.',
       totalQuestions: 25,
       url: '/quiz-topics/quiz-inheritance'
     },
     {
       id: 'polymorphism',
       title: 'Polymorphism',
-      description: 'Understand Java basics and concepts.',
+      description: 'Test your knowledge of Polymorphism.',
       totalQuestions: 20,
       url: '/quiz-topics/quiz-polymorphism'
     }

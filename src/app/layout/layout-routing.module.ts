@@ -12,6 +12,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent, loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
       { path: 'lessons', loadChildren: () => import('./pages/lessons/lessons.module').then(m => m.LessonsModule) },
       {path: 'quiz', component:QuizComponent, loadChildren: () => import('./pages/quiz/quiz.module').then(m => m.QuizModule) },
+      {path: 'exercises', loadChildren: () => import('./pages/exercises/exercises.module').then(m => m.ExercisesModule) },
+      
     ]
   },
   // QUIZ CONTENT - WITHOUT HEADER NAVIGATION

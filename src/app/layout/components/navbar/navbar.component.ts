@@ -10,11 +10,20 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NavbarComponent {
   constructor(private router: Router, private elementRef: ElementRef, private authService: AuthService) {}
-
+  userName: string = '';
+  
   @Input() collapsed = false;
   @Input() screenWidth = 0;
   @ViewChild('accountContainer') accountContainer!: ElementRef;
   showAccount = false;
+
+  ngOnInit() {
+    const firstName = this.authService.getFirstName();
+    const lastName = this.authService.getLastName();
+    if (firstName && lastName) {
+      this.userName = `${firstName} ${lastName}`;
+    }
+  }
 
   toggleAccount(event: Event) {
     event.stopPropagation(); // Prevent the click event from bubbling up to document

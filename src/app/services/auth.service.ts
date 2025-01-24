@@ -20,10 +20,15 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
       map((response: any) => {
-        if (isPlatformBrowser(this.platformId) && response.token) {
-          localStorage.setItem('token', response.token);
+        if (response && response.token) {
+          if (isPlatformBrowser(this.platformId)) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('firstName', response.user?.first_name);
+            localStorage.setItem('lastName', response.user?.last_name);
+          }
+          return response;
         }
-        return response;
+        throw new Error('Invalid response from server');
       })
     );
   }
@@ -50,4 +55,19 @@ export class AuthService {
     const token = this.getToken();
     return !!token; // Add token expiration check if needed
   }
+
+  getFirstName(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('firstName');
+    }
+    return null;
+  }
+
+  getLastName(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('lastName');
+    }
+    return null;
+  }
+  
 }
