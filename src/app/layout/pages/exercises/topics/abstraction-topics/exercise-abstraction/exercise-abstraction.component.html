@@ -1,0 +1,232 @@
+<div class="header">
+    <i class="fa fa-times close-icon" (click)="closeLesson()"></i>
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress" [style.width]="progress + '%'"></div>
+      </div>
+    </div>
+  </div>
+
+<div class="lesson-container">
+    <!-- 4 PICS 1 WORD -->
+    <section id="s1" class="lesson-section" *ngIf="visibleSections === 0">
+      <div class="content-container">
+        <div class="game-container">
+            <p>It is the name of me myself and I</p>
+          <!-- Image Display Area -->
+          <div class="image-grid">
+            <img *ngFor="let image of levels[0].images" [src]="image" alt="Game Image">
+          </div>
+        
+          <!-- Letter Selection Area -->
+          <div class="letter-selection">
+            <div class="selected-letters">
+              <span *ngFor="let letter of selectedLetters; let i = index" 
+                    (click)="removeSelectedLetter(i)">
+                {{letter}}
+              </span>
+            </div>
+        
+            <div class="available-letters">
+              <button 
+                *ngFor="let letter of shuffledLetters" 
+                (click)="selectLetter(letter)"
+                [disabled]="letter === null">
+                {{letter || ''}}
+              </button>
+            </div>
+          </div>
+        
+          <!-- Check and Hint Buttons -->
+          <div class="game-controls">
+            <button (click)="checkAnswer('s2')">Check</button>
+            <button (click)="getHint()">Hint</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRAG AND DROP -->
+    <section id="s2" class="lesson-section" *ngIf="visibleSections === 1">
+    <div class="content-container">
+        <div class="container">
+        <h1>Match OOP Concepts with Definitions</h1>
+        
+        <!-- Content containing definitions and concepts -->
+        <div class="content">
+            
+            <!-- Definitions with drop zones -->
+            <div class="definitions">
+            <div *ngFor="let definition of definitions" class="definition">
+                <p class="sentence">
+                <span>{{ definition.text.split('___')[0] }}</span>
+                
+                <!-- Dropzone -->
+                <span
+                    *ngIf="!definition.dropped"
+                    class="dropzone"
+                    (dragover)="onDragOver($event)"
+                    (drop)="onDrop(definition)"
+                >
+                    Drop here
+                </span>
+                
+                <span *ngIf="definition.dropped" class="dropdrop">
+                    {{ definition.dropped }}
+                </span>
+                
+                <span>{{ definition.text.split('___')[1] }}</span>
+                </p>
+            </div>
+            </div>
+            
+            <!-- Draggable concepts -->
+            <div class="concepts">
+            <h2>OOP Concepts</h2>
+            <ng-container *ngFor="let concept of concepts">
+                <div
+                *ngIf="!concept.dropped" 
+                class="concept"
+                draggable="true"
+                (dragstart)="onDragStart(concept)"
+                >
+                {{ concept.name }}
+                </div>
+            </ng-container>
+            </div>
+            
+        </div>
+        
+        <!-- Action buttons -->
+        <div class="actions">
+            <button (click)="validateAnswers('s3')">Submit</button>
+            <button (click)="reset()">Reset</button>
+        </div>
+        </div>
+        
+    </div>
+    <div class="button-container">
+        <button (click)="showNextSection('s3')" *ngIf="visibleSections === 1">CLICK ME</button>
+        </div>
+    </section>
+
+    <!-- 4 PICS 1 WORD -->
+    <section id="s3" class="lesson-section" *ngIf="visibleSections === 2">
+      <div class="content-container">
+        <div class="game-container">
+          <!-- Image Display Area -->
+          <div class="image-grid">
+            <img *ngFor="let image of levels[1].images" [src]="image" alt="Game Image">
+          </div>
+        
+          <!-- Letter Selection Area -->
+          <div class="letter-selection">
+            <div class="selected-letters">
+              <span *ngFor="let letter of selectedLetters; let i = index" 
+                    (click)="removeSelectedLetter(i)">
+                {{letter}}
+              </span>
+            </div>
+        
+            <div class="available-letters">
+              <button 
+                *ngFor="let letter of shuffledLetters" 
+                (click)="selectLetter(letter)"
+                [disabled]="letter === null">
+                {{letter || ''}}
+              </button>
+            </div>
+          </div>
+        
+          <!-- Check and Hint Buttons -->
+          <div class="game-controls">
+            <button (click)="checkAnswer('s4')">Check</button>
+            <button (click)="getHint()">Hint</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  -->
+    <section id="s4" class="lesson-section" *ngIf="visibleSections === 3">
+        <div class="content-container">
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 3">CLICK ME</button>
+          </div>
+    </section>
+
+    <!-- 4 PICS 1 WORD -->
+    <section id="s5" class="lesson-section" *ngIf="visibleSections === 4">
+      <div class="content-container">
+        <div class="game-container">
+          <!-- Image Display Area -->
+          <div class="image-grid">
+            <img *ngFor="let image of levels[2].images" [src]="image" alt="Game Image">
+          </div>
+        
+          <!-- Letter Selection Area -->
+          <div class="letter-selection">
+            <div class="selected-letters">
+              <span *ngFor="let letter of selectedLetters; let i = index" 
+                    (click)="removeSelectedLetter(i)">
+                {{letter}}
+              </span>
+            </div>
+        
+            <div class="available-letters">
+              <button 
+                *ngFor="let letter of shuffledLetters" 
+                (click)="selectLetter(letter)"
+                [disabled]="letter === null">
+                {{letter || ''}}
+              </button>
+            </div>
+          </div>
+        
+          <!-- Check and Hint Buttons -->
+          <div class="game-controls">
+            <button (click)="checkAnswer('s6')">Check</button>
+            <button (click)="getHint()">Hint</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="s6" class="lesson-section" *ngIf="visibleSections === 5">
+        <div class="content-container">
+            <h1>Mid-Level Abstraction</h1>
+            <p>Abstract classes provide this level of abstraction. They can have both abstract and concrete methods, offering a mix of shared functionality and customization</p>
+            <p>An abstract class <strong>Animal</strong> may provide <strong>breathe()</strong> method (concrete) but leave the <strong>makeSound()</strong> method abstract to be implemented by subclasses like <strong>Dog</strong> or <strong>Cat</strong></p>
+            <pre class="line-numbers"><code class="language-java">
+abstract class Animal {{'{'}}
+    abstract void makeSound();
+
+    void breathe() {{'{'}}
+        System.out.println("Breathing...");
+    {{'}'}}
+{{'}'}}
+            </code></pre>   
+        </div>
+        <div class="button-container">
+            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 5">CLICK ME</button>
+          </div>
+    </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections === 6">
+
+    </section>
+
+    <section id="s8" class="lesson-section" *ngIf="visibleSections === 7">
+
+    </section>
+
+    <section id="s9" class="lesson-section" *ngIf="visibleSections === 8">
+
+    </section>
+
+    <section id="s10" class="lesson-section" *ngIf="visibleSections === 9">
+        
+    </section>
+</div>
+

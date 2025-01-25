@@ -61,7 +61,7 @@ h1 {
 
 .exercise-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
@@ -75,6 +75,7 @@ h1 {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    margin: 15px;
 }
 
 .exercise-item:hover {
