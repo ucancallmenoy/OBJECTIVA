@@ -1,0 +1,13 @@
+<div class="header">
+    <i class="fa fa-times close-icon" (click)="closeLesson()"></i>
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress" [style.width]="progress + '%'"></div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Exercise Components -->
+    <app-exercise1-abstraction *ngIf="currentExercise === 0" (nextExercise)="onNextExercise()"></app-exercise1-abstraction>
+    <app-exercise2-abstraction *ngIf="currentExercise === 1" (nextExercise)="onNextExercise()"></app-exercise2-abstraction>
+    <app-exercise3-abstraction *ngIf="currentExercise === 2" (nextExercise)="onNextExercise()"></app-exercise3-abstraction>
