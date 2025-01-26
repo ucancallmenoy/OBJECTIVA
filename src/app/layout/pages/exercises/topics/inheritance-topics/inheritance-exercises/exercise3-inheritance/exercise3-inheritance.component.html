@@ -1,42 +1,54 @@
 <div class="container">
-    <h1>Match OOP Concepts with Definitions</h1>
-  
-    <div class="content">
-      <!-- Definitions Section -->
-      <div class="definitions">
-        <h2>Definitions</h2>
-        <div
-          class="definition"
-          *ngFor="let definition of definitions"
-          (dragover)="onDragOver($event)"
-          (drop)="onDrop(definition)"
-        >
-          <p>{{ definition.text }}</p>
-          <div class="dropzone text-center">
-            <span *ngIf="!definition.dropped" class="text-black-50">Drop here</span>
-            <span *ngIf="definition.dropped">{{ definition.dropped }}</span>
-          </div>
+  <h1>Match OOP Concepts with Definitions</h1>
+
+  <!-- Content containing definitions and concepts -->
+  <div class="content">
+    
+    <!-- Definitions with drop zones -->
+    <div class="definitions">
+      <div *ngFor="let definition of definitions" class="definition">
+        <p class="sentence">
+          <span>{{ definition.text }}</span>
+        </p>
+
+        <!-- Dropzone placed below the definition -->
+        <div class="dropzone-container">
+          <span
+            *ngIf="!definition.dropped"
+            class="dropzone d-block text-center text-black-50"
+            (dragover)="onDragOver($event)"
+            (drop)="onDrop(definition)"
+          >
+            Drop here
+          </span>
+          
+          <span *ngIf="definition.dropped" class="dropped">
+            {{ definition.dropped }}
+          </span>
         </div>
       </div>
-  
-      <!-- Concepts Section -->
-      <div class="concepts">
-        <h2>OOP Concepts</h2>
+    </div>
+    
+    <!-- Draggable concepts -->
+    <div class="concepts">
+      <h2>OOP Concepts</h2>
+      <ng-container *ngFor="let concept of concepts">
         <div
+          *ngIf="!concept.dropped" 
           class="concept"
-          *ngFor="let concept of concepts"
           draggable="true"
           (dragstart)="onDragStart(concept)"
         >
           {{ concept.name }}
         </div>
-      </div>
+      </ng-container>
     </div>
-  
-    <!-- Action Buttons -->
-    <div class="actions">
-      <button (click)="validateAnswers()">Submit</button>
-      <button (click)="reset()">Reset</button>
-    </div>
+    
   </div>
-  
+
+  <!-- Action buttons -->
+  <div class="actions">
+    <button (click)="validateAnswers()">Submit</button>
+    <button (click)="reset()">Reset</button>
+  </div>
+</div>
