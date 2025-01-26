@@ -12,13 +12,8 @@ interface GameLevel {
   styleUrl: './exercise2-inheritance.component.scss'
 })
 export class Exercise2InheritanceComponent {
-
-
   @Output() nextExercise: EventEmitter<void> = new EventEmitter<void>();  // Emit to notify parent
   
-  
-  visibleSections: number = 0;
-  totalSections: number = 10; // Update this based on the total number of sections
   currentLevelIndex = 0;
   selectedLetters: (string | null)[] = [];
   shuffledLetters: (string | null)[] = [];
@@ -34,16 +29,6 @@ export class Exercise2InheritanceComponent {
       solution: 'PATRICK',
       hints: 3
     },
-    {
-      images: ['assets/abstrac2.png', 'assets/abstrac2.png', 'assets/abstrac2.png', 'assets/abstrac2.png'],
-      solution: 'MASK',
-      hints: 3
-    },
-    {
-      images: ['assets/abstrac3.png', 'assets/abstrac3.png', 'assets/abstrac3.png', 'assets/abstrac3.png'],
-      solution: 'HIDE',
-      hints: 3
-    }
   ];
 
   initializeLevel() {

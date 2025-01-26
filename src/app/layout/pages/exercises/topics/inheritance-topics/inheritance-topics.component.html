@@ -8,20 +8,19 @@
   </div>
   
   
-  
   <!-- Exercise Components -->
   <app-exercise1-inheritance 
-    *ngIf="currentExercise === 1" 
+    *ngIf="currentExercise === 0" 
     (nextExercise)="onNextExercise()">
   </app-exercise1-inheritance>
   
   <app-exercise2-inheritance 
-    *ngIf="currentExercise === 2" 
+    *ngIf="currentExercise === 1" 
     (nextExercise)="onNextExercise()">
   </app-exercise2-inheritance>
   
   <app-exercise3-inheritance 
-    *ngIf="currentExercise === 3" 
+    *ngIf="currentExercise === 2" 
     (nextExercise)="onNextExercise()">
   </app-exercise3-inheritance>
   

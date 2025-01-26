@@ -1,10 +1,21 @@
 /* DRAG AND DROP */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
+    animation: slideUp 0.5s ease-out;
   
     .content {
       display: flex;
@@ -84,5 +95,16 @@
     
     button {
       margin: 10px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #45a049;
+      }
     }
   }

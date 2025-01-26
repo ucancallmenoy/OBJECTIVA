@@ -12,7 +12,7 @@ export class TopicsComponent {
     this.router.navigate(['/exercises-topics/exercise-abstraction']);
   }
   startExercise2(){
-    this.router.navigate(['/exercises-topics/exercise-enacapsulation']);
+    this.router.navigate(['/exercises-topics/exercise1-encapsulation']);
   }
   startExercise3(){
     this.router.navigate(['/exercises-topics/exercise1-inheritance']);

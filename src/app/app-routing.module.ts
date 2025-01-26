@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'login-register', component: LoginRegisterComponent},
   { path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule), canActivate: [AuthGuard] },
   {path: '**',redirectTo: 'login-register'},
-
+  
 ];
 
 @NgModule({
