@@ -1,88 +1,77 @@
 /* DRAG AND DROP */
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+
+  .content {
+    display: flex;
+    justify-content: center; /* Centers both the concepts and definitions */
+    align-items: flex-start; /* Aligns the items to the top */
+    width: 100%;
+    max-width: 1000px; /* Adjust the max-width as needed */
+  }
+  
+  .definitions, .concepts {
+    margin: 0 20px; /* Space between definitions and concepts */
+  }
+  
+  .definitions {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .concepts {
+    flex: 1;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  
-    .content {
-      display: flex;
-      justify-content: center; /* Centers both the concepts and definitions */
-      align-items: flex-start; /* Aligns the items to the top */
-      width: 100%;
-      max-width: 1000px; /* Adjust the max-width as needed */
-    }
-    
-    .definitions, .concepts {
-      margin: 0 20px; /* Space between definitions and concepts */
-    }
-    
-    .definitions {
-      flex: 1;
-      text-align: left;
-    }
-    
-    .concepts {
-      flex: 1;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .concept {
-      margin: 10px;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      cursor: pointer;
-    }
-    
-    .definition {
-      margin-bottom: 20px;
-    }
-    
-    .sentence {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    
-    .dropzone {
-
-       margin-top: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px dashed #ccc;
-    }
-
-    // .dropHere{
-    //     opacity: 0.5;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    // }
-  
-    .dropdrop{
-      display: inline-block;
-      width: 120px;
-      height: 30px;
-      border: 1px dashed #ccc;
-      text-align: center;
-      line-height: 30px;
-      cursor: pointer;
-      margin: 0 5px;
-    }
-    
-    .dropzone:hover {
-      background-color: #f0f0f0;
-    }
-    
-    .actions {
-      margin-top: 20px;
-    }
-    
-    button {
-      margin: 10px;
-    }
+    justify-content: center;
   }
+  
+  .concept {
+    margin: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .definition {
+    margin-bottom: 20px;
+  }
+  
+  .sentence {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .dropzone {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+  }
+
+  .dropped{
+    display: inline-block;
+    padding: 10px;
+    width: 100%; /* Same width as dropzone */
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 5px;
+}
+  
+  .dropzone:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .actions {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 10px;
+  }
+}

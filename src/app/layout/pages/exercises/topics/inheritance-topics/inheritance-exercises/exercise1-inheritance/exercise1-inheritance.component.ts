@@ -1,6 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
+interface GameLevel {
+  images: string[];
+  solution: string;
+  hints: number;
+}
 @Component({
   selector: 'app-exercise1-inheritance',
   templateUrl: './exercise1-inheritance.component.html',
@@ -8,93 +14,136 @@ import { Router } from '@angular/router';
 })
 export class Exercise1InheritanceComponent {
   @Input() currentExercise: number = 1;  
-  @Output() nextExercise = new EventEmitter<void>(); 
-
-  concepts = [
-    { id: 'encapsulation', name: 'Encapsulation' },
-    { id: 'polymorphism', name: 'Polymorphism' },
-    { id: 'inheritance', name: 'Inheritance' },
-    { id: 'abstraction', name: 'Abstraction' },
-  ];
-
-  definitions = [
-    {
-      id: 'encapsulation',
-      text: 'Hides internal implementation details and only exposes what is necessary.',
-      dropped: '',
-    },
-    {
-      id: 'inheritance',
-      text: 'Allows a class to acquire the properties and behaviors of another class.',
-      dropped: '',
-    },
-    {
-      id: 'polymorphism',
-      text: 'Allows methods to have the same name but behave differently based on the object.',
-      dropped: '',
-    },
-    {
-      id: 'abstraction',
-      text: 'Defines the essential features of an object without implementing the details.',
-      dropped: '',
-    },
-  ];
-
-  draggedItem: any = null;
-
-  constructor(private router: Router) {}
-
-  onDragStart(item: any) {
-    this.draggedItem = item;
-  }
-
-  onDrop(definition: any) {
-    if (!definition.dropped && this.draggedItem) {
-      // Assign the dragged concept name to the definition
-      definition.dropped = this.draggedItem.name;
+  @Output() nextExercise = new EventEmitter<void>();     
+    
+    visibleSections: number = 0;
+    totalSections: number = 10; // Update this based on the total number of sections
+    currentLevelIndex = 0;
+    selectedLetters: (string | null)[] = [];
+    shuffledLetters: (string | null)[] = [];
+  
+    ngOnInit() {
+      this.initializeLevel(); // Initialize the first level
     }
-    this.draggedItem = null;
-  }
-
-  onDragOver(event: DragEvent) {
-    event.preventDefault(); // Required to allow dropping
-  }
-
-  validateAnswers() {
-    const isAllCorrect = this.definitions.every((definition) => {
-      const correctConcept = this.concepts.find(
-        (concept) => concept.id === definition.id
-      );
-      return definition.dropped && correctConcept?.name === definition.dropped;
-    });
-
-    if (isAllCorrect) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Well Done!',
-        text: 'All answers are correct!',
-      }).then(() => {
-        // Emit the event to notify the parent to move to the next exercise
-        this.nextExercise.emit(); // Notify the parent to move to the next exercise
-      });
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Try Again!',
-        text: 'Some answers are incorrect. Please check and try again!',
-      });
-    }
-  }
-
-
-  reset() {
-    this.definitions.forEach((def) => (def.dropped = ''));
-    this.concepts = [
-      { id: 'encapsulation', name: 'Encapsulation' },
-      { id: 'inheritance', name: 'Inheritance' },
-      { id: 'polymorphism', name: 'Polymorphism' },
-      { id: 'abstraction', name: 'Abstraction' },
+  
+    // Define levels for the game
+    levels: GameLevel[] = [
+      {
+        images: ['assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png'],
+        solution: 'PATRICK',
+        hints: 3
+      },
+      {
+        images: ['assets/abstrac2.png', 'assets/abstrac2.png', 'assets/abstrac2.png', 'assets/abstrac2.png'],
+        solution: 'MASK',
+        hints: 3
+      },
+      {
+        images: ['assets/abstrac3.png', 'assets/abstrac3.png', 'assets/abstrac3.png', 'assets/abstrac3.png'],
+        solution: 'HIDE',
+        hints: 3
+      }
     ];
-    this.draggedItem = null;
+  
+    initializeLevel() {
+      const currentLevel = this.levels[this.currentLevelIndex];
+      this.selectedLetters = new Array(currentLevel.solution.length).fill(null);
+      
+      const solutionLetters = currentLevel.solution.split('');
+      const extraLetters = this.generateExtraLetters(solutionLetters);
+      this.shuffledLetters = this.shuffleArray([...solutionLetters, ...extraLetters]);
+    }
+  
+    selectLetter(letter: string | null) {
+      if (letter === null) return;
+  
+      const emptyIndex = this.selectedLetters.findIndex(l => l === null);
+      if (emptyIndex !== -1) {
+        this.selectedLetters[emptyIndex] = letter;
+        
+        const letterIndex = this.shuffledLetters.indexOf(letter);
+        if (letterIndex !== -1) {
+          this.shuffledLetters[letterIndex] = null;
+        }
+      }
+    }
+  
+    removeSelectedLetter(index: number) {
+      const letter = this.selectedLetters[index];
+      if (letter) {
+        const nullIndex = this.shuffledLetters.indexOf(null);
+        if (nullIndex !== -1) {
+          this.shuffledLetters[nullIndex] = letter;
+        }
+        
+        this.selectedLetters[index] = null;
+      }
+    }
+  
+    checkAnswer() {
+      const currentLevel = this.levels[this.currentLevelIndex];
+      const playerAnswer = this.selectedLetters.join('');
+  
+      if (playerAnswer === currentLevel.solution) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Well Done!',
+          text: 'Your answer is correct!',
+        }).then(() => {
+          this.showNextLevel();
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Try Again!',
+          text: 'Your answer is incorrect. Please try again!',
+        });
+      }
+    }
+  
+    showNextLevel() {
+      // Mark the level as completed, move to next level, or finish the exercise
+      this.currentLevelIndex++;
+      if (this.currentLevelIndex >= this.levels.length) {
+        // Exercise completed
+        // Emit to notify parent that this exercise is complete
+        this.nextExercise.emit();
+      } else {
+        this.initializeLevel();
+      }
+    }
+  
+   
+    getHint() {
+      const currentLevel = this.levels[this.currentLevelIndex];
+      if (currentLevel.hints > 0) {
+        currentLevel.hints--;
+        alert(`Hints remaining: ${currentLevel.hints}`);
+      } else {
+        alert('No hints left!');
+      }
+    }
+  
+    shuffleArray(array: any[]): any[] {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+  
+    generateExtraLetters(solutionLetters: string[]): string[] {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const extraLetters: string[] = [];
+      
+      while (extraLetters.length < solutionLetters.length) {
+        const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        if (!solutionLetters.includes(randomLetter) && !extraLetters.includes(randomLetter)) {
+          extraLetters.push(randomLetter);
+        }
+      }
+      
+      return extraLetters;
+    }
   }
-}
+  
