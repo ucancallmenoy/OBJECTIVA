@@ -10,33 +10,39 @@ export class Exercise9AbstractionComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
        
          concepts = [
-           { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-           { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-           { id: 'inheritance', name: 'Inheritance', dropped: false },
-           { id: 'abstraction', name: 'Abstraction', dropped: false },
+           { id: 'abstract class', name: 'Abstract Class', dropped: false },
+           { id: 'abstract method', name: 'Abstract Method', dropped: false },
+           { id: 'interface', name: 'Interface', dropped: false },
+           { id: 'implements', name: 'Implements', dropped: false },
+           { id: 'multiple interfaces', name: 'Multiple Interfaces', dropped: false }
          ];
        
          definitions = [
            {
-             id: 'single inheritance',
-             text: 'Type of inheritance where the class inherits from only one parent class.',
+             id: 'abstract class',
+             text: 'A class that cannot be instantiated and serves as a blueprint for other classes.',
              dropped: '',
            },
            {
-             id: 'inheritance',
-             text: 'Allows a class to acquire the properties and behaviors of another class.',
+             id: 'abstract method',
+             text: 'A method that has no implementation and must be overridden by subclasses.',
              dropped: '',
            },
            {
-             id: 'polymorphism',
-             text: 'Allows methods to have the same name but behave differently based on the object.',
+             id: 'interface',
+             text: 'A collection of method declarations that a class must follow without providing implementation.',
              dropped: '',
            },
            {
-             id: 'abstraction',
-             text: 'Defines the essential features of an object without implementing the details.',
+             id: 'implements',
+             text: 'The keyword that means the class is agreeing to follow the rules and provide code for all the methods listed in the interface.',
              dropped: '',
            },
+           {
+            id: 'multiple interfaces',
+            text: 'The ability of a class to implement more than one interface.',
+            dropped: '',
+          },
          ];
        
          draggedItem: any = null;

@@ -10,31 +10,25 @@ export class Exercise3AbstractionComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
      
        concepts = [
-         { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-         { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-         { id: 'inheritance', name: 'Inheritance', dropped: false },
-         { id: 'abstraction', name: 'Abstraction', dropped: false },
+         { id: 'high-level', name: 'High-Level Abstraction', dropped: false },
+         { id: 'mid-level', name: 'Mid-Level Abstraction', dropped: false },
+         { id: 'low-level', name: 'Low-Level Abstraction', dropped: false },
        ];
      
        definitions = [
          {
-           id: 'encapsulation',
-           text: 'Type of inheritance where the class inherits from only one parent class.',
+           id: 'high-level',
+           text: 'Deals with the "what" of the system, focusing on user interaction and overall system behavior.',
            dropped: '',
          },
          {
-           id: 'inheritance',
-           text: 'Allows a class to acquire the properties and behaviors of another class.',
+           id: 'mid-level',
+           text: 'Involves system components and their responsibilities, typically focusing on subsystems or modules.',
            dropped: '',
          },
          {
-           id: 'polymorphism',
-           text: 'Allows methods to have the same name but behave differently based on the object.',
-           dropped: '',
-         },
-         {
-           id: 'abstraction',
-           text: 'Defines the essential features of an object without implementing the details.',
+           id: 'low-level',
+           text: 'Details the "how," dealing with specific implementation, such as code and algorithms.',
            dropped: '',
          },
        ];
@@ -110,10 +104,9 @@ export class Exercise3AbstractionComponent {
          // Reset the definitions and concepts
          this.definitions.forEach((def) => (def.dropped = ''));
          this.concepts = [
-           { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-           { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-           { id: 'inheritance', name: 'Inheritance', dropped: false },
-           { id: 'abstraction', name: 'Abstraction', dropped: false },
+          { id: 'high-level', name: 'High-Level Abstraction', dropped: false },
+          { id: 'mid-level', name: 'Mid-Level Abstraction', dropped: false },
+          { id: 'low-level', name: 'Low-Level Abstraction', dropped: false },
          ];
      
          // Shuffle the concepts again after reset

@@ -10,31 +10,31 @@ export class Exercise6AbstractionComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
        
          concepts = [
-           { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-           { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-           { id: 'inheritance', name: 'Inheritance', dropped: false },
-           { id: 'abstraction', name: 'Abstraction', dropped: false },
+           { id: 'simplifies complexity', name: 'Simplifies Complexity', dropped: false },
+           { id: 'enhances reusability', name: 'Enhances Reusability', dropped: false },
+           { id: 'improves maintainability', name: 'Improves Maintainability', dropped: false },
+           { id: 'encourages modularity', name: 'Encourages Modularity', dropped: false },
          ];
        
          definitions = [
            {
-             id: 'single inheritance',
-             text: 'Type of inheritance where the class inherits from only one parent class.',
+             id: 'simplifies complexity',
+             text: 'Focuses on essential details, hiding unnecessary ones for easier understanding.',
              dropped: '',
            },
            {
-             id: 'inheritance',
-             text: 'Allows a class to acquire the properties and behaviors of another class.',
+             id: 'enhances reusability',
+             text: 'Abstract classes and interfaces provide reusable and extendable code structures.',
              dropped: '',
            },
            {
-             id: 'polymorphism',
-             text: 'Allows methods to have the same name but behave differently based on the object.',
+             id: 'improves maintainability',
+             text: "Changes in implementation don't affect high-level abstractions, making updates easier.",
              dropped: '',
            },
            {
-             id: 'abstraction',
-             text: 'Defines the essential features of an object without implementing the details.',
+             id: 'encourages modularity',
+             text: 'Breaks down systems into manageable, independent components.',
              dropped: '',
            },
          ];
@@ -110,10 +110,10 @@ export class Exercise6AbstractionComponent {
            // Reset the definitions and concepts
            this.definitions.forEach((def) => (def.dropped = ''));
            this.concepts = [
-             { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-             { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-             { id: 'inheritance', name: 'Inheritance', dropped: false },
-             { id: 'abstraction', name: 'Abstraction', dropped: false },
+            { id: 'simplifies complexity', name: 'Simplifies Complexity', dropped: false },
+            { id: 'enhances reusability', name: 'Enhances Reusability', dropped: false },
+            { id: 'improves maintainability', name: 'Improves Maintainability', dropped: false },
+            { id: 'encourages modularity', name: 'Encourages Modularity', dropped: false },
            ];
        
            // Shuffle the concepts again after reset
