@@ -2,12 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InheritanceTopicsRoutingModule } from './inheritance-topics-routing.module';
-import { ExerciseInheritanceComponent } from './exercise-inheritance/exercise-inheritance.component';
+import { Exercise1InheritanceComponent } from './inheritance-exercises/exercise1-inheritance/exercise1-inheritance.component';
+import { Exercise2InheritanceComponent } from './inheritance-exercises/exercise2-inheritance/exercise2-inheritance.component';
+import { Exercise3InheritanceComponent } from './inheritance-exercises/exercise3-inheritance/exercise3-inheritance.component';
+import { InheritanceTopicsComponent } from './inheritance-topics.component';
 
 
 @NgModule({
   declarations: [
-    ExerciseInheritanceComponent
+    Exercise1InheritanceComponent,
+    Exercise2InheritanceComponent,
+    Exercise3InheritanceComponent,
+    InheritanceTopicsComponent
   ],
   imports: [
     CommonModule,

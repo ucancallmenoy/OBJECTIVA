@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExerciseInheritanceComponent } from './exercise-inheritance/exercise-inheritance.component';
+import { InheritanceTopicsComponent } from './inheritance-topics.component';
+import { Exercise1InheritanceComponent } from './inheritance-exercises/exercise1-inheritance/exercise1-inheritance.component';
+import { Exercise2InheritanceComponent } from './inheritance-exercises/exercise2-inheritance/exercise2-inheritance.component';
+import { Exercise3InheritanceComponent } from './inheritance-exercises/exercise3-inheritance/exercise3-inheritance.component';
 
 const routes: Routes = [
-  {path: 'exercise-inheritance', component: ExerciseInheritanceComponent}
+  {path: '', component: InheritanceTopicsComponent, children: [
+    {path: 'exercise1-inheritance', component: Exercise1InheritanceComponent},
+    {path: 'exercise2-inheritance', component: Exercise2InheritanceComponent},
+    {path: 'exercise3-inheritance', component: Exercise3InheritanceComponent},
+  ]},
 ];
 
 @NgModule({

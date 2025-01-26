@@ -15,7 +15,7 @@ export class TopicsComponent {
     this.router.navigate(['/exercises-topics/exercise-enacapsulation']);
   }
   startExercise3(){
-    this.router.navigate(['/exercises-topics/exercise-inheritance']);
+    this.router.navigate(['/exercises-topics/exercise1-inheritance']);
   }
   startExercise4(){
     this.router.navigate(['/exercises-topics/exercise-polymorphism']);
