@@ -10,31 +10,25 @@ export class Exercise9InheritanceComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
    
      concepts = [
-       { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-       { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-       { id: 'inheritance', name: 'Inheritance', dropped: false },
-       { id: 'abstraction', name: 'Abstraction', dropped: false },
+       { id: 'final classes', name: 'Final Classes', dropped: false },
+       { id: 'final methods', name: 'Final Methods', dropped: false },
+       { id: 'final variables', name: 'Final Variables', dropped: false },
      ];
    
      definitions = [
        {
-         id: 'single inheritance',
-         text: 'Type of inheritance where the class inherits from only one parent class.',
+         id: 'final classes',
+         text: 'This cannot have subclasses, ensuring it remains unaltered.',
          dropped: '',
        },
        {
-         id: 'inheritance',
-         text: 'Allows a class to acquire the properties and behaviors of another class.',
+         id: 'final methods',
+         text: 'This cannot be overridden by subclasses, preserving Its functionality.',
          dropped: '',
        },
        {
-         id: 'polymorphism',
-         text: 'Allows methods to have the same name but behave differently based on the object.',
-         dropped: '',
-       },
-       {
-         id: 'abstraction',
-         text: 'Defines the essential features of an object without implementing the details.',
+         id: 'final variables',
+         text: 'This is a constant that cannot be modified after initialization.',
          dropped: '',
        },
      ];
@@ -109,10 +103,9 @@ export class Exercise9InheritanceComponent {
        // Reset the definitions and concepts
        this.definitions.forEach((def) => (def.dropped = ''));
        this.concepts = [
-         { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-         { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-         { id: 'inheritance', name: 'Inheritance', dropped: false },
-         { id: 'abstraction', name: 'Abstraction', dropped: false },
+        { id: 'final classes', name: 'Single Inheritance', dropped: false },
+        { id: 'final methods', name: 'Polymorphism', dropped: false },
+        { id: 'final variables', name: 'Inheritance', dropped: false },
        ];
    
        // Shuffle the concepts again after reset

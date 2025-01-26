@@ -10,31 +10,31 @@ export class Exercise3InheritanceComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
  
    concepts = [
-     { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-     { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-     { id: 'inheritance', name: 'Inheritance', dropped: false },
-     { id: 'abstraction', name: 'Abstraction', dropped: false },
+     { id: 'single', name: 'Single Inheritance', dropped: false },
+     { id: 'hierarchical', name: 'Hierarchical Inheritance', dropped: false },
+     { id: 'multilevel', name: 'Multilevel Inheritance', dropped: false },
+     { id: 'multiple', name: 'Multiple Inheritance', dropped: false },
    ];
  
    definitions = [
      {
-       id: 'single inheritance',
+       id: 'single',
        text: 'Type of inheritance where the class inherits from only one parent class.',
        dropped: '',
      },
      {
-       id: 'inheritance',
-       text: 'Allows a class to acquire the properties and behaviors of another class.',
+       id: 'hierarchical',
+       text: 'Type of inheritance where one class is inherited by multiple subclasses.',
        dropped: '',
      },
      {
-       id: 'polymorphism',
-       text: 'Allows methods to have the same name but behave differently based on the object.',
+       id: 'multilevel',
+       text: 'Type of inheritance where a class inherits from another, and the second class is inherited by a third class, forming a chain.',
        dropped: '',
      },
      {
-       id: 'abstraction',
-       text: 'Defines the essential features of an object without implementing the details.',
+       id: 'multiple',
+       text: 'This type of inheritance is not supported in Java to avoid ambiguity and complexity when inheriting methods with the same name but different implementations from multiple classes.',
        dropped: '',
      },
    ];
