@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { TopicsRoutingModule } from './topics-routing.module';
 import { TopicsComponent } from './topics.component';
 import { AbstractionTopicsModule } from './abstraction-topics/abstraction-topics.module';
@@ -18,7 +18,8 @@ import { PolymorphismTopicsModule } from './polymorphism-topics/polymorphism-top
     AbstractionTopicsModule,
     EncapsulationTopicsModule,
     InheritanceTopicsModule,
-    PolymorphismTopicsModule
+    PolymorphismTopicsModule,
+    FormsModule
   ]
 })
 export class TopicsModule { }

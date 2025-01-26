@@ -1,4 +1,16 @@
+@keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
 .fill-in-the-blanks {
+    animation: slideUp 0.5s ease-out;
     max-width: 600px;
     margin: 0 auto;
     font-family: Arial, sans-serif;

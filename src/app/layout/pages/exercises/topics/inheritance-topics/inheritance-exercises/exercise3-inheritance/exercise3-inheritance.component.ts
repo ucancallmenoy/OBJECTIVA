@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-exercise3-inheritance',
   templateUrl: './exercise3-inheritance.component.html',
@@ -41,9 +40,7 @@ export class Exercise3InheritanceComponent {
    ];
  
    draggedItem: any = null;
- 
-   constructor(private router: Router) {}
- 
+  
    ngOnInit() {
      // Shuffle concepts when the component is initialized
      this.shuffleChoices();

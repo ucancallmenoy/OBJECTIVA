@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { InheritanceTopicsRoutingModule } from './inheritance-topics-routing.module';
 import { Exercise1InheritanceComponent } from './inheritance-exercises/exercise1-inheritance/exercise1-inheritance.component';
 import { Exercise2InheritanceComponent } from './inheritance-exercises/exercise2-inheritance/exercise2-inheritance.component';
@@ -17,7 +17,8 @@ import { InheritanceTopicsComponent } from './inheritance-topics.component';
   ],
   imports: [
     CommonModule,
-    InheritanceTopicsRoutingModule
+    InheritanceTopicsRoutingModule,
+    FormsModule
   ]
 })
 export class InheritanceTopicsModule { }

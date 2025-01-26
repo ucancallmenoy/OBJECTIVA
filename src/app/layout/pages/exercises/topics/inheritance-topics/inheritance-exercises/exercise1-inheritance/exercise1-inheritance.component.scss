@@ -1,4 +1,3 @@
-/* DRAG AND DROP */
 @keyframes slideUp {
   0% {
     transform: translateY(100%);
@@ -9,102 +8,107 @@
     opacity: 1;
   }
 }
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    animation: slideUp 0.5s ease-out;
-  
-    .content {
-      display: flex;
-      justify-content: center; /* Centers both the concepts and definitions */
-      align-items: flex-start; /* Aligns the items to the top */
-      width: 100%;
-      max-width: 1000px; /* Adjust the max-width as needed */
-    }
-    
-    .definitions, .concepts {
-      margin: 0 20px; /* Space between definitions and concepts */
-    }
-    
-    .definitions {
-      flex: 1;
-      text-align: left;
-    }
-    
-    .concepts {
-      flex: 1;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .concept {
-      margin: 10px;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      cursor: pointer;
-    }
-    
-    .definition {
-      margin-bottom: 20px;
-    }
-    
-    .sentence {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    
-    .dropzone {
-
-       margin-top: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px dashed #ccc;
-    }
-
-    // .dropHere{
-    //     opacity: 0.5;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    // }
-  
-    .dropdrop{
-      display: inline-block;
-      width: 120px;
-      height: 30px;
-      border: 1px dashed #ccc;
-      text-align: center;
-      line-height: 30px;
-      cursor: pointer;
-      margin: 0 5px;
-    }
-    
-    .dropzone:hover {
-      background-color: #f0f0f0;
-    }
-    
-    .actions {
-      margin-top: 20px;
-    }
-    
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #45a049;
+      .game-container {
+        animation: slideUp 0.5s ease-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      
+        .image-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+      
+          img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+        }
+      
+        .letter-selection {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          width: 100%;
+      
+          .selected-letters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            min-height: 40px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+      
+            span {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: #ffffff;
+              border: 1px solid #cccccc;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+      
+              &:hover {
+                background-color: #e0e0e0;
+              }
+            }
+          }
+      
+          .available-letters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+      
+            button {
+              width: 40px;
+              height: 40px;
+              background-color: #ffffff;
+              border: 1px solid #cccccc;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: all 0.3s;
+      
+              &:hover:not(:disabled) {
+                background-color: #f0f0f0;
+              }
+      
+              &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+              }
+            }
+          }
+        }
+      
+        .game-controls {
+          display: flex;
+          gap: 15px;
+      
+          button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+      
+            &:hover {
+              background-color: #45a049;
+            }
+          }
+        }
       }
-    }
-  }
