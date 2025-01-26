@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class AbstractionTopicsComponent {
   currentExercise: number = 0;  // Start with exercise 1
-      totalExercises: number = 3;   // Total number of exercises
+      totalExercises: number = 10;   // Total number of exercises
       progress: number = 0;         // Initial progress value
     
       constructor(private router: Router) {

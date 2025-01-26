@@ -8,6 +8,11 @@ import { Exercise2EncapsulationComponent } from './encapsulation-exercises/exerc
 import { Exercise3EncapsulationComponent } from './encapsulation-exercises/exercise3-encapsulation/exercise3-encapsulation.component';
 import { Exercise4EncapsulationComponent } from './encapsulation-exercises/exercise4-encapsulation/exercise4-encapsulation.component';
 import { Exercise5EncapsulationComponent } from './encapsulation-exercises/exercise5-encapsulation/exercise5-encapsulation.component';
+import { Exercise6EncapsulationComponent } from './encapsulation-exercises/exercise6-encapsulation/exercise6-encapsulation.component';
+import { Exercise7EncapsulationComponent } from './encapsulation-exercises/exercise7-encapsulation/exercise7-encapsulation.component';
+import { Exercise8EncapsulationComponent } from './encapsulation-exercises/exercise8-encapsulation/exercise8-encapsulation.component';
+import { Exercise9EncapsulationComponent } from './encapsulation-exercises/exercise9-encapsulation/exercise9-encapsulation.component';
+import { Exercise10EncapsulationComponent } from './encapsulation-exercises/exercise10-encapsulation/exercise10-encapsulation.component';
 
 
 @NgModule({
@@ -17,7 +22,12 @@ import { Exercise5EncapsulationComponent } from './encapsulation-exercises/exerc
     Exercise2EncapsulationComponent,
     Exercise3EncapsulationComponent,
     Exercise4EncapsulationComponent,
-    Exercise5EncapsulationComponent
+    Exercise5EncapsulationComponent,
+    Exercise6EncapsulationComponent,
+    Exercise7EncapsulationComponent,
+    Exercise8EncapsulationComponent,
+    Exercise9EncapsulationComponent,
+    Exercise10EncapsulationComponent
   ],
   imports: [
     CommonModule,
