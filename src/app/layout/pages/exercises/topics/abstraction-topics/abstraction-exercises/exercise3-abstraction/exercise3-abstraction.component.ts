@@ -10,7 +10,7 @@ export class Exercise3AbstractionComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
      
        concepts = [
-         { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
+         { id: 'encapsulation', name: 'Encapsulation', dropped: false },
          { id: 'polymorphism', name: 'Polymorphism', dropped: false },
          { id: 'inheritance', name: 'Inheritance', dropped: false },
          { id: 'abstraction', name: 'Abstraction', dropped: false },
@@ -18,7 +18,7 @@ export class Exercise3AbstractionComponent {
      
        definitions = [
          {
-           id: 'single inheritance',
+           id: 'encapsulation',
            text: 'Type of inheritance where the class inherits from only one parent class.',
            dropped: '',
          },
