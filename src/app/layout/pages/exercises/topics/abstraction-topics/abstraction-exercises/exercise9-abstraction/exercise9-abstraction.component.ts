@@ -116,10 +116,11 @@ export class Exercise9AbstractionComponent {
            // Reset the definitions and concepts
            this.definitions.forEach((def) => (def.dropped = ''));
            this.concepts = [
-             { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-             { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-             { id: 'inheritance', name: 'Inheritance', dropped: false },
-             { id: 'abstraction', name: 'Abstraction', dropped: false },
+            { id: 'abstract class', name: 'Abstract Class', dropped: false },
+            { id: 'abstract method', name: 'Abstract Method', dropped: false },
+            { id: 'interface', name: 'Interface', dropped: false },
+            { id: 'implements', name: 'Implements', dropped: false },
+            { id: 'multiple interfaces', name: 'Multiple Interfaces', dropped: false }
            ];
        
            // Shuffle the concepts again after reset

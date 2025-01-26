@@ -10,32 +10,44 @@ export class Exercise9EncapsulationComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
      
        concepts = [
-         { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-         { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-         { id: 'inheritance', name: 'Inheritance', dropped: false },
-         { id: 'abstraction', name: 'Abstraction', dropped: false },
+         { id: 'validation in setters', name: 'Validation in Setters', dropped: false },
+         { id: 'user input validation', name: 'User Input Validation', dropped: false },
+         { id: 'type validation', name: 'Type Validation', dropped: false },
+         { id: 'format validation', name: 'Format Validation', dropped: false },
+         { id: 'range validation', name: 'Range Validation', dropped: false },
+         { id: 'business rule validation', name: 'Business Rule Validation', dropped: false },
        ];
      
        definitions = [
          {
-           id: 'single inheritance',
-           text: 'Type of inheritance where the class inherits from only one parent class.',
+           id: 'validation in setters',
+           text: 'Ensuring that data assigned through setter methods meets specific criteria, preventing invalid data.',
            dropped: '',
          },
          {
-           id: 'inheritance',
-           text: 'Allows a class to acquire the properties and behaviors of another class.',
+           id: 'user input validation',
+           text: "Before any data enters our system, we verify it meets requirements and won't cause problems.",
            dropped: '',
          },
          {
-           id: 'polymorphism',
-           text: 'Allows methods to have the same name but behave differently based on the object.',
+           id: 'type validation',
+           text: 'Ensuring the data is of the correct type.',
            dropped: '',
          },
          {
-           id: 'abstraction',
-           text: 'Defines the essential features of an object without implementing the details.',
+           id: 'format validation',
+           text: 'Checking if the data follows required patterns.',
            dropped: '',
+         },
+         {
+          id: 'range validation',
+          text: 'Verifying values fall within acceptable limits.',
+          dropped: '',
+         },
+         {
+          id: 'business rule validation',
+          text: 'Ensuring data meets specific business requirements.',
+          dropped: '',
          },
        ];
      
@@ -110,10 +122,12 @@ export class Exercise9EncapsulationComponent {
          // Reset the definitions and concepts
          this.definitions.forEach((def) => (def.dropped = ''));
          this.concepts = [
-           { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-           { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-           { id: 'inheritance', name: 'Inheritance', dropped: false },
-           { id: 'abstraction', name: 'Abstraction', dropped: false },
+          { id: 'validation in setters', name: 'Validation in Setters', dropped: false },
+          { id: 'user input validation', name: 'User Input Validation', dropped: false },
+          { id: 'type validation', name: 'Type Validation', dropped: false },
+          { id: 'format validation', name: 'Format Validation', dropped: false },
+          { id: 'range validation', name: 'Range Validation', dropped: false },
+          { id: 'business rule validation', name: 'Business Rule Validation', dropped: false },
          ];
      
          // Shuffle the concepts again after reset

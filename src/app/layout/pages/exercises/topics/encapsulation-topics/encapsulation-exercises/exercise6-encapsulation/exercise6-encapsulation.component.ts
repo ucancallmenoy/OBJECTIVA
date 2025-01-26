@@ -10,31 +10,31 @@ export class Exercise6EncapsulationComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
      
        concepts = [
-         { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-         { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-         { id: 'inheritance', name: 'Inheritance', dropped: false },
-         { id: 'abstraction', name: 'Abstraction', dropped: false },
+         { id: 'security', name: 'Security', dropped: false },
+         { id: 'flexibility', name: 'Flexibility', dropped: false },
+         { id: 'maintainability', name: 'Maintainability', dropped: false },
+         { id: 'reusability', name: 'Reusability', dropped: false },
        ];
      
        definitions = [
          {
-           id: 'single inheritance',
-           text: 'Type of inheritance where the class inherits from only one parent class.',
+           id: 'security',
+           text: "Restricts unauthorized access to an object's state.",
            dropped: '',
          },
          {
-           id: 'inheritance',
-           text: 'Allows a class to acquire the properties and behaviors of another class.',
+           id: 'flexibility',
+           text: 'The ability to change internal logic without affecting external code.',
            dropped: '',
          },
          {
-           id: 'polymorphism',
-           text: 'Allows methods to have the same name but behave differently based on the object.',
+           id: 'maintainability',
+           text: 'Simplifies debugging and updates by keeping data and behavior in one place.',
            dropped: '',
          },
          {
-           id: 'abstraction',
-           text: 'Defines the essential features of an object without implementing the details.',
+           id: 'reusability',
+           text: 'Classes can be reused without worrying about external interference.',
            dropped: '',
          },
        ];
@@ -110,10 +110,10 @@ export class Exercise6EncapsulationComponent {
          // Reset the definitions and concepts
          this.definitions.forEach((def) => (def.dropped = ''));
          this.concepts = [
-           { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-           { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-           { id: 'inheritance', name: 'Inheritance', dropped: false },
-           { id: 'abstraction', name: 'Abstraction', dropped: false },
+          { id: 'security', name: 'Security', dropped: false },
+          { id: 'flexibility', name: 'Flexibility', dropped: false },
+          { id: 'maintainability', name: 'Maintainability', dropped: false },
+          { id: 'reusability', name: 'Reusability', dropped: false },
          ];
      
          // Shuffle the concepts again after reset

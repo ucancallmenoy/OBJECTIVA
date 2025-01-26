@@ -10,31 +10,31 @@ export class Exercise3EncapsulationComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
    
      concepts = [
-       { id: 'single inheritance', name: 'Single Inheritance', dropped: false },
-       { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-       { id: 'inheritance', name: 'Inheritance', dropped: false },
-       { id: 'abstraction', name: 'Abstraction', dropped: false },
+       { id: 'default', name: 'Default Access Modifier', dropped: false },
+       { id: 'private', name: 'Private Access Modifier', dropped: false },
+       { id: 'protected', name: 'Protected Access Modifier', dropped: false },
+       { id: 'public', name: 'Public Access Modifier', dropped: false },
      ];
    
      definitions = [
        {
-         id: 'single inheritance',
-         text: 'Type of inheritance where the class inherits from only one parent class.',
+         id: 'default',
+         text: 'A modifier that allows access to members within the same package but restricts access from other packages.',
          dropped: '',
        },
        {
-         id: 'inheritance',
-         text: 'Allows a class to acquire the properties and behaviors of another class.',
+         id: 'private',
+         text: 'A modifier that restricts access to members within the class only.',
          dropped: '',
        },
        {
-         id: 'polymorphism',
-         text: 'Allows methods to have the same name but behave differently based on the object.',
+         id: 'protected',
+         text: 'A modifier that allows access within the same package or by subclasses in different packages.',
          dropped: '',
        },
        {
-         id: 'abstraction',
-         text: 'Defines the essential features of an object without implementing the details.',
+         id: 'public',
+         text: 'A modifier that allows access from any class in any package.',
          dropped: '',
        },
      ];
@@ -110,10 +110,10 @@ export class Exercise3EncapsulationComponent {
        // Reset the definitions and concepts
        this.definitions.forEach((def) => (def.dropped = ''));
        this.concepts = [
-         { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-         { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-         { id: 'inheritance', name: 'Inheritance', dropped: false },
-         { id: 'abstraction', name: 'Abstraction', dropped: false },
+        { id: 'default', name: 'Default Access Modifier', dropped: false },
+        { id: 'private', name: 'Private Access Modifier', dropped: false },
+        { id: 'protected', name: 'Protected Access Modifier', dropped: false },
+        { id: 'public', name: 'Public Access Modifier', dropped: false },
        ];
    
        // Shuffle the concepts again after reset
