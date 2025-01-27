@@ -109,10 +109,10 @@ export class Exercise3InheritanceComponent {
      // Reset the definitions and concepts
      this.definitions.forEach((def) => (def.dropped = ''));
      this.concepts = [
-       { id: 'encapsulation', name: 'Encapsulation', dropped: false },
-       { id: 'polymorphism', name: 'Polymorphism', dropped: false },
-       { id: 'inheritance', name: 'Inheritance', dropped: false },
-       { id: 'abstraction', name: 'Abstraction', dropped: false },
+      { id: 'single', name: 'Single Inheritance', dropped: false },
+      { id: 'hierarchical', name: 'Hierarchical Inheritance', dropped: false },
+      { id: 'multilevel', name: 'Multilevel Inheritance', dropped: false },
+      { id: 'multiple', name: 'Multiple Inheritance', dropped: false },
      ];
  
      // Shuffle the concepts again after reset
