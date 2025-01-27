@@ -25,8 +25,8 @@ export class Exercise7PolymorphismComponent {
             // Define levels for the game
             levels: GameLevel[] = [
               {
-                images: ['assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png'],
-                solution: 'PATRICK',
+                images: ['assets/ov1.png', 'assets/ov2.png', 'assets/ov3.png', 'assets/ov4.png'],
+                solution: 'OVERRIDING',
                 hints: 3
               },
             ];

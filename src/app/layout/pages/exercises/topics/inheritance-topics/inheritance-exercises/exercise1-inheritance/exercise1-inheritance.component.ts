@@ -26,8 +26,8 @@ export class Exercise1InheritanceComponent {
         // Define levels for the game
         levels: GameLevel[] = [
           {
-            images: ['assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png'],
-            solution: 'PATRICK',
+            images: ['assets/e1.png', 'assets/e2.png', 'assets/e3.png', 'assets/e4.png'],
+            solution: 'END',
             hints: 3
           },
         ];

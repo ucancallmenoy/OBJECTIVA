@@ -24,8 +24,8 @@ export class Exercise1EncapsulationComponent {
       // Define levels for the game
       levels: GameLevel[] = [
         {
-          images: ['assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png'],
-          solution: 'PATRICK',
+          images: ['assets/ac1.png', 'assets/ac2.png', 'assets/ac3.png', 'assets/ac4.png'],
+          solution: 'ACCESS',
           hints: 3
         },
       ];

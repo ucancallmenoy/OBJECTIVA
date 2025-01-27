@@ -24,8 +24,8 @@ export class Exercise7AbstractionComponent {
         // Define levels for the game
         levels: GameLevel[] = [
           {
-            images: ['assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png', 'assets/abstrac.png'],
-            solution: 'PATRICK',
+            images: ['assets/in1.png', 'assets/in2.png', 'assets/in3.png', 'assets/in4.png'],
+            solution: 'INTERFACE',
             hints: 3
           },
         ];
