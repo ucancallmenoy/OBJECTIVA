@@ -11,12 +11,22 @@ export class Exercise8EncapsulationComponent {
   
     definitions = [
       { id: 1, label: '', userInput: '' },
-      { id: 2, label: '', userInput: '' }
+      { id: 2, label: '', userInput: '' },
+      { id: 3, label: '', userInput: '' },
+      { id: 4, label: '', userInput: '' },
+      { id: 5, label: '', userInput: '' },
+      { id: 6, label: '', userInput: '' },
+      { id: 7, label: '', userInput: '' },
     ];
   
     concepts = [
-      { id: 1, name: 'String' },
-      { id: 2, name: 'message' }
+      { id: 1, name: 'private' },
+      { id: 2, name: 'protected' },
+      { id: 3, name: 'public' },
+      { id: 4, name: 'privateData' },
+      { id: 5, name: 'getPrivateData' },
+      { id: 6, name: 'Child' },
+      { id: 7, name: 'Child' },
     ];
   
     validateAnswers() {

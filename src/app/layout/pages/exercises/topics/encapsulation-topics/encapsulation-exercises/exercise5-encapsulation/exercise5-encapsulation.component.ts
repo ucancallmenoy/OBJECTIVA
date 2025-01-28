@@ -11,12 +11,24 @@ export class Exercise5EncapsulationComponent {
   
     definitions = [
       { id: 1, label: '', userInput: '' },
-      { id: 2, label: '', userInput: '' }
+      { id: 2, label: '', userInput: '' },
+      { id: 3, label: '', userInput: '' },
+      { id: 4, label: '', userInput: '' },
+      { id: 5, label: '', userInput: '' },
+      { id: 6, label: '', userInput: '' },
+      { id: 7, label: '', userInput: '' },
+      { id: 8, label: '', userInput: '' },
     ];
   
     concepts = [
-      { id: 1, name: 'String' },
-      { id: 2, name: 'message' }
+      { id: 1, name: 'private' },
+      { id: 2, name: 'balance' },
+      { id: 3, name: 'public' },
+      { id: 4, name: 'BankAccount' },
+      { id: 5, name: 'BankAccount' },
+      { id: 6, name: 'setBalance' },
+      { id: 7, name: 'getBalance' },
+      { id: 8, name: 'setBalance' },
     ];
   
     validateAnswers() {

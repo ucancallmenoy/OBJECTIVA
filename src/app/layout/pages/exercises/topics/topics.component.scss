@@ -55,8 +55,9 @@ h1 {
 
 .description {
     font-size: 1.2rem;
-    color: #666;
+    color: #383838;
     margin-bottom: 30px;
+    width: 80%;
 }
 
 .exercise-grid {
@@ -82,11 +83,17 @@ h1 {
     background-color: #ffffff;
         transform: translateY(-10px);
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    
+        .exercise-icon {
+          font-size: 3.5rem;
+          color: #181818;
+            margin-bottom: 15px;
+        }
 }
 
 .exercise-icon {
-    font-size: 3.5rem;
-    color: #4CAF50;
+  font-size: 3.5rem;
+  color: #4e4e4e;
     margin-bottom: 15px;
 }
 

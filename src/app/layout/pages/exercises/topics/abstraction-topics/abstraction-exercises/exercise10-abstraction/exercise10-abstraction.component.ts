@@ -12,12 +12,30 @@ export class Exercise10AbstractionComponent {
     
       definitions = [
         { id: 1, label: '', userInput: '' },
-        { id: 2, label: '', userInput: '' }
+        { id: 2, label: '', userInput: '' },
+        { id: 3, label: '', userInput: '' },
+        { id: 4, label: '', userInput: '' },
+        { id: 5, label: '', userInput: '' },
+        { id: 6, label: '', userInput: '' },
+        { id: 7, label: '', userInput: '' },
+        { id: 8, label: '', userInput: '' },
+        { id: 9, label: '', userInput: '' },
+        { id: 10, label: '', userInput: '' },
+        { id: 11, label: '', userInput: '' },
       ];
     
       concepts = [
-        { id: 1, name: 'String' },
-        { id: 2, name: 'message' }
+        { id: 1, name: 'Vehicle' },
+        { id: 2, name: 'FuelVehicle' },
+        { id: 3, name: 'Vehicle' },
+        { id: 4, name: 'Car' },
+        { id: 5, name: 'FuelVehicle' },
+        { id: 6, name: 'FuelVehicle' },
+        { id: 7, name: 'Vehicle' },
+        { id: 8, name: 'Car' },
+        { id: 9, name: 'Vehicle' },
+        { id: 10, name: 'Car' },
+        { id: 11, name: 'Car' },
       ];
     
       validateAnswers() {

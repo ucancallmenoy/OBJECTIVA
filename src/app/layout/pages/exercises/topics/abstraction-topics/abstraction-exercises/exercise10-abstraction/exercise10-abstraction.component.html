@@ -1,24 +1,72 @@
 <div class="fill-in-the-blanks">
     <h2>Fill in the Blanks</h2>
-    <p>Type the correct answers to complete the code:</p>
+    <p><strong>Scenario</strong>: You are tasked with building a system that manages various types of vehicles. You need to use abstract classes and interfaces to handle different behaviors such as starting, stopping, displaying fuel type, and, for some vehicles, providing additional functionality like GPS navigation.</p>
+    <li>Create an interface called Vehicle with methods for start() and stop().</li>
+    <li>Create another interface called GPS with a method for navigate().</li>
+    <li>Create an abstract class called FuelVehicle that implements Vehicle. This abstract class should include an abstract method fuelType() and concrete methods for start() and stop().</li>
+    <li>Implement the Car class, which extends FuelVehicle and implements GPS. The Car class should provide implementations for fuelType() and navigate().</li>
+    <li>Implement the Bike class, which only extends FuelVehicle and provides an implementation for fuelType(). The bike does not have GPS functionality.</li>
     <pre>
-      public class Example {{'{'}}  
-          public static void main(String[] args) {{'{'}}  
-              <input 
-                type="text" 
-                [(ngModel)]="definitions[0].userInput" 
-                placeholder="{{ definitions[0].label }}"
-                class="inline-input"
-              /> message = "Hello, World!";
-              System.out.println(<input 
-                                  type="text" 
-                                  [(ngModel)]="definitions[1].userInput" 
-                                  placeholder="{{ definitions[1].label }}"
-                                  class="inline-input"
-                                />);
-          {{'}'}}  
-      {{'}'}}  
+interface <input type="text" [(ngModel)]="definitions[0].userInput" placeholder="{{ definitions[0].label }}" class="inline-input"/> {{'{'}}
+  void start();
+  void stop();
+{{'}'}}
+
+interface GPS {{'{'}}
+  void navigate();
+{{'}'}}
+
+abstract clas <input type="text" [(ngModel)]="definitions[1].userInput" placeholder="{{ definitions[1].label }}" class="inline-input"/> implements <input type="text" [(ngModel)]="definitions[2].userInput" placeholder="{{ definitions[2].label }}" class="inline-input"/> {{'{'}}
+  abstract void fuelType();
+
+  public void start() {{'{'}}
+    System.out.println("Vehicle started.");
+  {{'}'}}
+
+  public void stop() {{'{'}}
+    System.out.println("Vehicle stopped.");
+  {{'}'}}
+{{'}'}}
+
+<span class="comment">// Car class implementing both Vehicle and GPS</span>
+class <input type="text" [(ngModel)]="definitions[3].userInput" placeholder="{{ definitions[3].label }}" class="inline-input"/> extends <input type="text" [(ngModel)]="definitions[4].userInput" placeholder="{{ definitions[4].label }}" class="inline-input"/> implements GPS {{'{'}}
+  public void fuelType() {{'{'}}
+    System.out.println("Fuel type: Gasoline");
+  {{'}'}}
+
+  public void navigate() {{'{'}}
+    System.out.println("GPS navigating...");
+  {{'}'}}
+{{'}'}}
+
+<span class="comment">// Bike class</span>
+class Bike extends <input type="text" [(ngModel)]="definitions[5].userInput" placeholder="{{ definitions[5].label }}" class="inline-input"/> {{'{'}}
+  public void fuelType() {{'{'}}
+    System.out.println("Fuel type: Diesel");
+  {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+  public static void main(String[] args) {{'{'}}
+  <input type="text" [(ngModel)]="definitions[6].userInput" placeholder="{{ definitions[6].label }}" class="inline-input"/> car = new <input type="text" [(ngModel)]="definitions[7].userInput" placeholder="{{ definitions[7].label }}" class="inline-input"/>();
+  <input type="text" [(ngModel)]="definitions[8].userInput" placeholder="{{ definitions[8].label }}" class="inline-input"/> bike = new Bike();
+
+  System.out.println("Car details:");
+  car.start();
+  ((<input type="text" [(ngModel)]="definitions[8].userInput" placeholder="{{ definitions[9].label }}" class="inline-input"/>)car).fuelType();
+  ((<input type="text" [(ngModel)]="definitions[8].userInput" placeholder="{{ definitions[10].label }}" class="inline-input"/>)car).navigate();
+  car.stop();
+
+  System.out.println("\nBike details:");
+  bike.start();
+  ((Bike)bike).fuelType();
+  bike.stop();
+  {{'}'}}
+{{'}'}}
+
     </pre>
   
     <button (click)="validateAnswers()">Submit</button>
   </div>
+
+  

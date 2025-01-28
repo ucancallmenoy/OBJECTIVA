@@ -1,23 +1,41 @@
 <div class="fill-in-the-blanks">
     <h2>Fill in the Blanks</h2>
-    <p>Type the correct answers to complete the code:</p>
+    <p><strong>Scenario</strong>: You are building a system for Car and Motorcycle, and you need to create an abstract class for common vehicle functionality like starting the engine and stopping it. Complete the code by filling in the blanks.</p>
+    <p>Fill in the blanks to complete the abstract class definition and the concrete classes:</p>
     <pre>
-      public class Example {{'{'}}  
-          public static void main(String[] args) {{'{'}}  
-              <input 
-                type="text" 
-                [(ngModel)]="definitions[0].userInput" 
-                placeholder="{{ definitions[0].label }}"
-                class="inline-input"
-              /> message = "Hello, World!";
-              System.out.println(<input 
-                                  type="text" 
-                                  [(ngModel)]="definitions[1].userInput" 
-                                  placeholder="{{ definitions[1].label }}"
-                                  class="inline-input"
-                                />);
-          {{'}'}}  
-      {{'}'}}  
+<input type="text" [(ngModel)]="definitions[0].userInput" placeholder="{{ definitions[0].label }}" class="inline-input"/> Vehicle {{'{'}}
+  abstract void startEngine(); <span class="comment">// Abstract Method</span>
+
+  void stopEngine() {{'{'}}
+    System.out.println("Engine stopped.");
+  {{'}'}}
+{{'}'}}
+
+class <input type="text" [(ngModel)]="definitions[1].userInput" placeholder="{{ definitions[1].label }}" class="inline-input"/> extends Vehicle {{'{'}}
+  {{'@'}}<input type="text" [(ngModel)]="definitions[2].userInput" placeholder="{{ definitions[2].label }}" class="inline-input"/>
+  void startEngine() {{'{'}}
+    System.out.println("Car engine started.");
+  {{'}'}}
+{{'}'}}
+
+class <input type="text" [(ngModel)]="definitions[3].userInput" placeholder="{{ definitions[3].label }}" class="inline-input"/> extends Vehicle {{'{'}}
+  {{'@'}}<input type="text" [(ngModel)]="definitions[4].userInput" placeholder="{{ definitions[4].label }}" class="inline-input"/>
+  void startEngine() {{'{'}}
+    System.out.println("Motorcycle engine started.");
+  {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+  public static void main(String[] args) {{'{'}}
+  Vehicle car = new Car();
+  car.startEngine();
+  car.stopEngine();
+
+  Vehicle motorcycle = new Motorcycle();
+  motorcycle.startEngine();
+  motorcycle.stopEngine();
+  {{'}'}}
+{{'}'}}
     </pre>
   
     <button (click)="validateAnswers()">Submit</button>

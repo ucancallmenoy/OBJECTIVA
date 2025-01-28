@@ -11,12 +11,14 @@ export class Exercise2AbstractionComponent {
   
     definitions = [
       { id: 1, label: '', userInput: '' },
-      { id: 2, label: '', userInput: '' }
+      { id: 2, label: '', userInput: '' },
+      { id: 3, label: '', userInput: '' },
     ];
   
     concepts = [
-      { id: 1, name: 'String' },
-      { id: 2, name: 'message' }
+      { id: 1, name: 'implements' },
+      { id: 2, name: 'takePhoto' },
+      { id: 3, name: 'navigate' },
     ];
   
     validateAnswers() {

@@ -11,12 +11,28 @@ export class Exercise8InheritanceComponent {
     
       definitions = [
         { id: 1, label: '', userInput: '' },
-        { id: 2, label: '', userInput: '' }
+        { id: 2, label: '', userInput: '' },
+        { id: 3, label: '', userInput: '' },
+        { id: 4, label: '', userInput: '' },
+        { id: 5, label: '', userInput: '' },
+        { id: 6, label: '', userInput: '' },
+        { id: 7, label: '', userInput: '' },
+        { id: 8, label: '', userInput: '' },
+        { id: 9, label: '', userInput: '' },
+        { id: 10, label: '', userInput: '' },
       ];
     
       concepts = [
-        { id: 1, name: 'String' },
-        { id: 2, name: 'message' }
+        { id: 1, name: 'extends' },
+        { id: 2, name: 'extends' },
+        { id: 3, name: 'Dog' },
+        { id: 4, name: 'Dog' },
+        { id: 5, name: 'eat' },
+        { id: 6, name: 'bark' },
+        { id: 7, name: 'Cat' },
+        { id: 8, name: 'Cat' },
+        { id: 9, name: 'eat' },
+        { id: 10, name: 'meow' },
       ];
     
       validateAnswers() {

@@ -11,12 +11,27 @@ export class Exercise10EncapsulationComponent {
   
     definitions = [
       { id: 1, label: '', userInput: '' },
-      { id: 2, label: '', userInput: '' }
+      { id: 2, label: '', userInput: '' },
+      { id: 3, label: '', userInput: '' },
+      { id: 4, label: '', userInput: '' },
+      { id: 5, label: '', userInput: '' },
+      { id: 6, label: '', userInput: '' },
+      { id: 7, label: '', userInput: '' },
+      { id: 8, label: '', userInput: '' },
+      { id: 9, label: '', userInput: '' },
+      
     ];
   
     concepts = [
-      { id: 1, name: 'String' },
-      { id: 2, name: 'message' }
+      { id: 1, name: 'private' },
+      { id: 2, name: 'private' },
+      { id: 3, name: 'final' },
+      { id: 4, name: 'int' },
+      { id: 5, name: 'double' },
+      { id: 6, name: 'Employee' },
+      { id: 7, name: 'emp' },
+      { id: 8, name: 'emp' },
+      { id: 9, name: 'setSalary' },
     ];
   
     validateAnswers() {
