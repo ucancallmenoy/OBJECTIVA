@@ -19,23 +19,18 @@ export class Exercise10AbstractionComponent {
         { id: 6, label: '', userInput: '' },
         { id: 7, label: '', userInput: '' },
         { id: 8, label: '', userInput: '' },
-        { id: 9, label: '', userInput: '' },
-        { id: 10, label: '', userInput: '' },
-        { id: 11, label: '', userInput: '' },
       ];
     
       concepts = [
-        { id: 1, name: 'Vehicle' },
-        { id: 2, name: 'FuelVehicle' },
+        { id: 1, name: 'abstract' },
+        { id: 2, name: 'abstract' },
         { id: 3, name: 'Vehicle' },
-        { id: 4, name: 'Car' },
-        { id: 5, name: 'FuelVehicle' },
-        { id: 6, name: 'FuelVehicle' },
-        { id: 7, name: 'Vehicle' },
-        { id: 8, name: 'Car' },
-        { id: 9, name: 'Vehicle' },
-        { id: 10, name: 'Car' },
-        { id: 11, name: 'Car' },
+        { id: 4, name: 'Vehicle' },
+        { id: 5, name: 'car' },
+        { id: 6, name: 'car' },
+        { id: 7, name: 'motorcycle' },
+        { id: 8, name: 'motorcycle' },
+
       ];
     
       validateAnswers() {

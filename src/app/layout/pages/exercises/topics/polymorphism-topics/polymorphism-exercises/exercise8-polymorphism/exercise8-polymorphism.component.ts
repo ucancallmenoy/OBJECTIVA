@@ -12,12 +12,22 @@ export class Exercise8PolymorphismComponent {
       
         definitions = [
           { id: 1, label: '', userInput: '' },
-          { id: 2, label: '', userInput: '' }
+          { id: 2, label: '', userInput: '' },
+          { id: 3, label: '', userInput: '' },
+          { id: 4, label: '', userInput: '' },
+          { id: 5, label: '', userInput: '' },
+          { id: 6, label: '', userInput: '' },
+          { id: 7, label: '', userInput: '' },
         ];
       
         concepts = [
-          { id: 1, name: 'String' },
-          { id: 2, name: 'message' }
+          { id: 1, name: 'void' },
+          { id: 2, name: 'brewCoffee' },
+          { id: 3, name: 'brewCoffee' },
+          { id: 4, name: 'CoffeeMachine' },
+          { id: 5, name: 'brewCoffee' },
+          { id: 6, name: 'brewCoffee' },
+          { id: 7, name: 'brewCoffee' },
         ];
       
         validateAnswers() {

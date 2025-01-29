@@ -11,12 +11,22 @@ export class Exercise2PolymorphismComponent {
     
       definitions = [
         { id: 1, label: '', userInput: '' },
-        { id: 2, label: '', userInput: '' }
+        { id: 2, label: '', userInput: '' },
+        { id: 3, label: '', userInput: '' },
+        { id: 4, label: '', userInput: '' },
+        { id: 5, label: '', userInput: '' },
+        { id: 6, label: '', userInput: '' },
+        { id: 7, label: '', userInput: '' },
       ];
     
       concepts = [
-        { id: 1, name: 'String' },
-        { id: 2, name: 'message' }
+        { id: 1, name: 'a' },
+        { id: 2, name: 'b' },
+        { id: 3, name: 'c' },
+        { id: 4, name: 'MathOperations' },
+        { id: 5, name: 'MathOperations' },
+        { id: 6, name: 'multiply' },
+        { id: 7, name: 'multiply' },
       ];
     
       validateAnswers() {

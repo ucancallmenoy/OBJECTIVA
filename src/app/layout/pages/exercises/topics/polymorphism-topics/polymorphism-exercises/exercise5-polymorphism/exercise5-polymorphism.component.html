@@ -1,23 +1,29 @@
 <div class="fill-in-the-blanks">
     <h2>Fill in the Blanks</h2>
-    <p>Type the correct answers to complete the code:</p>
+    <p><strong>Scenario</strong>: Imagine you are developing a vehicle simulation game where different vehicles have different speeds. The base class represents a generic vehicle, but specific vehicles like cars have their own speed characteristics.</p>
+    <p>Fill in the blanks to demonstrate method overriding:</p>
     <pre>
-      public class Example {{'{'}}  
-          public static void main(String[] args) {{'{'}}  
-              <input 
-                type="text" 
-                [(ngModel)]="definitions[0].userInput" 
-                placeholder="{{ definitions[0].label }}"
-                class="inline-input"
-              /> message = "Hello, World!";
-              System.out.println(<input 
-                                  type="text" 
-                                  [(ngModel)]="definitions[1].userInput" 
-                                  placeholder="{{ definitions[1].label }}"
-                                  class="inline-input"
-                                />);
-          {{'}'}}  
-      {{'}'}}  
+class Vehicle {{'{'}}
+  void speed() {{'{'}}
+    System.out.println("Vehicle speed is 100 km/h");
+  {{'}'}}
+{{'}'}}
+
+class Car extends Vehicle {{'{'}}
+  {{'@Override'}}
+  void speed() {{'{'}}
+    System.out.println("Car speed is 150 km/h");
+  {{'}'}}
+{{'}'}}
+
+public class Main {{'{'}}
+  public static void main(String[] args) {{'{'}}
+    Vehicle vehicle = new Vehicle();
+    vehicle.speed();
+    Car car = new Car();
+    car.speed();
+  {{'}'}}
+{{'}'}}
     </pre>
   
     <button (click)="validateAnswers()">Submit</button>
