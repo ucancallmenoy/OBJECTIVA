@@ -19,7 +19,7 @@ showNextSection(sectionId: string) {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   }, 100); // Delay to ensure DOM updates
 
-  if (this.visibleSections === 7) { // Change the number of depending on the last number of the button
+  if (this.visibleSections === 12) { // Change the number of depending on the last number of the button
     this.progressService.updateProgress('polymorphism-lesson-6', true).subscribe({
       next: (response) => console.log('Progress updated successfully'),
       error: (error) => console.error('Error updating progress:', error)

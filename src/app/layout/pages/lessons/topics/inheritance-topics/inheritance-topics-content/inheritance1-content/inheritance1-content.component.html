@@ -11,7 +11,7 @@
             <p>Inheritance is the process by which one object acquires the properties of another object. It also refers to a feature of object-oriented programming that lets you create classes that are derived from other classes.</p>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s2')" *ngIf="visibleSections === 2">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s2')" *ngIf="visibleSections === 2" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -23,7 +23,7 @@
             <p>The class that does the inheriting is called the <strong>child class</strong>, the <strong>derived class</strong>, or the <strong>subclass</strong>.</p>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s3')" *ngIf="visibleSections === 3">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s3')" *ngIf="visibleSections === 3" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -35,7 +35,7 @@
             <p>A derived class can add features to the base class it inherits defining its own methods and fields. This is one way that a derived class distinguishes itself from its base class.</p>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s4')" *ngIf="visibleSections === 4">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s4')" *ngIf="visibleSections === 4" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s5')" *ngIf="visibleSections === 5">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -88,7 +88,7 @@ class B extends A {{'{}'}}
             </code></pre>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s6')" *ngIf="visibleSections === 6">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s6')" *ngIf="visibleSections === 6" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -107,7 +107,7 @@ class C extends B {{'{'}}
             </code></pre>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s7')" *ngIf="visibleSections === 7">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s7')" *ngIf="visibleSections === 7" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -128,7 +128,7 @@ class D extends A {{'{'}}
             </code></pre>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s8')" *ngIf="visibleSections === 8">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s8')" *ngIf="visibleSections === 8" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -166,7 +166,7 @@ class D extends A {{'{'}}
             </div>
         </div>
         <div class="button-container">
-            <button (click)="showNextSection('s9')" *ngIf="visibleSections === 9">CLICK ME</button>
+          <img src="assets/next.png" (click)="showNextSection('s9')" *ngIf="visibleSections === 9" class="next-image" alt="Next">
           </div>
     </section>
 
@@ -178,7 +178,7 @@ class D extends A {{'{'}}
             <p>A <strong>Motorcycle</strong> is a type of vehicle that further refines the <strong>Vehicle</strong> class. The Motorcycle class would inherit the Vehicle class, so it would have wheels; a driver; possibly passengers; and the ability to drive, stop, turn, and crash. In addition, it would have features that differentiate it from other types of vehicles, such as two wheels and handlebars used for steering control.</p>
         </div>
         <div class="button-container">
-            <button routerLink='/lessons/topics/inheritance' *ngIf="visibleSections === 10">CLICK ME</button>
+            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/inheritance' *ngIf="visibleSections === 10">
           </div>
     </section>
 

@@ -8,8 +8,15 @@
     .header {
     text-align: center;
     }
-  
-  
+    
+    .next-image{
+      cursor: pointer;
+      width: 150px;
+      transition: transform 0.3s;
+    }
+    .next-image:hover{
+      transform: scale(1.1);
+    }
     .interactive-image {
       margin-top: 100px;
       cursor: pointer;
