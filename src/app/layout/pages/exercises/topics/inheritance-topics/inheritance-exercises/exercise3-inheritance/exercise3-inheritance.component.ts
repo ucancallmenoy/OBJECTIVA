@@ -8,6 +8,17 @@ import Swal from 'sweetalert2';
 export class Exercise3InheritanceComponent {
 
   @Output() nextExercise = new EventEmitter<void>(); 
+
+  hintIndex: number;
+  hints: string[];
+  constructor(){
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+    "Hint 1: Single inheritance means a class has only one parent, while hierarchical inheritance allows one parent to have multiple child classes.",
+    "Hint 2: Multilevel inheritance forms a chain where a class inherits from another, which is then inherited by a third class.",
+    "Hint 3: Java does not support multiple inheritance to prevent conflicts when a class inherits from multiple parents with the same method names.",
+  ];
+  }
  
    concepts = [
      { id: 'single', name: 'Single Inheritance', dropped: false },
@@ -45,6 +56,25 @@ export class Exercise3InheritanceComponent {
      // Shuffle concepts when the component is initialized
      this.shuffleChoices();
    }
+
+   getHint(): void {
+    if (this.hintIndex < this.hints.length) {
+      Swal.fire({
+        title: "Hint",
+        text: this.hints[this.hintIndex],
+        icon: "info",
+        confirmButtonText: "OK",
+      });
+      this.hintIndex++;
+    } else {
+      Swal.fire({
+        title: "No More Hints",
+        text: "You've used all your hints!",
+        icon: "warning",
+        confirmButtonText: "Got it",
+      });
+    }
+  }
  
    shuffleChoices() {
      for (let i = this.concepts.length - 1; i > 0; i--) {

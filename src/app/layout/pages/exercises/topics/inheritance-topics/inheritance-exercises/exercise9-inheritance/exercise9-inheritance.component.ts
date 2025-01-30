@@ -7,7 +7,18 @@ import Swal from 'sweetalert2';
   styleUrl: './exercise9-inheritance.component.scss'
 })
 export class Exercise9InheritanceComponent {
-  @Output() nextExercise = new EventEmitter<void>(); 
+  @Output() nextExercise = new EventEmitter<void>();
+  
+    hintIndex: number;
+    hints: string[];
+    constructor(){
+      this.hintIndex = 0; // Track how many hints have been shown
+      this.hints = [
+      "Hint 1: The keyword final in Java is like a lock—it prevents modification in different ways depending on where it's used (classes, methods, or variables).",
+      "Hint 2: If a class is final, no one can extend it. If a method is final, no one can override it. If a variable is final, its value cannot change after it's set.",
+      "Hint 3: A final variable is like a constant (PI = 3.14). A final method is like a rule that cannot be changed. A final class is like a sealed box—no one can add to it!",
+    ];
+    }
    
      concepts = [
        { id: 'final classes', name: 'Final Classes', dropped: false },
@@ -46,7 +57,25 @@ export class Exercise9InheritanceComponent {
          [this.concepts[i], this.concepts[j]] = [this.concepts[j], this.concepts[i]];
        }
      }
-   
+
+     getHint(): void {
+         if (this.hintIndex < this.hints.length) {
+           Swal.fire({
+             title: "Hint",
+             text: this.hints[this.hintIndex],
+             icon: "info",
+             confirmButtonText: "OK",
+           });
+           this.hintIndex++;
+         } else {
+           Swal.fire({
+             title: "No More Hints",
+             text: "You've used all your hints!",
+             icon: "warning",
+             confirmButtonText: "Got it",
+           });
+         }
+       }
    
      onDragStart(item: any) {
        this.draggedItem = item;

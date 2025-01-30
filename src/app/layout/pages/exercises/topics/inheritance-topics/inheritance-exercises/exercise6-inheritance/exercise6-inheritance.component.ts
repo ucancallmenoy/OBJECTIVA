@@ -8,6 +8,17 @@ import Swal from 'sweetalert2';
 })
 export class Exercise6InheritanceComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
+
+    hintIndex: number;
+    hints: string[];
+    constructor(){
+      this.hintIndex = 0; // Track how many hints have been shown
+      this.hints = [
+      "Hint 1: Extensibility allows you to add new features easily, maintainability helps keep updates simple, and code reuse lets you avoid rewriting existing logic.",
+      "Hint 2: A well-designed system is extensible for growth, maintainable for easy fixes, and promotes code reuse to save time and effort.",
+      "Hint 3: By reusing existing code, keeping updates centralized, and allowing modifications without breaking functionality, software becomes more efficient and scalable.",
+    ];
+    }
    
      concepts = [
        { id: 'extensibility', name: 'Extensibility', dropped: false },
@@ -46,7 +57,25 @@ export class Exercise6InheritanceComponent {
          [this.concepts[i], this.concepts[j]] = [this.concepts[j], this.concepts[i]];
        }
      }
-   
+
+      getHint(): void {
+         if (this.hintIndex < this.hints.length) {
+           Swal.fire({
+             title: "Hint",
+             text: this.hints[this.hintIndex],
+             icon: "info",
+             confirmButtonText: "OK",
+           });
+           this.hintIndex++;
+         } else {
+           Swal.fire({
+             title: "No More Hints",
+             text: "You've used all your hints!",
+             icon: "warning",
+             confirmButtonText: "Got it",
+           });
+         }
+       }
    
      onDragStart(item: any) {
        this.draggedItem = item;
