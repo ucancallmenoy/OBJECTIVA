@@ -66,7 +66,9 @@ constructor(
                             .subscribe({
                                 next: (response) => {
                                     console.log('Score saved successfully', response);
-                                    this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
+                                    if (currentScore !== null && this.score > currentScore) {
+                                        this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
+                                      }   
                                 },
                                 error: (error) => {
                                     console.error('Error saving score:', error);

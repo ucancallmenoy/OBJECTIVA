@@ -30,11 +30,10 @@
   }
 
   .header {
-    position: sticky;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: sticky;
     top: 0;
     background-color: #ffffff;
     padding: 10px;
