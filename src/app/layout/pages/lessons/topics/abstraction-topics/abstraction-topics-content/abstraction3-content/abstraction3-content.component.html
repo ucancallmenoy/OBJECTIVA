@@ -119,7 +119,7 @@ class Smartphone implements Camera, GPS {{'{'}}
               </div>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/abstraction' *ngIf="visibleSections === 7">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 7">
           </div>
     </section>
 </div>

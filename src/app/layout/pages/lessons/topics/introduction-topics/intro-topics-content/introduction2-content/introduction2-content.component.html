@@ -54,7 +54,7 @@
         <p>Using this blueprint, you can create <strong>objects</strong>, which are real chairs:</p>
         <img src="assets/object.png" alt="">
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/introduction' *ngIf="visibleSections === 5">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 5">
         </div>
     </section>
 

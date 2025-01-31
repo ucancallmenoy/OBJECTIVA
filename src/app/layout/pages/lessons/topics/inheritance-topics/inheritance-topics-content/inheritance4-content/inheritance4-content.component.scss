@@ -120,6 +120,7 @@
       .comment {
         color: rgb(194, 194, 194);
       }
+      
 .alternating-colors{
   ol { padding-left: 50px; }
 li { 
@@ -149,4 +150,12 @@ ol.alternating-colors {
   li:nth-child(odd):before { border-color: #0BAD02; }
   li:nth-child(even):before { border-color: #2378D5; }
 }
+}
+pre{
+  border: 1px solid #adadad;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
 }

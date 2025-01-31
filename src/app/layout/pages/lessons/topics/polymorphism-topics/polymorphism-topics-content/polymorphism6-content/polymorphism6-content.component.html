@@ -260,7 +260,7 @@ public class Main {{'{'}}
             <p>When multiple classes implement the same interface but provide different implementations of its methods. This enables a single interface to define a set of behaviors that can be used interchangeably, supporting loose coupling and code reusability in applications such as dependency injection and event handling.</p>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/polymorphism' *ngIf="visibleSections === 12">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 12">
           </div>
     </section>
 </div>

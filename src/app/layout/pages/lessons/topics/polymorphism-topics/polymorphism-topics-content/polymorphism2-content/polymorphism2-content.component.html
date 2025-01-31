@@ -189,7 +189,7 @@ public class Main {{'{'}}
             </code></pre>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/polymorphism' *ngIf="visibleSections === 10">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 10">
           </div>
     </section>
 

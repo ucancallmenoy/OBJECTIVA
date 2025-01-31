@@ -423,6 +423,14 @@
     grid-area: text;
   }
   
+  pre{
+    border: 1px solid #adadad;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+  }
   
     @keyframes fadeIn {
       from {

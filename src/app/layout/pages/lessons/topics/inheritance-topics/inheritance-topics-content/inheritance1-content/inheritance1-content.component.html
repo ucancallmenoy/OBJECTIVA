@@ -178,7 +178,7 @@ class D extends A {{'{'}}
             <p>A <strong>Motorcycle</strong> is a type of vehicle that further refines the <strong>Vehicle</strong> class. The Motorcycle class would inherit the Vehicle class, so it would have wheels; a driver; possibly passengers; and the ability to drive, stop, turn, and crash. In addition, it would have features that differentiate it from other types of vehicles, such as two wheels and handlebars used for steering control.</p>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/inheritance' *ngIf="visibleSections === 10">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 10">
           </div>
     </section>
 

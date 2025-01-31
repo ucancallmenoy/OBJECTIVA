@@ -233,7 +233,7 @@ public class GameCharacter {{'{'}}
             </code></pre>
         </div>
         <div class="button-container">
-            <img src="assets/next.png" class="next-image" routerLink='/lessons/topics/encapsulation' *ngIf="visibleSections === 11">
+            <img src="assets/next.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 11">
         </div>
     </section>
 </div>

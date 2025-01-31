@@ -248,6 +248,6 @@
       </div>
     </section>
     <div class="button-container">
-      <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/introduction' *ngIf="visibleSections === 8">
+      <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 8">
     </div>
   </div>

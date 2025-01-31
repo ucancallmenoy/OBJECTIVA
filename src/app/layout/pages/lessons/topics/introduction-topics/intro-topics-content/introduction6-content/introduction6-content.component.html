@@ -252,7 +252,7 @@ public class SchoolSystem {{'{'}}
             <p>Ms. Smith is teaching Math.</p>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/introduction' *ngIf="visibleSections === 15">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 15">
         </div>
     </section>
 

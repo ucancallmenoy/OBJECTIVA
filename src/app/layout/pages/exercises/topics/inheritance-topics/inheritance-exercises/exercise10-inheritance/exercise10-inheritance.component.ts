@@ -9,6 +9,36 @@ import Swal from 'sweetalert2';
 export class Exercise10InheritanceComponent {
   @Output() nextExercise = new EventEmitter<void>();
     
+  hintIndex: number;
+    hints: string[];
+    constructor(){
+      this.hintIndex = 0; // Track how many hints have been shown
+      this.hints = [
+        "Hint 1: To establish an inheritance relationship, use the keyword that signifies a class is derived from another class.",
+        "Hint 2: Use the keyword that allows a subclass to call a method from its superclass.",
+        "Hint 3: When creating an instance of the Dog class, ensure you use the correct class name.",
+      ];
+    }
+  
+    getHint(): void {
+        if (this.hintIndex < this.hints.length) {
+          Swal.fire({
+            title: "Hint",
+            text: this.hints[this.hintIndex],
+            icon: "info",
+            confirmButtonText: "OK",
+          });
+          this.hintIndex++;
+        } else {
+          Swal.fire({
+            title: "No More Hints",
+            text: "You've used all your hints!",
+            icon: "warning",
+            confirmButtonText: "Got it",
+          });
+        }
+      }
+
       definitions = [
         { id: 1, label: '', userInput: '' },
         { id: 2, label: '', userInput: '' },

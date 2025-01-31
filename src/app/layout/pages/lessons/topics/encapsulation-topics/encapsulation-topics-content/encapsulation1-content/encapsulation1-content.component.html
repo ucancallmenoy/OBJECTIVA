@@ -117,7 +117,7 @@
             <p><strong>Mobile Phone</strong>: Internal components like the processor are hidden. You interact through a touchscreen or buttons.</p>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" routerLink='/lessons/topics/encapsulation' *ngIf="visibleSections === 9">
+            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 9">
         </div>
     </section>
 

@@ -128,7 +128,7 @@ public class HelloWorld {{'{'}}
               </code></pre>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" routerLink='/lessons/topics/introduction' *ngIf="visibleSections === 7">
+            <img src="assets/finish.png" (click)="showCompletionPopup()" *ngIf="visibleSections === 7">
         </div>
     </section>
 
