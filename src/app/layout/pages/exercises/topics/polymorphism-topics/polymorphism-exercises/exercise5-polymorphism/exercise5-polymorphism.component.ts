@@ -12,12 +12,20 @@ export class Exercise5PolymorphismComponent {
       
         definitions = [
           { id: 1, label: '', userInput: '' },
-          { id: 2, label: '', userInput: '' }
+          { id: 2, label: '', userInput: '' },
+          { id: 3, label: '', userInput: '' },
+          { id: 4, label: '', userInput: '' },
+          { id: 5, label: '', userInput: '' },
+          { id: 6, label: '', userInput: '' },
         ];
       
         concepts = [
-          { id: 1, name: 'String' },
-          { id: 2, name: 'message' }
+          { id: 1, name: 'class' },
+          { id: 2, name: 'void' },
+          { id: 3, name: 'extends' },
+          { id: 4, name: '@Override' },
+          { id: 5, name: 'vehicle' },
+          { id: 6, name: 'car' },
         ];
       
         validateAnswers() {
