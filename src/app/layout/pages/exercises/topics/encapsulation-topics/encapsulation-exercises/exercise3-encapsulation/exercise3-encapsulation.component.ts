@@ -7,7 +7,18 @@ import Swal from 'sweetalert2';
   styleUrl: './exercise3-encapsulation.component.scss'
 })
 export class Exercise3EncapsulationComponent {
-  @Output() nextExercise = new EventEmitter<void>(); 
+  @Output() nextExercise = new EventEmitter<void>();
+  
+  hintIndex: number;
+  hints: string[];
+  constructor(){
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+    'Hint 1: Access modifiers like default allow access within the same package, private restricts access to within the class only, protected permits access within the same package or by subclasses in other packages, and public allows access from any class in any package.',
+    "Hint 2: In Java, default access limits visibility to the same package, private keeps members accessible only within the class, protected extends access to subclasses even in different packages, and public makes members accessible everywhere.",
+    "Hint 3: Default access works within the same package, private hides members inside the class, protected grants access to subclasses across packages, and public exposes members to all classes universally.",
+  ];
+  }
    
      concepts = [
        { id: 'default', name: 'Default Access Modifier', dropped: false },
@@ -53,6 +64,25 @@ export class Exercise3EncapsulationComponent {
          [this.concepts[i], this.concepts[j]] = [this.concepts[j], this.concepts[i]];
        }
      }
+
+     getHint(): void {
+      if (this.hintIndex < this.hints.length) {
+        Swal.fire({
+          title: "Hint",
+          text: this.hints[this.hintIndex],
+          icon: "info",
+          confirmButtonText: "OK",
+        });
+        this.hintIndex++;
+      } else {
+        Swal.fire({
+          title: "No More Hints",
+          text: "You've used all your hints!",
+          icon: "warning",
+          confirmButtonText: "Got it",
+        });
+      }
+    }
    
    
      onDragStart(item: any) {

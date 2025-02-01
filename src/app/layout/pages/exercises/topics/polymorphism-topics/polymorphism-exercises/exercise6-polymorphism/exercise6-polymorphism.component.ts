@@ -7,7 +7,18 @@ import Swal from 'sweetalert2';
   styleUrl: './exercise6-polymorphism.component.scss'
 })
 export class Exercise6PolymorphismComponent {
-  @Output() nextExercise = new EventEmitter<void>(); 
+  @Output() nextExercise = new EventEmitter<void>();
+  
+  hintIndex: number;
+  hints: string[];
+  constructor(){
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+    'Hint 1: Polymorphism enables code flexibility through static polymorphism (method/operator overloading) and dynamic polymorphism (method overriding), enhancing reusability and dynamic behavior.',
+    "Hint 2: By using polymorphism, programs achieve reusability, dynamic behavior at runtime, and less complex code through shared methods that adapt based on objects.",
+    "Hint 3: Static and dynamic polymorphism simplify coding by reducing complexity, promoting reusability, and allowing programs to decide behavior at runtime.",
+  ];
+  }
   
     concepts = [
       { id: 'compiletimepolymorphism', name: 'Compile-time Polymorphism', dropped: false },
@@ -58,7 +69,25 @@ export class Exercise6PolymorphismComponent {
            [this.concepts[i], this.concepts[j]] = [this.concepts[j], this.concepts[i]];
          }
        }
-     
+
+       getHint(): void {
+          if (this.hintIndex < this.hints.length) {
+            Swal.fire({
+              title: "Hint",
+              text: this.hints[this.hintIndex],
+              icon: "info",
+              confirmButtonText: "OK",
+            });
+            this.hintIndex++;
+          } else {
+            Swal.fire({
+              title: "No More Hints",
+              text: "You've used all your hints!",
+              icon: "warning",
+              confirmButtonText: "Got it",
+            });
+          }
+        }
      
        onDragStart(item: any) {
          this.draggedItem = item;

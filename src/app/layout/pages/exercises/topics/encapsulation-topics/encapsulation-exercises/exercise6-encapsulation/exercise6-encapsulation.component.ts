@@ -8,6 +8,17 @@ import Swal from 'sweetalert2';
 })
 export class Exercise6EncapsulationComponent {
   @Output() nextExercise = new EventEmitter<void>(); 
+
+  hintIndex: number;
+  hints: string[];
+  constructor(){
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+    "Hint 1: Encapsulation enhances security by restricting unauthorized access to an object's state, provides flexibility to change internal logic without affecting external code, improves maintainability by keeping data and behavior together, and promotes reusability by allowing classes to be reused without external interference.",
+    "Hint 2: By restricting access to internal data for security, allowing flexible changes without impacting other code, simplifying maintenance through centralized data and behavior, and supporting class reusability, encapsulation strengthens software design.",
+    "Hint 3: Encapsulation ensures security by controlling access to data, offers flexibility to modify code internally, boosts maintainability by organizing code effectively, and encourages reusability without external dependencies.",
+  ];
+  }
      
        concepts = [
          { id: 'security', name: 'Security', dropped: false },
@@ -53,7 +64,25 @@ export class Exercise6EncapsulationComponent {
            [this.concepts[i], this.concepts[j]] = [this.concepts[j], this.concepts[i]];
          }
        }
-     
+
+       getHint(): void {
+             if (this.hintIndex < this.hints.length) {
+               Swal.fire({
+                 title: "Hint",
+                 text: this.hints[this.hintIndex],
+                 icon: "info",
+                 confirmButtonText: "OK",
+               });
+               this.hintIndex++;
+             } else {
+               Swal.fire({
+                 title: "No More Hints",
+                 text: "You've used all your hints!",
+                 icon: "warning",
+                 confirmButtonText: "Got it",
+               });
+             }
+           }
      
        onDragStart(item: any) {
          this.draggedItem = item;

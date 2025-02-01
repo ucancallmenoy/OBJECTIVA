@@ -14,9 +14,9 @@ export class Exercise9InheritanceComponent {
     constructor(){
       this.hintIndex = 0; // Track how many hints have been shown
       this.hints = [
-      "Hint 1: The keyword final in Java is like a lock—it prevents modification in different ways depending on where it's used (classes, methods, or variables).",
-      "Hint 2: If a class is final, no one can extend it. If a method is final, no one can override it. If a variable is final, its value cannot change after it's set.",
-      "Hint 3: A final variable is like a constant (PI = 3.14). A final method is like a rule that cannot be changed. A final class is like a sealed box—no one can add to it!",
+      "Hint 1: Final classes cannot have subclasses, final methods cannot be overridden by subclasses, and final variables are constants that cannot be modified after initialization.",
+      "Hint 2: To ensure stability, Java uses final classes to prevent inheritance, final methods to preserve functionality, and final variables to keep values unchanged.",
+      "Hint 3: In Java, final classes remain unaltered without subclasses, final methods safeguard their behavior from being overridden, and final variables lock their values after being set.",
     ];
     }
    
