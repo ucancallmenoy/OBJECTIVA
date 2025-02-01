@@ -14,6 +14,36 @@ interface GameLevel {
 export class Exercise7PolymorphismComponent {
   @Output() nextExercise: EventEmitter<void> = new EventEmitter<void>();  // Emit to notify parent
             
+  hintIndex: number;
+      hints: string[];
+      constructor(){
+        this.hintIndex = 0; // Track how many hints have been shown
+        this.hints = [
+          "Hint 1: This concept allows a subclass to provide a specific implementation of a method that is already defined in its superclass.",
+          "Hint 2: It is a form of runtime polymorphism.",
+          "Hint 3: In Java, this technique is used to change the behavior of an inherited method.",
+        ];
+      }
+    
+      getHint(): void {
+          if (this.hintIndex < this.hints.length) {
+            Swal.fire({
+              title: "Hint",
+              text: this.hints[this.hintIndex],
+              icon: "info",
+              confirmButtonText: "OK",
+            });
+            this.hintIndex++;
+          } else {
+            Swal.fire({
+              title: "No More Hints",
+              text: "You've used all your hints!",
+              icon: "warning",
+              confirmButtonText: "Got it",
+            });
+          }
+        }
+
             currentLevelIndex = 0;
             selectedLetters: (string | null)[] = [];
             shuffledLetters: (string | null)[] = [];
@@ -98,17 +128,7 @@ export class Exercise7PolymorphismComponent {
                 this.initializeLevel();
               }
             }
-          
-           
-            getHint() {
-              const currentLevel = this.levels[this.currentLevelIndex];
-              if (currentLevel.hints > 0) {
-                currentLevel.hints--;
-                alert(`Hints remaining: ${currentLevel.hints}`);
-              } else {
-                alert('No hints left!');
-              }
-            }
+        
           
             shuffleArray(array: any[]): any[] {
               for (let i = array.length - 1; i > 0; i--) {

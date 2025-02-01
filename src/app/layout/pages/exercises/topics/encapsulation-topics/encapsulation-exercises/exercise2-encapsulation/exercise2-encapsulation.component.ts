@@ -9,6 +9,36 @@ import Swal from 'sweetalert2';
 export class Exercise2EncapsulationComponent {
   @Output() nextExercise = new EventEmitter<void>();
 
+  hintIndex: number;
+        hints: string[];
+        constructor(){
+          this.hintIndex = 0; // Track how many hints have been shown
+          this.hints = [
+            "Hint 1: To make a field private, use the keyword that restricts access to within the same class.",
+            "Hint 2: To provide a way to access a private field, use a method that returns the field's value.",
+            "Hint 3: To allow modification of a private field, use a method that sets the field's value.",
+          ];
+        }
+      
+        getHint(): void {
+            if (this.hintIndex < this.hints.length) {
+              Swal.fire({
+                title: "Hint",
+                text: this.hints[this.hintIndex],
+                icon: "info",
+                confirmButtonText: "OK",
+              });
+              this.hintIndex++;
+            } else {
+              Swal.fire({
+                title: "No More Hints",
+                text: "You've used all your hints!",
+                icon: "warning",
+                confirmButtonText: "Got it",
+              });
+            }
+          }
+
   definitions = [
     { id: 1, label: '', userInput: '' },
     { id: 2, label: '', userInput: '' },

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { quizData,QuizData } from './quiz-data';
 import { Router } from '@angular/router';
 import { QuizService } from '../../../../../../services/quiz.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quiz-abstraction',
@@ -11,8 +12,11 @@ import { QuizService } from '../../../../../../services/quiz.service';
 export class QuizAbstractionComponent implements OnInit{
   constructor(
     private quizService: QuizService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private title: Title
+  ) {
+    this.title.setTitle('Abstraction Quiz | Objectiva');
+  }
 
   quizData: QuizData[] = quizData;
   currentQuiz = 0;

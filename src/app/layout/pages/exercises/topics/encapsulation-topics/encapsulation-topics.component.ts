@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-encapsulation-topics',
@@ -12,7 +13,8 @@ export class EncapsulationTopicsComponent {
     totalExercises: number = 10;   // Total number of exercises
     progress: number = 0;         // Initial progress value
   
-    constructor(private router: Router) {
+    constructor(private router: Router, private title: Title) {
+      this.title.setTitle('Encapsulation | Exercises');
       this.updateProgress();  
     }
   

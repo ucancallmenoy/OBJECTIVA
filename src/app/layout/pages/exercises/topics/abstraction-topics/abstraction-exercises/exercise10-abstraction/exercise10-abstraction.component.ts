@@ -9,9 +9,37 @@ import { Router } from '@angular/router';
   styleUrl: './exercise10-abstraction.component.scss'
 })
 export class Exercise10AbstractionComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+      "Hint 1: To define a class that cannot be instantiated and may contain abstract methods, use the keyword that signifies this type of class.",
+      "Hint 2: To declare a method without implementation in an abstract class, use the keyword that indicates the method must be overridden in subclasses.",
+      "Hint 3: When a class extends an abstract class, it must provide implementations for all abstract methods.",
+    ];
+  }
   @Output() nextExercise = new EventEmitter<void>();
     
+  hintIndex: number;
+  hints: string[];
+    
+      getHint(): void {
+          if (this.hintIndex < this.hints.length) {
+            Swal.fire({
+              title: "Hint",
+              text: this.hints[this.hintIndex],
+              icon: "info",
+              confirmButtonText: "OK",
+            });
+            this.hintIndex++;
+          } else {
+            Swal.fire({
+              title: "No More Hints",
+              text: "You've used all your hints!",
+              icon: "warning",
+              confirmButtonText: "Got it",
+            });
+          }
+        }
       definitions = [
         { id: 1, label: '', userInput: '' },
         { id: 2, label: '', userInput: '' },

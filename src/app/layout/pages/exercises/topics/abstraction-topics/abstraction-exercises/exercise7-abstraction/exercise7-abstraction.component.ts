@@ -13,6 +13,36 @@ interface GameLevel {
 export class Exercise7AbstractionComponent {
 @Output() nextExercise: EventEmitter<void> = new EventEmitter<void>();  // Emit to notify parent
         
+hintIndex: number;
+  hints: string[];
+  constructor(){
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+      "Hint 1: This is a contract that defines a set of methods that a class must implement.",
+      "Hint 2: It allows different classes to implement the same set of methods in their own way.",
+      "Hint 3: In Java, this keyword is used to define a structure without implementation.",
+    ];
+  }
+
+  getHint(): void {
+      if (this.hintIndex < this.hints.length) {
+        Swal.fire({
+          title: "Hint",
+          text: this.hints[this.hintIndex],
+          icon: "info",
+          confirmButtonText: "OK",
+        });
+        this.hintIndex++;
+      } else {
+        Swal.fire({
+          title: "No More Hints",
+          text: "You've used all your hints!",
+          icon: "warning",
+          confirmButtonText: "Got it",
+        });
+      }
+    }
+
         currentLevelIndex = 0;
         selectedLetters: (string | null)[] = [];
         shuffledLetters: (string | null)[] = [];
@@ -95,17 +125,6 @@ export class Exercise7AbstractionComponent {
             this.nextExercise.emit();
           } else {
             this.initializeLevel();
-          }
-        }
-      
-       
-        getHint() {
-          const currentLevel = this.levels[this.currentLevelIndex];
-          if (currentLevel.hints > 0) {
-            currentLevel.hints--;
-            alert(`Hints remaining: ${currentLevel.hints}`);
-          } else {
-            alert('No hints left!');
           }
         }
       

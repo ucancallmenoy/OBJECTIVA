@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-topics',
   templateUrl: './topics.component.html',
   styleUrl: './topics.component.scss'
 })
 export class TopicsComponent {
-  constructor (private router: Router) {}
+  constructor (private router: Router, private title: Title) {
+    this.title.setTitle('Exercises | Objectiva');
+  }
 
   startExercise1(){
     this.router.navigate(['/exercises-topics/exercise1-abstraction']);

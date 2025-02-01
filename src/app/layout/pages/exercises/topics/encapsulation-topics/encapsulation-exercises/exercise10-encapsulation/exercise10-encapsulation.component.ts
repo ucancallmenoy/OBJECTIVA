@@ -8,9 +8,39 @@ import { Router } from '@angular/router';
   styleUrl: './exercise10-encapsulation.component.scss'
 })
 export class Exercise10EncapsulationComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.hintIndex = 0; // Track how many hints have been shown
+    this.hints = [
+      "Hint 1: To make a field private, use the keyword that restricts access to within the same class.",
+      "Hint 2: To define a constant value that should not change, use the keyword that signifies a constant.",
+      "Hint 3: To ensure the salary does not exceed the maximum limit, use a conditional statement to check the value before setting it.",
+    ];
+  }
   @Output() nextExercise = new EventEmitter<void>();
   
+  hintIndex: number;
+        hints: string[];
+          
+      
+        getHint(): void {
+            if (this.hintIndex < this.hints.length) {
+              Swal.fire({
+                title: "Hint",
+                text: this.hints[this.hintIndex],
+                icon: "info",
+                confirmButtonText: "OK",
+              });
+              this.hintIndex++;
+            } else {
+              Swal.fire({
+                title: "No More Hints",
+                text: "You've used all your hints!",
+                icon: "warning",
+                confirmButtonText: "Got it",
+              });
+            }
+          }
+
     definitions = [
       { id: 1, label: '', userInput: '' },
       { id: 2, label: '', userInput: '' },

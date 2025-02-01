@@ -10,6 +10,36 @@ import Swal from 'sweetalert2';
 export class Exercise5PolymorphismComponent {
   @Output() nextExercise = new EventEmitter<void>();
       
+  hintIndex: number;
+          hints: string[];
+          constructor(){
+            this.hintIndex = 0; // Track how many hints have been shown
+            this.hints = [
+              "Hint 1: To define a base class, use the keyword that declares a class.",
+              "Hint 2: To override a method in a subclass, ensure the method signature matches the one in the base class.",
+              "Hint 3: When creating an instance of the Car class, ensure you use the correct class name and call the overridden method using dot notation.",
+            ];
+          }
+        
+          getHint(): void {
+              if (this.hintIndex < this.hints.length) {
+                Swal.fire({
+                  title: "Hint",
+                  text: this.hints[this.hintIndex],
+                  icon: "info",
+                  confirmButtonText: "OK",
+                });
+                this.hintIndex++;
+              } else {
+                Swal.fire({
+                  title: "No More Hints",
+                  text: "You've used all your hints!",
+                  icon: "warning",
+                  confirmButtonText: "Got it",
+                });
+              }
+            }
+
         definitions = [
           { id: 1, label: '', userInput: '' },
           { id: 2, label: '', userInput: '' },

@@ -14,6 +14,36 @@ interface GameLevel {
 export class Exercise4PolymorphismComponent {
   @Output() nextExercise: EventEmitter<void> = new EventEmitter<void>();  // Emit to notify parent
             
+  hintIndex: number;
+      hints: string[];
+      constructor(){
+        this.hintIndex = 0; // Track how many hints have been shown
+        this.hints = [
+          "Hint 1: This concept allows multiple methods in the same class to have the same name but different parameters.",
+          "Hint 2: It is a form of compile-time polymorphism.",
+          "Hint 3: In Java, this technique is used to define multiple versions of a method.",
+        ];
+      }
+    
+      getHint(): void {
+          if (this.hintIndex < this.hints.length) {
+            Swal.fire({
+              title: "Hint",
+              text: this.hints[this.hintIndex],
+              icon: "info",
+              confirmButtonText: "OK",
+            });
+            this.hintIndex++;
+          } else {
+            Swal.fire({
+              title: "No More Hints",
+              text: "You've used all your hints!",
+              icon: "warning",
+              confirmButtonText: "Got it",
+            });
+          }
+        }
+
             currentLevelIndex = 0;
             selectedLetters: (string | null)[] = [];
             shuffledLetters: (string | null)[] = [];
@@ -98,17 +128,7 @@ export class Exercise4PolymorphismComponent {
                 this.initializeLevel();
               }
             }
-          
-           
-            getHint() {
-              const currentLevel = this.levels[this.currentLevelIndex];
-              if (currentLevel.hints > 0) {
-                currentLevel.hints--;
-                alert(`Hints remaining: ${currentLevel.hints}`);
-              } else {
-                alert('No hints left!');
-              }
-            }
+        
           
             shuffleArray(array: any[]): any[] {
               for (let i = array.length - 1; i > 0; i--) {

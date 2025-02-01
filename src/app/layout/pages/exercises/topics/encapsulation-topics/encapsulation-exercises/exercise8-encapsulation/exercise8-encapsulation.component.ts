@@ -9,6 +9,36 @@ import Swal from 'sweetalert2';
 export class Exercise8EncapsulationComponent {
   @Output() nextExercise = new EventEmitter<void>();
   
+  hintIndex: number;
+        hints: string[];
+        constructor(){
+          this.hintIndex = 0; // Track how many hints have been shown
+          this.hints = [
+            "Hint 1: To declare a field that is only accessible within the same class, use the keyword that restricts access to within the class.",
+    "Hint 2: To declare a field that is accessible within the same package and subclasses, use the keyword that allows access within the package and subclasses.",
+    "Hint 3: To declare a field that is accessible from any other class, use the keyword that allows unrestricted access.",
+          ];
+        }
+      
+        getHint(): void {
+            if (this.hintIndex < this.hints.length) {
+              Swal.fire({
+                title: "Hint",
+                text: this.hints[this.hintIndex],
+                icon: "info",
+                confirmButtonText: "OK",
+              });
+              this.hintIndex++;
+            } else {
+              Swal.fire({
+                title: "No More Hints",
+                text: "You've used all your hints!",
+                icon: "warning",
+                confirmButtonText: "Got it",
+              });
+            }
+          }
+          
     definitions = [
       { id: 1, label: '', userInput: '' },
       { id: 2, label: '', userInput: '' },

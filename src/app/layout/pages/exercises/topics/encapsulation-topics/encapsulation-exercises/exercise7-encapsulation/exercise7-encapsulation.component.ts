@@ -14,6 +14,36 @@ interface GameLevel {
 export class Exercise7EncapsulationComponent {
   @Output() nextExercise: EventEmitter<void> = new EventEmitter<void>();  // Emit to notify parent
         
+  hintIndex: number;
+    hints: string[];
+    constructor(){
+      this.hintIndex = 0; // Track how many hints have been shown
+      this.hints = [
+        "Hint 1: This concept ensures that sensitive data is protected from unauthorized access.",
+        "Hint 2: Encapsulation helps achieve this by restricting access to certain parts of an object.",
+        "Hint 3: This term is often associated with protecting data and maintaining integrity in software systems.",
+      ];
+    }
+  
+    getHint(): void {
+        if (this.hintIndex < this.hints.length) {
+          Swal.fire({
+            title: "Hint",
+            text: this.hints[this.hintIndex],
+            icon: "info",
+            confirmButtonText: "OK",
+          });
+          this.hintIndex++;
+        } else {
+          Swal.fire({
+            title: "No More Hints",
+            text: "You've used all your hints!",
+            icon: "warning",
+            confirmButtonText: "Got it",
+          });
+        }
+      }
+
         currentLevelIndex = 0;
         selectedLetters: (string | null)[] = [];
         shuffledLetters: (string | null)[] = [];
@@ -96,17 +126,6 @@ export class Exercise7EncapsulationComponent {
             this.nextExercise.emit();
           } else {
             this.initializeLevel();
-          }
-        }
-      
-       
-        getHint() {
-          const currentLevel = this.levels[this.currentLevelIndex];
-          if (currentLevel.hints > 0) {
-            currentLevel.hints--;
-            alert(`Hints remaining: ${currentLevel.hints}`);
-          } else {
-            alert('No hints left!');
           }
         }
       

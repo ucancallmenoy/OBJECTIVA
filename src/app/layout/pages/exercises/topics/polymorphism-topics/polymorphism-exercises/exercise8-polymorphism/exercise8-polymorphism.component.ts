@@ -10,6 +10,36 @@ import Swal from 'sweetalert2';
 export class Exercise8PolymorphismComponent {
   @Output() nextExercise = new EventEmitter<void>();
       
+  hintIndex: number;
+          hints: string[];
+          constructor(){
+            this.hintIndex = 0; // Track how many hints have been shown
+            this.hints = [
+              "Hint 1: To define a method in a class, use the keyword that declares a method.",
+              "Hint 2: To overload a method, ensure the method name is the same but the parameters are different.",
+              "Hint 3: When calling an overloaded method, ensure you pass the correct number and type of arguments.",
+            ];
+          }
+        
+          getHint(): void {
+              if (this.hintIndex < this.hints.length) {
+                Swal.fire({
+                  title: "Hint",
+                  text: this.hints[this.hintIndex],
+                  icon: "info",
+                  confirmButtonText: "OK",
+                });
+                this.hintIndex++;
+              } else {
+                Swal.fire({
+                  title: "No More Hints",
+                  text: "You've used all your hints!",
+                  icon: "warning",
+                  confirmButtonText: "Got it",
+                });
+              }
+            }
+
         definitions = [
           { id: 1, label: '', userInput: '' },
           { id: 2, label: '', userInput: '' },
