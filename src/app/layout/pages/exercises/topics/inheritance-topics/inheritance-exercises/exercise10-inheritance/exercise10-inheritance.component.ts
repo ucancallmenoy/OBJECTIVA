@@ -1,5 +1,6 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise10-inheritance',
@@ -11,7 +12,7 @@ export class Exercise10InheritanceComponent {
     
   hintIndex: number;
     hints: string[];
-    constructor(){
+    constructor(private router: Router) {
       this.hintIndex = 0; // Track how many hints have been shown
       this.hints = [
         "Hint 1: To establish an inheritance relationship, use the keyword that signifies a class is derived from another class.",
@@ -78,6 +79,7 @@ export class Exercise10InheritanceComponent {
             text: 'All answers are correct!',
           }).then(() => {
             this.nextExercise.emit();
+            this.router.navigate(['/exercises']);
           });
         } else {
           Swal.fire({

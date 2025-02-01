@@ -16,17 +16,15 @@ export class Exercise8AbstractionComponent {
         { id: 3, label: '', userInput: '' },
         { id: 4, label: '', userInput: '' },
         { id: 5, label: '', userInput: '' },
-        { id: 6, label: '', userInput: '' },
       
       ];
     
       concepts = [
         { id: 1, name: 'void' },
-        { id: 2, name: 'Game' },
+        { id: 2, name: 'Playable' },
         { id: 3, name: 'Playable' },
-        { id: 4, name: 'Playable' },
-        { id: 5, name: 'Game' },
-        { id: 6, name: 'game' },
+        { id: 4, name: 'Game' },
+        { id: 5, name: 'game' },
       ];
     
       validateAnswers() {

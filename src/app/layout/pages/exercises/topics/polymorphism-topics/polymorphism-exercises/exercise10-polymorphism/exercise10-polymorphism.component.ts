@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise10-polymorphism',
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
   styleUrl: './exercise10-polymorphism.component.scss'
 })
 export class Exercise10PolymorphismComponent {
+  constructor(private router: Router) {}
   @Output() nextExercise = new EventEmitter<void>();
       
         definitions = [
@@ -47,6 +48,7 @@ export class Exercise10PolymorphismComponent {
               text: 'All answers are correct!',
             }).then(() => {
               this.nextExercise.emit();
+              this.router.navigate(['/exercises']);
             });
           } else {
             Swal.fire({

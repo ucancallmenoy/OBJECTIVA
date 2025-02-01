@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrl: './exercise10-abstraction.component.scss'
 })
 export class Exercise10AbstractionComponent {
+  constructor(private router: Router) {}
   @Output() nextExercise = new EventEmitter<void>();
     
       definitions = [
@@ -52,6 +54,8 @@ export class Exercise10AbstractionComponent {
             text: 'All answers are correct!',
           }).then(() => {
             this.nextExercise.emit();
+            this.router.navigate(['/exercises']);
+
           });
         } else {
           Swal.fire({
