@@ -40,30 +40,6 @@ export const quizData: QuizData[] = [
         d: "It restricts access to parent class data",
         correct: "b"
     },
-    {
-        question: "What is single inheritance?",
-        a: "When a class is inherited by multiple classes",
-        b: "When a class inherits properties from one parent class",
-        c: "When multiple classes share a single method",
-        d: "When a class inherits methods without attributes",
-        correct: "b"
-    },
-    {
-        question: "What is multilevel inheritance?",
-        a: "When a class inherits directly from multiple classes",
-        b: "When a class is inherited by another class that is also inherited",
-        c: "When all classes in a program share the same properties",
-        d: "When a class inherits static methods",
-        correct: "b"
-    },
-    {
-        question: "What is hierarchical inheritance?",
-        a: "A single parent class has multiple child classes",
-        b: "A child class has multiple parent classes",
-        c: "A parent class inherits from another parent class",
-        d: "A class that inherits private methods",
-        correct: "a"
-    },
     { // Added the code problem
         question: "What type of inheritance is this?",
         a: "Single Inheritance",
@@ -72,11 +48,11 @@ export const quizData: QuizData[] = [
         d: "Not an Inheritance",
         correct: "b",
         code: `class A {
-           } 
-           class B extends A {
-           } 
-           class C extends B {
-           }`
+} 
+class B extends A {
+} 
+class C extends B {
+}`
     },
     {
         question: "Which of the following is an example of how inheritance would be used in an object-oriented programming language, such as Java, to model a Motorcycle inheriting from Vehicle?",
@@ -174,7 +150,7 @@ export const quizData: QuizData[] = [
         d: "Runtime error",
         correct: "b",
         code: `class Parent {
-    void display() {
+void display() {
         System.out.println("Parent's display()");
     }
 }
@@ -252,31 +228,8 @@ public class Main {
     final int legs = 4;
 
     void display() {
-        legs = 2; // This will generate a compilation error
+        legs = 2; 
         System.out.println("This animal has " + legs + " legs.");
-    }
-}`
-    },
-    {
-        question: "What will be the output of the following code?",
-        a: "Dog",
-        b: "Animal name: Dog",
-        c: "Animal name: animal",
-        d: "Compile-time error",
-        correct: "b",
-        code: `class Animal {
-    String name = "Dog";
-
-    @Override
-    public String toString() {
-        return "Animal name: " + name;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Animal animal = new Animal();
-        System.out.println(animal.toString());
     }
 }`
     },
@@ -415,33 +368,6 @@ public class Main {
         correct: "b"
     },
     {
-        question: "What is the output of the following code?",
-        a: "Parent method\nChild method",
-        b: "Child method\nParent method",
-        c: "Parent method",
-        d: "Child method",
-        correct: "a",
-        code: `class Parent {
-    void display() {
-        System.out.println("Parent method");
-    }
-}
-
-class Child extends Parent {
-    void display() {
-        super.display();
-        System.out.println("Child method");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Child child = new Child();
-        child.display();
-    }
-}`
-    },
-    {
         question: "Can a class in Java inherit multiple classes?",
         a: "Yes, using the extends keyword",
         b: "Yes, using the implements keyword",
@@ -491,33 +417,6 @@ public class Main {
         correct: "b"
     },
     {
-        question: "What is the output of the following code?",
-        a: "Parent method",
-        b: "Child method",
-        c: "Compilation error",
-        d: "Runtime error",
-        correct: "b",
-        code: `class Parent {
-    void display() {
-        System.out.println("Parent method");
-    }
-}
-
-class Child extends Parent {
-    @Override
-    void display() {
-        System.out.println("Child method");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Parent parent = new Child();
-        parent.display();
-    }
-}`
-    },
-    {
         question: "What is the purpose of the super keyword?",
         a: "To call the constructor of the current class",
         b: "To call the constructor or method of the parent class",
@@ -553,13 +452,13 @@ public class Main {
 }`
     },
     {
-        question: "What is the output of the following code?",
-        a: "Parent method",
-        b: "Child method",
-        c: "Compilation error",
-        d: "Runtime error",
-        correct: "b",
-        code: `class Parent {
+    question: "What is the output of the following code?",
+    a: "Parent method",
+    b: "Child method",
+    c: "Compilation error",
+    d: "Runtime error",
+    correct: "b",
+    code: `class Parent {
     void display() {
         System.out.println("Parent method");
     }
@@ -580,45 +479,45 @@ public class Main {
 }`
     },
     {
-        question: "A Dog class inherits a makeSound method from a Pet class, but does not override it. What will be the output of the following code?",
+        question: "What will be the output of the following code?",
         a: "Some generic sound",
         b: "Bark",
         c: "Meow",
         d: " Error: No method in Dog class",
         correct: "a",
-            code: `class Pet {
-            public void makeSound() {
-                System.out.println("Some generic sound");
-            }
-        }
-
-        class Dog extends Pet {
-            // No method override here
-        }
-
-        public class Main {
-            public static void main(String[] args) {
-                Pet pet = new Dog();
-                pet.makeSound();
-            }
-        }`
-        },
-        {
-            question: "A store has a Product class with a displayName method, and a Clothing class that extends it without changing the method. What will be the output?",
-            a: "Clothing Name",
-            b: "Product Name",
-            c: "Unknown Product",
-            d: "Error: No method in Clothing class",
-            correct: "b",
-            code: `class Product {
-    protected String name;
-
-    public Product(String name) {
-        this.name = name;
+        code: `class Pet {
+public void makeSound() {
+        System.out.println("Some generic sound");
     }
+}
 
-    public void displayName() {
-        System.out.println(name);
+class Dog extends Pet {
+    // No method override here
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pet pet = new Dog();
+        pet.makeSound();
+    }
+}`
+    },
+    {
+        question: "What is the output of the following code about the store scenario?",
+        a: "Clothing Name",
+        b: "Product Name",
+        c: "Unknown Product",
+        d: "Error: No method in Clothing class",
+        correct: "b",
+        code: `class Product {
+protected String name;
+
+public Product(String name) {
+    this.name = name;
+}
+
+public void displayName() {
+    System.out.println(name);
     }
 }
 
@@ -635,90 +534,65 @@ public class Main {
         product.displayName();
     }
 }`
+    },
+    {
+        question: "What is the output of the following code?",
+        a: "Withdrawal successful. Balance: -100",
+        b: "Insufficient funds",
+        c: "Withdrawal successful. Balance: 100",
+        d: "Compilation error",
+        correct: "c",
+        code: `class BankAccount {
+double balance = 500;
+
+public void withdraw(double amount) {
+    if (amount > balance) {
+        System.out.println("Insufficient funds");
+    } else {
+        balance -= amount;
+        System.out.println("Withdrawal successful. Balance: " + balance);
+    }
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    // Inherits from BankAccount
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SavingsAccount account = new SavingsAccount();
+        account.withdraw(600); // Trying to withdraw more than the balance
+    }
+}`
         },
         {
             question: "What is the output of the following code?",
-            a: "Invalid radius",
-            b: "Area: 78.5",
-            c: "Compilation error",
-            d: "Runtime error",
+            a: "Speed: 120",
+            b: "Speed limit exceeded",
+            c: "Speed: 120 and Speed limit exceeded",
+            d: "Compilation error",
             correct: "a",
-            code: `class Circle {
-        private double radius;
-    
-        public void setRadius(double radius) {
-            if (radius > 0) {
-                this.radius = radius;
-            } else {
-                System.out.println("Invalid radius");
-            }
-        }
-    
-        public double calculateArea() {
-            return 3.14 * radius * radius;
+            code: `class Vehicle {
+int speed;
+
+public void accelerate(int increment) {
+        if (speed + increment > 200) {
+            System.out.println("Speed limit exceeded");
+        } else {
+            speed += increment;
+            System.out.println("Speed: " + speed);
         }
     }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Circle circle = new Circle();
-            circle.setRadius(-5);
-            System.out.println("Area: " + circle.calculateArea());
-        }
-    }`
-        },
-        {
-            question: "What is the output of the following code?",
-            a: "Account balance: $500",
-            b: "Withdrawal successful",
-            c: "Insufficient funds",
-            d: "Compilation error",
-            correct: "c",
-            code: `class BankAccount {
-        private double balance = 500;
-    
-        public void withdraw(double amount) {
-            if (amount > balance) {
-                System.out.println("Insufficient funds");
-            } else {
-                balance -= amount;
-            }
-        }
+}
+
+class Car extends Vehicle {}
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.accelerate(120);
     }
-    
-    public class Main {
-        public static void main(String[] args) {
-            BankAccount account = new BankAccount();
-            account.withdraw(600);
-        }
-    }`
-        },
-        {
-            question: "What is the output of the following code?",
-            a: "Car is accelerating",
-            b: "Speed: 120",
-            c: "Speed limit exceeded",
-            d: "Compilation error",
-            correct: "b",
-            code: `class Car {
-        private int speed;
-    
-        public void accelerate(int increment) {
-            if (speed + increment > 200) {
-                System.out.println("Speed limit exceeded");
-            } else {
-                speed += increment;
-                System.out.println("Speed: " + speed);
-            }
-        }
-    }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Car car = new Car();
-            car.accelerate(120);
-        }
-    }`
+}`
         },
         {
             question: "What is the output of the following code?",
@@ -743,7 +617,7 @@ public class Main {
     }`
         },
         {
-            question: "A library has a Book class with a displayTitle method, and a Magazine class that extends it without changing the method. What will be the output?",
+            question: "What will be the output of the following code?",
             a: "Error: No method in Magazine class",
             b: "Magazine Title",
             c: "The Great Gatsby",
@@ -775,59 +649,8 @@ public class Main {
     }
 }`
         },
-    //     {
-    //         question: "What is the output of the following code?",
-    //         a: "Access denied",
-    //         b: "Name: Alice",
-    //         c: "Compilation error",
-    //         d: "Runtime error",
-    //         correct: "a",
-    //         code: `class User {
-    //     private String name = "Alice";
-    
-    //     public void checkAccess(String key) {
-    //         if (!key.equals("admin")) {
-    //             System.out.println("Access denied");
-    //         }
-    //     }
-    // }
-    
-    // public class Main {
-    //     public static void main(String[] args) {
-    //         User user = new User();
-    //         user.checkAccess("guest");
-    //     }
-    // }`
-    //     },
         {
-            question: "What is the output of the following code?",
-            a: "Area: 314",
-            b: "Area: 78.5",
-            c: "Invalid radius",
-            d: "Compilation error",
-            correct: "b",
-            code: `class Circle {
-        private double radius;
-    
-        public void setRadius(double radius) {
-            this.radius = radius;
-        }
-    
-        public double calculateArea() {
-            return 3.14 * radius * radius;
-        }
-    }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Circle circle = new Circle();
-            circle.setRadius(5);
-            System.out.println("Area: " + circle.calculateArea());
-        }
-    }`
-        },
-        {
-            question: "A company has an Employee class with a displayName method, and a Manager class that extends it without changing the method. What will be the output?",
+            question: "What will be the output of the following code?",
             a: "Employee",
             b: "John",
             c: "Manager",
@@ -860,32 +683,34 @@ public class Main {
 `
         },
         {
-            question: "What is the output of the following code?",
-            a: "Value: 50",
-            b: "Invalid value",
-            c: "Compilation error",
-            d: "Runtime error",
-            correct: "a",
-            code: `class Box {
-        private int value;
-    
-        public void setValue(int value) {
-            if (value > 0) {
-                this.value = value;
-            }
-        }
-    
-        public int getValue() {
-            return value;
-        }
+        question: "What is the output of the following code?",
+        a: "This is a colored box with value: 0",
+        b: "50",
+        c: "Error: Method not found",
+        d: "This is a colored box with value: 50",
+        correct: "d",
+        code: `class Box {
+    private int value;
+
+    public void setValue(int value) {
+        this.value = value;
     }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Box box = new Box();
-            box.setValue(50);
-            System.out.println("Value: " + box.getValue());
-        }
-    }`
+    public int getValue() {
+        return value;
+    }
+}
+
+class ColoredBox extends Box {
+    public void display() {
+        System.out.println("This is a colored box with value: " + getValue());
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        ColoredBox box = new ColoredBox();
+        box.setValue(50);  // Inherited from Box
+        box.display();  // From ColoredBox
+    }
+}`
         }
 ];
