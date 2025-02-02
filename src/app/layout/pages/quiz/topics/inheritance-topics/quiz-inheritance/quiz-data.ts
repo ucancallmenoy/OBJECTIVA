@@ -595,28 +595,6 @@ public class Main {
 }`
         },
         {
-            question: "What is the output of the following code?",
-            a: "Default name: null",
-            b: "Default name: John",
-            c: "Compilation error",
-            d: "Runtime error",
-            correct: "b",
-            code: `class Employee {
-        private String name = "John";
-    
-        public String getName() {
-            return name;
-        }
-    }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Employee emp = new Employee();
-            System.out.println("Default name: " + emp.getName());
-        }
-    }`
-        },
-        {
             question: "What will be the output of the following code?",
             a: "Error: No method in Magazine class",
             b: "Magazine Title",
