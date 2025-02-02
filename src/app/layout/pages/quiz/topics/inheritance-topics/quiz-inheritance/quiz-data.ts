@@ -64,13 +64,19 @@ export const quizData: QuizData[] = [
         d: "A class that inherits private methods",
         correct: "a"
     },
-    {
+    { // Added the code problem
         question: "What type of inheritance is this?",
         a: "Single Inheritance",
         b: "Multilevel Inheritance",
         c: "Hierarchical Inheritance",
         d: "Not an Inheritance",
-        correct: "b"
+        correct: "b",
+        code: `class A {
+           } 
+           class B extends A {
+           } 
+           class C extends B {
+           }`
     },
     {
         question: "Which of the following is an example of how inheritance would be used in an object-oriented programming language, such as Java, to model a Motorcycle inheriting from Vehicle?",
@@ -193,7 +199,7 @@ public class Main {
         b: "The immediate parent class",
         c: "The constructor of the child class",
         d: "The constructor of the superclass",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "If a method in a superclass is private, can it be overridden by a subclass?",
@@ -201,7 +207,7 @@ public class Main {
         b: "No, private methods cannot be inherited",
         c: "Yes, if the method signature is the same",
         d: "No, private methods can only be accessed within the same class",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What would happen if a subclass does not provide an overridden method for a method in its superclass?",
@@ -209,7 +215,7 @@ public class Main {
         b: "The subclass will use the method from the superclass",
         c: "The subclass will ignore the method entirely",
         d: "The subclass will automatically create a new method",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What does the final keyword do when applied to a class in Java?",
@@ -217,7 +223,7 @@ public class Main {
         b: "It prevents a class from being inherited",
         c: "It allows a class to be inherited only once",
         d: "It allows a class to have no constructors",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What is the purpose of using the final keyword on a method in Java?",
@@ -225,7 +231,7 @@ public class Main {
         b: "To prevent the method from being overridden by subclasses",
         c: "To make the method return a constant value",
         d: "To ensure the method is always public",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What does the final keyword do when applied to a variable in Java?",
@@ -233,7 +239,7 @@ public class Main {
         b: "It creates a constant that cannot be modified after initialization",
         c: "It allows the variable to be inherited by subclasses",
         d: "It makes the variable available only to the parent class",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "In the following code, what will happen when the display() method is called?",
@@ -280,7 +286,7 @@ public class Main {
         b: "It compares the actual content of two objects for equality",
         c: "It compares the class name of two objects",
         d: "It compares the string representation of two objects",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What does the hashCode() method in the Object class provide?",
@@ -288,7 +294,7 @@ public class Main {
         b: "A unique integer for each object",
         c: "The class name of the object",
         d: "The memory address of the object",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What is the purpose of the instanceof operator in Java?",
@@ -296,7 +302,7 @@ public class Main {
         b: "To create a new instance of a class",
         c: "To check if a class is inherited from another class",
         d: "To check if two objects are of the same class",
-        correct: "a",
+        correct: "a"
     },
     {
         question: "What keyword is used in Java to implement inheritance?",
@@ -304,7 +310,7 @@ public class Main {
         b: "super",
         c: "extends",
         d: "inherit",
-        correct: "c",
+        correct: "c"
     },
     {
         question: "In the following code, which class is the parent class?",
@@ -366,7 +372,7 @@ public class Main {
         b: "When the child class needs completely different functionality from the parent class",
         c: "When you want to hide the properties of the parent class",
         d: "When the child class does not need to reuse any methods from the parent class",
-        correct: "a",
+        correct: "a"
     },
     {
         question: "Which of the following is a common use case for inheritance in Java?",
@@ -374,7 +380,7 @@ public class Main {
         b: "Implementing polymorphism and method overloading",
         c: "Reusing methods within the same class",
         d: "Avoiding the use of interfaces",
-        correct: "a",
+        correct: "a"
     },
     {
         question: "Which of the following is a real-world example of inheritance?",
@@ -393,39 +399,12 @@ public class Main {
         correct: "b"
     },
     {
-        question: "What will be the output of the following program?",
-        a: "This animal eats food.\nThe dog eats bones.",
-        b: "The dog eats bones.\nThis animal eats food.",
-        c: "Compilation error",
-        d: "No output",
-        correct: "a",
-        code: `class Animal { 
-    void eat() { 
-        System.out.println("This animal eats food.");
-    }
-}
-
-class Dog extends Animal { 
-    void eat() { 
-        super.eat();
-        System.out.println("The dog eats bones.");
-    }
-}
-
-public class Main { 
-    public static void main(String[] args) { 
-        Dog dog = new Dog();
-        dog.eat();
-    }
-}`
-    },
-    {
         question: "What is the primary purpose of inheritance in OOP?",
         a: "To allow code reuse and establish a relationship between classes",
         b: "To create multiple instances of a class",
         c: "To define private methods",
         d: "To implement interfaces",
-        correct: "a",
+        correct: "a"
     },
     {
         question: "Which keyword is used to inherit a class in Java?",
@@ -433,7 +412,7 @@ public class Main {
         b: "extends",
         c: "implements",
         d: "super",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What is the output of the following code?",
@@ -468,7 +447,7 @@ public class Main {
         b: "Yes, using the implements keyword",
         c: "No, Java does not support multiple inheritance",
         d: "Yes, using both extends and implements keywords",
-        correct: "c",
+        correct: "c"
     },
     {
         question: "What is the purpose of the @Override annotation?",
@@ -476,7 +455,7 @@ public class Main {
         b: "To indicate that a method is intended to override a method in the superclass",
         c: "To prevent a method from being overridden",
         d: "To define a method that can be accessed by all subclasses",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What is the output of the following code?",
@@ -509,7 +488,7 @@ public class Main {
         b: "A subclass providing its own implementation for a method already defined in its superclass",
         c: "A method calling another method",
         d: "A method that cannot be overridden",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What is the output of the following code?",
@@ -544,7 +523,7 @@ public class Main {
         b: "To call the constructor or method of the parent class",
         c: "To create a new object",
         d: "To define a method",
-        correct: "b",
+        correct: "b"
     },
     {
         question: "What is the output of the following code?",
@@ -601,49 +580,61 @@ public class Main {
 }`
     },
     {
-            question: "What is the output of the following code?",
-            a: "Error: Private fields cannot be accessed directly",
-            b: "Compilation error",
-            c: "John",
-            d: "null",
-            correct: "a",
-            code: `class Person {
-        private String name = "John";
-    
-        public String getName() {
-            return name;
+        question: "A Dog class inherits a makeSound method from a Pet class, but does not override it. What will be the output of the following code?",
+        a: "Some generic sound",
+        b: "Bark",
+        c: "Meow",
+        d: " Error: No method in Dog class",
+        correct: "a",
+            code: `class Pet {
+            public void makeSound() {
+                System.out.println("Some generic sound");
+            }
         }
-    }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Person person = new Person();
-            System.out.println(person.name);
+
+        class Dog extends Pet {
+            // No method override here
         }
-    }`
+
+        public class Main {
+            public static void main(String[] args) {
+                Pet pet = new Dog();
+                pet.makeSound();
+            }
+        }`
         },
         {
-            question: "What is the output of the following code?",
-            a: "Area: 50",
-            b: "Area: 0",
-            c: "Compilation error",
-            d: "Runtime error",
-            correct: "a",
-            code: `class Rectangle {
-        private int length = 5;
-        private int width = 10;
-    
-        public int calculateArea() {
-            return length * width;
-        }
+            question: "A store has a Product class with a displayName method, and a Clothing class that extends it without changing the method. What will be the output?",
+            a: "Clothing Name",
+            b: "Product Name",
+            c: "Unknown Product",
+            d: "Error: No method in Clothing class",
+            correct: "b",
+            code: `class Product {
+    protected String name;
+
+    public Product(String name) {
+        this.name = name;
     }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Rectangle rect = new Rectangle();
-            System.out.println("Area: " + rect.calculateArea());
-        }
-    }`
+
+    public void displayName() {
+        System.out.println(name);
+    }
+}
+
+class Clothing extends Product {
+    // No method override here
+    public Clothing(String name) {
+        super(name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Product product = new Clothing("Product Name");
+        product.displayName();
+    }
+}`
         },
         {
             question: "What is the output of the following code?",
@@ -752,29 +743,62 @@ public class Main {
     }`
         },
         {
-            question: "What is the output of the following code?",
-            a: "Access denied",
-            b: "Name: Alice",
-            c: "Compilation error",
-            d: "Runtime error",
-            correct: "a",
-            code: `class User {
-        private String name = "Alice";
-    
-        public void checkAccess(String key) {
-            if (!key.equals("admin")) {
-                System.out.println("Access denied");
-            }
-        }
+            question: "A library has a Book class with a displayTitle method, and a Magazine class that extends it without changing the method. What will be the output?",
+            a: "Error: No method in Magazine class",
+            b: "Magazine Title",
+            c: "The Great Gatsby",
+            d: "Unknown Book",
+            correct: "c",
+            code: `class Book {
+    protected String title;
+
+    public Book(String title) {
+        this.title = title;
     }
-    
-    public class Main {
-        public static void main(String[] args) {
-            User user = new User();
-            user.checkAccess("guest");
-        }
-    }`
+
+    public void displayTitle() {
+        System.out.println(title);
+    }
+}
+
+class Magazine extends Book {
+    // No method override here
+    public Magazine(String title) {
+        super(title);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Book book = new Magazine("The Great Gatsby");
+        book.displayTitle();
+    }
+}`
         },
+    //     {
+    //         question: "What is the output of the following code?",
+    //         a: "Access denied",
+    //         b: "Name: Alice",
+    //         c: "Compilation error",
+    //         d: "Runtime error",
+    //         correct: "a",
+    //         code: `class User {
+    //     private String name = "Alice";
+    
+    //     public void checkAccess(String key) {
+    //         if (!key.equals("admin")) {
+    //             System.out.println("Access denied");
+    //         }
+    //     }
+    // }
+    
+    // public class Main {
+    //     public static void main(String[] args) {
+    //         User user = new User();
+    //         user.checkAccess("guest");
+    //     }
+    // }`
+    //     },
         {
             question: "What is the output of the following code?",
             a: "Area: 314",
@@ -803,31 +827,37 @@ public class Main {
     }`
         },
         {
-            question: "What is the output of the following code?",
-            a: "Invalid temperature",
-            b: "Temperature: 37",
-            c: "Temperature: 98.6",
-            d: "Compilation error",
-            correct: "c",
-            code: `class Temperature {
-        private double celsius;
-    
-        public void setCelsius(double celsius) {
-            this.celsius = celsius;
-        }
-    
-        public double toFahrenheit() {
-            return (celsius * 9 / 5) + 32;
-        }
+            question: "A company has an Employee class with a displayName method, and a Manager class that extends it without changing the method. What will be the output?",
+            a: "Employee",
+            b: "John",
+            c: "Manager",
+            d: "Error: No method in Manager class",
+            correct: "b",
+            code: `class Employee {
+    protected String name;
+
+    public Employee(String name) {
+        this.name = name;
     }
-    
-    public class Main {
-        public static void main(String[] args) {
-            Temperature temp = new Temperature();
-            temp.setCelsius(37);
-            System.out.println("Temperature: " + temp.toFahrenheit());
-        }
-    }`
+
+    public void displayName() {
+        System.out.println(name);
+    }
+}
+
+class Manager extends Employee {
+    public Manager(String name) {
+        super(name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee employee = new Manager("John");
+        employee.displayName();
+    }
+}
+`
         },
         {
             question: "What is the output of the following code?",
@@ -858,5 +888,4 @@ public class Main {
         }
     }`
         }
-    
 ];
