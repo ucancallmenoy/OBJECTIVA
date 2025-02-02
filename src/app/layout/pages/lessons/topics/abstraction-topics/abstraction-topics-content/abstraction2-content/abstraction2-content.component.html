@@ -7,7 +7,7 @@
     <section id="s1" class="lesson-section" *ngIf="visibleSections >= 2">
         <div class="content-container">
             <h1>Abstract Classes</h1>
-            <p><strong>Creating abstract classes:</strong> is a class defined with the modifier abstract, and no instances can be created from an abstract class.</p>
+            <p><strong>Creating abstract classes:</strong> is a class defined using the abstract modifier, and an abstract class cannot be instantiated..</p>
             <p>An abstract class is a <strong>blueprint</strong> that cannot be instantiated but can be extended by other classes.</p>
             <pre class="line-numbers"><code class="language-java">
 abstract class Animal {{'{'}}
@@ -26,7 +26,7 @@ abstract class Animal {{'{'}}
     <section id="s2" class="lesson-section" *ngIf="visibleSections >= 3">
         <div class="content-container">
             <h1>Abstract Methods</h1>
-            <p>It is a method that is declared as abstract and does not have implementation. Abstract methods do not have a body. Subclasses must override them.</p>
+            <p>An abstract method is a method without a body, meaning it has no implementation. Subclasses must override and provide their own implementation for it.</p>
             <pre class="line-numbers"><code class="language-java">
 abstract class Shape {{'{'}}
     abstract void draw(); <span class="comment">// No implementation here</span>
