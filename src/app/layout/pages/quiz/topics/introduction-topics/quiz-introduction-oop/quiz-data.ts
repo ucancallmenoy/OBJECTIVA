@@ -313,7 +313,7 @@ public class Main {
 }`
     },
     {
-        question: "In the given example code, what does the main method do?",
+        question: "What does the main method do?",
         a: "It defines attributes of objects.",
         b: "It initializes objects and calls their behaviors.",
         c: "It defines constructors.",
