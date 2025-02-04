@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class AbstractionQuizService {
-  private apiUrl = environment.baseUrl + '/admin/abstraction-quizzes';
+  private apiUrl = environment.abstractionQuiz;
 
   constructor(private http: HttpClient) {}
 

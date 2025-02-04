@@ -45,7 +45,7 @@ export class LoginAdminComponent {
       ).subscribe({
         next: (response) => {
           console.log('Admin Login Response:', response);  // Debugging response
-          this.router.navigate(['admin/dashboard']);
+          this.router.navigate(['admin/users']);
         },
         error: (error) => {
           console.error('Login error:', error); // Log the full error

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/users.service';
+import { LessonProgressService } from '../../services/lesson-progress.service';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,8 @@ export class UsersComponent implements OnInit {
   loading = false;
   showAddModal = false; 
   error: string | null = null;
-  
+  showInfoModal = false;
+  lessonProgress: any;
   // Modal and form properties
   showEditModal = false;
   showDeleteModal = false;
@@ -22,6 +24,7 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private lessonProgressService: LessonProgressService,
     private formBuilder: FormBuilder
   ) {
     this.userForm = this.formBuilder.group({
@@ -122,4 +125,27 @@ export class UsersComponent implements OnInit {
         }
       });
   }
+
+  openInfoModal(user: any) {
+    this.selectedUser = user;
+    this.showInfoModal = true;
+    this.getLessonProgress(user.id);
+  }
+
+  getLessonProgress(userId: number) {
+    this.lessonProgressService.getLessonProgress(userId).subscribe((response: any) => {
+      if (response.success) {
+        this.lessonProgress = response.data;
+      } else {
+        this.lessonProgress = null;
+      }
+    }, error => {
+      console.error('Error fetching lesson progress', error);
+      this.lessonProgress = null;
+    });
+  }
+
+  // updateLessonProgress(userId: number, lessonId: number, completed: boolean) {
+  //   this.lessonProgressService.updateLessonProgress(userId, lessonId, completed).subscribe();
+  // }
 }

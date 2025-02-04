@@ -16,4 +16,9 @@ export const environment = {
 
     // QUIZ
     quizUrl: `${baseUrl}/quiz-scores`,
+
+    // ADMIN
+    adminUserUrl: `${baseUrl}/admin/users`,
+    abstractionQuiz: `${baseUrl}/admin/abstraction-quizzes`,
+
 };

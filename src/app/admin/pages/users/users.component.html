@@ -36,6 +36,9 @@
             <button class="btn btn-danger btn-sm" (click)="openDeleteModal(user)">
               <i class="fas fa-trash"></i> Delete
             </button>
+            <button class="btn btn-info btn-sm ms-2" (click)="openInfoModal(user)">
+              <i class="fas fa-info-circle"></i> Info
+            </button>
           </td>
         </tr>
       </tbody>
@@ -136,3 +139,30 @@
       </div>
     </div>
   </div>
+
+<!-- Info Modal -->
+<div class="modal" *ngIf="showInfoModal" tabindex="-1" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User Info</h5>
+        <button type="button" class="btn-close" (click)="showInfoModal = false"></button>
+      </div>
+      <div class="modal-body">
+        <h6>User Details</h6>
+        <p>User Id: {{selectedUser?.id}}</p>
+        <p>Name: {{ selectedUser?.first_name }} {{ selectedUser?.last_name }}</p>
+        <h6>Lesson Progress</h6>
+        <div *ngIf="lessonProgress">
+          <div *ngFor="let lessonId of lessonProgress | keyvalue">
+            <p>Lesson ID: {{ lessonId.key }}</p>
+            <p>Progress: {{ lessonId.value ? 'Done' : 'Not Done' }}</p>
+          </div>
+        </div>
+        <div *ngIf="!lessonProgress">
+          <p>No progress available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
