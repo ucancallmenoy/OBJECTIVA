@@ -3,29 +3,34 @@
     <!-- Score Section -->
     <div class="score-header" *ngIf="showScore">
       <h2>Your Score</h2>
-      <p class="score">{{ score }}/{{ quizData.length }} questions correctly answered</p>
-      <p class="feedback">{{higher}}</p>
-      <p class="feedback">{{feedback}}</p>
+      <p class="score">{{ score }} / {{ quizData.length }} questions correctly answered</p>
+      <p class="feedback">{{ higher }}</p>
+      <p class="feedback">{{ feedback }}</p>
       <button (click)="resetQuiz()">Restart Quiz</button>
       <button (click)="backtoQuiz()">Back to Dashboard</button>
     </div>
     
     <!-- Quiz Section -->
     <div class="quiz-header" *ngIf="!showScore">
+      <!-- Question Progress -->
       <div class="question-progress">
         Question {{ currentQuiz + 1 }} of {{ quizData.length }}
       </div>
       
-      <h2>{{ quizData[currentQuiz].question }}</h2>
-      <pre *ngIf="quizData[currentQuiz].code">{{ quizData[currentQuiz].code }}</pre>
+      <!-- Question Display -->
+      <h2>{{ quizData[currentQuiz]?.question }}</h2>
+
+      <!-- Code Display (if any) -->
+      <pre *ngIf="quizData[currentQuiz]?.code">{{ quizData[currentQuiz].code }}</pre>
       
+      <!-- Answer Options -->
       <div class="answers-grid">
         <div 
           class="answer-container" 
           *ngFor="let option of answerOptions"
           [ngClass]="{
-            'correct': showExplanation && option.id === quizData[currentQuiz].correct,
-            'incorrect': showExplanation && selectedAnswer === option.id && option.id !== quizData[currentQuiz].correct
+            'correct': showExplanation && option.id === quizData[currentQuiz]?.correct,
+            'incorrect': showExplanation && selectedAnswer === option.id && option.id !== quizData[currentQuiz]?.correct
           }"
         >
           <input
@@ -40,13 +45,15 @@
         </div>
       </div>
 
+      <!-- Explanation Section -->
       <div class="explanation" *ngIf="showExplanation">
         <p [ngClass]="{'correct-text': isAnswerCorrect, 'incorrect-text': !isAnswerCorrect}">
           {{ isAnswerCorrect ? 'Correct!' : 'Incorrect!' }}
         </p>
-        <p>{{ quizData[currentQuiz].explanation }}</p>
+        <p>{{ quizData[currentQuiz]?.explanation }}</p>
       </div>
 
+      <!-- Buttons -->
       <div class="button-container">
         <button 
           *ngIf="!hasSubmitted" 
