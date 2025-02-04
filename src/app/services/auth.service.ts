@@ -38,6 +38,34 @@ export class AuthService {
     );
   }
 
+  adminLogin(email: string, password: string): Observable<any> {
+    return this.http.post(this.loginUrl, { email, password }).pipe(
+      map((response: any) => {
+        console.log('API Response in adminLogin:', response); // Debugging
+  
+        if (response && response.token) {
+          if (response.user?.is_admin === 1) {  // Explicitly checking is_admin
+            if (isPlatformBrowser(this.platformId)) {
+              localStorage.setItem('token', response.token);
+              localStorage.setItem('firstName', response.user?.first_name);
+              localStorage.setItem('lastName', response.user?.last_name);
+              localStorage.setItem('email', response.user?.email);
+              localStorage.setItem('is_admin', response.user?.is_admin.toString());
+            }
+            return response;
+          } else {
+            throw new Error('Access Denied: Admins only');  // Ensure correct check
+          }
+        }
+        throw new Error('Invalid response from server');
+      })
+    );
+  }
+  
+  
+
+  
+
   register(user: any): Observable<any> {
     return this.http.post(this.registerUrl, user);
   }

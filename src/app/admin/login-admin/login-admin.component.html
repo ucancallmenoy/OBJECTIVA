@@ -1,0 +1,29 @@
+<section class="vh-100">
+    <div class="container">
+      <div class="row">
+        <div class="col image-col">
+          <img src="assets/objectiva.png" alt="Sample image" class="img-fluid">
+        </div>
+        <div class="col form-col">
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <h1>A D M I N</h1>
+              <div class="divider"></div>
+              @if(error){
+                <div class="alert alert-danger">{{error}}</div>
+              }
+              <div class="form-group">
+                <input type="email" id="email" formControlName="email" placeholder=" ">
+                <label for="email">Email address</label>
+              </div>
+              <div class="form-group password-group">
+                <input [type]="passwordFieldType" id="password" formControlName="password" placeholder=" ">
+                <label for="password">Password</label>
+                <i class="toggle-password fas" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePasswordVisibility()"></i>
+              </div>
+              
+              <button type="submit" class="btn login-btn" [disabled]="!loginForm.valid">Login</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -14,7 +14,7 @@ interface ScoreResponse {
 })
 export class QuizService {
   // private apiUrl = 'http://127.0.0.1:8000/api';
-  private quizUrl = environment.quizUrl;
+  private quizUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 

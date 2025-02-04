@@ -1,0 +1,98 @@
+<div class="container">
+    <h2 class="mb-4">User Management</h2>
+  
+    <div *ngIf="loading" class="text-center">
+      <p>Loading users...</p>
+    </div>
+  
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+  
+    <table class="table table-striped" *ngIf="!loading && !error">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm me-2" (click)="openEditModal(user)">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="openDeleteModal(user)">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Edit User Modal -->
+    <div class="modal" *ngIf="showEditModal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit User</h5>
+            <button type="button" class="btn-close" (click)="showEditModal = false"></button>
+          </div>
+          <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" formControlName="first_name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" formControlName="last_name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password (Optional)</label>
+                <input type="password" class="form-control" formControlName="password">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" formControlName="is_active">
+                <label class="form-check-label">Active User</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="showEditModal = false">Close</button>
+              <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" *ngIf="showDeleteModal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" (click)="showDeleteModal = false"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete the user: {{ selectedUser?.email }}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="showDeleteModal = false">Cancel</button>
+            <button type="button" class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
