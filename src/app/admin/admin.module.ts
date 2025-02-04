@@ -7,11 +7,16 @@ import { AdminComponent } from './admin.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
-import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 import { ExercisesComponent } from './pages/exercises/exercises.component';
 import { UsersComponent } from './pages/users/users.component';
 
 import { FormsModule } from '@angular/forms';
+import { AbstractionComponent } from './pages/quizzes/abstraction/abstraction.component';
+import { EncapsulationComponent } from './pages/quizzes/encapsulation/encapsulation.component';
+import { InheritanceComponent } from './pages/quizzes/inheritance/inheritance.component';
+import { IntroductionOopComponent } from './pages/quizzes/introduction-oop/introduction-oop.component';
+import { IntroductionJavaComponent } from './pages/quizzes/introduction-java/introduction-java.component';
+import { PolymorphismComponent } from './pages/quizzes/polymorphism/polymorphism.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +24,14 @@ import { FormsModule } from '@angular/forms';
     SideNavbarComponent,
     DashboardComponent,
     LoginAdminComponent,
-    QuizzesComponent,
     ExercisesComponent,
-    UsersComponent
+    UsersComponent,
+    AbstractionComponent,
+    EncapsulationComponent,
+    InheritanceComponent,
+    IntroductionOopComponent,
+    IntroductionJavaComponent,
+    PolymorphismComponent
   ],
   imports: [
     CommonModule,

@@ -21,10 +21,23 @@ export class SideNavbarComponent {
   navigateUsers() {
     this.router.navigateByUrl("/admin/users");
   }
-  navigateQuizzes() {
-    this.router.navigateByUrl("/admin/quizzes");
+  navigatePolymorphism() {
+    this.router.navigateByUrl("/admin/polymorphism");
   }
-  navigateExercises() {
-    this.router.navigateByUrl("/admin/exercises");
+  navigateIntroductionJava() {
+    this.router.navigateByUrl("/admin/introduction-java");
   }
+  navigateIntroductionOop() {
+    this.router.navigateByUrl("/admin/introduction-oop");
+  }
+  navigateInheritance() {
+    this.router.navigateByUrl("/admin/inheritance");
+  }
+  navigateEncapsulation() {
+    this.router.navigateByUrl("/admin/encapsulation");
+  }
+  navigateAbstraction() {
+    this.router.navigateByUrl("/admin/abstraction");
+  }
+
 }

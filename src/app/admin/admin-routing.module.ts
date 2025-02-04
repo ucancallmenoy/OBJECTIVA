@@ -4,9 +4,15 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { UsersComponent } from './pages/users/users.component';
-import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 import { ExercisesComponent } from './pages/exercises/exercises.component';
+import {PolymorphismComponent} from './pages/quizzes/polymorphism/polymorphism.component';
+import {IntroductionJavaComponent} from './pages/quizzes/introduction-java/introduction-java.component';
+import {IntroductionOopComponent} from './pages/quizzes/introduction-oop/introduction-oop.component';
+import {InheritanceComponent} from './pages/quizzes/inheritance/inheritance.component';
+import {EncapsulationComponent} from './pages/quizzes/encapsulation/encapsulation.component';
+import {AbstractionComponent} from './pages/quizzes/abstraction/abstraction.component';
 import { AuthGuard } from '../guards/auth.guard';
+
 
 const routes: Routes = [
   {path: 'login-admin', component: LoginAdminComponent},
@@ -14,8 +20,13 @@ const routes: Routes = [
   {path: '', component: AdminComponent, canActivate:[AuthGuard], children: [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'users', component: UsersComponent},
-    {path: 'quizzes', component: QuizzesComponent},
     {path: 'exercises', component: ExercisesComponent},
+    {path: 'polymorphism', component: PolymorphismComponent},
+    {path: 'introduction-java', component: IntroductionJavaComponent},
+    {path: 'introduction-oop', component: IntroductionOopComponent},
+    {path: 'inheritance', component: InheritanceComponent},
+    {path: 'encapsulation', component: EncapsulationComponent},
+    {path: 'abstraction', component: AbstractionComponent},
   ]},
 ];
 
