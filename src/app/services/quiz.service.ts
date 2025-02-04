@@ -64,4 +64,12 @@ export class QuizService {
   getEncapsulationQuizzes(): Observable<any> {
     return this.http.get<any>(`${this.quizUrl}/encapsulation-quizzes`);
   }
+
+  getIntroductionToJavaQuizzes(): Observable<any> {
+    return this.http.get<any>(`${this.quizUrl}/introduction-to-java-quizzes`);
+  }
+
+  getIntroductionToOopQuizzes(): Observable<any> {
+    return this.http.get<any>(`${this.quizUrl}/introduction-to-oop-quizzes`);
+  }
 }
