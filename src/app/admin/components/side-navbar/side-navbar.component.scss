@@ -68,8 +68,11 @@ body {
   .btn-toggle[aria-expanded="true"]::before {
     transform: rotate(90deg);
   }
-  
+  a{
+    cursor: pointer;
+  }
   .btn-toggle-nav a {
+    cursor: pointer;
     display: inline-flex;
     padding: .1875rem .5rem;
     margin-top: .125rem;
@@ -106,4 +109,8 @@ body {
   .flex-grow-1 {
     flex-grow: 1;
     overflow-y: auto;
+  }
+
+  img{
+    width: 50px;
   }

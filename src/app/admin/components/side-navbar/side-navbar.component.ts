@@ -8,8 +8,14 @@ import { AuthService } from '../../../services/auth.service';
   styleUrl: './side-navbar.component.scss'
 })
 export class SideNavbarComponent {
-  constructor(private router: Router, private authService: AuthService) {}
-
+  constructor(private router: Router, private authService: AuthService) {
+    const firstName = this.authService.getFirstName();
+    const lastName = this.authService.getLastName();
+    if (firstName && lastName) {
+      this.userName = `${firstName} ${lastName}`;
+    }
+  }
+  userName: string = '';
   logout() {
     this.authService.logout();
     this.router.navigateByUrl("/admin");

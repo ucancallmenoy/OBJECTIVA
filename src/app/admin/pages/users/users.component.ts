@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/users.service';
 import { LessonProgressService } from '../../services/lesson-progress.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-users',
@@ -25,14 +26,16 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private lessonProgressService: LessonProgressService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Admin | Objectiva');
     this.userForm = this.formBuilder.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: [''], // Optional for editing
-      is_active: [true]
+      is_active: [true],
     });
   }
 
