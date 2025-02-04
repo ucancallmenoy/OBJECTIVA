@@ -11,13 +11,12 @@ import {IntroductionOopComponent} from './pages/quizzes/introduction-oop/introdu
 import {InheritanceComponent} from './pages/quizzes/inheritance/inheritance.component';
 import {EncapsulationComponent} from './pages/quizzes/encapsulation/encapsulation.component';
 import {AbstractionComponent} from './pages/quizzes/abstraction/abstraction.component';
-import { AuthGuard } from '../guards/auth.guard';
-
+import { AdminAuthGuard } from '../guards/admin-auth.guard';
 
 const routes: Routes = [
   {path: 'login-admin', component: LoginAdminComponent},
   {path: '', redirectTo: 'login-admin', pathMatch: 'full'},
-  {path: '', component: AdminComponent, canActivate:[AuthGuard], children: [
+  {path: '', component: AdminComponent, canActivate:[AdminAuthGuard], children: [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'users', component: UsersComponent},
     {path: 'exercises', component: ExercisesComponent},

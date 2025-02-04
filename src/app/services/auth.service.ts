@@ -10,15 +10,13 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  // private apiUrl = 'http://127.0.0.1:8000/api'; // Replace with your API's base URL
-
   private loginUrl = environment.loginUrl;
   private registerUrl = environment.registerUrl;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object // Inject PLATFORM_ID
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   login(email: string, password: string): Observable<any> {
@@ -38,27 +36,21 @@ export class AuthService {
     );
   }
 
-  // For admin login
+  // Admin login with a separate token
   adminLogin(email: string, password: string): Observable<any> {
     return this.http.post(this.loginUrl, { email, password }).pipe(
       map((response: any) => {
-        console.log('API Response in adminLogin:', response); // Debugging
-  
-        if (response && response.token) {
-          if (response.user?.is_admin === 1) {  // Explicitly checking is_admin
-            if (isPlatformBrowser(this.platformId)) {
-              localStorage.setItem('token', response.token);
-              localStorage.setItem('firstName', response.user?.first_name);
-              localStorage.setItem('lastName', response.user?.last_name);
-              localStorage.setItem('email', response.user?.email);
-              localStorage.setItem('is_admin', response.user?.is_admin.toString());
-            }
-            return response;
-          } else {
-            throw new Error('Access Denied: Admins only');  // Ensure correct check
+        if (response && response.token && response.user?.is_admin === 1) {
+          if (isPlatformBrowser(this.platformId)) {
+            localStorage.setItem('admin_token', response.token);
+            localStorage.setItem('firstName', response.user?.first_name);
+            localStorage.setItem('lastName', response.user?.last_name);
+            localStorage.setItem('email', response.user?.email);
+            localStorage.setItem('is_admin', 'true');
           }
+          return response;
         }
-        throw new Error('Invalid response from server');
+        throw new Error('Access Denied: Admins only');
       })
     );
   }
@@ -70,6 +62,8 @@ export class AuthService {
   logout(): void {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('token');
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('is_admin');
     }
     this.router.navigate(['/login-register']);
   }
@@ -81,28 +75,30 @@ export class AuthService {
     return null;
   }
 
+  getAdminToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('admin_token');
+    }
+    return null;
+  }
+
   isAuthenticated(): boolean {
-    const token = this.getToken();
-    return !!token; // Add token expiration check if needed
+    return !!this.getToken();
+  }
+
+  isAdminAuthenticated(): boolean {
+    return !!this.getAdminToken();
   }
 
   getFirstName(): string | null {
-    if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('firstName');
-    }
-    return null;
+    return isPlatformBrowser(this.platformId) ? localStorage.getItem('firstName') : null;
   }
 
   getLastName(): string | null {
-    if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('lastName');
-    }
-    return null;
+    return isPlatformBrowser(this.platformId) ? localStorage.getItem('lastName') : null;
   }
+
   getEmail(): string | null {
-    if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('email');
-    }
-    return null;
+    return isPlatformBrowser(this.platformId) ? localStorage.getItem('email') : null;
   }
 }
