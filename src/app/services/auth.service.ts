@@ -38,6 +38,7 @@ export class AuthService {
     );
   }
 
+  // For admin login
   adminLogin(email: string, password: string): Observable<any> {
     return this.http.post(this.loginUrl, { email, password }).pipe(
       map((response: any) => {
@@ -61,10 +62,6 @@ export class AuthService {
       })
     );
   }
-  
-  
-
-  
 
   register(user: any): Observable<any> {
     return this.http.post(this.registerUrl, user);

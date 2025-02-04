@@ -9,8 +9,12 @@
       {{ error }}
     </div>
   
-    <table class="table table-striped" *ngIf="!loading && !error">
-      <thead>
+    <div class="mb-4">
+      <button class="btn btn-success" (click)="showAddModal = true">Add New User</button>
+    </div>
+
+    <table class="table table-bordered table-hover" *ngIf="!loading && !error">
+      <thead class="table-dark">
         <tr>
           <th>#</th>
           <th>First Name</th>
@@ -37,6 +41,42 @@
       </tbody>
     </table>
   
+    <!-- Add User Modal -->
+  <div class="modal" *ngIf="showAddModal" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New User</h5>
+          <button type="button" class="btn-close" (click)="showAddModal = false"></button>
+        </div>
+        <form (ngSubmit)="addUser()">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" [(ngModel)]="newUser.first_name" name="first_name" required>
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" [(ngModel)]="newUser.last_name" name="last_name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="newUser.email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="newUser.password" name="password" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="showAddModal = false">Close</button>
+            <button type="submit" class="btn btn-success">Add User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
     <!-- Edit User Modal -->
     <div class="modal" *ngIf="showEditModal" tabindex="-1" style="display: block;">
       <div class="modal-dialog">

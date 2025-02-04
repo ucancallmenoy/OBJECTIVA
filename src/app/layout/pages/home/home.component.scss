@@ -1,4 +1,4 @@
-.first-container {
+.first-container {  
     position: relative;
     overflow: hidden;
     padding: 1rem;
@@ -304,6 +304,7 @@ hr {
 }
 
 .exercise-container {
+  border: 1px solid #000000;
   button{
     background-color: #ffffff; /* Yellow color */
     color: #0a102d;

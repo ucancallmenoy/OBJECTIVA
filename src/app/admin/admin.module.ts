@@ -11,7 +11,7 @@ import { QuizzesComponent } from './pages/quizzes/quizzes.component';
 import { ExercisesComponent } from './pages/exercises/exercises.component';
 import { UsersComponent } from './pages/users/users.component';
 
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { UsersComponent } from './pages/users/users.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AdminComponent]

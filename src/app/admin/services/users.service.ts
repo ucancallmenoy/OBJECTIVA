@@ -10,6 +10,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  addUser(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admin/users`, userData
+    );
+  }
+  
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/admin/users`);
   }

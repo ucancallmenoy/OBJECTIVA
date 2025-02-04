@@ -8,8 +8,10 @@ import { UserService } from '../../services/users.service';
   styleUrl: './users.component.scss'
 })
 export class UsersComponent implements OnInit {
+  newUser: any = {};
   users: any[] = [];
   loading = false;
+  showAddModal = false; 
   error: string | null = null;
   
   // Modal and form properties
@@ -34,6 +36,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.loadUsers();
   }
+  
 
   loadUsers(): void {
     this.loading = true;
@@ -51,6 +54,18 @@ export class UsersComponent implements OnInit {
           console.error('Error:', err);
         }
       });
+  }
+
+  addUser(): void {
+    this.userService.addUser(this.newUser).subscribe(
+      (response) => {
+        this.users.push(response);
+        this.newUser = {}; // Clear the form
+      },
+      (error) => {
+        this.error = error.message;
+      }
+    );
   }
 
   openEditModal(user: any) {
