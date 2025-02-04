@@ -47,4 +47,21 @@ export class QuizService {
       total_questions: totalQuestions
     }, { headers: this.getHeaders() });
   }
+
+  //For quiz quetsions
+  getAbstractionQuizzes(): Observable<any> {
+    return this.http.get<any>(`${this.quizUrl}/abstraction-quizzes`);
+  }
+
+  getPolymorphismQuizzes(): Observable<any> {
+    return this.http.get<any>(`${this.quizUrl}/polymorphism-quizzes`);
+  }
+
+  getInheritanceQuizzes(): Observable<any> {
+    return this.http.get<any>(`${this.quizUrl}/inheritance-quizzes`);
+  }
+
+  getEncapsulationQuizzes(): Observable<any> {
+    return this.http.get<any>(`${this.quizUrl}/encapsulation-quizzes`);
+  }
 }

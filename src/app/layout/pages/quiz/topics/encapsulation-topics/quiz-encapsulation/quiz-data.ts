@@ -171,7 +171,8 @@ export const quizData: QuizData[] = [
             correct: "a",
             explanation: "Fields in an encapsulated class should be private to restrict unauthorized access and prevent direct modification of the object's data. This helps maintain the integrity of the object and ensures that data is accessed through controlled methods."
         },
-        {
+
+        { /// second
             question: "Which of the following best describes a 'getter' method?",
             a: "A method to directly access public variables.",
             b: "A method that returns private field values.",
