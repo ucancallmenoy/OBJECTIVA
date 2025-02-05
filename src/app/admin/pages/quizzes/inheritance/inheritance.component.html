@@ -1,1 +1,182 @@
-<p>inheritance works!</p>
+<div class="container">
+    <h2 class="mb-4">Inheritance Quiz Management</h2>
+  
+    <div *ngIf="loading" class="text-center">
+      <p>Loading quizzes...</p>
+    </div>
+  
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+  
+    <div class="mb-4">
+      <button class="btn btn-success" (click)="showAddModal = true">Add New Quiz</button>
+    </div>
+  
+    <table class="table table-bordered table-hover" *ngIf="!loading && !error">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Question</th>
+          <th>Correct Answer</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quiz of quizzes; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ quiz.question }}</td>
+          <td>{{ quiz.correct }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm me-2" (click)="openEditModal(quiz)">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="openDeleteModal(quiz)">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Add Quiz Modal -->
+    <div class="modal" *ngIf="showAddModal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add New Inheritance Quiz</h5>
+            <button type="button" class="btn-close" (click)="showAddModal = false"></button>
+          </div>
+          <form (ngSubmit)="addQuiz()">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="question" class="form-label">Question</label>
+                <textarea class="form-control" id="question" [(ngModel)]="newQuiz.question" name="question" required></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="optionA" class="form-label">Option A</label>
+                  <input type="text" class="form-control" id="optionA" [(ngModel)]="newQuiz.a" name="a" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="optionB" class="form-label">Option B</label>
+                  <input type="text" class="form-control" id="optionB" [(ngModel)]="newQuiz.b" name="b" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="optionC" class="form-label">Option C</label>
+                  <input type="text" class="form-control" id="optionC" [(ngModel)]="newQuiz.c" name="c" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="optionD" class="form-label">Option D</label>
+                  <input type="text" class="form-control" id="optionD" [(ngModel)]="newQuiz.d" name="d" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="correct" class="form-label">Correct Answer</label>
+                <select class="form-control" id="correct" [(ngModel)]="newQuiz.correct" name="correct" required>
+                  <option value="a">Option A</option>
+                  <option value="b">Option B</option>
+                  <option value="c">Option C</option>
+                  <option value="d">Option D</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="explanation" class="form-label">Explanation (Optional)</label>
+                <textarea class="form-control" id="explanation" [(ngModel)]="newQuiz.explanation" name="explanation"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="code" class="form-label">Code Example (Optional)</label>
+                <textarea class="form-control" id="code" [(ngModel)]="newQuiz.code" name="code"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="showAddModal = false">Close</button>
+              <button type="submit" class="btn btn-success">Add Quiz</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Edit Quiz Modal -->
+    <div class="modal" *ngIf="showEditModal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Inheritance Quiz</h5>
+            <button type="button" class="btn-close" (click)="showEditModal = false"></button>
+          </div>
+          <form [formGroup]="quizForm" (ngSubmit)="saveQuiz()">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Question</label>
+                <textarea class="form-control" formControlName="question"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Option A</label>
+                  <input type="text" class="form-control" formControlName="a">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Option B</label>
+                  <input type="text" class="form-control" formControlName="b">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Option C</label>
+                  <input type="text" class="form-control" formControlName="c">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Option D</label>
+                  <input type="text" class="form-control" formControlName="d">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Correct Answer</label>
+                <select class="form-control" formControlName="correct">
+                  <option value="a">Option A</option>
+                  <option value="b">Option B</option>
+                  <option value="c">Option C</option>
+                  <option value="d">Option D</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Explanation (Optional)</label>
+                <textarea class="form-control" formControlName="explanation"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Code Example (Optional)</label>
+                <textarea class="form-control" formControlName="code"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="showEditModal = false">Close</button>
+              <button type="submit" class="btn btn-primary" [disabled]="quizForm.invalid">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" *ngIf="showDeleteModal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" (click)="showDeleteModal = false"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this quiz: {{ selectedQuiz?.question }}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="showDeleteModal = false">Cancel</button>
+            <button type="button" class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

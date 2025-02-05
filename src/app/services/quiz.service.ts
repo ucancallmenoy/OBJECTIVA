@@ -14,8 +14,8 @@ interface ScoreResponse {
 })
 export class QuizService {
   // private apiUrl = 'http://127.0.0.1:8000/api';
-  private quizUrl = environment.baseUrl;
-
+  private quizUrl = environment.quizUrl;
+  private getQuiz = environment.baseUrl
   constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
@@ -50,26 +50,26 @@ export class QuizService {
 
   //For quiz quetsions
   getAbstractionQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.quizUrl}/abstraction-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/abstraction-quizzes`);
   }
 
   getPolymorphismQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.quizUrl}/polymorphism-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/polymorphism-quizzes`);
   }
 
   getInheritanceQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.quizUrl}/inheritance-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/inheritance-quizzes`);
   }
 
   getEncapsulationQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.quizUrl}/encapsulation-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/encapsulation-quizzes`);
   }
 
   getIntroductionToJavaQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.quizUrl}/introduction-to-java-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/introduction-to-java-quizzes`);
   }
 
   getIntroductionToOopQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.quizUrl}/introduction-to-oop-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/introduction-to-oop-quizzes`);
   }
 }

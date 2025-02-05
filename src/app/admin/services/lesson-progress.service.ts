@@ -12,10 +12,10 @@ export class LessonProgressService {
   constructor(private http: HttpClient) {}
 
   getLessonProgress(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/lesson-progress`, { params: { user_id: userId.toString() } });
+    return this.http.get(`${this.apiUrl}/lesson-progress-admin`, { params: { user_id: userId.toString() } });
   }
 
   updateLessonProgress(userId: number, lessonId: number, completed: boolean): Observable<any> {
-    return this.http.post(`${this.apiUrl}/lesson-progress`, { user_id: userId, lesson_id: lessonId, completed });
+    return this.http.post(`${this.apiUrl}/lesson-progress-admin`, { user_id: userId, lesson_id: lessonId, completed });
   }
 }

@@ -1,69 +1,70 @@
 <main class="d-flex vh-100">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-          <span class="fs-4 mx-lg-auto">O b j e c t i v a</span>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <!-- <li>
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <span class="fs-4 mx-lg-auto">O b j e c t i v a</span>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <!-- <li>
             <a (click)="navigateDashboard()" class="nav-link text-white hover-effect">
               <i class="fas fa-tachometer-alt me-2"></i>
               Dashboard
             </a>
           </li> -->
-          <li>
-            <a (click)="navigateUsers()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Users
-            </a>
-          </li>
-          <li>
-            <a (click)="navigateAbstraction()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Abstraction Quiz
-            </a>
-          </li>
-          <li>
-            <a (click)="navigateEncapsulation()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Encapsulation Quiz
-            </a>
-          </li>
-          <li>
-            <a (click)="navigateInheritance()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Inheritance Quiz
-            </a>
-          </li>
-          <li>
-            <a (click)="navigateIntroductionOop()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Introduction to OOP Quiz
-            </a>
-          </li>
-          <li>
-            <a (click)="navigateIntroductionJava()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Introduction to Java Quiz
-            </a>
-          </li>
-          <li>
-            <a (click)="navigatePolymorphism()" class="nav-link text-white hover-effect">
-              <i class="fas fa-table me-2"></i>
-              Polymorphism Quiz
-            </a>
-          </li>
-        </ul>
-        <hr>
-        <div class="dropdown">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user-shield me-2"></i> <!-- Admin icon -->
-            <strong>{{userName}}</strong>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
-          </ul>
-        </div>
+      <li>
+        <a (click)="navigateUsers()" class="nav-link text-white hover-effect">
+          <i class="fas fa-users me-2"></i>
+          Users
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateAbstraction()" class="nav-link text-white hover-effect">
+          <i class="fas fa-brain me-2"></i>
+          Abstraction Quiz
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateEncapsulation()" class="nav-link text-white hover-effect">
+          <i class="fas fa-shield-alt me-2"></i>
+          Encapsulation Quiz
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateInheritance()" class="nav-link text-white hover-effect">
+          <i class="fas fa-code-branch me-2"></i>
+          Inheritance Quiz
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateIntroductionOop()" class="nav-link text-white hover-effect">
+          <i class="fas fa-book me-2"></i>
+          Introduction to OOP Quiz
+        </a>
+      </li>
+      <li>
+        <a (click)="navigateIntroductionJava()" class="nav-link text-white hover-effect">
+          <i class="fas fa-code me-2"></i>
+          Introduction to Java Quiz
+        </a>
+      </li>
+      <li>
+        <a (click)="navigatePolymorphism()" class="nav-link text-white hover-effect">
+          <i class="fas fa-table me-2"></i>
+          Polymorphism Quiz
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-user-shield me-2"></i> <!-- Admin icon -->
+        <strong>{{userName}}</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+      </ul>
     </div>
-    <div class="flex-grow-1 p-3">
-        <router-outlet></router-outlet>
-    </div>
+  </div>
+  <div class="flex-grow-1 p-3">
+    <router-outlet></router-outlet>
+  </div>
 </main>

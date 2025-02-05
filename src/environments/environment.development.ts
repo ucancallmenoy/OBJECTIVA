@@ -20,4 +20,9 @@ export const environment = {
     // ADMIN
     adminUserUrl: `${baseUrl}/admin/users`,
     abstractionQuiz: `${baseUrl}/admin/abstraction-quizzes`,
+    encapsulationQuiz: `${baseUrl}/admin/encapsulation-quizzes`,
+    inheritanceQuiz: `${baseUrl}/admin/inheritance-quizzes`,
+    polymorphismQuiz: `${baseUrl}/admin/polymorphism-quizzes`,
+    introductionOopQuiz: `${baseUrl}/admin/introductionToOop-quizzes`,
+    introductionJavaQuiz: `${baseUrl}/admin/introductionToJava-quizzes`,
 };

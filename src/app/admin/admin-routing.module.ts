@@ -27,6 +27,7 @@ const routes: Routes = [
     {path: 'encapsulation', component: EncapsulationComponent},
     {path: 'abstraction', component: AbstractionComponent},
   ]},
+  {path: '**', redirectTo: 'login-admin'}
 ];
 
 @NgModule({
