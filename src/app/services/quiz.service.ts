@@ -66,10 +66,10 @@ export class QuizService {
   }
 
   getIntroductionToJavaQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/introduction-to-java-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/introductionToJava-quizzes`);
   }
 
   getIntroductionToOopQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/introduction-to-oop-quizzes`);
+    return this.http.get<any>(`${this.getQuiz}/introductionToOop-quizzes`);
   }
 }

@@ -15,7 +15,7 @@ export class QuizIntroductionOopComponent implements OnInit {
     private router: Router,
     private title: Title
   ) {
-    this.title.setTitle('Encapsulation Quiz | Objectiva');
+    this.title.setTitle('Introduction to OOP Quiz | Objectiva');
   }
 
   quizData: any[] = [];
@@ -91,10 +91,10 @@ export class QuizIntroductionOopComponent implements OnInit {
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('encapsulation').subscribe({
+      this.quizService.getCurrentScore('introduction-oop').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('encapsulation', this.score, this.quizData.length)
+            this.quizService.saveScore('introduction-oop', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {

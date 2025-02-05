@@ -15,7 +15,7 @@ export class QuizInheritanceComponent implements OnInit{
     private router: Router,
     private title: Title
   ) {
-    this.title.setTitle('Encapsulation Quiz | Objectiva');
+    this.title.setTitle('Inheritance Quiz | Objectiva');
   }
 
   quizData: any[] = [];
@@ -91,10 +91,10 @@ export class QuizInheritanceComponent implements OnInit{
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('encapsulation').subscribe({
+      this.quizService.getCurrentScore('inheritance').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('encapsulation', this.score, this.quizData.length)
+            this.quizService.saveScore('inheritance', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {

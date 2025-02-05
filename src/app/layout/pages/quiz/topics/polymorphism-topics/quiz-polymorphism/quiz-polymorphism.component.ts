@@ -15,7 +15,7 @@ export class QuizPolymorphismComponent implements OnInit{
     private router: Router,
     private title: Title
   ) {
-    this.title.setTitle('Encapsulation Quiz | Objectiva');
+    this.title.setTitle('Polymorphism Quiz | Objectiva');
   }
 
   quizData: any[] = [];
@@ -91,10 +91,10 @@ export class QuizPolymorphismComponent implements OnInit{
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('encapsulation').subscribe({
+      this.quizService.getCurrentScore('polymorphism').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('encapsulation', this.score, this.quizData.length)
+            this.quizService.saveScore('polymorphism', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {

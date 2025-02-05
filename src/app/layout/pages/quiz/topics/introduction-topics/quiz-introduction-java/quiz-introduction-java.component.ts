@@ -14,7 +14,7 @@ export class QuizIntroductionJavaComponent implements OnInit{
     private router: Router,
     private title: Title
   ) {
-    this.title.setTitle('Encapsulation Quiz | Objectiva');
+    this.title.setTitle('Introduciton to Java Quiz | Objectiva');
   }
 
   quizData: any[] = [];
@@ -90,10 +90,10 @@ export class QuizIntroductionJavaComponent implements OnInit{
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('encapsulation').subscribe({
+      this.quizService.getCurrentScore('introduction-java').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('encapsulation', this.score, this.quizData.length)
+            this.quizService.saveScore('introduction-java', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {
