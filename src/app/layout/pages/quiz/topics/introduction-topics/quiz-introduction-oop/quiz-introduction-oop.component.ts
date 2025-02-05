@@ -124,33 +124,34 @@ export class QuizIntroductionOopComponent implements OnInit {
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You are just starting to explore abstraction in Java. Focus on understanding how it simplifies complex systems.'; break;
-      case 2: feedback = 'Your understanding is minimal. Keep learning about abstraction and its role in hiding implementation details.'; break;
-      case 3: feedback = 'You are making progress! Continue exploring how abstraction improves software design and maintainability.'; break;
-      case 4: feedback = 'You are improving! Try identifying how abstraction is applied in real-world programming scenarios.'; break;
-      case 5: feedback = 'You have a basic grasp of abstraction. Keep practicing to strengthen your conceptual understanding.'; break;
-      case 6: feedback = 'You understand some key points but need more hands-on experience with abstraction in Java.'; break;
-      case 7: feedback = 'Good effort! Continue practicing abstraction through examples and small projects.'; break;
-      case 8: feedback = 'You are getting better! Learn how abstraction improves code structure and reusability.'; break;
-      case 9: feedback = 'You have a fair understanding. Keep refining your knowledge through practice.'; break;
-      case 10: feedback = 'Good job! Explore different ways abstraction is implemented in Java, such as abstract classes and interfaces.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Work on applying abstraction to create cleaner and more modular code.'; break;
-      case 12: feedback = 'Your understanding is growing. Experiment with designing programs that effectively use abstraction.'; break;
-      case 13: feedback = 'Great work! Compare different abstraction techniques to understand when and how to use them.'; break;
-      case 14: feedback = 'You have a strong grasp of abstraction! Apply your knowledge in structured software design.'; break;
-      case 15: feedback = 'Excellent progress! Focus on understanding how abstraction leads to better code organization and scalability.'; break;
-      case 16: feedback = 'You are getting really good! Learn more about abstraction best practices and design principles.'; break;
-      case 17: feedback = 'Your understanding is solid! Explore how abstraction contributes to flexible and maintainable code.'; break;
-      case 18: feedback = 'You have a deep understanding. Analyze how abstraction is used in common design patterns.'; break;
-      case 19: feedback = 'Amazing progress! Identify how abstraction enhances modularity in software development.'; break;
-      case 20: feedback = 'You are doing great! Apply abstraction principles in larger, real-world projects.'; break;
-      case 21: feedback = 'Your abstraction skills are impressive! Work on designing efficient and scalable solutions.'; break;
-      case 22: feedback = 'Exceptional work! Study how abstraction is applied in enterprise-level applications and frameworks.'; break;
-      case 23: feedback = 'Outstanding! Focus on writing clean, maintainable, and abstracted code.'; break;
-      case 24: feedback = 'Brilliant understanding! Deepen your expertise by exploring advanced abstraction concepts.'; break;
-      case 25: feedback = 'Perfect score! You have mastered abstraction in Java. Apply your skills in advanced projects and mentor others.'; break;
+      case 1: feedback = 'You have no understanding of OOP. Learn what objects and classes are before moving forward.'; break;
+      case 2: feedback = 'You might have heard of OOP, but you don’t really get it. Start by understanding real-world object modeling.'; break;
+      case 3: feedback = 'Your OOP knowledge is extremely weak. Focus on the four pillars: encapsulation, abstraction, inheritance, and polymorphism.'; break;
+      case 4: feedback = 'You barely grasp OOP. Work on creating simple classes and objects to understand the fundamentals.'; break;
+      case 5: feedback = 'You understand the very basics, but your ability to apply OOP concepts is lacking. Code more and experiment.'; break;
+      case 6: feedback = 'You have a surface-level understanding. Start using OOP principles in practical coding exercises.'; break;
+      case 7: feedback = 'You know how to define classes and objects, but do you understand why OOP is useful? Explore real-world applications.'; break;
+      case 8: feedback = 'You grasp the basics, but your design thinking needs improvement. Learn about cohesion and coupling.'; break;
+      case 9: feedback = 'You have a fair understanding, but your implementation is weak. Work on projects that apply OOP effectively.'; break;
+      case 10: feedback = 'Good job! Now learn about access modifiers and how they enforce data security in OOP.'; break;
+      case 11: feedback = 'You are developing a solid OOP foundation. Now, explore how OOP helps in large-scale software development.'; break;
+      case 12: feedback = 'Your understanding is growing! Practice designing class hierarchies and using constructors effectively.'; break;
+      case 13: feedback = 'You’re doing well! Compare OOP with procedural programming and see the differences in maintainability.'; break;
+      case 14: feedback = 'Solid knowledge! Start using design patterns like Singleton and Factory to strengthen your OOP design skills.'; break;
+      case 15: feedback = 'Great progress! Make sure you fully understand polymorphism and method overriding.'; break;
+      case 16: feedback = 'Your OOP skills are strong. Try breaking down a complex application into reusable classes and modules.'; break;
+      case 17: feedback = 'You have a solid understanding! Learn about SOLID principles and best OOP practices to improve further.'; break;
+      case 18: feedback = 'You have a deep grasp of OOP. Now, experiment with frameworks that rely on strong OOP foundations, like Spring.'; break;
+      case 19: feedback = 'Excellent understanding! Try designing an object-oriented system from scratch and review your design choices.'; break;
+      case 20: feedback = 'Your OOP skills are advanced! Dive into architectural patterns like MVC to see how OOP scales in real applications.'; break;
+      case 21: feedback = 'Your understanding is outstanding! Now, work on writing clean, maintainable, and scalable OOP code.'; break;
+      case 22: feedback = 'Exceptional knowledge! Study how OOP is applied in various programming paradigms and hybrid models.'; break;
+      case 23: feedback = 'Outstanding! Consider researching advanced topics like metaprogramming and dynamic object creation.'; break;
+      case 24: feedback = 'Brilliant understanding! Teach others and refine your ability to explain OOP principles clearly.'; break;
+      case 25: feedback = 'Perfect score! But always challenge your designs—good OOP isn’t just about following rules but knowing when to break them.'; break;
       default: feedback = 'Invalid score. Please check your input.';
-    }
+  }
+  
 
     this.feedback = feedback;
   }

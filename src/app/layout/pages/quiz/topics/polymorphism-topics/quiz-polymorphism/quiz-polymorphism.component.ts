@@ -124,33 +124,34 @@ export class QuizPolymorphismComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You are just starting to explore abstraction in Java. Focus on understanding how it simplifies complex systems.'; break;
-      case 2: feedback = 'Your understanding is minimal. Keep learning about abstraction and its role in hiding implementation details.'; break;
-      case 3: feedback = 'You are making progress! Continue exploring how abstraction improves software design and maintainability.'; break;
-      case 4: feedback = 'You are improving! Try identifying how abstraction is applied in real-world programming scenarios.'; break;
-      case 5: feedback = 'You have a basic grasp of abstraction. Keep practicing to strengthen your conceptual understanding.'; break;
-      case 6: feedback = 'You understand some key points but need more hands-on experience with abstraction in Java.'; break;
-      case 7: feedback = 'Good effort! Continue practicing abstraction through examples and small projects.'; break;
-      case 8: feedback = 'You are getting better! Learn how abstraction improves code structure and reusability.'; break;
-      case 9: feedback = 'You have a fair understanding. Keep refining your knowledge through practice.'; break;
-      case 10: feedback = 'Good job! Explore different ways abstraction is implemented in Java, such as abstract classes and interfaces.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Work on applying abstraction to create cleaner and more modular code.'; break;
-      case 12: feedback = 'Your understanding is growing. Experiment with designing programs that effectively use abstraction.'; break;
-      case 13: feedback = 'Great work! Compare different abstraction techniques to understand when and how to use them.'; break;
-      case 14: feedback = 'You have a strong grasp of abstraction! Apply your knowledge in structured software design.'; break;
-      case 15: feedback = 'Excellent progress! Focus on understanding how abstraction leads to better code organization and scalability.'; break;
-      case 16: feedback = 'You are getting really good! Learn more about abstraction best practices and design principles.'; break;
-      case 17: feedback = 'Your understanding is solid! Explore how abstraction contributes to flexible and maintainable code.'; break;
-      case 18: feedback = 'You have a deep understanding. Analyze how abstraction is used in common design patterns.'; break;
-      case 19: feedback = 'Amazing progress! Identify how abstraction enhances modularity in software development.'; break;
-      case 20: feedback = 'You are doing great! Apply abstraction principles in larger, real-world projects.'; break;
-      case 21: feedback = 'Your abstraction skills are impressive! Work on designing efficient and scalable solutions.'; break;
-      case 22: feedback = 'Exceptional work! Study how abstraction is applied in enterprise-level applications and frameworks.'; break;
-      case 23: feedback = 'Outstanding! Focus on writing clean, maintainable, and abstracted code.'; break;
-      case 24: feedback = 'Brilliant understanding! Deepen your expertise by exploring advanced abstraction concepts.'; break;
-      case 25: feedback = 'Perfect score! You have mastered abstraction in Java. Apply your skills in advanced projects and mentor others.'; break;
+      case 1: feedback = 'You have no clue what polymorphism is. Start by understanding method overloading and overriding.'; break;
+      case 2: feedback = 'You’ve heard the word “polymorphism” but don’t know what it means. Learn why it’s useful in OOP.'; break;
+      case 3: feedback = 'You barely understand it. Focus on how a single interface can be used with different implementations.'; break;
+      case 4: feedback = 'Your knowledge is weak. Practice writing methods that are overloaded and overridden in subclasses.'; break;
+      case 5: feedback = 'You get the concept, but struggle to apply it. Work on simple examples of runtime and compile-time polymorphism.'; break;
+      case 6: feedback = 'You understand the basics, but your implementations are messy. Clean up your code and use proper method overriding.'; break;
+      case 7: feedback = 'You know about polymorphism but don’t see its importance. Learn how it makes code more scalable and maintainable.'; break;
+      case 8: feedback = 'Your understanding is shallow. Experiment with interfaces and abstract classes to see polymorphism in action.'; break;
+      case 9: feedback = 'You can implement basic polymorphism, but can you explain why it’s beneficial? Work on improving your explanations.'; break;
+      case 10: feedback = 'Good job! Now, learn how dynamic method dispatch works in Java.'; break;
+      case 11: feedback = 'You are developing a solid foundation. Now, explore how polymorphism helps reduce code duplication.'; break;
+      case 12: feedback = 'Your knowledge is growing! Understand how polymorphism allows for flexible and reusable code.'; break;
+      case 13: feedback = 'You’re doing well! Try using polymorphism in real-world applications like logging and event handling.'; break;
+      case 14: feedback = 'Solid understanding! Explore how frameworks like Spring use polymorphism to achieve loose coupling.'; break;
+      case 15: feedback = 'Great progress! Make sure you fully understand how method overriding works in subclassing.'; break;
+      case 16: feedback = 'Your polymorphism skills are strong. Try designing a program that takes advantage of polymorphic behavior.'; break;
+      case 17: feedback = 'You have a solid grasp! Learn about function pointers and how Java resolves method calls dynamically.'; break;
+      case 18: feedback = 'You have a deep understanding. Now, experiment with dependency injection and polymorphism together.'; break;
+      case 19: feedback = 'Excellent knowledge! Study how polymorphism is leveraged in real-world design patterns like Strategy and Factory.'; break;
+      case 20: feedback = 'Your polymorphism skills are advanced! Try implementing advanced concepts like method reference in functional programming.'; break;
+      case 21: feedback = 'Your understanding is outstanding! Now, work on optimizing your polymorphic structures for performance.'; break;
+      case 22: feedback = 'Exceptional knowledge! Study how JVM handles polymorphic method calls internally.'; break;
+      case 23: feedback = 'Outstanding! Consider researching how polymorphism is implemented in dynamically-typed languages and compare.'; break;
+      case 24: feedback = 'Brilliant understanding! Teach others and challenge yourself by designing complex OOP architectures.'; break;
+      case 25: feedback = 'Perfect score! But never stop learning—true polymorphism mastery is about knowing when and when NOT to use it.'; break;
       default: feedback = 'Invalid score. Please check your input.';
-    }
+  }
+  
 
     this.feedback = feedback;
   }

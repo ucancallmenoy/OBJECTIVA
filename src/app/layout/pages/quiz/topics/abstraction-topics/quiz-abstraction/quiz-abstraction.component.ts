@@ -124,33 +124,34 @@ export class QuizAbstractionComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You are just starting to explore abstraction in Java. Focus on understanding how it simplifies complex systems.'; break;
-      case 2: feedback = 'Your understanding is minimal. Keep learning about abstraction and its role in hiding implementation details.'; break;
-      case 3: feedback = 'You are making progress! Continue exploring how abstraction improves software design and maintainability.'; break;
-      case 4: feedback = 'You are improving! Try identifying how abstraction is applied in real-world programming scenarios.'; break;
-      case 5: feedback = 'You have a basic grasp of abstraction. Keep practicing to strengthen your conceptual understanding.'; break;
-      case 6: feedback = 'You understand some key points but need more hands-on experience with abstraction in Java.'; break;
-      case 7: feedback = 'Good effort! Continue practicing abstraction through examples and small projects.'; break;
-      case 8: feedback = 'You are getting better! Learn how abstraction improves code structure and reusability.'; break;
-      case 9: feedback = 'You have a fair understanding. Keep refining your knowledge through practice.'; break;
-      case 10: feedback = 'Good job! Explore different ways abstraction is implemented in Java, such as abstract classes and interfaces.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Work on applying abstraction to create cleaner and more modular code.'; break;
-      case 12: feedback = 'Your understanding is growing. Experiment with designing programs that effectively use abstraction.'; break;
-      case 13: feedback = 'Great work! Compare different abstraction techniques to understand when and how to use them.'; break;
-      case 14: feedback = 'You have a strong grasp of abstraction! Apply your knowledge in structured software design.'; break;
-      case 15: feedback = 'Excellent progress! Focus on understanding how abstraction leads to better code organization and scalability.'; break;
-      case 16: feedback = 'You are getting really good! Learn more about abstraction best practices and design principles.'; break;
-      case 17: feedback = 'Your understanding is solid! Explore how abstraction contributes to flexible and maintainable code.'; break;
-      case 18: feedback = 'You have a deep understanding. Analyze how abstraction is used in common design patterns.'; break;
-      case 19: feedback = 'Amazing progress! Identify how abstraction enhances modularity in software development.'; break;
-      case 20: feedback = 'You are doing great! Apply abstraction principles in larger, real-world projects.'; break;
-      case 21: feedback = 'Your abstraction skills are impressive! Work on designing efficient and scalable solutions.'; break;
-      case 22: feedback = 'Exceptional work! Study how abstraction is applied in enterprise-level applications and frameworks.'; break;
-      case 23: feedback = 'Outstanding! Focus on writing clean, maintainable, and abstracted code.'; break;
-      case 24: feedback = 'Brilliant understanding! Deepen your expertise by exploring advanced abstraction concepts.'; break;
-      case 25: feedback = 'Perfect score! You have mastered abstraction in Java. Apply your skills in advanced projects and mentor others.'; break;
+      case 1: feedback = 'You have almost no understanding of abstraction. Start from the basics—learn what abstraction is and why it matters in OOP.'; break;
+      case 2: feedback = 'Your grasp of abstraction is extremely weak. You need to study how abstraction helps structure code and hides unnecessary details.'; break;
+      case 3: feedback = 'You are struggling with abstraction. Focus on understanding the difference between abstract classes and concrete implementations.'; break;
+      case 4: feedback = 'You have a vague idea of abstraction but lack practical knowledge. Start writing simple abstract classes to get hands-on experience.'; break;
+      case 5: feedback = 'Your understanding is minimal. Reading theory isn’t enough—try implementing abstraction in small projects.'; break;
+      case 6: feedback = 'You are starting to grasp the concept, but you need more practice. Analyze real-world examples of abstraction in Java.'; break;
+      case 7: feedback = 'You have some basic knowledge, but it’s not solid. Go beyond definitions—apply abstraction in real coding problems.'; break;
+      case 8: feedback = 'You understand some key points but may be relying too much on memorization rather than practical application.'; break;
+      case 9: feedback = 'You have an average understanding. Focus on refining your ability to use abstraction effectively in design patterns.'; break;
+      case 10: feedback = 'Your knowledge is decent, but you likely lack experience implementing abstraction in real-world applications.'; break;
+      case 11: feedback = 'You are on the right track, but you need to work on recognizing when abstraction should and should not be used.'; break;
+      case 12: feedback = 'You have a good grasp of abstraction, but your ability to apply it fluently in projects still needs work.'; break;
+      case 13: feedback = 'You understand abstraction well, but ensure you are not overusing it where it’s unnecessary.'; break;
+      case 14: feedback = 'You are above average in abstraction. Challenge yourself by working on larger projects that require better software architecture.'; break;
+      case 15: feedback = 'You are progressing well. Now focus on improving your decision-making on when to use abstraction vs. other OOP principles.'; break;
+      case 16: feedback = 'You are getting quite good, but your abstraction implementations may still lack optimization. Aim for cleaner, more efficient designs.'; break;
+      case 17: feedback = 'You have a solid grasp, but ensure that your abstraction doesn’t lead to unnecessary complexity.'; break;
+      case 18: feedback = 'You are highly competent with abstraction. Now, focus on writing abstraction that improves scalability and maintainability.'; break;
+      case 19: feedback = 'Your understanding is strong, but test whether your abstractions make real-world code easier to manage, not just more abstract.'; break;
+      case 20: feedback = 'You are very skilled at abstraction, but are you applying it efficiently? Over-abstracting can make code harder to read.'; break;
+      case 21: feedback = 'You have impressive abstraction skills. Now, work on optimizing your implementations for performance and readability.'; break;
+      case 22: feedback = 'Your understanding of abstraction is exceptional. Now, start mentoring others or contributing to open-source projects to refine your expertise.'; break;
+      case 23: feedback = 'You are an abstraction expert, but don’t stop learning. The best developers constantly improve and refine their code.'; break;
+      case 24: feedback = 'Your abstraction skills are outstanding. Push yourself further by studying complex design patterns and software architecture.'; break;
+      case 25: feedback = 'Perfect score! But be cautious—nobody is truly perfect. Keep challenging yourself to write even better, more maintainable code.'; break;
       default: feedback = 'Invalid score. Please check your input.';
-    }
+  }
+  
 
     this.feedback = feedback;
   }

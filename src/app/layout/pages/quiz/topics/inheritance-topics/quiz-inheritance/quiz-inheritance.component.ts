@@ -124,33 +124,34 @@ export class QuizInheritanceComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You are just starting to explore abstraction in Java. Focus on understanding how it simplifies complex systems.'; break;
-      case 2: feedback = 'Your understanding is minimal. Keep learning about abstraction and its role in hiding implementation details.'; break;
-      case 3: feedback = 'You are making progress! Continue exploring how abstraction improves software design and maintainability.'; break;
-      case 4: feedback = 'You are improving! Try identifying how abstraction is applied in real-world programming scenarios.'; break;
-      case 5: feedback = 'You have a basic grasp of abstraction. Keep practicing to strengthen your conceptual understanding.'; break;
-      case 6: feedback = 'You understand some key points but need more hands-on experience with abstraction in Java.'; break;
-      case 7: feedback = 'Good effort! Continue practicing abstraction through examples and small projects.'; break;
-      case 8: feedback = 'You are getting better! Learn how abstraction improves code structure and reusability.'; break;
-      case 9: feedback = 'You have a fair understanding. Keep refining your knowledge through practice.'; break;
-      case 10: feedback = 'Good job! Explore different ways abstraction is implemented in Java, such as abstract classes and interfaces.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Work on applying abstraction to create cleaner and more modular code.'; break;
-      case 12: feedback = 'Your understanding is growing. Experiment with designing programs that effectively use abstraction.'; break;
-      case 13: feedback = 'Great work! Compare different abstraction techniques to understand when and how to use them.'; break;
-      case 14: feedback = 'You have a strong grasp of abstraction! Apply your knowledge in structured software design.'; break;
-      case 15: feedback = 'Excellent progress! Focus on understanding how abstraction leads to better code organization and scalability.'; break;
-      case 16: feedback = 'You are getting really good! Learn more about abstraction best practices and design principles.'; break;
-      case 17: feedback = 'Your understanding is solid! Explore how abstraction contributes to flexible and maintainable code.'; break;
-      case 18: feedback = 'You have a deep understanding. Analyze how abstraction is used in common design patterns.'; break;
-      case 19: feedback = 'Amazing progress! Identify how abstraction enhances modularity in software development.'; break;
-      case 20: feedback = 'You are doing great! Apply abstraction principles in larger, real-world projects.'; break;
-      case 21: feedback = 'Your abstraction skills are impressive! Work on designing efficient and scalable solutions.'; break;
-      case 22: feedback = 'Exceptional work! Study how abstraction is applied in enterprise-level applications and frameworks.'; break;
-      case 23: feedback = 'Outstanding! Focus on writing clean, maintainable, and abstracted code.'; break;
-      case 24: feedback = 'Brilliant understanding! Deepen your expertise by exploring advanced abstraction concepts.'; break;
-      case 25: feedback = 'Perfect score! You have mastered abstraction in Java. Apply your skills in advanced projects and mentor others.'; break;
+      case 1: feedback = 'You have no real understanding of inheritance. Start by learning what it is and why it matters in OOP.'; break;
+      case 2: feedback = 'You might have heard of inheritance, but you don’t understand how it works. Study how child classes extend parent classes.'; break;
+      case 3: feedback = 'Your understanding is extremely weak. Focus on how inheritance reduces code duplication while maintaining structure.'; break;
+      case 4: feedback = 'You barely grasp inheritance. Try creating a basic class hierarchy with a superclass and subclasses.'; break;
+      case 5: feedback = 'You have a vague idea, but you need to apply it. Implement simple inheritance in Java to solidify your understanding.'; break;
+      case 6: feedback = 'You understand the basics, but your application is lacking. Experiment with method overriding and constructor inheritance.'; break;
+      case 7: feedback = 'You’re improving, but are you considering when NOT to use inheritance? Overusing it can lead to unnecessary complexity.'; break;
+      case 8: feedback = 'Your knowledge is still shallow. Focus on how inheritance interacts with encapsulation and polymorphism.'; break;
+      case 9: feedback = 'You get the concept, but applying it effectively is a different challenge. Work on designing flexible class hierarchies.'; break;
+      case 10: feedback = 'Good job, but be careful. Blindly using inheritance can create rigid code. Learn about composition as an alternative.'; break;
+      case 11: feedback = 'You are getting better. Now, refine your understanding by learning when to use inheritance versus interfaces.'; break;
+      case 12: feedback = 'You know how inheritance works, but are you applying best practices? Avoid deep inheritance chains.'; break;
+      case 13: feedback = 'You have a decent grasp. Start analyzing real-world problems where inheritance is either useful or a bad choice.'; break;
+      case 14: feedback = 'Solid understanding! Challenge yourself by working with abstract classes and method overriding.'; break;
+      case 15: feedback = 'You are above average! Now, focus on avoiding common pitfalls like unnecessary subclassing.'; break;
+      case 16: feedback = 'Your skills are strong, but do you fully understand multiple inheritance problems and how Java avoids them?'; break;
+      case 17: feedback = 'You are on the right track! Test your skills by designing an application that balances inheritance with composition.'; break;
+      case 18: feedback = 'Your understanding is deep. Now, analyze how Java’s standard libraries make use of inheritance effectively.'; break;
+      case 19: feedback = 'You’re doing great! Work on designing flexible hierarchies that minimize code duplication and maximize reusability.'; break;
+      case 20: feedback = 'You have a strong grasp of inheritance. Now, consider how it affects maintainability in large codebases.'; break;
+      case 21: feedback = 'Your inheritance skills are impressive. Start looking at how design patterns like Factory and Template use inheritance.'; break;
+      case 22: feedback = 'Exceptional work! Explore how Java frameworks like Spring utilize inheritance effectively.'; break;
+      case 23: feedback = 'Outstanding knowledge, but remember—inheritance is not always the best solution. Question its use in every design.'; break;
+      case 24: feedback = 'Your understanding is near perfect. Teach others and explore how inheritance affects performance and memory usage.'; break;
+      case 25: feedback = 'Perfect score! But even experts make mistakes. Keep refining your ability to balance inheritance with other OOP principles.'; break;
       default: feedback = 'Invalid score. Please check your input.';
-    }
+  }
+  
 
     this.feedback = feedback;
   }

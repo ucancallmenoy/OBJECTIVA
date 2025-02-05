@@ -124,33 +124,34 @@ export class QuizEncapsulationComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You are just starting to explore abstraction in Java. Focus on understanding how it simplifies complex systems.'; break;
-      case 2: feedback = 'Your understanding is minimal. Keep learning about abstraction and its role in hiding implementation details.'; break;
-      case 3: feedback = 'You are making progress! Continue exploring how abstraction improves software design and maintainability.'; break;
-      case 4: feedback = 'You are improving! Try identifying how abstraction is applied in real-world programming scenarios.'; break;
-      case 5: feedback = 'You have a basic grasp of abstraction. Keep practicing to strengthen your conceptual understanding.'; break;
-      case 6: feedback = 'You understand some key points but need more hands-on experience with abstraction in Java.'; break;
-      case 7: feedback = 'Good effort! Continue practicing abstraction through examples and small projects.'; break;
-      case 8: feedback = 'You are getting better! Learn how abstraction improves code structure and reusability.'; break;
-      case 9: feedback = 'You have a fair understanding. Keep refining your knowledge through practice.'; break;
-      case 10: feedback = 'Good job! Explore different ways abstraction is implemented in Java, such as abstract classes and interfaces.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Work on applying abstraction to create cleaner and more modular code.'; break;
-      case 12: feedback = 'Your understanding is growing. Experiment with designing programs that effectively use abstraction.'; break;
-      case 13: feedback = 'Great work! Compare different abstraction techniques to understand when and how to use them.'; break;
-      case 14: feedback = 'You have a strong grasp of abstraction! Apply your knowledge in structured software design.'; break;
-      case 15: feedback = 'Excellent progress! Focus on understanding how abstraction leads to better code organization and scalability.'; break;
-      case 16: feedback = 'You are getting really good! Learn more about abstraction best practices and design principles.'; break;
-      case 17: feedback = 'Your understanding is solid! Explore how abstraction contributes to flexible and maintainable code.'; break;
-      case 18: feedback = 'You have a deep understanding. Analyze how abstraction is used in common design patterns.'; break;
-      case 19: feedback = 'Amazing progress! Identify how abstraction enhances modularity in software development.'; break;
-      case 20: feedback = 'You are doing great! Apply abstraction principles in larger, real-world projects.'; break;
-      case 21: feedback = 'Your abstraction skills are impressive! Work on designing efficient and scalable solutions.'; break;
-      case 22: feedback = 'Exceptional work! Study how abstraction is applied in enterprise-level applications and frameworks.'; break;
-      case 23: feedback = 'Outstanding! Focus on writing clean, maintainable, and abstracted code.'; break;
-      case 24: feedback = 'Brilliant understanding! Deepen your expertise by exploring advanced abstraction concepts.'; break;
-      case 25: feedback = 'Perfect score! You have mastered abstraction in Java. Apply your skills in advanced projects and mentor others.'; break;
+      case 1: feedback = 'You lack a fundamental understanding of encapsulation. Start by learning why we use access modifiers in Java.'; break;
+      case 2: feedback = 'Your knowledge of encapsulation is almost nonexistent. Focus on how encapsulation restricts direct access to data fields.'; break;
+      case 3: feedback = 'You are struggling with encapsulation. Understand the purpose of getters and setters and when to use them.'; break;
+      case 4: feedback = 'You have minimal awareness of encapsulation. Practice defining private fields and public methods in simple classes.'; break;
+      case 5: feedback = 'You know the basic definition, but that’s not enough. Experiment with encapsulation to protect object integrity.'; break;
+      case 6: feedback = 'You understand some concepts but need hands-on practice. Try modifying existing code to use encapsulation effectively.'; break;
+      case 7: feedback = 'You have a basic understanding, but you’re missing the big picture. Learn how encapsulation aids in maintaining code modularity.'; break;
+      case 8: feedback = 'Your grasp is superficial. Focus on how encapsulation helps in preventing unauthorized access and modification of data.'; break;
+      case 9: feedback = 'You have an average understanding. Deepen your knowledge by exploring how encapsulation supports code reusability and maintenance.'; break;
+      case 10: feedback = 'You know the essentials, but real-world application seems lacking. Use encapsulation in more complex scenarios to test your skills.'; break;
+      case 11: feedback = 'You are on the right path, but work on recognizing when encapsulation can genuinely simplify your codebase.'; break;
+      case 12: feedback = 'You understand encapsulation fairly well, but your implementation might still be inconsistent.'; break;
+      case 13: feedback = 'You get the concept, but ensure you aren’t overusing setters, which can violate encapsulation principles.'; break;
+      case 14: feedback = 'You are better than most, but challenge yourself by encapsulating complex systems to see its true benefits.'; break;
+      case 15: feedback = 'You’re making solid progress. Focus now on maintaining encapsulation while working with inheritance and interfaces.'; break;
+      case 16: feedback = 'You are proficient, but ensure your encapsulated classes are genuinely simplifying your code, not complicating it.'; break;
+      case 17: feedback = 'Your understanding is robust. Make sure your encapsulation practices are enhancing code security and readability.'; break;
+      case 18: feedback = 'You are very skilled, but question whether your encapsulation makes the code easier to maintain and extend.'; break;
+      case 19: feedback = 'You’re doing great. Test your skills by designing a multi-class system that heavily relies on encapsulation.'; break;
+      case 20: feedback = 'You have excellent knowledge, but are you applying it to its fullest potential in large codebases?'; break;
+      case 21: feedback = 'Your encapsulation skills are impressive. Now, mentor others to refine your own understanding further.'; break;
+      case 22: feedback = 'Exceptional work! Explore advanced topics like encapsulation in API design and library development.'; break;
+      case 23: feedback = 'Outstanding knowledge, but remember—every design decision should be questioned for effectiveness and efficiency.'; break;
+      case 24: feedback = 'Your understanding is near perfect. Dive into how encapsulation interacts with other OOP principles like inheritance and polymorphism.'; break;
+      case 25: feedback = 'Perfect score! But remember, there is always room for improvement. Keep pushing your limits in complex projects.'; break;
       default: feedback = 'Invalid score. Please check your input.';
-    }
+  }
+  
 
     this.feedback = feedback;
   }

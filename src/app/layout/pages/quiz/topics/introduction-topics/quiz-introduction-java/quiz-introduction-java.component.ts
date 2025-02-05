@@ -123,33 +123,34 @@ export class QuizIntroductionJavaComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You are just starting to explore abstraction in Java. Focus on understanding how it simplifies complex systems.'; break;
-      case 2: feedback = 'Your understanding is minimal. Keep learning about abstraction and its role in hiding implementation details.'; break;
-      case 3: feedback = 'You are making progress! Continue exploring how abstraction improves software design and maintainability.'; break;
-      case 4: feedback = 'You are improving! Try identifying how abstraction is applied in real-world programming scenarios.'; break;
-      case 5: feedback = 'You have a basic grasp of abstraction. Keep practicing to strengthen your conceptual understanding.'; break;
-      case 6: feedback = 'You understand some key points but need more hands-on experience with abstraction in Java.'; break;
-      case 7: feedback = 'Good effort! Continue practicing abstraction through examples and small projects.'; break;
-      case 8: feedback = 'You are getting better! Learn how abstraction improves code structure and reusability.'; break;
-      case 9: feedback = 'You have a fair understanding. Keep refining your knowledge through practice.'; break;
-      case 10: feedback = 'Good job! Explore different ways abstraction is implemented in Java, such as abstract classes and interfaces.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Work on applying abstraction to create cleaner and more modular code.'; break;
-      case 12: feedback = 'Your understanding is growing. Experiment with designing programs that effectively use abstraction.'; break;
-      case 13: feedback = 'Great work! Compare different abstraction techniques to understand when and how to use them.'; break;
-      case 14: feedback = 'You have a strong grasp of abstraction! Apply your knowledge in structured software design.'; break;
-      case 15: feedback = 'Excellent progress! Focus on understanding how abstraction leads to better code organization and scalability.'; break;
-      case 16: feedback = 'You are getting really good! Learn more about abstraction best practices and design principles.'; break;
-      case 17: feedback = 'Your understanding is solid! Explore how abstraction contributes to flexible and maintainable code.'; break;
-      case 18: feedback = 'You have a deep understanding. Analyze how abstraction is used in common design patterns.'; break;
-      case 19: feedback = 'Amazing progress! Identify how abstraction enhances modularity in software development.'; break;
-      case 20: feedback = 'You are doing great! Apply abstraction principles in larger, real-world projects.'; break;
-      case 21: feedback = 'Your abstraction skills are impressive! Work on designing efficient and scalable solutions.'; break;
-      case 22: feedback = 'Exceptional work! Study how abstraction is applied in enterprise-level applications and frameworks.'; break;
-      case 23: feedback = 'Outstanding! Focus on writing clean, maintainable, and abstracted code.'; break;
-      case 24: feedback = 'Brilliant understanding! Deepen your expertise by exploring advanced abstraction concepts.'; break;
-      case 25: feedback = 'Perfect score! You have mastered abstraction in Java. Apply your skills in advanced projects and mentor others.'; break;
+      case 1: feedback = 'You don’t know Java at all. Start by learning basic syntax, data types, and how Java code runs.'; break;
+      case 2: feedback = 'You’ve heard of Java, but your knowledge is nearly nonexistent. Write simple programs to get familiar with it.'; break;
+      case 3: feedback = 'Your understanding is weak. Learn about variables, loops, and methods before jumping into complex topics.'; break;
+      case 4: feedback = 'You grasp some basics but struggle with implementation. Focus on hands-on coding instead of just theory.'; break;
+      case 5: feedback = 'You understand basic concepts, but your coding skills need serious improvement. Write more small programs.'; break;
+      case 6: feedback = 'You are making progress but lack confidence. Work on basic Java programs, debugging, and logical problem-solving.'; break;
+      case 7: feedback = 'You understand simple Java syntax, but do you know how to apply it? Solve coding exercises to reinforce learning.'; break;
+      case 8: feedback = 'Your basics are there, but your problem-solving is weak. Work on breaking down problems into smaller steps.'; break;
+      case 9: feedback = 'You have a fair understanding, but you need to improve your consistency in writing clean and efficient Java code.'; break;
+      case 10: feedback = 'Good job! Now focus on understanding Object-Oriented Programming, as Java is built around it.'; break;
+      case 11: feedback = 'You’re developing a solid foundation. Now, get comfortable with exception handling and file operations.'; break;
+      case 12: feedback = 'Your Java knowledge is growing! Learn how Java handles memory, like stack vs. heap and garbage collection.'; break;
+      case 13: feedback = 'You’re on the right track! Start practicing Java collections, generics, and basic algorithms.'; break;
+      case 14: feedback = 'Solid grasp! Now, focus on Java’s built-in libraries and how to work with APIs and data structures.'; break;
+      case 15: feedback = 'Great progress! Have you started using Java for real-world applications? Try working on small projects.'; break;
+      case 16: feedback = 'Your knowledge is strong. Now, challenge yourself by learning multi-threading and concurrency.'; break;
+      case 17: feedback = 'You are doing well! Focus on design patterns and best coding practices to improve code quality.'; break;
+      case 18: feedback = 'You have a deep understanding of Java basics. Now, explore frameworks like Spring Boot or JavaFX.'; break;
+      case 19: feedback = 'Excellent knowledge! Work on optimizing your Java code and understanding performance bottlenecks.'; break;
+      case 20: feedback = 'Your Java skills are advanced! Dive into databases, networking, and JVM internals to push your knowledge further.'; break;
+      case 21: feedback = 'Your Java skills are impressive! Start contributing to open-source projects or building scalable applications.'; break;
+      case 22: feedback = 'Exceptional work! Consider mastering Java-related technologies like Hibernate and Microservices.'; break;
+      case 23: feedback = 'Outstanding! You should now focus on enterprise-level Java development and software architecture.'; break;
+      case 24: feedback = 'Brilliant understanding! Teach others and refine your expertise by working on complex Java applications.'; break;
+      case 25: feedback = 'Perfect score! But Java is constantly evolving—stay updated with new versions and best practices.'; break;
       default: feedback = 'Invalid score. Please check your input.';
-    }
+  }
+  
 
     this.feedback = feedback;
   }

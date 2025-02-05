@@ -96,38 +96,25 @@
         <p>It is a way of writing computer code that organizes software design around “objects” – which are digital blueprints that combine data and actions, similar to real-world objects have characteristics and behaviors.</p>
   
         <!-- INVOLVES -->
-        <div class="container px-4 py-5" id="hanging-icons" style="margin-bottom: -20rem;">
           <h2 class="pb-2 border-bottom">Writing object-oriented programming involves:</h2>
-          <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="col d-flex align-items-start">
-              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                <i class="fas fa-chalkboard-teacher fa-2x"></i>
-              </div>
-              <div>
-                <h2>Creating Classes</h2>
-                <p>Creating classes, which are blueprints for objects</p>
-              </div>
-            </div>
-            <div class="col d-flex align-items-start">
-              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                <i class="fas fa-cube fa-2x"></i>
-              </div>
-              <div>
-                <h2>Creating Objects</h2>
-                <p>Creating objects, which are specific instances of those classes</p>
-              </div>
-            </div>
-            <div class="col d-flex align-items-start">
-              <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                <i class="fas fa-cogs fa-2x"></i>
-              </div>
-              <div>
-                <h2>Defining Methods</h2>
-                <p>Defining methods, which are functions that operate on the data within objects</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+          <ol class="ol">
+            <li style="--accent-color:#0D6EFD">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <div class="title">Creating Classes</div>
+                <div class="descr">Creating classes, which are blueprints for objects.</div>
+            </li>
+            <li style="--accent-color:#6710F5">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <div class="title">Creating Objects</div>
+                <div class="descr">Creating objects, which are specific instances of those classes.</div>
+            </li>
+            <li style="--accent-color:#6F42C1">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <div class="title">Defining Methods</div>
+                <div class="descr">Defining methods, which are functions that operate on the data within objects.</div>
+            </li>
+        </ol>
       </div>
       <div class="button-container">
         <img src="assets/next.png" (click)="showNextSection('s5')" *ngIf="visibleSections === 5" class="next-image" alt="Next">
@@ -185,7 +172,6 @@
               </div>
   
           </div>
-          
       </div>
       </div>
       <p *ngIf="visibleSections === 6">Click the Car for an example of object-oriented programming concepts</p>
