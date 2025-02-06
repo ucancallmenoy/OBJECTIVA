@@ -112,3 +112,14 @@
           }
         }
       }
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #fff;
+      }
+      
+      .loading-gif{
+        width: 250px;
+      }

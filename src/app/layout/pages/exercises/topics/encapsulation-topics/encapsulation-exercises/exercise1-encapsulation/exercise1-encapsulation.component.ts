@@ -46,9 +46,14 @@ export class Exercise1EncapsulationComponent {
       selectedLetters: (string | null)[] = [];
       shuffledLetters: (string | null)[] = [];
     
-      ngOnInit() {
-        this.initializeLevel(); // Initialize the first level
-      }
+      isLoading: boolean = true;
+        ngOnInit() {
+          setTimeout(() => {
+            this.isLoading = false; // Hide loading animation after 2 seconds
+            this.initializeLevel();
+          }, 1000);
+          
+        }
     
       // Define levels for the game
       levels: GameLevel[] = [

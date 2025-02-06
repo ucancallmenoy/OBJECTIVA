@@ -50,8 +50,13 @@ export class Exercise1InheritanceComponent {
         selectedLetters: (string | null)[] = [];
         shuffledLetters: (string | null)[] = [];
       
+        isLoading: boolean = true;
         ngOnInit() {
-          this.initializeLevel(); // Initialize the first level
+          setTimeout(() => {
+            this.isLoading = false; // Hide loading animation after 2 seconds
+            this.initializeLevel();
+          }, 1000);
+          
         }
       
         // Define levels for the game

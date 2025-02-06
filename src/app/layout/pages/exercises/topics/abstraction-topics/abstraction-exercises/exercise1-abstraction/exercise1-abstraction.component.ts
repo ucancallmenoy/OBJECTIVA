@@ -13,7 +13,9 @@ interface GameLevel {
 })
 export class Exercise1AbstractionComponent {
   @Output() nextExercise: EventEmitter<void> = new EventEmitter<void>();  // Emit to notify parent
-        
+  
+  
+
   hintIndex: number;
     hints: string[];
     constructor(){
@@ -47,9 +49,14 @@ export class Exercise1AbstractionComponent {
         currentLevelIndex = 0;
         selectedLetters: (string | null)[] = [];
         shuffledLetters: (string | null)[] = [];
-      
+
+        isLoading: boolean = true;
         ngOnInit() {
-          this.initializeLevel(); // Initialize the first level
+          setTimeout(() => {
+            this.isLoading = false; // Hide loading animation after 2 seconds
+            this.initializeLevel();
+          }, 1000);
+          
         }
       
         // Define levels for the game
