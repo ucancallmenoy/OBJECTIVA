@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
+import { WildcardComponent } from './pages/wildcard/wildcard.component';
 
 
 
@@ -22,6 +23,7 @@ import { AccountSettingsComponent } from './components/account-settings/account-
     AboutComponent,
     FooterComponent,
     AccountSettingsComponent,
+    WildcardComponent,
   ],
   imports: [
     CommonModule,

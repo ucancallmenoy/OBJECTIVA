@@ -43,7 +43,7 @@ export class LoginRegisterComponent {
         this.loginForm.get('password')?.value
       ).subscribe({
         next: () => {
-          this.router.navigate(['/homepage']);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           this.error = error.error.message || 'Login failed';
