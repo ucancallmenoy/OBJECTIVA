@@ -5,7 +5,7 @@
       <h2>Your Score</h2>
       <p class="score">{{ score }} / {{ quizData.length }} questions correctly answered</p>
       <p class="feedback">{{ higher }}</p>
-      <p class="feedback">{{ feedback }}</p>
+      <p class="feedback" *ngIf="showFeedback">{{ feedback }}</p>
       <button (click)="resetQuiz()">Restart Quiz</button>
       <button (click)="backtoQuiz()">Back to Dashboard</button>
     </div>

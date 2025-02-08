@@ -33,6 +33,7 @@ export class QuizAbstractionComponent implements OnInit{
 
   higher: string = '';
   feedback: string = '';
+  showFeedback = true; // NEW
 
   ngOnInit(): void {
     this.quizService.getAbstractionQuizzes().subscribe({
@@ -100,9 +101,16 @@ export class QuizAbstractionComponent implements OnInit{
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
                   }
+                  
+                  // add chuchu
                 },
                 error: (error) => console.error('Error saving score:', error)
               });
+          }
+          // New condition (if the score is less than the current score)
+          else if (currentScore !== null && this.score < currentScore) {
+            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.showFeedback = false;
           }
         },
         error: (error) => console.error('Error fetching current score:', error)
@@ -124,31 +132,32 @@ export class QuizAbstractionComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You have almost no understanding of abstraction. Start from the basics—learn what abstraction is and why it matters in OOP.'; break;
-      case 2: feedback = 'Your grasp of abstraction is extremely weak. You need to study how abstraction helps structure code and hides unnecessary details.'; break;
-      case 3: feedback = 'You are struggling with abstraction. Focus on understanding the difference between abstract classes and concrete implementations.'; break;
-      case 4: feedback = 'You have a vague idea of abstraction but lack practical knowledge. Start writing simple abstract classes to get hands-on experience.'; break;
-      case 5: feedback = 'Your understanding is minimal. Reading theory isn’t enough—try implementing abstraction in small projects.'; break;
-      case 6: feedback = 'You are starting to grasp the concept, but you need more practice. Analyze real-world examples of abstraction in Java.'; break;
-      case 7: feedback = 'You have some basic knowledge, but it’s not solid. Go beyond definitions—apply abstraction in real coding problems.'; break;
-      case 8: feedback = 'You understand some key points but may be relying too much on memorization rather than practical application.'; break;
-      case 9: feedback = 'You have an average understanding. Focus on refining your ability to use abstraction effectively in design patterns.'; break;
-      case 10: feedback = 'Your knowledge is decent, but you likely lack experience implementing abstraction in real-world applications.'; break;
-      case 11: feedback = 'You are on the right track, but you need to work on recognizing when abstraction should and should not be used.'; break;
-      case 12: feedback = 'You have a good grasp of abstraction, but your ability to apply it fluently in projects still needs work.'; break;
-      case 13: feedback = 'You understand abstraction well, but ensure you are not overusing it where it’s unnecessary.'; break;
-      case 14: feedback = 'You are above average in abstraction. Challenge yourself by working on larger projects that require better software architecture.'; break;
-      case 15: feedback = 'You are progressing well. Now focus on improving your decision-making on when to use abstraction vs. other OOP principles.'; break;
-      case 16: feedback = 'You are getting quite good, but your abstraction implementations may still lack optimization. Aim for cleaner, more efficient designs.'; break;
-      case 17: feedback = 'You have a solid grasp, but ensure that your abstraction doesn’t lead to unnecessary complexity.'; break;
-      case 18: feedback = 'You are highly competent with abstraction. Now, focus on writing abstraction that improves scalability and maintainability.'; break;
-      case 19: feedback = 'Your understanding is strong, but test whether your abstractions make real-world code easier to manage, not just more abstract.'; break;
-      case 20: feedback = 'You are very skilled at abstraction, but are you applying it efficiently? Over-abstracting can make code harder to read.'; break;
-      case 21: feedback = 'You have impressive abstraction skills. Now, work on optimizing your implementations for performance and readability.'; break;
-      case 22: feedback = 'Your understanding of abstraction is exceptional. Now, start mentoring others or contributing to open-source projects to refine your expertise.'; break;
-      case 23: feedback = 'You are an abstraction expert, but don’t stop learning. The best developers constantly improve and refine their code.'; break;
-      case 24: feedback = 'Your abstraction skills are outstanding. Push yourself further by studying complex design patterns and software architecture.'; break;
-      case 25: feedback = 'Perfect score! But be cautious—nobody is truly perfect. Keep challenging yourself to write even better, more maintainable code.'; break;
+      case 0: feedback = "Getting zero doesn’t mean failure—it means a fresh start with endless room to grow. Learn, improve, and come back stronger!" ; break;
+      case 1: feedback = 'Every expert starts somewhere! Your understanding is still developing, but don’t be discouraged. Focus on grasping the core concepts step by step, and over time, you’ll build a strong foundation.';  break;
+      case 2: feedback = 'You’re taking the first steps, which is great! Keep exploring the basics and try to understand how different ideas connect. Consistency and curiosity will help you progress steadily.';   break;
+      case 3: feedback = 'You’re making an effort, and that’s important! Try to break down complex concepts into simpler parts to strengthen your understanding. Revisiting the fundamentals can be very helpful!';   break;
+      case 4: feedback = 'You have a basic grasp, and that’s a great start! Now, focus on reinforcing your knowledge by working through examples and small exercises. The more you practice, the more confident you’ll become.';  break;
+      case 5: feedback = 'Good effort! Your understanding is growing, but applying what you know in different situations will help solidify your learning. Try experimenting with hands-on practice to build confidence.';  break;
+      case 6: feedback = 'Nice progress! You’re starting to see how everything connects. Continue working on real-world applications and analyzing different examples to deepen your comprehension.';  break;
+      case 7: feedback = 'You’re building a solid foundation! Now, challenge yourself with practical exercises and problem-solving tasks to enhance your skills and make your understanding more flexible.'; break; 
+      case 8: feedback = 'Well done! You’re getting comfortable with the ideas, but applying them in different scenarios will make your understanding more complete. Keep practicing and exploring new approaches!';  break; 
+      case 9: feedback = 'Your understanding is growing stronger! Try refining how you apply these concepts in different situations, and focus on making your thought process more structured and effective.';  break; 
+      case 10: feedback = 'Good job! You have a solid grasp of the essentials. Now, focus on bridging the gap between theory and real-world applications to strengthen your expertise.';  break; 
+      case 11: feedback = 'You’re on the right track! Keep questioning and refining how you use these ideas. Looking at different examples and perspectives will help reinforce your learning.';  break; 
+      case 12: feedback = 'Great work! You’re developing a well-rounded understanding. Continue building on this by taking on new challenges and seeking ways to improve your approach.';  break; 
+      case 13: feedback = 'Strong progress! You have a good grasp of the concepts, but make sure to balance depth and simplicity in how you apply them. Keep refining your approach!';  break; 
+      case 14: feedback = 'You’re doing great! Expanding your knowledge by applying it in broader contexts will help you gain an even deeper understanding and stronger problem-solving skills.';  break; 
+      case 15: feedback = 'Impressive progress! You are developing strong decision-making skills. Keep refining how you apply your knowledge to different challenges and scenarios.';  break; 
+      case 16: feedback = 'Your skills are advancing well! Now, focus on improving efficiency and clarity in how you approach problems. Continue challenging yourself to refine your expertise.';  break; 
+      case 17: feedback = 'You have a solid grasp! Keep fine-tuning your approach to ensure clarity, effectiveness, and adaptability in different situations.';  break; 
+      case 18: feedback = 'Excellent work! Start considering how to apply your knowledge in more complex scenarios. Exploring new challenges will help you push your skills even further.';  break; 
+      case 19: feedback = 'Great expertise! Continue testing your understanding by applying it in more challenging projects and refining your problem-solving techniques.';  break; 
+      case 20: feedback = 'Impressive skills! Keep refining your approach to ensure your understanding remains practical, efficient, and easy to apply in real-world situations.';  break; 
+      case 21: feedback = 'Outstanding! You have strong skills, and now it’s time to focus on optimizing your approach for better clarity, performance, and scalability.';  break; 
+      case 22: feedback = 'Exceptional work! You’ve reached a high level of understanding. Consider mentoring others or contributing to projects where you can apply and further refine your expertise.';  break; 
+      case 23: feedback = 'You’re highly skilled! Keep pushing yourself by exploring new methods and refining how you apply your knowledge to different situations.';  break; 
+      case 24: feedback = 'Remarkable mastery! Continue challenging yourself with advanced concepts and innovative approaches to keep growing as a problem solver.';  break; 
+      case 25: feedback = 'Perfect score! You’ve demonstrated an exceptional level of understanding. Keep your curiosity alive and continue improving—there’s always more to explore and refine!';  break; 
       default: feedback = 'Invalid score. Please check your input.';
   }
   
