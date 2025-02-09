@@ -99,7 +99,7 @@ export class QuizAbstractionComponent implements OnInit{
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {
-                    this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
+                    this.higher = 'Excellent! Your score is greater than your current score which means you have improved! Keep up the great work and continue striving for excellence!';
                   }
                   
                   // add chuchu
@@ -109,7 +109,7 @@ export class QuizAbstractionComponent implements OnInit{
           }
           // New condition (if the score is less than the current score)
           else if (currentScore !== null && this.score < currentScore) {
-            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.higher = 'Your score is lower than your previous score, but every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
             this.showFeedback = false;
           }
         },
