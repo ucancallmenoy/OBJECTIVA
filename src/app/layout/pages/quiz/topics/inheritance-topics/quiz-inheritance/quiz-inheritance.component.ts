@@ -33,6 +33,7 @@ export class QuizInheritanceComponent implements OnInit{
 
   higher: string = '';
   feedback: string = '';
+  showFeedback = true; // NEW
 
   ngOnInit(): void {
     this.quizService.getInheritanceQuizzes().subscribe({
@@ -100,9 +101,16 @@ export class QuizInheritanceComponent implements OnInit{
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
                   }
+                  
+                  // add chuchu
                 },
                 error: (error) => console.error('Error saving score:', error)
               });
+          }
+          // New condition (if the score is less than the current score)
+          else if (currentScore !== null && this.score < currentScore) {
+            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.showFeedback = false;
           }
         },
         error: (error) => console.error('Error fetching current score:', error)
@@ -124,33 +132,35 @@ export class QuizInheritanceComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You have no real understanding of inheritance. Start by learning what it is and why it matters in OOP.'; break;
-      case 2: feedback = 'You might have heard of inheritance, but you don’t understand how it works. Study how child classes extend parent classes.'; break;
-      case 3: feedback = 'Your understanding is extremely weak. Focus on how inheritance reduces code duplication while maintaining structure.'; break;
-      case 4: feedback = 'You barely grasp inheritance. Try creating a basic class hierarchy with a superclass and subclasses.'; break;
-      case 5: feedback = 'You have a vague idea, but you need to apply it. Implement simple inheritance in Java to solidify your understanding.'; break;
-      case 6: feedback = 'You understand the basics, but your application is lacking. Experiment with method overriding and constructor inheritance.'; break;
-      case 7: feedback = 'You’re improving, but are you considering when NOT to use inheritance? Overusing it can lead to unnecessary complexity.'; break;
-      case 8: feedback = 'Your knowledge is still shallow. Focus on how inheritance interacts with encapsulation and polymorphism.'; break;
-      case 9: feedback = 'You get the concept, but applying it effectively is a different challenge. Work on designing flexible class hierarchies.'; break;
-      case 10: feedback = 'Good job, but be careful. Blindly using inheritance can create rigid code. Learn about composition as an alternative.'; break;
-      case 11: feedback = 'You are getting better. Now, refine your understanding by learning when to use inheritance versus interfaces.'; break;
-      case 12: feedback = 'You know how inheritance works, but are you applying best practices? Avoid deep inheritance chains.'; break;
-      case 13: feedback = 'You have a decent grasp. Start analyzing real-world problems where inheritance is either useful or a bad choice.'; break;
-      case 14: feedback = 'Solid understanding! Challenge yourself by working with abstract classes and method overriding.'; break;
-      case 15: feedback = 'You are above average! Now, focus on avoiding common pitfalls like unnecessary subclassing.'; break;
-      case 16: feedback = 'Your skills are strong, but do you fully understand multiple inheritance problems and how Java avoids them?'; break;
-      case 17: feedback = 'You are on the right track! Test your skills by designing an application that balances inheritance with composition.'; break;
-      case 18: feedback = 'Your understanding is deep. Now, analyze how Java’s standard libraries make use of inheritance effectively.'; break;
-      case 19: feedback = 'You’re doing great! Work on designing flexible hierarchies that minimize code duplication and maximize reusability.'; break;
-      case 20: feedback = 'You have a strong grasp of inheritance. Now, consider how it affects maintainability in large codebases.'; break;
-      case 21: feedback = 'Your inheritance skills are impressive. Start looking at how design patterns like Factory and Template use inheritance.'; break;
-      case 22: feedback = 'Exceptional work! Explore how Java frameworks like Spring utilize inheritance effectively.'; break;
-      case 23: feedback = 'Outstanding knowledge, but remember—inheritance is not always the best solution. Question its use in every design.'; break;
-      case 24: feedback = 'Your understanding is near perfect. Teach others and explore how inheritance affects performance and memory usage.'; break;
-      case 25: feedback = 'Perfect score! But even experts make mistakes. Keep refining your ability to balance inheritance with other OOP principles.'; break;
+      case 0: feedback = "Getting zero doesn’t mean failure—it means a fresh start with endless room to grow. Learn, improve, and come back stronger!" ; break;
+      case 1: feedback = 'Great effort in starting your journey! Inheritance is an important concept, so begin by understanding its basic purpose and how it helps organize code more effectively.'; break;
+      case 2: feedback = 'You’re taking the first steps! Keep exploring how structuring code through relationships improves reusability and maintainability.'; break;
+      case 3: feedback = 'You are making progress! Try breaking down key ideas into smaller parts and recognizing how they contribute to better software design.'; break;
+      case 4: feedback = 'You have a basic grasp, which is a great start! Now, focus on reinforcing your knowledge by working through simple examples and understanding their purpose.'; break;
+      case 5: feedback = 'Good effort! Your understanding is growing. Applying these concepts in practical exercises will help you solidify your knowledge and gain confidence.'; break;
+      case 6: feedback = 'Nice progress! You’re beginning to see how different elements connect. Continue practicing and analyzing real-world examples to strengthen your comprehension.'; break;
+      case 7: feedback = 'You’re on the right track! Keep experimenting with different approaches to inheritance and observe how they impact code organization and efficiency.'; break;
+      case 8: feedback = 'Well done! You have a good foundation. Now, focus on applying these ideas more fluently in different coding challenges and projects.'; break;
+      case 9: feedback = 'Your understanding is getting stronger! Try refining how you use these principles in different situations to improve flexibility and clarity in your code.'; break;
+      case 10: feedback = 'Good job! You have a solid grasp of the essentials. Now, work on bridging the gap between theory and real-world applications to strengthen your expertise.'; break;
+      case 11: feedback = 'You’re progressing well! Continue refining your approach and applying your knowledge to more advanced problem-solving situations.'; break;
+      case 12: feedback = 'Great work! You have a well-rounded understanding. Keep expanding your knowledge by taking on new challenges and refining your approach.'; break;
+      case 13: feedback = 'Strong progress! You understand key principles well. Now, focus on improving efficiency and adaptability in different programming scenarios.'; break;
+      case 14: feedback = 'You’re doing great! Expanding your knowledge and practicing more complex implementations will help you further enhance your skills.'; break;
+      case 15: feedback = 'Impressive progress! You are developing strong decision-making skills. Keep refining how you apply your knowledge in different contexts.'; break;
+      case 16: feedback = 'Your skills are advancing well! Now, focus on improving efficiency, readability, and overall structure in your code to make it more effective.'; break;
+      case 17: feedback = 'You have a solid grasp! Keep fine-tuning your approach to ensure clarity, adaptability, and practicality in different coding challenges.'; break;
+      case 18: feedback = 'Excellent work! Start considering how to apply your knowledge in more complex projects. Challenging yourself will push your skills even further.'; break;
+      case 19: feedback = 'Great expertise! Continue testing your understanding by working on real-world applications and refining your problem-solving techniques.'; break;
+      case 20: feedback = 'Impressive skills! Keep focusing on writing clean and maintainable code to ensure efficiency and long-term scalability.'; break;
+      case 21: feedback = 'Outstanding! Your skills are well-developed. Now, focus on optimizing your approach for better clarity, maintainability, and performance.'; break;
+      case 22: feedback = 'Exceptional work! You’ve reached a high level of understanding. Consider mentoring others or contributing to projects to further refine your expertise.'; break;
+      case 23: feedback = 'You’re highly skilled! Keep pushing yourself by exploring new approaches and applying your knowledge to more challenging scenarios.'; break;
+      case 24: feedback = 'Remarkable mastery! Continue refining your approach by studying advanced techniques and best practices to keep improving.'; break;
+      case 25: feedback = 'Perfect score! You have demonstrated an exceptional understanding. Keep your curiosity alive and continue growing—there’s always more to explore!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
+  
   
 
     this.feedback = feedback;

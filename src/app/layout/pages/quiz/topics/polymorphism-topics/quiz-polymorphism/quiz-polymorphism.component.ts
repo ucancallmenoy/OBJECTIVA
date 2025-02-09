@@ -33,6 +33,7 @@ export class QuizPolymorphismComponent implements OnInit{
 
   higher: string = '';
   feedback: string = '';
+  showFeedback = true; // NEW
 
   ngOnInit(): void {
     this.quizService.getPolymorphismQuizzes().subscribe({
@@ -100,9 +101,16 @@ export class QuizPolymorphismComponent implements OnInit{
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
                   }
+                  
+                  // add chuchu
                 },
                 error: (error) => console.error('Error saving score:', error)
               });
+          }
+          // New condition (if the score is less than the current score)
+          else if (currentScore !== null && this.score < currentScore) {
+            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.showFeedback = false;
           }
         },
         error: (error) => console.error('Error fetching current score:', error)
@@ -124,33 +132,35 @@ export class QuizPolymorphismComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You have no clue what polymorphism is. Start by understanding method overloading and overriding.'; break;
-      case 2: feedback = 'You’ve heard the word “polymorphism” but don’t know what it means. Learn why it’s useful in OOP.'; break;
-      case 3: feedback = 'You barely understand it. Focus on how a single interface can be used with different implementations.'; break;
-      case 4: feedback = 'Your knowledge is weak. Practice writing methods that are overloaded and overridden in subclasses.'; break;
-      case 5: feedback = 'You get the concept, but struggle to apply it. Work on simple examples of runtime and compile-time polymorphism.'; break;
-      case 6: feedback = 'You understand the basics, but your implementations are messy. Clean up your code and use proper method overriding.'; break;
-      case 7: feedback = 'You know about polymorphism but don’t see its importance. Learn how it makes code more scalable and maintainable.'; break;
-      case 8: feedback = 'Your understanding is shallow. Experiment with interfaces and abstract classes to see polymorphism in action.'; break;
-      case 9: feedback = 'You can implement basic polymorphism, but can you explain why it’s beneficial? Work on improving your explanations.'; break;
-      case 10: feedback = 'Good job! Now, learn how dynamic method dispatch works in Java.'; break;
-      case 11: feedback = 'You are developing a solid foundation. Now, explore how polymorphism helps reduce code duplication.'; break;
-      case 12: feedback = 'Your knowledge is growing! Understand how polymorphism allows for flexible and reusable code.'; break;
-      case 13: feedback = 'You’re doing well! Try using polymorphism in real-world applications like logging and event handling.'; break;
-      case 14: feedback = 'Solid understanding! Explore how frameworks like Spring use polymorphism to achieve loose coupling.'; break;
-      case 15: feedback = 'Great progress! Make sure you fully understand how method overriding works in subclassing.'; break;
-      case 16: feedback = 'Your polymorphism skills are strong. Try designing a program that takes advantage of polymorphic behavior.'; break;
-      case 17: feedback = 'You have a solid grasp! Learn about function pointers and how Java resolves method calls dynamically.'; break;
-      case 18: feedback = 'You have a deep understanding. Now, experiment with dependency injection and polymorphism together.'; break;
-      case 19: feedback = 'Excellent knowledge! Study how polymorphism is leveraged in real-world design patterns like Strategy and Factory.'; break;
-      case 20: feedback = 'Your polymorphism skills are advanced! Try implementing advanced concepts like method reference in functional programming.'; break;
-      case 21: feedback = 'Your understanding is outstanding! Now, work on optimizing your polymorphic structures for performance.'; break;
-      case 22: feedback = 'Exceptional knowledge! Study how JVM handles polymorphic method calls internally.'; break;
-      case 23: feedback = 'Outstanding! Consider researching how polymorphism is implemented in dynamically-typed languages and compare.'; break;
-      case 24: feedback = 'Brilliant understanding! Teach others and challenge yourself by designing complex OOP architectures.'; break;
-      case 25: feedback = 'Perfect score! But never stop learning—true polymorphism mastery is about knowing when and when NOT to use it.'; break;
+      case 0: feedback = "Getting zero doesn’t mean failure—it means a fresh start with endless room to grow. Learn, improve, and come back stronger!" ; break;
+      case 1: feedback = 'You are just getting started with polymorphism! Begin by understanding how it allows flexibility in programming and improves code reusability.'; break;
+      case 2: feedback = 'Great start! Focus on learning how polymorphism enables different objects to respond uniquely to the same method call.'; break;
+      case 3: feedback = 'You’re making progress! Try to explore the concept of method overriding and how it enhances code adaptability.'; break;
+      case 4: feedback = 'Good effort! Start practicing with simple examples to see how polymorphism allows dynamic behavior in programs.'; break;
+      case 5: feedback = 'Nice work! Strengthen your understanding by implementing method overloading and overriding in small projects.'; break;
+      case 6: feedback = 'You’re getting the hang of it! Try experimenting with polymorphism to see how it improves code efficiency and structure.'; break;
+      case 7: feedback = 'Well done! Keep exploring real-world applications of polymorphism to solidify your understanding.'; break;
+      case 8: feedback = 'Great progress! Work on implementing polymorphism in object-oriented programs to enhance flexibility and maintainability.'; break;
+      case 9: feedback = 'You’re on the right track! Start analyzing how polymorphism simplifies code modifications and reduces redundancy.'; break;
+      case 10: feedback = 'Nice job! You have a solid foundation. Now, try understanding how polymorphism plays a role in software design principles.'; break;
+      case 11: feedback = 'You’re advancing well! Keep practicing and refining your knowledge by using polymorphism in different programming scenarios.'; break;
+      case 12: feedback = 'Impressive progress! Experiment with abstract classes and interfaces to see their role in achieving polymorphism.'; break;
+      case 13: feedback = 'You have a strong understanding! Now focus on writing efficient and scalable code that leverages polymorphism effectively.'; break;
+      case 14: feedback = 'Great job! Keep challenging yourself with slightly more advanced concepts like dynamic method dispatch.'; break;
+      case 15: feedback = 'You’re developing strong coding habits! Focus on designing flexible and reusable code using polymorphism.'; break;
+      case 16: feedback = 'You have a solid grasp! Try exploring design patterns where polymorphism plays a crucial role, such as the Strategy pattern.'; break;
+      case 17: feedback = 'Excellent work! Continue strengthening your problem-solving skills by applying polymorphism in real-world applications.'; break;
+      case 18: feedback = 'Your skills are growing! Study how polymorphism contributes to the SOLID principles, especially the Open/Closed Principle.'; break;
+      case 19: feedback = 'Fantastic progress! Work on larger projects to see how polymorphism enhances maintainability and extensibility in software.'; break;
+      case 20: feedback = 'You’re highly skilled! Keep refining your knowledge by understanding when and where polymorphism is the best design choice.'; break;
+      case 21: feedback = 'Outstanding work! Apply your expertise by mentoring others or contributing to projects that use polymorphism effectively.'; break;
+      case 22: feedback = 'You’ve developed a strong mastery of polymorphism! Keep refining your understanding by exploring complex design patterns.'; break;
+      case 23: feedback = 'Exceptional progress! Your knowledge is impressive—now, challenge yourself by designing high-level architectures that utilize polymorphism.'; break;
+      case 24: feedback = 'You’re nearly an expert! Continue pushing your limits by exploring advanced OOP principles and software scalability strategies.'; break;
+      case 25: feedback = 'Perfect score! Your polymorphism skills are exceptional. Keep evolving, as the best developers continuously refine their understanding and adapt to new challenges!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
+  
   
 
     this.feedback = feedback;

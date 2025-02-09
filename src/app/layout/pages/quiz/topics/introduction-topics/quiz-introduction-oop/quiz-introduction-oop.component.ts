@@ -33,6 +33,7 @@ export class QuizIntroductionOopComponent implements OnInit {
 
   higher: string = '';
   feedback: string = '';
+  showFeedback = true; // NEW
 
   ngOnInit(): void {
     this.quizService.getIntroductionToOopQuizzes().subscribe({
@@ -100,9 +101,16 @@ export class QuizIntroductionOopComponent implements OnInit {
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
                   }
+                  
+                  // add chuchu
                 },
                 error: (error) => console.error('Error saving score:', error)
               });
+          }
+          // New condition (if the score is less than the current score)
+          else if (currentScore !== null && this.score < currentScore) {
+            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.showFeedback = false;
           }
         },
         error: (error) => console.error('Error fetching current score:', error)
@@ -124,33 +132,34 @@ export class QuizIntroductionOopComponent implements OnInit {
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You have no understanding of OOP. Learn what objects and classes are before moving forward.'; break;
-      case 2: feedback = 'You might have heard of OOP, but you don’t really get it. Start by understanding real-world object modeling.'; break;
-      case 3: feedback = 'Your OOP knowledge is extremely weak. Focus on the four pillars: encapsulation, abstraction, inheritance, and polymorphism.'; break;
-      case 4: feedback = 'You barely grasp OOP. Work on creating simple classes and objects to understand the fundamentals.'; break;
-      case 5: feedback = 'You understand the very basics, but your ability to apply OOP concepts is lacking. Code more and experiment.'; break;
-      case 6: feedback = 'You have a surface-level understanding. Start using OOP principles in practical coding exercises.'; break;
-      case 7: feedback = 'You know how to define classes and objects, but do you understand why OOP is useful? Explore real-world applications.'; break;
-      case 8: feedback = 'You grasp the basics, but your design thinking needs improvement. Learn about cohesion and coupling.'; break;
-      case 9: feedback = 'You have a fair understanding, but your implementation is weak. Work on projects that apply OOP effectively.'; break;
-      case 10: feedback = 'Good job! Now learn about access modifiers and how they enforce data security in OOP.'; break;
-      case 11: feedback = 'You are developing a solid OOP foundation. Now, explore how OOP helps in large-scale software development.'; break;
-      case 12: feedback = 'Your understanding is growing! Practice designing class hierarchies and using constructors effectively.'; break;
-      case 13: feedback = 'You’re doing well! Compare OOP with procedural programming and see the differences in maintainability.'; break;
-      case 14: feedback = 'Solid knowledge! Start using design patterns like Singleton and Factory to strengthen your OOP design skills.'; break;
-      case 15: feedback = 'Great progress! Make sure you fully understand polymorphism and method overriding.'; break;
-      case 16: feedback = 'Your OOP skills are strong. Try breaking down a complex application into reusable classes and modules.'; break;
-      case 17: feedback = 'You have a solid understanding! Learn about SOLID principles and best OOP practices to improve further.'; break;
-      case 18: feedback = 'You have a deep grasp of OOP. Now, experiment with frameworks that rely on strong OOP foundations, like Spring.'; break;
-      case 19: feedback = 'Excellent understanding! Try designing an object-oriented system from scratch and review your design choices.'; break;
-      case 20: feedback = 'Your OOP skills are advanced! Dive into architectural patterns like MVC to see how OOP scales in real applications.'; break;
-      case 21: feedback = 'Your understanding is outstanding! Now, work on writing clean, maintainable, and scalable OOP code.'; break;
-      case 22: feedback = 'Exceptional knowledge! Study how OOP is applied in various programming paradigms and hybrid models.'; break;
-      case 23: feedback = 'Outstanding! Consider researching advanced topics like metaprogramming and dynamic object creation.'; break;
-      case 24: feedback = 'Brilliant understanding! Teach others and refine your ability to explain OOP principles clearly.'; break;
-      case 25: feedback = 'Perfect score! But always challenge your designs—good OOP isn’t just about following rules but knowing when to break them.'; break;
+      case 1: feedback = 'You’re just beginning your OOP journey! Start by understanding its core purpose and how it helps in structuring programs more efficiently.'; break;
+      case 2: feedback = 'Great start! Focus on learning the four main principles of OOP: encapsulation, inheritance, polymorphism, and abstraction.'; break;
+      case 3: feedback = 'You’re making progress! Try to grasp how objects and classes work together to create reusable and scalable code.'; break;
+      case 4: feedback = 'Good effort! Start exploring how OOP helps in organizing code better compared to procedural programming.'; break;
+      case 5: feedback = 'Nice work! Strengthen your understanding by working on small examples that demonstrate OOP concepts in action.'; break;
+      case 6: feedback = 'You’re getting the hang of it! Try experimenting with basic class and object creation to apply what you’ve learned.'; break;
+      case 7: feedback = 'Well done! Keep practicing with different OOP principles and understand how they improve software design.'; break;
+      case 8: feedback = 'Great progress! Work on applying OOP concepts in simple projects to reinforce your learning.'; break;
+      case 9: feedback = 'You’re on the right track! Strengthen your understanding by looking at real-world applications of OOP.'; break;
+      case 10: feedback = 'Nice job! You have a solid foundation. Now, try to analyze how OOP is used in popular programming languages like Java and Python.'; break;
+      case 11: feedback = 'You’re advancing well! Keep practicing and refining your knowledge by applying OOP in structured coding projects.'; break;
+      case 12: feedback = 'Impressive progress! Start working on real-world problems where OOP can help in creating modular and maintainable code.'; break;
+      case 13: feedback = 'You have a strong understanding! Now focus on writing efficient and well-structured OOP-based applications.'; break;
+      case 14: feedback = 'Great job! Keep challenging yourself with slightly more complex OOP design patterns and best practices.'; break;
+      case 15: feedback = 'You’re developing strong coding habits! Focus on writing clean, reusable, and scalable OOP-based solutions.'; break;
+      case 16: feedback = 'You have a solid grasp! Try learning about advanced OOP concepts like composition, dependency injection, and design principles.'; break;
+      case 17: feedback = 'Excellent work! Continue strengthening your problem-solving skills by implementing OOP in more structured applications.'; break;
+      case 18: feedback = 'Your skills are growing! Start exploring design patterns to improve the efficiency of your OOP implementations.'; break;
+      case 19: feedback = 'Fantastic progress! Work on larger projects to see how OOP helps in maintaining and scaling software systems.'; break;
+      case 20: feedback = 'You’re highly skilled! Keep refining your OOP knowledge by studying different programming paradigms and when to use OOP effectively.'; break;
+      case 21: feedback = 'Outstanding work! Apply your knowledge by mentoring others or contributing to open-source projects with OOP implementations.'; break;
+      case 22: feedback = 'You’ve developed a strong mastery of OOP! Keep refining your understanding by analyzing professional-level OOP-based software.'; break;
+      case 23: feedback = 'Exceptional progress! Your knowledge is impressive—now, challenge yourself with system architecture and high-level software design.'; break;
+      case 24: feedback = 'You’re nearly an expert! Continue pushing your limits by exploring complex OOP implementations in large-scale projects.'; break;
+      case 25: feedback = 'Perfect score! Your OOP knowledge is exceptional. Keep evolving, as the best developers continuously refine their skills and adapt to new challenges!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
+  
   
 
     this.feedback = feedback;

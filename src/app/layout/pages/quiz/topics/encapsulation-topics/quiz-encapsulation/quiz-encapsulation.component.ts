@@ -33,6 +33,7 @@ export class QuizEncapsulationComponent implements OnInit{
 
   higher: string = '';
   feedback: string = '';
+  showFeedback = true; // NEW
 
   ngOnInit(): void {
     this.quizService.getEncapsulationQuizzes().subscribe({
@@ -100,9 +101,16 @@ export class QuizEncapsulationComponent implements OnInit{
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
                   }
+                  
+                  // add chuchu
                 },
                 error: (error) => console.error('Error saving score:', error)
               });
+          }
+          // New condition (if the score is less than the current score)
+          else if (currentScore !== null && this.score < currentScore) {
+            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.showFeedback = false;
           }
         },
         error: (error) => console.error('Error fetching current score:', error)
@@ -124,33 +132,35 @@ export class QuizEncapsulationComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You lack a fundamental understanding of encapsulation. Start by learning why we use access modifiers in Java.'; break;
-      case 2: feedback = 'Your knowledge of encapsulation is almost nonexistent. Focus on how encapsulation restricts direct access to data fields.'; break;
-      case 3: feedback = 'You are struggling with encapsulation. Understand the purpose of getters and setters and when to use them.'; break;
-      case 4: feedback = 'You have minimal awareness of encapsulation. Practice defining private fields and public methods in simple classes.'; break;
-      case 5: feedback = 'You know the basic definition, but that’s not enough. Experiment with encapsulation to protect object integrity.'; break;
-      case 6: feedback = 'You understand some concepts but need hands-on practice. Try modifying existing code to use encapsulation effectively.'; break;
-      case 7: feedback = 'You have a basic understanding, but you’re missing the big picture. Learn how encapsulation aids in maintaining code modularity.'; break;
-      case 8: feedback = 'Your grasp is superficial. Focus on how encapsulation helps in preventing unauthorized access and modification of data.'; break;
-      case 9: feedback = 'You have an average understanding. Deepen your knowledge by exploring how encapsulation supports code reusability and maintenance.'; break;
-      case 10: feedback = 'You know the essentials, but real-world application seems lacking. Use encapsulation in more complex scenarios to test your skills.'; break;
-      case 11: feedback = 'You are on the right path, but work on recognizing when encapsulation can genuinely simplify your codebase.'; break;
-      case 12: feedback = 'You understand encapsulation fairly well, but your implementation might still be inconsistent.'; break;
-      case 13: feedback = 'You get the concept, but ensure you aren’t overusing setters, which can violate encapsulation principles.'; break;
-      case 14: feedback = 'You are better than most, but challenge yourself by encapsulating complex systems to see its true benefits.'; break;
-      case 15: feedback = 'You’re making solid progress. Focus now on maintaining encapsulation while working with inheritance and interfaces.'; break;
-      case 16: feedback = 'You are proficient, but ensure your encapsulated classes are genuinely simplifying your code, not complicating it.'; break;
-      case 17: feedback = 'Your understanding is robust. Make sure your encapsulation practices are enhancing code security and readability.'; break;
-      case 18: feedback = 'You are very skilled, but question whether your encapsulation makes the code easier to maintain and extend.'; break;
-      case 19: feedback = 'You’re doing great. Test your skills by designing a multi-class system that heavily relies on encapsulation.'; break;
-      case 20: feedback = 'You have excellent knowledge, but are you applying it to its fullest potential in large codebases?'; break;
-      case 21: feedback = 'Your encapsulation skills are impressive. Now, mentor others to refine your own understanding further.'; break;
-      case 22: feedback = 'Exceptional work! Explore advanced topics like encapsulation in API design and library development.'; break;
-      case 23: feedback = 'Outstanding knowledge, but remember—every design decision should be questioned for effectiveness and efficiency.'; break;
-      case 24: feedback = 'Your understanding is near perfect. Dive into how encapsulation interacts with other OOP principles like inheritance and polymorphism.'; break;
-      case 25: feedback = 'Perfect score! But remember, there is always room for improvement. Keep pushing your limits in complex projects.'; break;
+      case 0: feedback = "Getting zero doesn’t mean failure—it means a fresh start with endless room to grow. Learn, improve, and come back stronger!" ; break;
+      case 1: feedback = 'Great effort in getting started! You are at the beginning of your journey, so focus on understanding the fundamental principles and why they matter in programming.'; break;
+      case 2: feedback = 'You’re taking the first steps! Keep building your understanding by exploring how organizing code effectively leads to better structure and maintainability.'; break;
+      case 3: feedback = 'You are making progress! Try breaking down key ideas into smaller parts and analyzing how they contribute to better software development practices.'; break;
+      case 4: feedback = 'You have a basic grasp, which is a solid start! Now, focus on reinforcing your knowledge by working through simple examples and understanding their purpose.'; break;
+      case 5: feedback = 'Good effort! Your understanding is growing. Applying these concepts in practical exercises will help you solidify your knowledge and gain confidence.'; break;
+      case 6: feedback = 'Nice progress! You’re starting to see how different ideas connect. Continue exploring practical applications to strengthen your comprehension.'; break;
+      case 7: feedback = 'You’re on the right track! Keep practicing and experimenting with different scenarios to deepen your understanding and improve your approach.'; break;
+      case 8: feedback = 'Well done! You have a good foundation. Now, focus on applying these ideas more fluently in different coding challenges and projects.'; break;
+      case 9: feedback = 'Your understanding is getting stronger! Try refining how you apply these principles in different situations to improve efficiency and clarity.'; break;
+      case 10: feedback = 'Good job! You have a solid grasp of the essentials. Now, focus on bridging the gap between theory and real-world applications to strengthen your expertise.'; break;
+      case 11: feedback = 'You’re progressing well! Continue refining your approach and applying your knowledge to more advanced problem-solving situations.'; break;
+      case 12: feedback = 'Great work! You have a well-rounded understanding. Keep expanding your knowledge by taking on new challenges and refining your approach.'; break;
+      case 13: feedback = 'Strong progress! You understand key principles well. Now, focus on improving efficiency and adaptability in different programming scenarios.'; break;
+      case 14: feedback = 'You’re doing great! Expanding your knowledge and practicing more complex implementations will help you further enhance your skills.'; break;
+      case 15: feedback = 'Impressive progress! You are developing strong decision-making skills. Keep refining how you apply your knowledge in different contexts.'; break;
+      case 16: feedback = 'Your skills are advancing well! Now, focus on improving efficiency, readability, and overall structure in your code to make it more effective.'; break;
+      case 17: feedback = 'You have a solid grasp! Keep fine-tuning your approach to ensure clarity, adaptability, and practicality in different coding challenges.'; break;
+      case 18: feedback = 'Excellent work! Start considering how to apply your knowledge in more complex projects. Challenging yourself will push your skills even further.'; break;
+      case 19: feedback = 'Great expertise! Continue testing your understanding by working on real-world applications and refining your problem-solving techniques.'; break;
+      case 20: feedback = 'Impressive skills! Keep focusing on writing clean and maintainable code to ensure efficiency and long-term scalability.'; break;
+      case 21: feedback = 'Outstanding! Your skills are well-developed. Now, focus on optimizing your approach for better clarity, maintainability, and performance.'; break;
+      case 22: feedback = 'Exceptional work! You’ve reached a high level of understanding. Consider mentoring others or contributing to projects to further refine your expertise.'; break;
+      case 23: feedback = 'You’re highly skilled! Keep pushing yourself by exploring new approaches and applying your knowledge to more challenging scenarios.'; break;
+      case 24: feedback = 'Remarkable mastery! Continue refining your approach by studying advanced techniques and best practices to keep improving.'; break;
+      case 25: feedback = 'Perfect score! You have demonstrated an exceptional understanding. Keep your curiosity alive and continue growing—there’s always more to explore!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
+  
   
 
     this.feedback = feedback;

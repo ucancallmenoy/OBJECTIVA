@@ -1,13 +1,20 @@
 <body>
   <div class="quiz-container">
     <!-- Score Section -->
-    <div class="score-header" *ngIf="showScore">
-      <h2>Your Score</h2>
-      <p class="score">{{ score }} / {{ quizData.length }} questions correctly answered</p>
-      <p class="feedback">{{ higher }}</p>
-      <p class="feedback">{{ feedback }}</p>
-      <button (click)="resetQuiz()">Restart Quiz</button>
-      <button (click)="backtoQuiz()">Back to Dashboard</button>
+    <div class="score-card" *ngIf="showScore">
+      <div class="score-circle">
+        <span>{{ score }}</span>
+        <small>/ {{ quizData.length }}</small>
+      </div>
+      <div class="score-content">
+        <h2>Quiz Completed!</h2>
+        <p class="feedback">{{ higher }}</p>
+        <p class="feedback" *ngIf="showFeedback">{{ feedback }}</p>
+        <div class="button-group">
+          <button (click)="resetQuiz()">Try Again</button>
+          <button class="secondary" (click)="backtoQuiz()">Back to Dashboard</button>
+        </div>
+      </div>
     </div>
     
     <!-- Quiz Section -->

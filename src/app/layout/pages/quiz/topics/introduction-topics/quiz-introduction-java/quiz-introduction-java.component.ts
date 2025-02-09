@@ -32,6 +32,7 @@ export class QuizIntroductionJavaComponent implements OnInit{
 
   higher: string = '';
   feedback: string = '';
+  showFeedback = true; // NEW
 
   ngOnInit(): void {
     this.quizService.getIntroductionToJavaQuizzes().subscribe({
@@ -99,9 +100,16 @@ export class QuizIntroductionJavaComponent implements OnInit{
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved!';
                   }
+                  
+                  // add chuchu
                 },
                 error: (error) => console.error('Error saving score:', error)
               });
+          }
+          // New condition (if the score is less than the current score)
+          else if (currentScore !== null && this.score < currentScore) {
+            this.higher = 'Every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+            this.showFeedback = false;
           }
         },
         error: (error) => console.error('Error fetching current score:', error)
@@ -123,33 +131,35 @@ export class QuizIntroductionJavaComponent implements OnInit{
     let feedback: string;
 
     switch (this.score) {
-      case 1: feedback = 'You don’t know Java at all. Start by learning basic syntax, data types, and how Java code runs.'; break;
-      case 2: feedback = 'You’ve heard of Java, but your knowledge is nearly nonexistent. Write simple programs to get familiar with it.'; break;
-      case 3: feedback = 'Your understanding is weak. Learn about variables, loops, and methods before jumping into complex topics.'; break;
-      case 4: feedback = 'You grasp some basics but struggle with implementation. Focus on hands-on coding instead of just theory.'; break;
-      case 5: feedback = 'You understand basic concepts, but your coding skills need serious improvement. Write more small programs.'; break;
-      case 6: feedback = 'You are making progress but lack confidence. Work on basic Java programs, debugging, and logical problem-solving.'; break;
-      case 7: feedback = 'You understand simple Java syntax, but do you know how to apply it? Solve coding exercises to reinforce learning.'; break;
-      case 8: feedback = 'Your basics are there, but your problem-solving is weak. Work on breaking down problems into smaller steps.'; break;
-      case 9: feedback = 'You have a fair understanding, but you need to improve your consistency in writing clean and efficient Java code.'; break;
-      case 10: feedback = 'Good job! Now focus on understanding Object-Oriented Programming, as Java is built around it.'; break;
-      case 11: feedback = 'You’re developing a solid foundation. Now, get comfortable with exception handling and file operations.'; break;
-      case 12: feedback = 'Your Java knowledge is growing! Learn how Java handles memory, like stack vs. heap and garbage collection.'; break;
-      case 13: feedback = 'You’re on the right track! Start practicing Java collections, generics, and basic algorithms.'; break;
-      case 14: feedback = 'Solid grasp! Now, focus on Java’s built-in libraries and how to work with APIs and data structures.'; break;
-      case 15: feedback = 'Great progress! Have you started using Java for real-world applications? Try working on small projects.'; break;
-      case 16: feedback = 'Your knowledge is strong. Now, challenge yourself by learning multi-threading and concurrency.'; break;
-      case 17: feedback = 'You are doing well! Focus on design patterns and best coding practices to improve code quality.'; break;
-      case 18: feedback = 'You have a deep understanding of Java basics. Now, explore frameworks like Spring Boot or JavaFX.'; break;
-      case 19: feedback = 'Excellent knowledge! Work on optimizing your Java code and understanding performance bottlenecks.'; break;
-      case 20: feedback = 'Your Java skills are advanced! Dive into databases, networking, and JVM internals to push your knowledge further.'; break;
-      case 21: feedback = 'Your Java skills are impressive! Start contributing to open-source projects or building scalable applications.'; break;
-      case 22: feedback = 'Exceptional work! Consider mastering Java-related technologies like Hibernate and Microservices.'; break;
-      case 23: feedback = 'Outstanding! You should now focus on enterprise-level Java development and software architecture.'; break;
-      case 24: feedback = 'Brilliant understanding! Teach others and refine your expertise by working on complex Java applications.'; break;
-      case 25: feedback = 'Perfect score! But Java is constantly evolving—stay updated with new versions and best practices.'; break;
+      case 0: feedback = "Getting zero doesn’t mean failure—it means a fresh start with endless room to grow. Learn, improve, and come back stronger!" ; break;
+      case 1: feedback = 'Great start! Learning Java is an exciting journey. Begin by familiarizing yourself with basic syntax and concepts to build a strong foundation.'; break;
+      case 2: feedback = 'You’re taking your first steps! Focus on understanding simple concepts like variables, data types, and basic operations to gain confidence.'; break;
+      case 3: feedback = 'You’re making progress! Keep practicing fundamental concepts, and don’t hesitate to experiment with small code snippets to reinforce your learning.'; break;
+      case 4: feedback = 'Good effort! Try working on simple Java programs to see how different concepts come together in actual coding practice.'; break;
+      case 5: feedback = 'Nice job! You are developing a foundation. Continue learning about key elements such as loops, conditionals, and methods to strengthen your skills.'; break;
+      case 6: feedback = 'You’re getting the hang of it! Keep experimenting with Java’s core features, and start working on small challenges to deepen your understanding.'; break;
+      case 7: feedback = 'Well done! You have a basic grasp of Java. Now, focus on applying your knowledge through simple programs and exercises.'; break;
+      case 8: feedback = 'Great progress! Try working on slightly more complex problems to improve your confidence and coding fluency.'; break;
+      case 9: feedback = 'You’re doing well! Strengthen your foundation by practicing problem-solving and understanding how Java programs are structured.'; break;
+      case 10: feedback = 'Nice work! You have a solid grasp of the basics. Now, start exploring object-oriented programming to take your skills to the next level.'; break;
+      case 11: feedback = 'You’re advancing well! Keep practicing and refining your coding style to improve efficiency and readability in your programs.'; break;
+      case 12: feedback = 'Impressive progress! Try working on real-world examples and small projects to enhance your problem-solving skills.'; break;
+      case 13: feedback = 'You have a strong foundation! Start diving into more advanced topics like classes, objects, and basic error handling to expand your skills.'; break;
+      case 14: feedback = 'Great job! Continue challenging yourself with new projects and coding exercises to further solidify your Java knowledge.'; break;
+      case 15: feedback = 'You’re developing strong coding habits! Keep refining your approach and focus on writing clean, efficient, and well-structured code.'; break;
+      case 16: feedback = 'You have a solid understanding! Try learning about best practices and design principles to make your code more scalable and maintainable.'; break;
+      case 17: feedback = 'Excellent work! Continue strengthening your problem-solving skills by working on more complex coding challenges and applications.'; break;
+      case 18: feedback = 'Your skills are growing! Start exploring Java’s libraries and built-in features to improve efficiency in your programs.'; break;
+      case 19: feedback = 'Fantastic progress! Apply your knowledge in real-world projects to gain hands-on experience and further enhance your expertise.'; break;
+      case 20: feedback = 'You’re highly skilled! Keep challenging yourself by exploring advanced topics such as file handling, collections, and exception handling.'; break;
+      case 21: feedback = 'Outstanding work! Continue refining your understanding by optimizing your code and following best practices in Java development.'; break;
+      case 22: feedback = 'You’ve developed a strong mastery of Java basics! Consider mentoring others or working on open-source projects to apply your skills further.'; break;
+      case 23: feedback = 'Exceptional progress! Your knowledge is impressive—now, challenge yourself with larger projects or algorithm-based problem-solving.'; break;
+      case 24: feedback = 'You’re nearly an expert! Keep pushing your boundaries by exploring more advanced Java frameworks and industry best practices.'; break;
+      case 25: feedback = 'Perfect score! Your understanding of Java is exceptional. Keep learning and evolving—there’s always more to discover in the world of programming!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
+  
   
 
     this.feedback = feedback;
