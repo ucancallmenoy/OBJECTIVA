@@ -41,7 +41,7 @@ export class NavbarComponent {
   }
 
   homepage() {
-    this.router.navigate(['/homepage']);
+    this.router.navigate(['/home']);
   }
 
   // Close pop-ups when clicking outside
