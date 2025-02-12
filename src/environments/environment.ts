@@ -1,6 +1,6 @@
-var baseUrl = 'http://127.0.0.1:8000/api';
+var baseUrl = 'https://backend.objectiva.tech/api';
 export const environment = {
-    production: false,
+    production: true,
 
     // BASE URL
     baseUrl: baseUrl,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../services/auth.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-account-settings',
@@ -11,7 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 export class AccountSettingsComponent implements OnInit {
   accountForm!: FormGroup;
   isEditing = false;
-  apiUrl = 'http://127.0.0.1:8000/api/update-profile'; // Update this with your API endpoint
+  apiUrl = `${environment.baseUrl}/update-profile`; // Update this with your API endpoint
 
   constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient) {}
 

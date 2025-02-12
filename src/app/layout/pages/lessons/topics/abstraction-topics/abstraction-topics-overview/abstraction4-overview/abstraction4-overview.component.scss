@@ -1,6 +1,18 @@
-header{
-    height: 400px;
+header {
+    height: auto; /* Allow height to adjust based on content */
+    min-height: 300px; /* Prevent collapsing */
+    display: flex;
+    align-items: center;
+    text-align: center; /* Ensure centered text on small screens */
+    padding: 2rem 1rem;
 }
+
+@media (max-width: 768px) {
+    header {
+        padding: 3rem 1rem; /* More space for readability */
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -67,7 +79,6 @@ header{
     background-color: #ffffff; /* Change background color on hover */
     color: #000000; /* Change text color on hover */
     transform: translateY(-10px);
-
 }
 .py-5{
     margin-top: -50px;
@@ -106,4 +117,60 @@ header{
 .ins-img {
     width: 3.5rem;
     vertical-align: middle; /* Align icons properly with text */
+}
+
+@media (max-width: 992px) { // Tablets and below
+    .row.gx-4 {
+        flex-direction: column; // Stack items vertically
+        align-items: center;
+    }
+
+    .feature-box {
+        width: 90%; // Make boxes take up most of the width
+        height: auto; // Allow height to adjust
+        padding: 15px;
+    }
+
+    .feature-title {
+        font-size: 2rem; // Adjust font size for smaller screens
+    }
+}
+
+@media (max-width: 576px) { // Mobile
+    .feature-title {
+        font-size: 1.8rem;
+    }
+
+    .feature-box {
+        width: 100%; // Full width
+        padding: 10px;
+    }
+
+    .feature-icon {
+        font-size: 40px; // Adjust icon size
+    }
+}
+@media (max-width: 768px) {
+    .d-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%; // Full-width buttons for easier clicking
+    }
+
+    .instructions {
+        padding: 15px;
+    }
+
+    .ins {
+        font-size: 1.2rem;
+    }
+
+    .ins-img {
+        width: 2.5rem; // Resize images for mobile
+    }
 }

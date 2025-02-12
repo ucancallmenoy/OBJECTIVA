@@ -1,64 +1,138 @@
 .first-container {  
-    position: relative;
-    overflow: hidden;
-    padding: 1rem;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    h2, h1 {
-        margin: 0.5rem 0;
-    }
-    
-    h2 {
-        font-size: 2rem;
-        font-weight: 400;
-    }
-    
-    h1 {
-        font-size: 3rem;
-        font-weight: 700;
-    }
-    
-    .difficulty-options {
-        display: flex;
-        justify-content: center;
-        margin-top: 1rem;
-    }
-    
-    .option {
-        margin: 0 1rem;
-        cursor: pointer;
-        position: relative;
-    }
-    
-    .option::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 2px;
-        background: black;
-        transition: width 0.3s;
-    }
-    
-    .option:hover::after,
-    .option.selected::after {
-        width: 100%;
-    }
-    
-    .selected-line {
-        width: 420px;
-        height: 2px;
-        background: black;
-        margin-top: 1rem;
-    }
-    .difficulty-container {
-        margin-top: 1rem;
-        padding: 1rem;
-        border: 1px solid #000;
-        width: 80%;
-    }
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.first-container h2, 
+.first-container h1 {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.first-container h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.first-container h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.difficulty-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.option {
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.option::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: black;
+  transition: width 0.3s;
+}
+
+.option:hover::after,
+.option.selected::after {
+  width: 100%;
+}
+
+.selected-line {
+  width: 100%;
+  max-width: 420px;
+  height: 2px;
+  background: black;
+  margin-top: 1rem;
+}
+
+.difficulty-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #000;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .first-container h1 {
+      font-size: 2.5rem;
+  }
+  
+  .first-container h2 {
+      font-size: 1.75rem;
+  }
+  
+  .difficulty-options {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+  }
+  
+  .option {
+      margin: 0;
+      text-align: center;
+      width: 100%;
+      max-width: 200px;
+  }
+  
+  .difficulty-container {
+      width: 95%;
+      padding: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .first-container {
+      padding: 0.75rem;
+  }
+  
+  .first-container h1 {
+      font-size: 2rem;
+  }
+  
+  .first-container h2 {
+      font-size: 1.5rem;
+  }
+  
+  .difficulty-container {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.75rem;
+  }
+  
+  .selected-line {
+      max-width: 280px;
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+  .first-container h1 {
+      font-size: 1.75rem;
+  }
+  
+  .first-container h2 {
+      font-size: 1.25rem;
+  }
 }
 hr {
     width: 100%;
@@ -75,166 +149,232 @@ hr {
     margin-top: 69px;
   }
   /* LESSONS */
-  .lesson-container{
-    width: 1000px;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-  }
-  .lesson-container .card-container{
-    position: relative;
-  }
-  .lesson-container .card-container .face{
-    width: 300px;
-    height: 200px;
-    transition: 0.5s;
-  }
-  .lesson-container .card-container .face.face1{
-    position: relative;
-    background: #ffffff;
-    display: flex;
+.lesson-container {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.lesson-container .card-container {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.lesson-container .card-container .face {
+  width: 100%;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.lesson-container .card-container .face.face1 {
+  position: relative;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border: 1px solid #000000;
+  transform: translateY(100px);
+}
+
+.lesson-container .card-container:hover .face.face1 {
+  transform: translateY(0);
+  background: #ebebeb;
+}
+
+.lesson-container .card-container .face.face1 .content {
+  transition: 0.5s;
+  padding: 1rem;
+}
+
+.lesson-container .card-container:hover .face.face1 .content {
+  opacity: 1;
+}
+
+.lesson-container .card-container .face.face1 .content img {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.lesson-container .card-container .face.face1 .content h3 {
+  margin: 10px 0 0;
+  padding: 10px;
+  color: black;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.lesson-container .card-container .face.face2 {
+  position: relative;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  transform: translateY(-100px);
+}
+
+.lesson-container .card-container:hover .face.face2 {
+  transform: translateY(0);
+}
+
+.lesson-container .card-container .face.face2 .content p {
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+}
+
+.lesson-container .card-container .face.face2 .content a {
+  font-size: 15px;
+  margin: 15px 0 0;
+  display: inline-block;
+  text-decoration: none;
+  color: #0a102d;
+  font-weight: 900;
+  padding: 5px;
+  border: 1px solid #333;
+  background-color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.lesson-container .card-container .face.face2 .content a:hover {
+  background-color: #0a102d;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.lesson-home-card {
+  width: 100%;
+  max-width: 350px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  overflow: hidden;
+  transition: transform 0.6s ease;
+  margin-bottom: 50px;
+}
+
+.lesson-home-card:hover {
+  transform: translateY(-20px);
+}
+
+.lesson-home-card i {
+  margin-top: 25px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.lesson-home-content {
+  padding: 20px;
+}
+
+.lesson-home-content h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.lesson-home-content p {
+  font-size: 14px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.lesson-button {
+  display: inline-block;
+  padding: 5px 20px;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.lesson-button:hover {
+  background-color: #0a102d;
+  color: #ffffff;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+  .lesson-container {
     justify-content: center;
-    align-items: center;
-    z-index: 1;
-    border: 1px solid #000000;
-    transform: translateY(100px);
+    gap: 1.5rem;
   }
-  .lesson-container .card-container:hover .face.face1{
+}
+
+@media screen and (max-width: 768px) {
+  .lesson-container .card-container {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .lesson-container .card-container .face.face1,
+  .lesson-container .card-container .face.face2 {
     transform: translateY(0);
-    background: #ebebeb;
   }
-  .lesson-container .card-container .face.face1 .content{
-    transition: 0.5s;
-  }
-  .lesson-container .card-container:hover .face.face1 .content{
+
+  .lesson-container .card-container .face.face1 .content {
     opacity: 1;
   }
 
-  .lesson-container .card-container .face.face1 .content img{
-    max-width: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  .lesson-container .card-container .face.face2 .content p {
+    font-size: 1rem;
   }
-  .lesson-container .card-container:hover .face.face1 .content img{
-    max-width: 100px;  }
+}
 
-  .lesson-container .card-container .face.face1 .content h3{
-    margin: 10px 0 0;
-    padding: 10px;
-    color: black;
-    text-align: center;
-    font-size: 1.5rem;
+@media screen and (max-width: 480px) {
+  .lesson-container {
+    padding: 0.5rem;
   }
 
-  .lesson-container .card-container .face.face2{
-    position: relative;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    border: 1px solid #000000;
-    transform: translateY(-100px);
+  .lesson-container .card-container .face.face1 .content h3 {
+    font-size: 1.25rem;
   }
-  .lesson-container .card-container:hover .face.face2{
+
+  .lesson-home-card {
+    margin-bottom: 30px;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateY(35%);
+    opacity: 0;
+  }
+  to {
     transform: translateY(0);
+    opacity: 1;
   }
-  .lesson-container .card-container .face.face2 .content p{
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-  }
-  .lesson-container .card-container .face.face2 .content a{
-    font-size: 15px;
-    margin: 15px 0 0;
-    display: inline-block;
-    text-decoration: none;
-    color: #0a102d;
-    font-weight: 900;
-    padding: 5px;
-    border: 1px solid #333;
-    background-color: #ffffff; /* Yellow color */
-    color: #0a102d;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: transform 0.6s ease;
-  }
-  .lesson-container .card-container .face.face2 .content a:hover{
-    background-color: #0a102d;
-    color: #ffffff;
-    transform: translateY(-2px);
-  }
-    .lesson-home-card{
-      width: 350px;
-      background-color: white;
-      border-radius: 10px;
-      /* box-shadow: 0px 2px 4px rgba(0,0,0,0.3); */
-      border: 1px solid #000000;
-      overflow: hidden;
-      transition: transform 0.6s ease;
-      margin-bottom: 50px;
-    }
-    .lesson-home-card:hover{
-      transform: translateY(-20px);
-    }
-    .lesson-home-card i{
-      margin-top: 25px;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-    .lesson-home-content{
-      padding: 20px;
-    }
-    .lesson-home-content h1{
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-    .lesson-home-content p{
-      font-size: 14px;
-      color:black;
-      margin-bottom: 20px;
-    }
-    .lesson-button{
-      display: inline-block;
-      padding: 5px 20px;
-      background-color: #ffffff;
-      color: black;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .lesson-button:hover{
-      background-color: #0a102d;
-      color: #ffffff;
-    }
-    @keyframes slide-right {
-      from {
-        transform: translateY(35%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    
-    .slide-right {
-      animation: slide-right 0.6s ease-out;
-    }
+}
+
+.slide-right {
+  animation: slide-right 0.6s ease-out;
+}
   
-.quiz-container{
-  margin-top: 200px;
+.quiz-container {
+  margin-top: 100px; /* Reduced top margin for better mobile viewing */
   width: 100%;
-  height: 700px;
+  min-height: 700px; /* Changed to min-height to allow content to expand */
   background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='2' fill='black' /%3E%3C/svg%3E");
-  background-size: 20px 20px; /* Spacing between dots */
+  background-size: 20px 20px;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px; /* Added padding for smaller screens */
 }
+
 .quiz-section {
   border: 0.5px solid #7c7c7c;
   background-color: #ffffff;
@@ -244,51 +384,132 @@ hr {
   padding: 50px;
   max-width: 1200px;
   width: 100%;
-  .content {
-    max-width: 500px;
-  }
-  .header .logo {
-    font-size: 44px;
-    font-weight: bold;
-    color: #000000;
-  }
-  
-  .header .logo span {
-    background-color: #fff;
-    color: #0a102d;
-    padding: 2px 5px;
-    font-size: 20px;
-    border-radius: 3px;
+}
+
+.quiz-section .content {
+  max-width: 500px;
+  width: 100%; /* Added width for better responsiveness */
+}
+
+.header .logo {
+  font-size: 44px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.header .logo span {
+  background-color: #fff;
+  color: #0a102d;
+  padding: 2px 5px;
+  font-size: 20px;
+  border-radius: 3px;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+p {
+  font-size: 20px;
+  color: #8d8d8d;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #ffffff;
+  color: #0a102d;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: 1px solid #0a102d;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.cta-button:hover {
+  background-color: #0a102d;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+  .quiz-section {
+    padding: 30px;
   }
   
   h1 {
-    font-size: 50px;
-    font-weight: bold;
-    line-height: 1.2;
-    margin: 20px 0;
+    font-size: 40px;
+  }
+  
+  .header .logo {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quiz-container {
+    margin-top: 60px;
+  }
+  
+  .quiz-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .quiz-section .content {
+    max-width: 100%;
+  }
+  
+  h1 {
+    font-size: 32px;
   }
   
   p {
-    font-size: 20px;
-    color: #8d8d8d;
-    margin-bottom: 30px;
+    font-size: 18px;
   }
   
-  .cta-button {
-    background-color: #ffffff; /* Yellow color */
-    color: #0a102d;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: 1px solid #0a102d;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.6s ease;
+  .header .logo {
+    font-size: 32px;
   }
-  .cta-button:hover {
-    background-color: #0a102d;
-    color: #ffffff;
-    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 480px) {
+  .quiz-container {
+    margin-top: 40px;
   }
+  
+  .quiz-section {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin: 15px 0;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .header .logo {
+    font-size: 28px;
+  }
+  
+  .header .logo span {
+    font-size: 16px;
+  }
+}
+
+/* Handle images responsively */
+.logos img {
+  max-width: 100%;
+  height: auto;
 }
 
 .logos {
@@ -321,3 +542,4 @@ hr {
     transform: translateY(-2px);
   }
 }
+
