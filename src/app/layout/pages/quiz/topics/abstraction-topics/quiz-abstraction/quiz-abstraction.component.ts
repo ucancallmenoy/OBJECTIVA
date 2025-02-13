@@ -104,6 +104,7 @@ export class QuizAbstractionComponent implements OnInit{
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {
                     this.higher = 'Excellent! Your score is greater than your current score which means you have improved! Keep up the great work and continue striving for excellence!';
+                    this.showFeedback = false;
                   }
                   
                   // add chuchu
