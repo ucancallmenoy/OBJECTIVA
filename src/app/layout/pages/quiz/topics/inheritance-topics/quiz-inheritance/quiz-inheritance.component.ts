@@ -36,9 +36,12 @@ export class QuizInheritanceComponent implements OnInit{
   showFeedback = true; // NEW
 
   ngOnInit(): void {
-    this.quizService.getInheritanceQuizzes().subscribe({
+    this.quizService.getQuizzes('inheritance').subscribe({
       next: (data) => {
-        this.quizData = this.getRandomQuestions(data, 25);
+        this.quizData = this.getRandomQuestions(
+          data.filter((quiz: any) => quiz.category === 'inheritance'), // Filter for abstraction category
+          25
+        );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
       },
@@ -162,8 +165,6 @@ export class QuizInheritanceComponent implements OnInit{
       default: feedback = 'Invalid score. Please check your input.';
   }
   
-  
-
     this.feedback = feedback;
   }
 

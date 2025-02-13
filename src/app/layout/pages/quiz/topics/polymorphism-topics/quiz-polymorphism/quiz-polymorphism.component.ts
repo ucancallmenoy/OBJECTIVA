@@ -36,9 +36,12 @@ export class QuizPolymorphismComponent implements OnInit{
   showFeedback = true; // NEW
 
   ngOnInit(): void {
-    this.quizService.getPolymorphismQuizzes().subscribe({
+    this.quizService.getQuizzes('polymorphism').subscribe({
       next: (data) => {
-        this.quizData = this.getRandomQuestions(data, 25);
+        this.quizData = this.getRandomQuestions(
+          data.filter((quiz: any) => quiz.category === 'polymorphism'), // Filter for abstraction category
+          25
+        );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
       },
@@ -162,8 +165,6 @@ export class QuizPolymorphismComponent implements OnInit{
       default: feedback = 'Invalid score. Please check your input.';
   }
   
-  
-
     this.feedback = feedback;
   }
 

@@ -36,9 +36,12 @@ export class QuizEncapsulationComponent implements OnInit{
   showFeedback = true; // NEW
 
   ngOnInit(): void {
-    this.quizService.getEncapsulationQuizzes().subscribe({
+    this.quizService.getQuizzes('encapsulation').subscribe({
       next: (data) => {
-        this.quizData = this.getRandomQuestions(data, 25);
+        this.quizData = this.getRandomQuestions(
+          data.filter((quiz: any) => quiz.category === 'encapsulation'), // Filter for abstraction category
+          25
+        );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
       },
@@ -161,9 +164,6 @@ export class QuizEncapsulationComponent implements OnInit{
       case 25: feedback = 'Perfect score! You have demonstrated an exceptional understanding. Keep your curiosity alive and continue growing—there’s always more to explore!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
-  
-  
-
     this.feedback = feedback;
   }
 

@@ -15,7 +15,7 @@ export class QuizIntroductionOopComponent implements OnInit {
     private router: Router,
     private title: Title
   ) {
-    this.title.setTitle('Introduction to OOP Quiz | Objectiva');
+    this.title.setTitle('Introduction To OOP Quiz | Objectiva');
   }
 
   quizData: any[] = [];
@@ -36,9 +36,12 @@ export class QuizIntroductionOopComponent implements OnInit {
   showFeedback = true; // NEW
 
   ngOnInit(): void {
-    this.quizService.getIntroductionToOopQuizzes().subscribe({
+    this.quizService.getQuizzes('introtooop').subscribe({
       next: (data) => {
-        this.quizData = this.getRandomQuestions(data, 25);
+        this.quizData = this.getRandomQuestions(
+          data.filter((quiz: any) => quiz.category === 'introtooop'), // Filter for abstraction category
+          25
+        );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
       },
@@ -92,10 +95,10 @@ export class QuizIntroductionOopComponent implements OnInit {
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('introduction-oop').subscribe({
+      this.quizService.getCurrentScore('introtooop').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('introduction-oop', this.score, this.quizData.length)
+            this.quizService.saveScore('introtooop', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {
@@ -160,8 +163,6 @@ export class QuizIntroductionOopComponent implements OnInit {
       case 25: feedback = 'Perfect score! Your OOP knowledge is exceptional. Keep evolving, as the best developers continuously refine their skills and adapt to new challenges!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
-  
-  
 
     this.feedback = feedback;
   }

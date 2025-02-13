@@ -20,6 +20,7 @@ export class QuizService {
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
+
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -49,27 +50,33 @@ export class QuizService {
   }
 
   //For quiz quetsions
-  getAbstractionQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/abstraction-quizzes`);
+
+
+  getQuizzes(category: string): Observable<any> {
+    return this.http.get<any>(`${this.getQuiz}/quizzes/${category}`);
   }
 
-  getPolymorphismQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/polymorphism-quizzes`);
-  }
+  // getAbstractionQuizzes(): Observable<any> {
+  //   return this.http.get<any>(`${this.getQuiz}/abstraction-quizzes`);
+  // }
 
-  getInheritanceQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/inheritance-quizzes`);
-  }
+  // getPolymorphismQuizzes(): Observable<any> {
+  //   return this.http.get<any>(`${this.getQuiz}/polymorphism-quizzes`);
+  // }
 
-  getEncapsulationQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/encapsulation-quizzes`);
-  }
+  // getInheritanceQuizzes(): Observable<any> {
+  //   return this.http.get<any>(`${this.getQuiz}/inheritance-quizzes`);
+  // }
 
-  getIntroductionToJavaQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/introductionToJava-quizzes`);
-  }
+  // getEncapsulationQuizzes(): Observable<any> {
+  //   return this.http.get<any>(`${this.getQuiz}/encapsulation-quizzes`);
+  // }
 
-  getIntroductionToOopQuizzes(): Observable<any> {
-    return this.http.get<any>(`${this.getQuiz}/introductionToOop-quizzes`);
-  }
+  // getIntroductionToJavaQuizzes(): Observable<any> {
+  //   return this.http.get<any>(`${this.getQuiz}/introductionToJava-quizzes`);
+  // }
+
+  // getIntroductionToOopQuizzes(): Observable<any> {
+  //   return this.http.get<any>(`${this.getQuiz}/introductionToOop-quizzes`);
+  // }
 }

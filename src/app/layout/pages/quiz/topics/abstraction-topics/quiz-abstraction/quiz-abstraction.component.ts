@@ -36,9 +36,12 @@ export class QuizAbstractionComponent implements OnInit{
   showFeedback = true; // NEW
 
   ngOnInit(): void {
-    this.quizService.getAbstractionQuizzes().subscribe({
+    this.quizService.getQuizzes('abstraction').subscribe({
       next: (data) => {
-        this.quizData = this.getRandomQuestions(data, 25);
+        this.quizData = this.getRandomQuestions(
+          data.filter((quiz: any) => quiz.category === 'abstraction'), // Filter for abstraction category
+          25
+        );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
       },
@@ -48,6 +51,7 @@ export class QuizAbstractionComponent implements OnInit{
       }
     });
   }
+  
 
   getRandomQuestions(data: any[], count: number): any[] {
     const shuffled = data.sort(() => 0.5 - Math.random());

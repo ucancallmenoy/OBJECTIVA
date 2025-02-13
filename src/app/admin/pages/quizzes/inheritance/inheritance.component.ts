@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InheritanceQuizService } from '../../../services/inheritance-quiz.service';
+import { QuizService } from '../../../services/quiz.service';
 @Component({
   selector: 'app-inheritance',
   templateUrl: './inheritance.component.html',
@@ -18,12 +18,14 @@ export class InheritanceComponent implements OnInit{
       showDeleteModal = false;
       quizForm: FormGroup;
       selectedQuiz: any = null;
+      selectedCategory: string = "inheritance";
     
       constructor(
-        private abstractionQuizService: InheritanceQuizService,
+        private quizService: QuizService,
         private formBuilder: FormBuilder
       ) {
         this.quizForm = this.formBuilder.group({
+          category: ['', Validators.required],
           question: ['', Validators.required],
           a: ['', Validators.required],
           b: ['', Validators.required],
@@ -43,14 +45,14 @@ export class InheritanceComponent implements OnInit{
         this.loading = true;
         this.error = null;
         
-        this.abstractionQuizService.getQuizzes()
+        this.quizService.getInheritanceQuizzes()
           .subscribe({
             next: (quizzes) => {
               this.quizzes = quizzes;
               this.loading = false;
             },
             error: (err) => {
-              this.error = 'Error loading abstraction quizzes';
+              this.error = 'Error loading inheritance quizzes';
               this.loading = false;
               console.error('Error:', err);
             }
@@ -58,21 +60,22 @@ export class InheritanceComponent implements OnInit{
       }
     
       addQuiz(): void {
-        this.abstractionQuizService.addQuiz(this.newQuiz).subscribe(
+        this.quizService.addQuiz(this.selectedCategory,this.newQuiz).subscribe(
           (response) => {
             this.quizzes.push(response);
             this.newQuiz = {}; // Clear the form
             this.showAddModal = false;
           },
           (error) => {
-            this.error = error.message;
-          }
+            this.error = 'Error adding quiz. Please fill in all required fields and try again';
+        }
         );
       }
     
       openEditModal(quiz: any) {
         this.selectedQuiz = quiz;
         this.quizForm.patchValue({
+          category: quiz.category,
           question: quiz.question,
           a: quiz.a,
           b: quiz.b,
@@ -92,7 +95,7 @@ export class InheritanceComponent implements OnInit{
     
         const quizData = this.quizForm.value;
     
-        this.abstractionQuizService.updateQuiz(this.selectedQuiz.id, quizData)
+        this.quizService.updateQuiz(this.selectedQuiz.category,this.selectedQuiz.id, quizData)
           .subscribe({
             next: () => {
               this.loadQuizzes(); // Refresh quizzes
@@ -111,7 +114,7 @@ export class InheritanceComponent implements OnInit{
       }
     
       confirmDelete() {
-        this.abstractionQuizService.deleteQuiz(this.selectedQuiz.id)
+        this.quizService.deleteQuiz(this.selectedQuiz.category,this.selectedQuiz.id)
           .subscribe({
             next: () => {
               this.loadQuizzes(); // Refresh quizzes
@@ -123,4 +126,4 @@ export class InheritanceComponent implements OnInit{
             }
           });
       }
-}
+    }

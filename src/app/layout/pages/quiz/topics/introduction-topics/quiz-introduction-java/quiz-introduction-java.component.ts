@@ -14,7 +14,7 @@ export class QuizIntroductionJavaComponent implements OnInit{
     private router: Router,
     private title: Title
   ) {
-    this.title.setTitle('Introduciton to Java Quiz | Objectiva');
+    this.title.setTitle('Introduction To Java Quiz | Objectiva');
   }
 
   quizData: any[] = [];
@@ -35,9 +35,12 @@ export class QuizIntroductionJavaComponent implements OnInit{
   showFeedback = true; // NEW
 
   ngOnInit(): void {
-    this.quizService.getIntroductionToJavaQuizzes().subscribe({
+    this.quizService.getQuizzes('introtojava').subscribe({
       next: (data) => {
-        this.quizData = this.getRandomQuestions(data, 25);
+        this.quizData = this.getRandomQuestions(
+          data.filter((quiz: any) => quiz.category === 'introtojava'), // Filter for abstraction category
+          25
+        );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
       },
@@ -91,10 +94,10 @@ export class QuizIntroductionJavaComponent implements OnInit{
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('introduction-java').subscribe({
+      this.quizService.getCurrentScore('introtojava').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('introduction-java', this.score, this.quizData.length)
+            this.quizService.saveScore('introtojava', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {
@@ -160,8 +163,6 @@ export class QuizIntroductionJavaComponent implements OnInit{
       case 25: feedback = 'Perfect score! Your understanding of Java is exceptional. Keep learning and evolving—there’s always more to discover in the world of programming!'; break;
       default: feedback = 'Invalid score. Please check your input.';
   }
-  
-  
 
     this.feedback = feedback;
   }
