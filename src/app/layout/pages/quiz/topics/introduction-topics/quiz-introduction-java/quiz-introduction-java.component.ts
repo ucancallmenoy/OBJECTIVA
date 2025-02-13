@@ -94,10 +94,10 @@ export class QuizIntroductionJavaComponent implements OnInit{
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('introtojava').subscribe({
+      this.quizService.getCurrentScore('introduction-java').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('introtojava', this.score, this.quizData.length)
+            this.quizService.saveScore('introduction-java', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {

@@ -95,10 +95,10 @@ export class QuizIntroductionOopComponent implements OnInit {
       this.showScore = true;
       this.generateFeedback();
 
-      this.quizService.getCurrentScore('introtooop').subscribe({
+      this.quizService.getCurrentScore('introduction-oop').subscribe({
         next: (currentScore) => {
           if (currentScore === null || this.score > currentScore) {
-            this.quizService.saveScore('introtooop', this.score, this.quizData.length)
+            this.quizService.saveScore('introduction-oop', this.score, this.quizData.length)
               .subscribe({
                 next: (response) => {
                   if (currentScore !== null && this.score > currentScore) {
