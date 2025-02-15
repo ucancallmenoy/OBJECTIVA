@@ -10,10 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginRegisterComponent {
   isLoginView: boolean = true;
+  isOtpView: boolean = false;
   passwordFieldType: string = 'password';
   loginForm: FormGroup;
   registerForm: FormGroup;
+  otpForm: FormGroup;
   error: string = '';
+  emailForOtp: string = '';
 
   constructor(
     private router: Router,
@@ -29,10 +32,15 @@ export class LoginRegisterComponent {
     });
 
     this.registerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, this.noWhitespaceValidator]],
+      lastName: ['', [Validators.required, this.noWhitespaceValidator]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      recaptcha: ['', Validators.required]
+    });
+    
+    this.otpForm = this.fb.group({
+      otp: ['', Validators.required],
     });
   }
 
@@ -54,37 +62,70 @@ export class LoginRegisterComponent {
 
   onRegister(): void {
     if (this.registerForm.valid) {
-      const registrationData = {
-        first_name: this.registerForm.get('firstName')?.value,
-        last_name: this.registerForm.get('lastName')?.value,
-        email: this.registerForm.get('email')?.value,
-        password: this.registerForm.get('password')?.value,
-      };
-    
-      this.authService.register(registrationData).subscribe({
-        next: (response) => {
-          console.log('Registration successful:', response);
-          this.isLoginView = true;
+      // First send OTP
+      this.authService.sendOtp(this.registerForm.get('email')?.value).subscribe({
+        next: () => {
+          this.isOtpView = true;
+          this.emailForOtp = this.registerForm.get('email')?.value;
           this.error = '';
-          this.registerForm.reset();
         },
         error: (error) => {
-          console.log('Registration error:', error);
-          if (error.error && error.error.errors) {
-            // Handle validation errors
-            const validationErrors = error.error.errors;
-            const errorMessages = Object.values(validationErrors).flat();
-            this.error = errorMessages.join(', ');
-          } else {
-            this.error = error.error?.message || 'Registration failed';
-          }
+          this.error = error.error?.message || 'Failed to send OTP';
         }
       });
     } else {
-      this.error = 'Please fill in all required fields correctly';
+      console.log('Register Form is invalid');
     }
   }
-
+  
+  verifyOtp(): void {
+    if (this.otpForm.valid) {
+      this.authService.verifyOtp(
+        this.emailForOtp,
+        this.otpForm.get('otp')?.value
+      ).subscribe({
+        next: () => {
+          // Log the registration data before sending
+          const registrationData = {
+            firstName: this.registerForm.get('firstName')?.value?.trim(),
+            lastName: this.registerForm.get('lastName')?.value?.trim(),
+            email: this.registerForm.get('email')?.value,
+            password: this.registerForm.get('password')?.value
+          };          
+          console.log("Registration Data:", registrationData); // Debugging step
+  
+          this.authService.register(registrationData).subscribe({
+            next: () => {
+              this.isLoginView = true;
+              this.isOtpView = false;
+              this.registerForm.reset();
+              this.otpForm.reset();
+            },
+            error: (error) => {
+              console.error('Registration error:', error);
+              this.error = error.error?.message || 'Registration failed';
+            }
+          });
+        },
+        error: (error) => {
+          this.error = error.error?.message || 'Invalid OTP';
+        }
+      });
+    }
+  }
+  
+  updateFormControl(controlName: string, event: Event) {
+    const value = (event.target as HTMLInputElement).value.trim();
+    this.registerForm.get(controlName)?.setValue(value);
+    this.registerForm.get(controlName)?.updateValueAndValidity();
+  }
+  noWhitespaceValidator(control: any) {
+    if (control.value && control.value.trim() === '') {
+      return { required: true };
+    }
+    return null;
+  }
+  
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }

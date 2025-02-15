@@ -4,7 +4,7 @@ import { LoginRegisterComponent } from './login-register/login-register/login-re
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {path: '',redirectTo: 'login-register',pathMatch: 'full'},
+  {path: '',redirectTo: 'home',pathMatch: 'full'},
   {path: 'login-register', component: LoginRegisterComponent},
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule, )},
   { path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule), canActivate: [AuthGuard] },

@@ -12,7 +12,7 @@ import { TokenInterceptor } from './services/token.interceptor';
 import { TokenAdminInterceptor } from './services/token-admin.interceptor';
 import { HttpClientModule,provideHttpClient, withFetch  } from '@angular/common/http';
 
-
+import {NgxCaptchaModule} from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { HttpClientModule,provideHttpClient, withFetch  } from '@angular/common/
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxCaptchaModule
 
   ],
   providers: [

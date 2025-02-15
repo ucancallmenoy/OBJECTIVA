@@ -5,11 +5,13 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../environments/environment';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private apiUrl = environment.baseUrl;
   private loginUrl = environment.loginUrl;
   private registerUrl = environment.registerUrl;
 
@@ -18,6 +20,27 @@ export class AuthService {
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
+
+  sendOtp(email: string) {
+    return this.http.post(`${this.apiUrl}/send-otp`, { email }).pipe(
+      tap(response => console.log('Send OTP response:', response)),
+      catchError(error => {
+        console.error('Send OTP error:', error);
+        throw error;
+      })
+    );
+  }
+
+  verifyOtp(email: string, otp: string) {
+    return this.http.post(`${this.apiUrl}/verify-otp`, { email, otp }).pipe(
+      tap(response => console.log('Verify OTP response:', response)),
+      catchError(error => {
+        console.error('Verify OTP error:', error);
+        throw error;
+      })
+    );
+  }
+  
 
   login(email: string, password: string): Observable<any> {
     return this.http.post(this.loginUrl, { email, password }).pipe(
@@ -55,9 +78,16 @@ export class AuthService {
     );
   }
 
-  register(user: any): Observable<any> {
-    return this.http.post(this.registerUrl, user);
-  }
+  // auth.service.ts
+register(data: any) {
+  return this.http.post(`${this.apiUrl}/register`, data).pipe(
+    tap(response => console.log('Registration response:', response)),
+    catchError(error => {
+      console.error('Registration error:', error);
+      throw error;
+    })
+  );
+}
 
   logout(): void {
     if (isPlatformBrowser(this.platformId)) {
