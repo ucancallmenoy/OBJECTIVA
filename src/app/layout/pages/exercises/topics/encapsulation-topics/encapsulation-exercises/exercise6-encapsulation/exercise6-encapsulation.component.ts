@@ -150,4 +150,62 @@ export class Exercise6EncapsulationComponent {
      
          this.draggedItem = null;
        }
+
+       // SHOW ANSWER
+              showAnswerConfirmation(): void {
+                Swal.fire({
+                  title: 'Show Answer?',
+                  text: 'Are you sure you want to see the correct matches? This may impact your learning experience.',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonText: 'Yes, show me',
+                  cancelButtonText: 'No, let me try more',
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.revealAnswers();
+                  }
+                });
+              }
+            
+              private revealAnswers(): void {
+                // First, reset the exercise
+                this.reset();
+            
+                // Then reveal answers one by one with animation
+                this.definitions.forEach((definition, index) => {
+                  setTimeout(() => {
+                    // Find the matching concept
+                    const matchingConcept = this.concepts.find(concept => concept.id === definition.id);
+                    
+                    if (matchingConcept) {
+                      // Update the definition and concept states
+                      definition.dropped = matchingConcept.name;
+                      matchingConcept.dropped = true;
+                    }
+            
+                    // Show completion message after revealing all answers
+                    if (index === this.definitions.length - 1) {
+                      Swal.fire({
+                        title: 'Answers Revealed',
+                        html: `
+                          <p>The correct matches are:</p>
+                          <div style="text-align: left;">
+                          <ul>
+                            <li><strong>Security</strong>: Restricts unauthorized access to an object's state.</li>
+                            <li><strong>Flexibility</strong>: The ability to change internal logic without affecting external code.</li>
+                            <li><strong>Maintainability</strong>: Simplifies debugging and updates by keeping data and behavior in one place.</li>
+                            <li><strong>Reusability</strong>: Classes can be reused without worrying about external interference.</li>
+                          </ul>
+                          </div>
+                          <p>Take time to understand why each concept matches its definition!</p>
+                        `,
+                        icon: 'info',
+                        confirmButtonText: 'Got it'
+                      });
+                    }
+                  }, index * 800); // 800ms delay between each answer
+                });
+              }
 }

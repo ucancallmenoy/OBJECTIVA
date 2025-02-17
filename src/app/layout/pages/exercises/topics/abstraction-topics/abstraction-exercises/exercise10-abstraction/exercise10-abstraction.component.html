@@ -4,7 +4,7 @@
     <p>Fill in the blanks to complete the abstract class definition and the concrete classes:</p>
 
     <pre>
-      <input type="text" [(ngModel)]="definitions[0].userInput" placeholder="{{ definitions[0].label }}" class="inline-input"/> class Vehicle {{'{'}} <span class="comment">// Use the abstract method</span>
+  <input type="text" [(ngModel)]="definitions[0].userInput" placeholder="{{ definitions[0].label }}" class="inline-input"/> class Vehicle {{'{'}} <span class="comment">// Use the abstract method</span>
   void displayInfo() {{'{'}}
     System.out.println("This is a vehicle.");
   {{'}'}}
@@ -40,4 +40,5 @@ public class Main {{'{'}}
   
     <button (click)="validateAnswers()">Submit</button>
     <button (click)="getHint()">Hint</button>
+    <button (click)="showAnswerConfirmation()">Show Answer</button>
   </div>

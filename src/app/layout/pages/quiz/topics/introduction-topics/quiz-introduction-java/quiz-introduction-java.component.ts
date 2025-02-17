@@ -3,6 +3,8 @@ import { quizData,QuizData } from './quiz-data';
 import { Router } from '@angular/router';
 import { QuizService } from '../../../../../../services/quiz.service';
 import { Title } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-quiz-introduction-java',
   templateUrl: './quiz-introduction-java.component.html',
@@ -108,9 +110,20 @@ export class QuizIntroductionJavaComponent implements OnInit{
     });
   }
   exitQuiz() {
-    clearInterval(this.timer);
-    this.router.navigate(['/quiz']);
-  }
+      Swal.fire({
+        title: 'Are you sure you want to exit?',
+        text: "Your progress will not be saved!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, exit'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/quiz']);
+        }
+      });
+    }
   // END
 
   getRandomQuestions(data: any[], count: number): any[] {

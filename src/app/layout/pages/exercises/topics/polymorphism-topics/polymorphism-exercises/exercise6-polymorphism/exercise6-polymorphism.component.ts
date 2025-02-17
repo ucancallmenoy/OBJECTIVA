@@ -156,4 +156,63 @@ export class Exercise6PolymorphismComponent {
      
          this.draggedItem = null;
        }
+
+       // SHOW ANSWER
+              showAnswerConfirmation(): void {
+                Swal.fire({
+                  title: 'Show Answer?',
+                  text: 'Are you sure you want to see the correct matches? This may impact your learning experience.',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonText: 'Yes, show me',
+                  cancelButtonText: 'No, let me try more',
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.revealAnswers();
+                  }
+                });
+              }
+            
+              private revealAnswers(): void {
+                // First, reset the exercise
+                this.reset();
+            
+                // Then reveal answers one by one with animation
+                this.definitions.forEach((definition, index) => {
+                  setTimeout(() => {
+                    // Find the matching concept
+                    const matchingConcept = this.concepts.find(concept => concept.id === definition.id);
+                    
+                    if (matchingConcept) {
+                      // Update the definition and concept states
+                      definition.dropped = matchingConcept.name;
+                      matchingConcept.dropped = true;
+                    }
+            
+                    // Show completion message after revealing all answers
+                    if (index === this.definitions.length - 1) {
+                      Swal.fire({
+                        title: 'Answers Revealed',
+                        html: `
+                          <p>The correct matches are:</p>
+                          <div style="text-align: left;">
+                          <ul>
+                            <li><strong>Compile-time Polymorphism</strong>: Achieved by having multiple methods in the same class with the same name but different parameter lists.</li>
+                            <li><strong>Runtime Polymorphism</strong>: Occurs when the method call is resolved at runtime, allowing flexibility to choose the method based on the actual object type.</li>
+                            <li><strong>Constructor Overloading</strong>: Multiple constructors with different parameter lists in the same class, allowing different ways of creating objects.</li>
+                            <li><strong>Operator Overloading</strong>: A mechanism to define multiple operations (like +) for objects of different types (commonly used for strings in Java).</li>
+                            <li><strong>Type Promotion</strong>: Converts smaller data types into larger ones automatically during method calls, allowing different types to be accepted in overloaded methods.</li>
+                          </ul>
+                          </div>
+                          <p>Take time to understand why each concept matches its definition!</p>
+                        `,
+                        icon: 'info',
+                        confirmButtonText: 'Got it'
+                      });
+                    }
+                  }, index * 800); // 800ms delay between each answer
+                });
+              }
      }

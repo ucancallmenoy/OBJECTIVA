@@ -142,4 +142,61 @@ getHint(): void {
 
     this.draggedItem = null;
   }
+
+  // SHOW ANSWER
+  showAnswerConfirmation(): void {
+    Swal.fire({
+      title: 'Show Answer?',
+      text: 'Are you sure you want to see the correct matches? This may impact your learning experience.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, show me',
+      cancelButtonText: 'No, let me try more',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.revealAnswers();
+      }
+    });
+  }
+
+  private revealAnswers(): void {
+    // First, reset the exercise
+    this.reset();
+
+    // Then reveal answers one by one with animation
+    this.definitions.forEach((definition, index) => {
+      setTimeout(() => {
+        // Find the matching concept
+        const matchingConcept = this.concepts.find(concept => concept.id === definition.id);
+        
+        if (matchingConcept) {
+          // Update the definition and concept states
+          definition.dropped = matchingConcept.name;
+          matchingConcept.dropped = true;
+        }
+
+        // Show completion message after revealing all answers
+        if (index === this.definitions.length - 1) {
+          Swal.fire({
+            title: 'Answers Revealed',
+            html: `
+              <p>The correct matches are:</p>
+              <div style="text-align: left;">
+              <ul>
+                <li><strong>High-Level Abstraction</strong>: Deals with the "what" of the system, focusing on user interaction and overall system behavior.</li>
+                <li><strong>Mid-Level Abstraction</strong>: Involves system components and their responsibilities, typically focusing on subsystems or modules.</li>
+                <li><strong>Low-Level Abstraction</strong>: Details the "how," dealing with specific implementation, such as code and algorithms.</li>
+              </ul>
+              </div>
+              <p>Take time to understand why each concept matches its definition!</p>
+            `,
+            icon: 'info',
+            confirmButtonText: 'Got it'
+          });
+        }
+      }, index * 800); // 800ms delay between each answer
+    });
+  }
 }

@@ -94,4 +94,54 @@ export class Exercise10InheritanceComponent {
         }
       }
     }
+
+    // SHOW ANSWER
+      showAnswerConfirmation(): void {
+        Swal.fire({
+          title: 'Show Answer?',
+          text: 'Are you sure you want to see the answers? This may impact your learning experience.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, show me',
+          cancelButtonText: 'No, let me try more',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.revealAnswers();
+          }
+        });
+      }
+    
+      private revealAnswers(): void {
+        // Fill in the answers one by one with animation
+        this.concepts.forEach((concept, index) => {
+          setTimeout(() => {
+            this.definitions[index].userInput = concept.name;
+    
+            // Show completion message after revealing all answers
+            if (index === this.concepts.length - 1) {
+              Swal.fire({
+                title: 'Answers Revealed',
+                html: `
+                        <p>The correct answers are:</p>
+                        <div style="text-align: left;">
+                        <ol>
+                          <li><strong>extends</strong> - Keyword to establish inheritance</li>
+                          <li><strong>super</strong> - Keyword to call superclass methods</li>
+                          <li><strong>public</strong> - Access modifier</li>
+                          <li><strong>Main</strong> - Class name</li>
+                          <li><strong>Dog</strong> - Class name</li>
+                          <li><strong>Dog</strong> - Class name</li>
+                          <li><strong>eat</strong> - Method name</li>
+                        </ol>
+                        </div>
+                      `,
+                icon: 'info',
+                confirmButtonText: 'Got it'
+              });
+            }
+          }, index * 500); // 500ms delay between each answer
+        });
+      }
   }

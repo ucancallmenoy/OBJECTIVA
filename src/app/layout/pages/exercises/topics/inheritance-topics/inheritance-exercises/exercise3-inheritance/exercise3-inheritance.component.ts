@@ -150,5 +150,63 @@ export class Exercise3InheritanceComponent {
  
      this.draggedItem = null;
    }
+
+   // SHOW ANSWER
+     showAnswerConfirmation(): void {
+       Swal.fire({
+         title: 'Show Answer?',
+         text: 'Are you sure you want to see the correct matches? This may impact your learning experience.',
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonText: 'Yes, show me',
+         cancelButtonText: 'No, let me try more',
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33'
+       }).then((result) => {
+         if (result.isConfirmed) {
+           this.revealAnswers();
+         }
+       });
+     }
+   
+     private revealAnswers(): void {
+       // First, reset the exercise
+       this.reset();
+   
+       // Then reveal answers one by one with animation
+       this.definitions.forEach((definition, index) => {
+         setTimeout(() => {
+           // Find the matching concept
+           const matchingConcept = this.concepts.find(concept => concept.id === definition.id);
+           
+           if (matchingConcept) {
+             // Update the definition and concept states
+             definition.dropped = matchingConcept.name;
+             matchingConcept.dropped = true;
+           }
+   
+           // Show completion message after revealing all answers
+           if (index === this.definitions.length - 1) {
+             Swal.fire({
+               title: 'Answers Revealed',
+               html: `
+                 <p>The correct matches are:</p>
+                 <div style="text-align: left;">
+                 <ul>
+                  <li><strong>Single Inheritance</strong>: Type of inheritance where the class inherits from only one parent class.</li>
+                  <li><strong>Hierarchical Inheritance</strong>: Type of inheritance where one class is inherited by multiple subclasses.</li>
+                  <li><strong>Multilevel Inheritance</strong>: Type of inheritance where a class inherits from another, and the second class is inherited by a third class, forming a chain.</li>
+                  <li><strong>Multiple Inheritance</strong>: This type of inheritance is not supported in Java to avoid ambiguity and complexity when inheriting methods with the same name but different implementations from multiple classes.</li>
+                </ul>
+                </div>
+                 <p>Take time to understand why each concept matches its definition!</p>
+               `,
+               icon: 'info',
+               confirmButtonText: 'Got it'
+             });
+           }
+         }, index * 800); // 800ms delay between each answer
+       });
+     }
  }
  

@@ -151,4 +151,53 @@ export class Exercise4PolymorphismComponent {
               
               return extraLetters;
             }
+      
+            // SHOW ANSWER
+              showAnswerConfirmation(): void {
+                Swal.fire({
+                  title: 'Show Answer?',
+                  text: 'Are you sure you want to see the answer? This might affect your learning experience.',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonText: 'Yes, show me',
+                  cancelButtonText: 'No, let me try more',
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.revealAnswer();
+                  }
+                });
+              }
+            
+              private revealAnswer(): void {
+                const currentLevel = this.levels[this.currentLevelIndex];
+            
+                // Clear current selection
+                this.selectedLetters = new Array(currentLevel.solution.length).fill(null);
+                this.shuffledLetters = this.shuffleArray([...currentLevel.solution.split('')]);
+            
+                // Show the answer with a delay for each letter
+                currentLevel.solution.split('').forEach((letter, index) => {
+                  setTimeout(() => {
+                    this.selectedLetters[index] = letter;
+            
+                    // Remove the letter from shuffled letters
+                    const letterIndex = this.shuffledLetters.indexOf(letter);
+                    if (letterIndex !== -1) {
+                      this.shuffledLetters[letterIndex] = null;
+                    }
+            
+                    // Show completion message after revealing all letters
+                    if (index === currentLevel.solution.length - 1) {
+                      Swal.fire({
+                        title: 'Answer Revealed',
+                        text: `The correct answer is: ${currentLevel.solution}`,
+                        icon: 'info',
+                        confirmButtonText: 'Got it'
+                      });
+                    }
+                  }, index * 300); // 300ms delay between each letter
+                });
+              }
 }

@@ -156,4 +156,63 @@ export class Exercise9PolymorphismComponent {
        
            this.draggedItem = null;
          }
+
+         // SHOW ANSWER
+                showAnswerConfirmation(): void {
+                  Swal.fire({
+                    title: 'Show Answer?',
+                    text: 'Are you sure you want to see the correct matches? This may impact your learning experience.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, show me',
+                    cancelButtonText: 'No, let me try more',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      this.revealAnswers();
+                    }
+                  });
+                }
+              
+                private revealAnswers(): void {
+                  // First, reset the exercise
+                  this.reset();
+              
+                  // Then reveal answers one by one with animation
+                  this.definitions.forEach((definition, index) => {
+                    setTimeout(() => {
+                      // Find the matching concept
+                      const matchingConcept = this.concepts.find(concept => concept.id === definition.id);
+                      
+                      if (matchingConcept) {
+                        // Update the definition and concept states
+                        definition.dropped = matchingConcept.name;
+                        matchingConcept.dropped = true;
+                      }
+              
+                      // Show completion message after revealing all answers
+                      if (index === this.definitions.length - 1) {
+                        Swal.fire({
+                          title: 'Answers Revealed',
+                          html: `
+                            <p>The correct matches are:</p>
+                            <div style="text-align: left;">
+                            <ul>
+                              <li><strong>Virtual Methods</strong>: A parent class method that can be overridden in a subclass to customize its behavior.</li>
+                              <li><strong>Dynamic Method Dispatch</strong>: The process where a reference of a parent class can be used to invoke methods in the child class, enabling dynamic behavior.</li>
+                              <li><strong>Late Binding</strong>: The mechanism by which the method to be executed is decided during runtime, enabling flexibility in method invocation.</li>
+                              <li><strong>Type Casting</strong>: Converts one type of object reference to another, typically using upcasting or downcasting.</li>
+                              <li><strong>Instance of Operator</strong>: Determines the actual type of an object at runtime to safely convert or downcast it to a specific type, preventing runtime errors like ClassCastException.</li>
+                            </ul>
+                            </div>
+                            <p>Take time to understand why each concept matches its definition!</p>
+                          `,
+                          icon: 'info',
+                          confirmButtonText: 'Got it'
+                        });
+                      }
+                    }, index * 800); // 800ms delay between each answer
+                  });
+                }
        }

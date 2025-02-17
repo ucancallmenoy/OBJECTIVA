@@ -151,4 +151,62 @@ export class Exercise6AbstractionComponent {
   
       this.draggedItem = null;
     }
+
+    // SHOW ANSWER
+      showAnswerConfirmation(): void {
+        Swal.fire({
+          title: 'Show Answer?',
+          text: 'Are you sure you want to see the correct matches? This may impact your learning experience.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, show me',
+          cancelButtonText: 'No, let me try more',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.revealAnswers();
+          }
+        });
+      }
+    
+      private revealAnswers(): void {
+        // First, reset the exercise
+        this.reset();
+    
+        // Then reveal answers one by one with animation
+        this.definitions.forEach((definition, index) => {
+          setTimeout(() => {
+            // Find the matching concept
+            const matchingConcept = this.concepts.find(concept => concept.id === definition.id);
+            
+            if (matchingConcept) {
+              // Update the definition and concept states
+              definition.dropped = matchingConcept.name;
+              matchingConcept.dropped = true;
+            }
+    
+            // Show completion message after revealing all answers
+            if (index === this.definitions.length - 1) {
+              Swal.fire({
+                title: 'Answers Revealed',
+                html: `
+                  <p>The correct matches are:</p>
+                  <div style="text-align: left;">
+                  <ul>
+                    <li><strong>Simplifies Complexity</strong>: Focuses on essential details, hiding unnecessary ones for easier understanding.</li>
+                    <li><strong>Enhances Reusability</strong>: Abstract classes and interfaces provide reusable and extendable code structures.</li>
+                    <li><strong>Improves Maintainability</strong>: Changes in implementation don't affect high-level abstractions, making updates easier.</li>
+                    <li><strong>Encourages Modularity</strong>: Breaks down systems into manageable, independent components.</li>
+                  </ul>
+                  </div>
+                  <p>Take time to understand why each concept matches its definition!</p>
+                `,
+                icon: 'info',
+                confirmButtonText: 'Got it'
+              });
+            }
+          }, index * 800); // 800ms delay between each answer
+        });
+      }
 }
