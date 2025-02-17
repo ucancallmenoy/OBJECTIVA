@@ -25,6 +25,12 @@ export class QuizEncapsulationComponent implements OnInit{
   selectedAnswer: string | null = null; // Tracks the selected answer
   answerOptions: { id: string; text: string }[] = [];
 
+  // START
+  minutes: number = 20;
+  seconds: number = 0;
+  timer: any;
+  // END
+
   // NEW
   showExplanation = false;
   isAnswerCorrect = false;
@@ -44,6 +50,7 @@ export class QuizEncapsulationComponent implements OnInit{
         );
         this.loadQuiz();
         this.loading = false;  // Set loading to false once data is loaded
+        this.startTimer(); // Start the timer ----------------------
       },
       error: (err) => {
         console.error('Error fetching quizzes:', err);
@@ -51,6 +58,61 @@ export class QuizEncapsulationComponent implements OnInit{
       }
     });
   }
+
+  // START
+  ngOnDestroy() {
+    clearInterval(this.timer);
+  }
+  startTimer() {
+    this.timer = setInterval(() => {
+      if (this.seconds === 0) {
+        if (this.minutes === 0) {
+          this.finishQuiz();
+        } else {
+          this.minutes--;
+          this.seconds = 59;
+        }
+      } else {
+        this.seconds--;
+      }
+    }, 1000);
+  }
+  finishQuiz() {
+    clearInterval(this.timer);
+    this.hasSubmitted = true;
+    this.showScore = true;
+    this.generateFeedback();
+    // Additional logic to calculate the final score if needed
+    this.quizService.getCurrentScore('encapsulation').subscribe({
+      next: (currentScore) => {
+        if (currentScore === null || this.score > currentScore) {
+          this.quizService.saveScore('encapsulation', this.score, this.quizData.length)
+            .subscribe({
+              next: (response) => {
+                if (currentScore !== null && this.score > currentScore) {
+                  this.higher = 'Excellent! Your score is greater than your current score which means you have improved! Keep up the great work and continue striving for excellence!';
+                  this.showFeedback = false;
+                }
+                
+                // add chuchu
+              },
+              error: (error) => console.error('Error saving score:', error)
+            });
+        }
+        // New condition (if the score is less than the current score)
+        else if (currentScore !== null && this.score < currentScore) {
+          this.higher = 'Your score is lower than your previous score, but every great achiever was once a beginner—learn from it, grow, and keep going! Mistakes are proof you are trying, and every step forward counts. Keep pushing, you got this!';
+          this.showFeedback = false;
+        }
+      },
+      error: (error) => console.error('Error fetching current score:', error)
+    });
+  }
+  exitQuiz() {
+    clearInterval(this.timer);
+    this.router.navigate(['/quiz']);
+  }
+  // END
 
   getRandomQuestions(data: any[], count: number): any[] {
     const shuffled = data.sort(() => 0.5 - Math.random());
@@ -129,6 +191,10 @@ export class QuizEncapsulationComponent implements OnInit{
     this.selectedAnswer = null;
     this.showExplanation = false;
     this.hasSubmitted = false;
+    this.minutes = 20; // Reset minutes
+    this.seconds = 0;  // Reset seconds
+    clearInterval(this.timer); // Clear existing timer
+    this.startTimer(); // Restart the timer
     this.loadQuiz();
   }
 

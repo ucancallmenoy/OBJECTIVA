@@ -1,5 +1,11 @@
 <body>
   <div class="quiz-container">
+    <!-- Timer Section -->
+    <div class="timer-container" *ngIf="!showScore">
+      <span class="timer">{{ minutes }}:{{ seconds | number: '2.0' }}</span>
+      <button (click)="exitQuiz()" class="exit-btn">Exit Quiz</button>
+    </div>
+
     <!-- Score Section -->
     <div class="score-card" *ngIf="showScore">
       <div class="score-circle">

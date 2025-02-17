@@ -10,6 +10,7 @@
           <h1>O B J E C T I V A</h1>
           <div class="divider"></div>
           <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+          <div *ngIf="success" class="alert alert-success">{{ success }}</div>
           <div class="form-group">
             <input type="email" id="loginEmail" formControlName="email" placeholder=" ">
             <label for="loginEmail">Email address</label>
@@ -52,7 +53,7 @@
           </div>
           <div class="form-group password-group">
             <input [type]="passwordFieldType" id="registerPassword" formControlName="password" placeholder=" ">
-            <label for="registerPassword">Password</label>
+            <label for="registerPassword">Password (Minimum of 8 characters)</label>
             <i class="toggle-password fas"
                [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
                (click)="togglePasswordVisibility()"></i>

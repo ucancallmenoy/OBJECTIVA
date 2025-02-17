@@ -1,38 +1,166 @@
-<div class="account-settings">
-    <h2>Account Settings</h2>
-    <form [formGroup]="accountForm" (ngSubmit)="updateProfile()">
-      
-      <div>
-        <label for="first_name">First Name</label>
-        <input id="first_name" formControlName="first_name" type="text" [readonly]="!isEditing">
+<div class="account-container">
+  <!-- Sidebar Navigation -->
+  <div class="sidebar">
+    <div class="profile-section">
+      <div class="profile-image">
+        <!-- You can add user image here -->
+        <i class="fas fa-user-circle fa-3x"></i>
       </div>
-      
-      <div>
-        <label for="last_name">Last Name</label>
-        <input id="last_name" formControlName="last_name" type="text" [readonly]="!isEditing">
+      <div class="profile-info">
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        <p>{{ user.email }}</p>
       </div>
-  
-      <div>
-        <label for="email">Email</label>
-        <input id="email" formControlName="email" type="email" readonly>
-      </div>
-  
-      <div *ngIf="isEditing">
-        <label for="password">New Password</label>
-        <input id="password" formControlName="password" type="password">
-      </div>
-  
-      <div *ngIf="isEditing">
-        <label for="confirm_password">Confirm Password</label>
-        <input id="confirm_password" formControlName="confirm_password" type="password">
-        <small *ngIf="accountForm.errors?.['mismatch']" class="error-text">Passwords do not match</small>
-      </div>
-  
-      <div class="buttons">
-        <button type="button" (click)="enableEditing()" *ngIf="!isEditing">Edit</button>
-        <button type="submit" [disabled]="accountForm.invalid" *ngIf="isEditing">Save</button>
-        <button type="button" (click)="cancelEditing()" *ngIf="isEditing">Cancel</button>
-      </div>
-  
-    </form>
+    </div>
+    
+    <nav class="nav-menu">
+      <a class="nav-item active">
+        <i class="fas fa-user"></i>
+        Account Info
+      </a>
+      <a class="nav-item" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </a>
+    </nav>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="header">
+      <h1>Account Settings</h1>
+      <p>Manage your account information and settings</p>
+    </div>
+
+    <div class="content-section">
+      <form [formGroup]="accountForm" (ngSubmit)="updateProfile()">
+        <!-- Personal Information Card -->
+        <div class="settings-card">
+          <div class="card-header">
+            <h2>Personal Information</h2>
+            <button type="button" class="edit-button" (click)="enableEditing()" *ngIf="!isEditing">
+              <i class="fas fa-pencil"></i> Edit
+            </button>
+          </div>
+
+          <div class="card-content">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input 
+                  id="first_name" 
+                  formControlName="first_name" 
+                  type="text" 
+                  [readonly]="!isEditing"
+                  [class.readonly]="!isEditing">
+              </div>
+
+              <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input 
+                  id="last_name" 
+                  formControlName="last_name" 
+                  type="text" 
+                  [readonly]="!isEditing"
+                  [class.readonly]="!isEditing">
+              </div>
+
+              <div class="form-group full-width">
+                <label for="email">Email Address</label>
+                <input 
+                  id="email" 
+                  formControlName="email" 
+                  type="email" 
+                  readonly 
+                  class="readonly">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password Card -->
+        <div class="settings-card" *ngIf="isEditing">
+          <div class="card-header">
+            <h2>Password Settings</h2>
+            <div class="toggle-section">
+              <label class="toggle">
+                <input 
+                  type="checkbox" 
+                  (change)="togglePasswordFields($event)">
+                <span class="slider"></span>
+                Change Password
+              </label>
+            </div>
+          </div>
+
+          <div class="card-content" *ngIf="showPasswordFields">
+            <div class="form-stack">
+              <div class="form-group">
+                <label for="old_password">Current Password</label>
+                <div class="password-input">
+                  <input 
+                    id="old_password" 
+                    formControlName="old_password" 
+                    [type]="passwordVisibility.old_password ? 'text' : 'password'">
+                  <i 
+                    class="fas toggle-password" 
+                    [ngClass]="passwordVisibility.old_password ? 'fa-eye-slash' : 'fa-eye'"
+                    (click)="togglePasswordVisibility('old_password')">
+                  </i>
+                </div>
+                <span class="error-message" *ngIf="accountForm.get('old_password')?.errors?.['required'] && accountForm.get('old_password')?.touched">
+                  Current password is required
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="password">New Password</label>
+                <div class="password-input">
+                  <input 
+                    id="password" 
+                    formControlName="password" 
+                    [type]="passwordVisibility.password ? 'text' : 'password'">
+                  <i 
+                    class="fas toggle-password" 
+                    [ngClass]="passwordVisibility.password ? 'fa-eye-slash' : 'fa-eye'"
+                    (click)="togglePasswordVisibility('password')">
+                  </i>
+                </div>
+                <span class="error-message" *ngIf="accountForm.get('password')?.errors?.['minlength']">
+                  Password must be at least 8 characters
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="confirm_password">Confirm New Password</label>
+                <div class="password-input">
+                  <input 
+                    id="confirm_password" 
+                    formControlName="confirm_password" 
+                    [type]="passwordVisibility.confirm_password ? 'text' : 'password'">
+                  <i 
+                    class="fas toggle-password" 
+                    [ngClass]="passwordVisibility.confirm_password ? 'fa-eye-slash' : 'fa-eye'"
+                    (click)="togglePasswordVisibility('confirm_password')">
+                  </i>
+                </div>
+                <span class="error-message" *ngIf="accountForm.errors?.['mismatch']">
+                  Passwords do not match
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons" *ngIf="isEditing">
+          <button type="button" class="cancel-button" (click)="cancelEditing()">
+            Cancel
+          </button>
+          <button type="submit" class="save-button" [disabled]="accountForm.invalid">
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

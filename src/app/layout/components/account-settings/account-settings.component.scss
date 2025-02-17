@@ -1,65 +1,348 @@
-.account-settings {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-  
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    .error-text {
-      color: red;
-      font-size: 12px;
-    }
-  
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-  
-    button {
-      padding: 10px;
-      width: 48%;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-  
-      &:first-child {
-        background-color: #007bff;
+// Variables
+$primary-color: #4f46e5;
+$secondary-color: #6b7280;
+$success-color: #10b981;
+$error-color: #ef4444;
+$border-color: #e5e7eb;
+$text-primary: #111827;
+$text-secondary: #4b5563;
+$background-primary: #f9fafb;
+$background-secondary: #ffffff;
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Main Container
+.account-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+  background-color: $background-primary;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Sidebar Styles
+.sidebar {
+  background-color: $background-secondary;
+  border-right: 1px solid $border-color;
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  .profile-section {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    .profile-image {
+      margin-bottom: 1rem;
+
+      .avatar {
+        @include flex-center;
+        width: 80px;
+        height: 80px;
+        background-color: $primary-color;
         color: white;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 auto;
       }
-  
-      &:nth-child(2) {
-        background-color: #28a745;
-        color: white;
+    }
+
+    .profile-info {
+      h3 {
+        color: $text-primary;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
       }
-  
-      &:nth-child(3) {
-        background-color: #dc3545;
-        color: white;
-      }
-  
-      &:disabled {
-        background-color: #ccc;
+
+      p {
+        color: $text-secondary;
+        font-size: 0.875rem;
       }
     }
   }
-  
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      color: $text-secondary;
+      border-radius: $border-radius;
+      transition: $transition;
+      cursor: pointer;
+
+      i {
+        margin-right: 0.75rem;
+      }
+
+      &.active {
+        background-color: rgba($primary-color, 0.1);
+        color: $primary-color;
+      }
+
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+  }
+}
+
+// Main Content Styles
+.main-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .header {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 600;
+      color: $text-primary;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: $text-secondary;
+    }
+  }
+}
+
+// Card Styles
+.settings-card {
+  background-color: $background-secondary;
+  border-radius: $border-radius;
+  box-shadow: $shadow-sm;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  .card-header {
+    @include flex-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid $border-color;
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $text-primary;
+    }
+
+    .edit-button {
+      padding: 0.5rem 1rem;
+      background-color: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      border-radius: $border-radius;
+      transition: $transition;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.1);
+      }
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+}
+
+// Form Styles
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $text-secondary;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    transition: $transition;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+    }
+
+    &.readonly {
+      background-color: $background-primary;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.password-input {
+  position: relative;
+
+  .toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $secondary-color;
+    cursor: pointer;
+  }
+}
+.password-input input {
+  width: 100%;
+  padding-right: 30px; /* Adjust padding to make space for the icon */
+}
+
+.password-input .toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+// Toggle Switch
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  .slider {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: $secondary-color;
+    border-radius: 12px;
+    margin-right: 0.75rem;
+    transition: $transition;
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 50%;
+      transition: $transition;
+    }
+  }
+
+  input:checked + .slider {
+    background-color: $primary-color;
+
+    &:before {
+      transform: translateX(20px);
+    }
+  }
+}
+a{
+  text-decoration: none;
+}
+// Action Buttons
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: $border-radius;
+    font-weight: 500;
+    transition: $transition;
+
+    &.cancel-button {
+      background-color: transparent;
+      border: 1px solid $border-color;
+      color: $text-secondary;
+
+      &:hover {
+        background-color: $background-primary;
+      }
+    }
+
+    &.save-button {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: darken($primary-color, 5%);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Error Messages
+.error-message {
+  color: $error-color;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: block;
+}

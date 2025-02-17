@@ -33,20 +33,6 @@ quizzes: QuizItem[] = [
       url: '/quiz-topics/quiz-introduction-java'
     },
     {
-      id: 'abstraction',
-      title: 'Abstraction',
-      description: 'Test your knowledge of Abstraction concepts.',
-      totalQuestions: 25,
-      url: '/quiz-topics/quiz-abstraction'
-    },
-    {
-      id: 'encapsulation',
-      title: 'Encapsulation',
-      description: 'Test your knowledge of Encapsulation concepts.',
-      totalQuestions: 25,
-      url: '/quiz-topics/quiz-encapsulation'
-    },
-    {
       id: 'inheritance',
       title: 'Inheritance',
       description: 'Test your knowledge of Inheritance concepts.',
@@ -56,11 +42,25 @@ quizzes: QuizItem[] = [
     {
       id: 'polymorphism',
       title: 'Polymorphism',
-      description: 'Test your knowledge of Polymorphism.',
+      description: 'Test your knowledge of Polymorphism concepts.',
       totalQuestions: 25,
       url: '/quiz-topics/quiz-polymorphism'
-    }
-    // Add other quizzes here
+    },
+    {
+      id: 'encapsulation',
+      title: 'Encapsulation',
+      description: 'Test your knowledge of Encapsulation concepts.',
+      totalQuestions: 25,
+      url: '/quiz-topics/quiz-encapsulation'
+    },
+    {
+      id: 'abstraction',
+      title: 'Abstraction',
+      description: 'Test your knowledge of Abstraction concepts.',
+      totalQuestions: 25,
+      url: '/quiz-topics/quiz-abstraction'
+    },
+    
   ];
 
   constructor(private quizService: QuizService, private router: Router, private title: Title) {

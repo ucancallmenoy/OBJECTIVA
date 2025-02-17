@@ -261,3 +261,37 @@ pre{
   .answer-container input[type="radio"]:disabled + label {
     cursor: not-allowed;
   }
+
+  .timer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timer {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  .exit-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    width: 30%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .exit-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }

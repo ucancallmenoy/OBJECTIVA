@@ -17,6 +17,7 @@ export class LoginRegisterComponent {
   otpForm: FormGroup;
   error: string = '';
   emailForOtp: string = '';
+  success: string = ''; // Add this line
 
   constructor(
     private router: Router,
@@ -100,6 +101,7 @@ export class LoginRegisterComponent {
               this.isOtpView = false;
               this.registerForm.reset();
               this.otpForm.reset();
+              this.success = 'Registration successful! Please log in.';
             },
             error: (error) => {
               console.error('Registration error:', error);
