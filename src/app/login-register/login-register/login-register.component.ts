@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
@@ -17,7 +18,7 @@ export class LoginRegisterComponent {
   otpForm: FormGroup;
   error: string = '';
   emailForOtp: string = '';
-  success: string = ''; // Add this line
+  success: string = '';
 
   constructor(
     private router: Router,
@@ -28,21 +29,29 @@ export class LoginRegisterComponent {
     this.titleService.setTitle('Log in | Objectiva');
     
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email, this.gmailValidator]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
 
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, this.noWhitespaceValidator]],
       lastName: ['', [Validators.required, this.noWhitespaceValidator]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, this.gmailValidator]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       recaptcha: ['', Validators.required]
     });
     
     this.otpForm = this.fb.group({
       otp: ['', Validators.required],
     });
+  }
+
+  gmailValidator(control: AbstractControl) {
+    const email = control.value;
+    if (email && !email.endsWith('@gmail.com')) {
+      return { gmail: true };
+    }
+    return null;
   }
 
   onLogin(): void {
@@ -63,20 +72,35 @@ export class LoginRegisterComponent {
 
   onRegister(): void {
     if (this.registerForm.valid) {
-      // First send OTP
-      this.authService.sendOtp(this.registerForm.get('email')?.value).subscribe({
-        next: () => {
-          this.isOtpView = true;
-          this.emailForOtp = this.registerForm.get('email')?.value;
-          this.error = '';
+      const email = this.registerForm.get('email')?.value;
+      this.authService.checkEmailExists(email).subscribe({
+        next: (exists) => {
+          if (exists) {
+            this.error = 'Email already exists';
+          } else {
+            this.sendOtp(email);
+          }
         },
         error: (error) => {
-          this.error = error.error?.message || 'Failed to send OTP';
+          this.error = error.error?.message || 'Failed to check email';
         }
       });
     } else {
       console.log('Register Form is invalid');
     }
+  }
+
+  sendOtp(email: string): void {
+    this.authService.sendOtp(email).subscribe({
+      next: () => {
+        this.isOtpView = true;
+        this.emailForOtp = email;
+        this.error = '';
+      },
+      error: (error) => {
+        this.error = error.error?.message || 'Failed to send OTP';
+      }
+    });
   }
   
   verifyOtp(): void {
@@ -86,14 +110,13 @@ export class LoginRegisterComponent {
         this.otpForm.get('otp')?.value
       ).subscribe({
         next: () => {
-          // Log the registration data before sending
           const registrationData = {
             firstName: this.registerForm.get('firstName')?.value?.trim(),
             lastName: this.registerForm.get('lastName')?.value?.trim(),
             email: this.registerForm.get('email')?.value,
             password: this.registerForm.get('password')?.value
           };          
-          console.log("Registration Data:", registrationData); // Debugging step
+          console.log("Registration Data:", registrationData);
   
           this.authService.register(registrationData).subscribe({
             next: () => {
@@ -121,7 +144,8 @@ export class LoginRegisterComponent {
     this.registerForm.get(controlName)?.setValue(value);
     this.registerForm.get(controlName)?.updateValueAndValidity();
   }
-  noWhitespaceValidator(control: any) {
+
+  noWhitespaceValidator(control: AbstractControl) {
     if (control.value && control.value.trim() === '') {
       return { required: true };
     }
@@ -130,5 +154,11 @@ export class LoginRegisterComponent {
   
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
+  markFieldAsTouched(fieldName: string, form: FormGroup): void {
+    const control = form.get(fieldName);
+    if (control) {
+      control.markAsTouched();
+    }
   }
 }

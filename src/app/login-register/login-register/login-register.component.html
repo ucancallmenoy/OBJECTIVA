@@ -6,21 +6,40 @@
       </div>
       <div class="col form-col">
         <!-- Login Form -->
-        <form *ngIf="isLoginView && !isOtpView" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <form *ngIf="isLoginView && !isOtpView" [formGroup]="loginForm" (ngSubmit)="onLogin()" autocomplete="off">
           <h1>O B J E C T I V A</h1>
           <div class="divider"></div>
           <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
           <div *ngIf="success" class="alert alert-success">{{ success }}</div>
           <div class="form-group">
-            <input type="email" id="loginEmail" formControlName="email" placeholder=" ">
-            <label for="loginEmail">Email address</label>
+            <input type="email" id="loginEmail" formControlName="email" placeholder=" " 
+                  [ngClass]="{'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}" 
+                  (blur)="markFieldAsTouched('email', loginForm)" autocomplete="off">
+            <label for="loginEmail">
+              Email address
+              <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="validation-error">
+                <span *ngIf="loginForm.get('email')?.errors?.['required']">(Email is required)</span>
+                <span *ngIf="loginForm.get('email')?.errors?.['email']">(Invalid email format)</span>
+                <span *ngIf="loginForm.get('email')?.errors?.['gmail']">(Only Gmail accounts allowed)</span>
+              </span>
+            </label>
           </div>
           <div class="form-group password-group">
-            <input [type]="passwordFieldType" id="loginPassword" formControlName="password" placeholder=" ">
-            <label for="loginPassword">Password</label>
-            <i class="toggle-password fas"
-               [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
-               (click)="togglePasswordVisibility()"></i>
+            <div class="password-wrapper">
+              <input [type]="passwordFieldType" id="loginPassword" formControlName="password" placeholder=" " 
+                    [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}" 
+                    (blur)="markFieldAsTouched('password', loginForm)" autocomplete="off">
+              <label for="loginPassword">
+                Password
+                <span *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="validation-error">
+                  <span *ngIf="loginForm.get('password')?.errors?.['required']">(Password is required)</span>
+                  <span *ngIf="loginForm.get('password')?.errors?.['minlength']">(Min 8 characters)</span>
+                </span>
+              </label>
+              <i class="toggle-password fas"
+                 [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
+                 (click)="togglePasswordVisibility()"></i>
+            </div>
           </div>
           <button type="submit" class="btn login-btn" [disabled]="!loginForm.valid">Login</button>
           <p class="register">Don't have an account? 
@@ -29,34 +48,61 @@
         </form>
 
         <!-- Registration Form -->
-        <form *ngIf="!isLoginView && !isOtpView" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <form *ngIf="!isLoginView && !isOtpView" [formGroup]="registerForm" (ngSubmit)="onRegister()" autocomplete="off">
           <h1>O B J E C T I V A</h1>
           <div class="divider"></div>
           <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
           <div class="form-group">
-            <input type="text" id="firstName" formControlName="firstName" placeholder=" " (change)="updateFormControl('firstName', $event)">
-            <label for="firstName">First Name</label>
-            <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="alert alert-danger">
-              First Name is required
-            </div>
+            <input type="text" id="firstName" formControlName="firstName" placeholder=" " 
+                  [ngClass]="{'is-invalid': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}" 
+                  (blur)="markFieldAsTouched('firstName', registerForm)" autocomplete="off">
+            <label for="firstName">
+              First Name
+              <span *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="validation-error">
+                (First Name is required)
+              </span>
+            </label>
           </div>
           <div class="form-group">
-            <input type="text" id="lastName" formControlName="lastName" placeholder=" " (change)="updateFormControl('lastName', $event)">
-            <label for="lastName">Last Name</label>
-            <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="alert alert-danger">
-              Last Name is required
-            </div>
+            <input type="text" id="lastName" formControlName="lastName" placeholder=" " 
+                  [ngClass]="{'is-invalid': registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched}" 
+                  (blur)="markFieldAsTouched('lastName', registerForm)" autocomplete="off">
+            <label for="lastName">
+              Last Name
+              <span *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="validation-error">
+                (Last Name is required)
+              </span>
+            </label>
           </div>
           <div class="form-group">
-            <input type="email" id="registerEmail" formControlName="email" placeholder=" ">
-            <label for="registerEmail">Email address</label>
+            <input type="email" id="registerEmail" formControlName="email" placeholder=" " 
+                  [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}" 
+                  (blur)="markFieldAsTouched('email', registerForm)" autocomplete="off">
+            <label for="registerEmail">
+              Email address
+              <span *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="validation-error">
+                <span *ngIf="registerForm.get('email')?.errors?.['required']">(Email is required)</span>
+                <span *ngIf="registerForm.get('email')?.errors?.['email']">(Invalid email format)</span>
+                <span *ngIf="registerForm.get('email')?.errors?.['gmail']">(Only Gmail accounts allowed)</span>
+              </span>
+            </label>
           </div>
           <div class="form-group password-group">
-            <input [type]="passwordFieldType" id="registerPassword" formControlName="password" placeholder=" ">
-            <label for="registerPassword">Password (Minimum of 8 characters)</label>
-            <i class="toggle-password fas"
-               [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
-               (click)="togglePasswordVisibility()"></i>
+            <div class="password-wrapper">
+              <input [type]="passwordFieldType" id="registerPassword" formControlName="password" placeholder=" " 
+                    [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}" 
+                    (blur)="markFieldAsTouched('password', registerForm)" autocomplete="off">
+              <label for="registerPassword">
+                Password
+                <span *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="validation-error">
+                  <span *ngIf="registerForm.get('password')?.errors?.['required']">(Password is required)</span>
+                  <span *ngIf="registerForm.get('password')?.errors?.['minlength']">(Min 8 characters)</span>
+                </span>
+              </label>
+              <i class="toggle-password fas"
+                 [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
+                 (click)="togglePasswordVisibility()"></i>
+            </div>
           </div>
           <div class="form-group">
             <ngx-recaptcha2 formControlName="recaptcha" [siteKey]="'6LefXdYqAAAAAJDKL5sfFlLRJrwoHhSsSWbys0tv'"></ngx-recaptcha2>
@@ -68,14 +114,21 @@
         </form>
 
         <!-- OTP Verification Form -->
-        <form *ngIf="isOtpView" [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
+        <form *ngIf="isOtpView" [formGroup]="otpForm" (ngSubmit)="verifyOtp()" autocomplete="off">
           <h1>Verify OTP</h1>
           <div class="divider"></div>
           <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
           <p>A One-Time Password (OTP) has been sent to {{ emailForOtp }}. Please enter it below.</p>
           <div class="form-group">
-            <input type="text" id="otp" formControlName="otp" placeholder=" ">
-            <label for="otp">Enter OTP</label>
+            <input type="text" id="otp" formControlName="otp" placeholder=" " 
+                  [ngClass]="{'is-invalid': otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched}" 
+                  (blur)="markFieldAsTouched('otp', otpForm)" autocomplete="off">
+            <label for="otp">
+              Enter OTP
+              <span *ngIf="otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched" class="validation-error">
+                (OTP is required)
+              </span>
+            </label>
           </div>
           <button type="submit" class="btn login-btn" [disabled]="!otpForm.valid">Verify OTP</button>
           <p class="register"><a class="register-link" (click)="isLoginView = true; isOtpView = false">Back to Login</a></p>

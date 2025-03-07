@@ -1,17 +1,30 @@
-
-
 @keyframes slideUp {
-    0% {
+  0% {
       transform: translateY(100%);
       opacity: 0;
-    }
-    100% {
+  }
+  100% {
       transform: translateY(0);
       opacity: 1;
-    }
   }
+}
 
-  .one, .two, .three, .four{
-    animation: slideUp 0.5s ease-out;
+.one, .two, .three, .four {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Adjust text alignment for smaller screens */
+@media (max-width: 768px) {
+  .text-justify {
+      text-align: left !important;
   }
   
+  .one, .two, .three, .four {
+      padding: 3rem 1.5rem;
+  }
+
+  /* Reduce image size */
+  .three img {
+      width: 70%;
+  }
+}

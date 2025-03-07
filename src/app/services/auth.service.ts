@@ -21,6 +21,10 @@ export class AuthService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
+  checkEmailExists(email: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/check-email`, { email });
+  }
+  
   sendOtp(email: string) {
     return this.http.post(`${this.apiUrl}/send-otp`, { email }).pipe(
       tap(response => console.log('Send OTP response:', response)),
