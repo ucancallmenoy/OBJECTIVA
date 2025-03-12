@@ -7,7 +7,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class LessonProgressService {
-  private apiUrl = 'http://127.0.0.1:8000/api';
   private lessonProgressUrl = environment.lessonProgressUrl;
 
   constructor(private http: HttpClient) {}
@@ -20,11 +19,20 @@ export class LessonProgressService {
     });
   }
 
-  updateProgress(lessonId: string, completed: boolean): Observable<any> {
-    return this.http.post(this.lessonProgressUrl, {
+  updateProgress(lessonId: string, completed: boolean, lastSection?: number): Observable<any> {
+    const payload: any = {
       lesson_id: lessonId,
       completed
-    }, { headers: this.getHeaders() });
+    };
+    
+    // Only add last_section if provided
+    if (lastSection !== undefined) {
+      payload.last_section = lastSection;
+    }
+    
+    return this.http.post(this.lessonProgressUrl, payload, { 
+      headers: this.getHeaders() 
+    });
   }
 
   getProgress(): Observable<any> {
