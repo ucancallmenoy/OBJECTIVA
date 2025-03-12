@@ -17,154 +17,161 @@ export class Abstraction4ContentComponent {
   visibleSections: number = 1;
 
   // PROGRESS TRACKER -- START
-      // Total number of sections
-      totalSections: number = 8;
-      
-      // Progress tracking
-      progressPercentage: number = 0;
-      isSticky: boolean = false;
-      
-      // Lesson identifier
-      private readonly lessonId: string = 'abstraction-lesson-4';
-      // User progress data from backend
-      private userProgress: any = {};
-      
-      ngOnInit() {
-        // Load saved progress when component initializes
-        this.loadSavedProgress();
-        this.updateProgressPercentage();
-      }
-      
-      // Track scroll position for sticky progress bar
-      @HostListener('window:scroll', [])
-      onWindowScroll() {
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        this.isSticky = scrollPosition > 50;
-      }
     
-      // Load saved progress from local storage and service
-      private loadSavedProgress() {
-        // First check local storage for temporary progress
-        const savedProgress = localStorage.getItem(`${this.lessonId}-progress`);
-        
-        if (savedProgress) {
-          const progressData = JSON.parse(savedProgress);
-          this.visibleSections = progressData.visibleSections;
-          
-          // Show resume prompt if they have previously started but not completed
-          if (this.visibleSections > 1 && this.visibleSections < this.totalSections) {
-            this.showResumePrompt();
-          }
-        } else {
-          // If no local storage progress, check with backend
-          this.progressService.getProgress().subscribe({
-            next: (response) => {
-              if (response && response.success && response.data) {
-                this.userProgress = response.data;
+    // Total number of sections
+    totalSections: number = 8;
+    
+    // Progress tracking
+    progressPercentage: number = 0;
+    isSticky: boolean = false;
+    
+    // Lesson identifier
+    private readonly lessonId: string = 'abstraction-lesson-4';
+    // User progress data from backend
+    private userProgress: any = {};
+    
+    ngOnInit() {
+      // Load saved progress when component initializes
+      this.loadSavedProgress();
+      this.updateProgressPercentage();
+    }
+    
+    // Track scroll position for sticky progress bar
+    @HostListener('window:scroll', [])
+    onWindowScroll() {
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      this.isSticky = scrollPosition > 50;
+    }
+  
+    // Load saved progress from backend
+    private loadSavedProgress() {
+      console.log('Loading saved progress from backend...');
+      this.progressService.getProgress().subscribe({
+        next: (response) => {
+          console.log('Progress response from backend:', response);
+          if (response && response.success && response.data) {
+            this.userProgress = response.data;
+            
+            // Check if this lesson has data in the response
+            if (this.userProgress[this.lessonId]) {
+              const lessonProgress = this.userProgress[this.lessonId];
+              console.log('Found progress for this lesson:', lessonProgress);
+              
+              // If last_section is available, use it to restore progress
+              if (lessonProgress.last_section) {
+                this.visibleSections = lessonProgress.last_section;
+                console.log('Restored section:', this.visibleSections);
                 
-                // Check if this lesson has a last_section property in local storage
-                // (we'll use this since we need to extend the backend to store section info)
-                const lastSectionData = localStorage.getItem(`${this.lessonId}-lastSection`);
-                
-                if (lastSectionData) {
-                  const sectionInfo = JSON.parse(lastSectionData);
-                  this.visibleSections = sectionInfo.lastSection || 1;
-                  
-                  // Show resume prompt if they have previously started but not completed
-                  if (this.visibleSections > 1 && this.visibleSections < this.totalSections) {
-                    this.showResumePrompt();
-                  }
+                // Show resume prompt if they have previously started but not completed
+                if (this.visibleSections > 1 && this.visibleSections < this.totalSections) {
+                  this.showResumePrompt();
                 }
               }
-            },
-            error: (error) => console.error('Error loading progress:', error)
-          });
-        }
-      }
-    
-      // Show prompt to resume from last section
-      private showResumePrompt() {
-        Swal.fire({
-          title: 'Resume Lesson?',
-          text: `You were on section ${this.visibleSections} of ${this.totalSections}. Would you like to resume from where you left off?`,
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'Yes, resume',
-          cancelButtonText: 'Start over'
-        }).then((result) => {
-          if (!result.isConfirmed) {
-            // If user chooses to start over
-            this.visibleSections = 1;
+            } else {
+              console.log('No progress found for this specific lesson');
+            }
             this.updateProgressPercentage();
-            // Clear local storage progress
-            localStorage.removeItem(`${this.lessonId}-progress`);
-            localStorage.removeItem(`${this.lessonId}-lastSection`);
           } else {
-            // If resuming, scroll to the last visible section
-            setTimeout(() => {
-              const sectionId = `s${this.visibleSections - 1}`;
-              document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
+            console.log('No valid progress data in response');
           }
-        });
-      }
-    
-      // Method to update progress percentage
-      updateProgressPercentage() {
-        this.progressPercentage = Math.floor(((this.visibleSections - 1) / this.totalSections) * 100);
-      }
-    
-      // Method to go back
-      goBack() {
-        // Show confirmation dialog
-        Swal.fire({
-          title: 'Leave Lesson?',
-          text: 'Your progress in this session will be saved, but you will exit the lesson.',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Yes, exit',
-          cancelButtonText: 'Stay'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // Save progress before navigating away
-            this.saveProgress();
-            // Navigate back to the topics page
-            this.router.navigate(['/lessons/topics/abstraction']);
-          }
-        });
-      }
-      // Method to save progress (both locally and to backend if completed)
-      private saveProgress() {
-        // Save to local storage for immediate restoration
-        localStorage.setItem(`${this.lessonId}-progress`, JSON.stringify({
-          visibleSections: this.visibleSections,
-          timestamp: new Date().toISOString()
-        }));
-        
-        // Save last section separately for future reference
-        localStorage.setItem(`${this.lessonId}-lastSection`, JSON.stringify({
-          lastSection: this.visibleSections,
-          timestamp: new Date().toISOString()
-        }));
-        
-        // If lesson is completed, update on backend
-        if (this.visibleSections === this.totalSections) {
-          this.progressService.updateProgress(this.lessonId, true).subscribe({
-            next: (response) => console.log('Progress saved successfully'),
-            error: (error) => console.error('Error saving progress:', error)
+        },
+        error: (error) => {
+          console.error('Error loading progress:', error);
+        }
+      });
+    }
+  
+    // Show prompt to resume from last section
+    private showResumePrompt() {
+      Swal.fire({
+        title: 'Resume Lesson?',
+        text: `You were on section ${this.visibleSections} of ${this.totalSections}. Would you like to resume from where you left off?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, resume',
+        cancelButtonText: 'Start over'
+      }).then((result) => {
+        if (!result.isConfirmed) {
+          // If user chooses to start over
+          this.visibleSections = 1;
+          this.updateProgressPercentage();
+          // Save the reset progress to backend
+          console.log('User chose to start over, resetting progress');
+          this.progressService.updateProgress(this.lessonId, false, 1).subscribe({
+            next: (response) => console.log('Progress reset successfully:', response),
+            error: (error) => console.error('Error resetting progress:', error)
           });
+        } else {
+          // If resuming, scroll to the last visible section
+          console.log('User chose to resume from section', this.visibleSections);
+          setTimeout(() => {
+            const sectionId = `s${this.visibleSections - 1}`;
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+          }, 300);
         }
-      }
-    
-      // Save progress when user leaves the page
-      @HostListener('window:beforeunload', ['$event'])
-      unloadHandler(event: Event) {
-        if (this.visibleSections > 1 && this.visibleSections < this.totalSections) {
+      });
+    }
+  
+    // Method to update progress percentage
+    updateProgressPercentage() {
+      this.progressPercentage = Math.floor(((this.visibleSections - 1) / this.totalSections) * 100);
+    }
+  
+    // Method to go back
+    goBack() {
+      // Show confirmation dialog
+      Swal.fire({
+        title: 'Leave Lesson?',
+        text: 'Your progress in this session will be saved, but you will exit the lesson.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, exit',
+        cancelButtonText: 'Stay'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Save progress before navigating away
           this.saveProgress();
+          // Navigate back to the topics page
+          this.router.navigate(['/lessons/topics/abstraction']);
         }
-      }
+      });
+    }
+  
+    // Method to save progress to backend
+    private saveProgress() {
+      // Calculate if the lesson is completed
+      const isCompleted = this.visibleSections === this.totalSections;
       
-      // PROGRESS TRACKER -- END
+      console.log('Saving progress to backend:', {
+        lessonId: this.lessonId,
+        completed: isCompleted,
+        lastSection: this.visibleSections
+      });
+      
+      this.progressService.updateProgress(
+        this.lessonId, 
+        isCompleted, 
+        this.visibleSections
+      ).subscribe({
+        next: (response) => console.log('Progress saved successfully:', response),
+        error: (error) => console.error('Error saving progress:', error)
+      });
+    }
+  
+    // Save progress when user leaves the page
+    @HostListener('window:beforeunload', ['$event'])
+unloadHandler(event: Event) {
+  if (this.visibleSections > 1) {
+    console.log('Page unloading, saving progress...');
+    this.progressService.saveProgressOnUnload(
+      this.lessonId,
+      this.visibleSections === this.totalSections,
+      this.visibleSections
+    );
+  }
+}
+    
+    // PROGRESS TRACKER -- END
   
   // Method to show the next section
   showNextSection(sectionId: string) {
@@ -184,21 +191,37 @@ export class Abstraction4ContentComponent {
   }
 
   // Method to show the completion popup
-  showCompletionPopup() {
-    Swal.fire({
-      title: '☕ Congratulations! ☕',
-      text: 'You have successfully completed this lesson!',
-      icon: 'success',
-      confirmButtonText: 'Back to Lessons',
-      customClass: {
-        popup: 'swal-celebration'
-      },
-      didOpen: () => {
-        this.triggerConfetti();
-      }
-    }).then(() => {
-      window.location.href = '/lessons/topics/abstraction'; // Change to the correct route
-    });
+    showCompletionPopup() {
+      // First, clear the last_section
+      this.progressService.updateProgress(this.lessonId, true, null as unknown as undefined).subscribe({
+        next: (response) => {
+          console.log('Last section cleared:', response);
+          
+          // Then mark as completed
+          this.progressService.updateProgress(this.lessonId, true).subscribe({
+            next: (response) => {
+              console.log('Lesson marked as completed:', response);
+              
+              Swal.fire({
+                title: '☕ Congratulations! ☕',
+                text: 'You have successfully completed this lesson!',
+                icon: 'success',
+                confirmButtonText: 'Back to Lessons',
+                customClass: {
+                  popup: 'swal-celebration'
+                },
+                didOpen: () => {
+                  this.triggerConfetti();
+                }
+              }).then(() => {
+                window.location.href = '/lessons/topics/abstraction';
+              });
+            },
+            error: (error) => console.error('Error marking lesson as completed:', error)
+          });
+        },
+        error: (error) => console.error('Error clearing last section:', error)
+      });
   }
 
   triggerConfetti() {

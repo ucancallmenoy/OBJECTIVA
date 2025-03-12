@@ -27,6 +27,9 @@ export class SideNavbarComponent {
   navigateUsers() {
     this.router.navigateByUrl("/admin/users");
   }
+  navigateTotal() {
+    this.router.navigateByUrl("/admin/total-report");
+  }
   navigatePolymorphism() {
     this.router.navigateByUrl("/admin/polymorphism");
   }

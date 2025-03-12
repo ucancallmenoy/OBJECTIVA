@@ -11,6 +11,7 @@ import {IntroductionOopComponent} from './pages/quizzes/introduction-oop/introdu
 import {InheritanceComponent} from './pages/quizzes/inheritance/inheritance.component';
 import {EncapsulationComponent} from './pages/quizzes/encapsulation/encapsulation.component';
 import {AbstractionComponent} from './pages/quizzes/abstraction/abstraction.component';
+import { TotalReportComponent } from './pages/total-report/total-report.component';
 import { AdminAuthGuard } from '../guards/admin-auth.guard';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path: 'inheritance', component: InheritanceComponent},
     {path: 'encapsulation', component: EncapsulationComponent},
     {path: 'abstraction', component: AbstractionComponent},
+    {path: 'total-report', component: TotalReportComponent}
   ]},
   {path: '**', redirectTo: 'login-admin'}
 ];

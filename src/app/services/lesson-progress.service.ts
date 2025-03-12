@@ -30,14 +30,30 @@ export class LessonProgressService {
       payload.last_section = lastSection;
     }
     
+    console.log('Sending progress update to backend:', payload);
+    
     return this.http.post(this.lessonProgressUrl, payload, { 
       headers: this.getHeaders() 
     });
   }
 
   getProgress(): Observable<any> {
+    console.log('Fetching progress from:', this.lessonProgressUrl);
     return this.http.get(this.lessonProgressUrl, { 
       headers: this.getHeaders() 
     });
+  }
+
+  saveProgressOnUnload(lessonId: string, completed: boolean, lastSection: number): void {
+    const payload = {
+      lesson_id: lessonId,
+      completed,
+      last_section: lastSection
+    };
+
+    navigator.sendBeacon(
+      this.lessonProgressUrl,
+      JSON.stringify(payload)
+    );
   }
 }

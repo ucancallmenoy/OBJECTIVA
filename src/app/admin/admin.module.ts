@@ -17,6 +17,7 @@ import { InheritanceComponent } from './pages/quizzes/inheritance/inheritance.co
 import { IntroductionOopComponent } from './pages/quizzes/introduction-oop/introduction-oop.component';
 import { IntroductionJavaComponent } from './pages/quizzes/introduction-java/introduction-java.component';
 import { PolymorphismComponent } from './pages/quizzes/polymorphism/polymorphism.component';
+import { TotalReportComponent } from './pages/total-report/total-report.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PolymorphismComponent } from './pages/quizzes/polymorphism/polymorphism
     InheritanceComponent,
     IntroductionOopComponent,
     IntroductionJavaComponent,
-    PolymorphismComponent
+    PolymorphismComponent,
+    TotalReportComponent
   ],
   imports: [
     CommonModule,

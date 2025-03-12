@@ -1,4 +1,17 @@
 <div class="lesson-container">
+    <!-- Progress Tracker -->
+  <div class="progress-tracker" [class.sticky]="isSticky">
+    <div class="progress-nav">
+      <i class="fa fa-times close-icon" (click)="goBack()"></i>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+            </div>
+            <div class="progress-text">{{ progressPercentage }}% Complete</div>
+        </div>
+    </div>
+  </div>
+  
     <!-- Header Section -->
     <header class="header">
         <img src="assets/runtime-polymorphism.gif" (click)="showNextSection('s1')" *ngIf="visibleSections === 1" class="interactive-image" alt="What is Programming?">

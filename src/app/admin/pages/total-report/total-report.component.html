@@ -1,0 +1,9 @@
+<div>
+    <label for="topicSelect">Select Topic:</label>
+    <select id="topicSelect" (change)="onTopicChange($event)">
+      <option *ngFor="let topic of topics" [value]="topic">{{ topic }}</option>
+    </select>
+  </div>
+  
+  <canvas #barCanvas width="400" height="500"></canvas>
+  
