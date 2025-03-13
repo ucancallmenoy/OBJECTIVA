@@ -18,7 +18,7 @@ export class Abstraction2ContentComponent {
   // PROGRESS TRACKER -- START
     
     // Total number of sections
-    totalSections: number = 7;
+    totalSections: number = 8;
     
     // Progress tracking
     progressPercentage: number = 0;
@@ -245,5 +245,46 @@ export class Abstraction2ContentComponent {
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    
+    {
+      text: 'What is an abstract class in Java?',
+      options: ['A class that can be instantiated but has no methods.', 'A class that cannot be instantiated but can be extended by other classes.', 'A class that only contains concrete methods.', 'A class that only contains abstract methods.'],
+      correctAnswer: 'A class that cannot be instantiated but can be extended by other classes.'
+    },
+    {
+      text: 'Which of the following statements is true about abstract methods?',
+      options: ['Has a body and can be used directly by subclasses.', 'No implementation, must be overridden.', 'Can be called directly from the class.', 'Always concrete, no implementation needed.'],
+      correctAnswer: 'No implementation, must be overridden.'
+    },
+    {
+      text: 'What happens when a class extends an abstract class in Java?',
+      options: ['The subclass is required to implement all the abstract methods of the parent class.', 'The subclass automatically inherits all the methods of the parent class without needing to implement abstract methods.', 'The subclass cannot use any concrete methods from the parent class.', 'The subclass does not need to implement abstract methods if it extends multiple abstract classes.'],
+      correctAnswer: 'The subclass is required to implement all the abstract methods of the parent class.'
+    }
+  ];
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

@@ -131,8 +131,30 @@ class Smartphone implements Camera, GPS {{'{'}}
               </div>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 7">
+            <img src="assets/next.png" (click)="showNextSection('s7')" *ngIf="visibleSections === 7" class="next-image" alt="Next">
           </div>
     </section>
+
+    <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
+        <div class="content-container">
+          <h2>Check Your Understanding</h2>
+          <div *ngFor="let question of questions; let i = index">
+            <p>{{ question.text }}</p>
+            <div *ngFor="let option of question.options">
+              <input type="radio" [name]="'question' + i" [value]="option" (change)="selectAnswer(i, option)">
+              {{ option }}
+            </div>
+          </div>
+          <button (click)="submitAnswers()">Submit Answers</button>
+        </div>
+      </section>
+    
+      <section id="s8" class="lesson-section" *ngIf="visibleSections >= 9">
+        <div class="content-container">
+          <h1>Congratulations!</h1>
+          <p>You have successfully completed the lesson.</p>
+          <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()">
+        </div>
+      </section>
 </div>
 

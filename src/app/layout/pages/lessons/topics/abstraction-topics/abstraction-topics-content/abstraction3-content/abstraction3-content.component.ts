@@ -19,7 +19,7 @@ export class Abstraction3ContentComponent {
   // PROGRESS TRACKER -- START
     
     // Total number of sections
-    totalSections: number = 7;
+    totalSections: number = 8;
     
     // Progress tracking
     progressPercentage: number = 0;
@@ -246,5 +246,61 @@ unloadHandler(event: Event) {
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is an interface in Java?',
+      options: [
+        'A class that defines concrete methods.',
+        'A list of rules a class must follow.',
+        'A way to create an object.',
+        'A method with an implementation.'
+      ],
+      correctAnswer: 'A list of rules a class must follow.'
+    },
+    {
+      text: 'What keyword is used to implement an interface in Java?',
+      options: [
+        'extends',
+        'implements',
+        'abstract',
+        'interface'
+      ],
+      correctAnswer: 'implements'
+    },
+    {
+      text: 'When should you use an interface over an abstract class?',
+      options: [
+        'When defining a contract for unrelated classes.',
+        'When sharing common behavior among subclasses.',
+        'When you want to use concrete methods only.',
+        'When you need to define constructor methods.'
+      ],
+      correctAnswer: 'When defining a contract for unrelated classes.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

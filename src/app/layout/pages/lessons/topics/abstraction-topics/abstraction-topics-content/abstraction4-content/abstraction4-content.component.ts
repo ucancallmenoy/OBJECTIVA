@@ -19,7 +19,7 @@ export class Abstraction4ContentComponent {
   // PROGRESS TRACKER -- START
     
     // Total number of sections
-    totalSections: number = 8;
+    totalSections: number = 9;
     
     // Progress tracking
     progressPercentage: number = 0;
@@ -246,5 +246,62 @@ unloadHandler(event: Event) {
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the purpose of an abstract class?',
+      options: [
+        'To define shared functionality for subclasses.',
+        'To allow multiple interface implementations.',
+        'To implement all methods.',
+        'To define only concrete methods.'
+      ],
+      correctAnswer: 'To define shared functionality for subclasses.'
+    },
+    {
+      text: 'In the provided example, how does the Car class implement both Vehicle and GPS?',
+      options: [
+        'By extending FuelVehicle and adding GPS methods.',
+        'By directly extending both interfaces.',
+        'By implementing only the GPS interface.',
+        'By overriding methods in FuelVehicle only.'
+      ],
+      correctAnswer: 'By extending FuelVehicle and adding GPS methods.'
+    },
+    {
+      text: 'What must a class do when it implements an interface?',
+      options: [
+        'Implement all methods in the interface.',
+        'Implement none of the methods.',
+        'Implement only some methods.',
+        'Automatically implement methods.'
+      ],
+      correctAnswer: 'Implement all methods in the interface.'
+    }
+  ];
+  
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s9');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }
