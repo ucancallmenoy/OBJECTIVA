@@ -18,7 +18,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 8;
+    totalSections: number = 9;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -242,4 +242,60 @@ triggerConfetti() {
     }
   });
 }
-}
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'In the Car and Driver relationship example, how does the Driver interact with the Car?',
+      options: [
+        'The Driver starts the car.',
+        'The Driver accelerates the car.',
+        'The Car drives the Driver.',
+        'The Driver stops the car.'
+      ],
+      correctAnswer: 'The Driver starts the car.'
+    },
+    {
+      text: 'In the Car and Engine example, how does the Car object interact with the Engine object?',
+      options: [
+        'The Car accelerates the Engine.',
+        'The Car calls the start method of the Engine.',
+        'The Engine calls the start method of the Car.',
+        'The Engine stops the Car.'
+      ],
+      correctAnswer: 'The Car calls the start method of the Engine.'
+    },
+    {
+      text: 'In the BankAccount and Person example, what happens when the Person deposits money?',
+      options: [
+        'The BankAccount withdraws money.',
+        'The BankAccount balance increases by the deposit amount.',
+        'The Person balance increases by the deposit amount.',
+        'The Person gets a new account.'
+      ],
+      correctAnswer: 'The BankAccount balance increases by the deposit amount.'
+    }
+  ];
+  
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s9');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

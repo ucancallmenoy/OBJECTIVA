@@ -18,7 +18,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 10;
+    totalSections: number = 11;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -242,4 +242,63 @@ triggerConfetti() {
     }
   });
 }
-}
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'Which class in Java is used for manipulating text?',
+      options: [
+        'Math class',
+        'String class',
+        'Scanner class',
+        'ArrayList class'
+      ],
+      correctAnswer: 'String class'
+    },
+    {
+      text: 'What is the output of the following code?\n\n' +
+             'int x = 10;\n' +
+             'int y = 20;\n' +
+             'System.out.println(x + y);',
+      options: [
+        '10',
+        '20',
+        '30',
+        'Error'
+      ],
+      correctAnswer: '30'
+    },
+    {
+      text: 'What does the Scanner class do in Java?',
+      options: [
+        'Generates random numbers.',
+        'Handles file I/O operations.',
+        'Reads input from the user.',
+        'Manipulates strings.'
+      ],
+      correctAnswer: 'Reads input from the user.'
+    }
+  ];
+   
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s11');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

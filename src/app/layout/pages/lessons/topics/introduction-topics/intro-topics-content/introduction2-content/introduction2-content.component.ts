@@ -18,7 +18,7 @@ export class Introduction2ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 5;
+      totalSections: number = 6;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -242,4 +242,60 @@ export class Introduction2ContentComponent {
       }
     });
   }
-  }
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the relationship between a class and an object in programming?',
+      options: [
+        'A class is an instance of an object.',
+        'A class defines the properties and behaviors, and an object is an instance of the class.',
+        'An object is a blueprint to define classes.',
+        'A class and an object are the same.'
+      ],
+      correctAnswer: 'A class defines the properties and behaviors, and an object is an instance of the class.'
+    },
+    {
+      text: 'What is a class in Object-Oriented Programming?',
+      options: [
+        'A specific instance of an object.',
+        'A collection of objects with common properties and behaviors.',
+        'A data field with unique attributes.',
+        'A blueprint that defines how to create objects.'
+      ],
+      correctAnswer: 'A collection of objects with common properties and behaviors.'
+    },
+    {
+      text: 'What differentiates one object from another in programming?',
+      options: [
+        'The class they belong to.',
+        'The values contained in the object’s properties.',
+        'The programming language used.',
+        'The number of methods they have.'
+      ],
+      correctAnswer: 'The values contained in the object’s properties.'
+    }
+  ];
+  
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s6');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

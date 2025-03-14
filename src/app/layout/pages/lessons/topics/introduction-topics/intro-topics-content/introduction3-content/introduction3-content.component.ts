@@ -18,7 +18,7 @@ export class Introduction3ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 15;
+      totalSections: number = 16;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -242,4 +242,60 @@ export class Introduction3ContentComponent {
       }
     });
   }
-}
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the main feature of Java that allows it to be platform-independent?',
+      options: [
+        'It uses virtual machines to run code.',
+        'It compiles code into bytecode which can run on any platform.',
+        'It requires specific compilers for each platform.',
+        'It uses a single programming language syntax.'
+      ],
+      correctAnswer: 'It compiles code into bytecode which can run on any platform.'
+    },
+    {
+      text: 'What does the Java "main" method represent in a program?',
+      options: [
+        'The starting point of the program where execution begins.',
+        'A method for importing libraries.',
+        'A function that handles error messages.',
+        'A method for declaring variables.'
+      ],
+      correctAnswer: 'The starting point of the program where execution begins.'
+    },
+    {
+      text: 'Which of the following is an example of a non-primitive data type in Java?',
+      options: [
+        'int',
+        'boolean',
+        'String',
+        'char'
+      ],
+      correctAnswer: 'String'
+    }
+  ];
+  
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s16');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

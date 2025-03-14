@@ -18,7 +18,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 14;
+    totalSections: number = 15;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -242,4 +242,60 @@ triggerConfetti() {
     }
   });
 }
-}
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the role of a constructor in a Java class?',
+      options: [
+        'To initialize the fields of a class when an object is created.',
+        'To create a new object of the class.',
+        'To define the structure and behavior of the class.',
+        'To define the methods of the class.'
+      ],
+      correctAnswer: 'To initialize the fields of a class when an object is created.'
+    },
+    {
+      text: 'What is the difference between instance and static members in Java?',
+      options: [
+        'Instance members belong to an object, while static members belong to the class.',
+        'Static members belong to each object, while instance members are shared by all objects.',
+        'Static members can only be accessed inside the constructor, while instance members can be accessed from any method.',
+        'Instance members are accessed through the class name, while static members are accessed through the object instance.'
+      ],
+      correctAnswer: 'Instance members belong to an object, while static members belong to the class.'
+    },
+    {
+      text: 'What is the return type of a method that does not return any value?',
+      options: [
+        'void',
+        'int',
+        'String',
+        'boolean'
+      ],
+      correctAnswer: 'void'
+    }
+  ];
+  
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s15');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

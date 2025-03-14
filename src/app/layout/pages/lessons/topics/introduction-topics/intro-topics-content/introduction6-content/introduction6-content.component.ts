@@ -18,7 +18,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 15;
+    totalSections: number = 16;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -242,4 +242,60 @@ triggerConfetti() {
     }
   });
 }
-}
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the first step in designing a system or application?',
+      options: [
+        'Identifying the objects that the program will need to handle.',
+        'Determining the attributes of the objects.',
+        'Establishing the relationships between objects.',
+        'Writing the code for each class.'
+      ],
+      correctAnswer: 'Identifying the objects that the program will need to handle.'
+    },
+    {
+      text: 'Which of the following could be an attribute of a Student object?',
+      options: [
+        'Teacher name',
+        'Subject taught',
+        'Student ID',
+        'Classroom location'
+      ],
+      correctAnswer: 'Student ID'
+    },
+    {
+      text: 'What does "Association" in object relationships mean?',
+      options: [
+        'Objects that own each other.',
+        'Objects that work together but do not own each other.',
+        'Objects that are dependent on each other.',
+        'Objects that are subclasses of each other.'
+      ],
+      correctAnswer: 'Objects that work together but do not own each other.'
+    }
+  ];
+  
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s16');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

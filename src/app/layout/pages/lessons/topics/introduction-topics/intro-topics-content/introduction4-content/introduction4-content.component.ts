@@ -18,7 +18,7 @@ export class Introduction4ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 7;
+      totalSections: number = 8;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -242,4 +242,60 @@ export class Introduction4ContentComponent {
       }
     });
   }
-}
+// Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the purpose of a constructor in a Java class?',
+      options: [
+        'To define the structure and behavior of a class.',
+        'To initialize the instance variables of an object when it is created.',
+        'To create a new object of a class.',
+        'To call methods defined within the class.'
+      ],
+      correctAnswer: 'To initialize the instance variables of an object when it is created.'
+    },
+    {
+      text: 'What does the "this" keyword refer to in a Java class?',
+      options: [
+        'A reference to the current class.',
+        'A reference to the instance variables of the class.',
+        'A reference to the current object instance.',
+        'A reference to the main method.'
+      ],
+      correctAnswer: 'A reference to the current object instance.'
+    },
+    {
+      text: 'How do you create an object of a class in Java?',
+      options: [
+        'By declaring the class name as a variable.',
+        'By calling the constructor method with the new keyword.',
+        'By initializing a method with the class name.',
+        'By declaring a static variable inside the class.'
+      ],
+      correctAnswer: 'By calling the constructor method with the new keyword.'
+    }
+  ];  
+   
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s8');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }

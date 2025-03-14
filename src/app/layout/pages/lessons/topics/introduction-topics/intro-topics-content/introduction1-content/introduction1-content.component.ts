@@ -19,7 +19,7 @@ export class Introduction1ContentComponent {
   // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 8;
+    totalSections: number = 9;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -244,5 +244,61 @@ export class Introduction1ContentComponent {
       }
     });
   }
-  }
+ // Questions for "Check Your Understanding"
+   showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the main focus of Object-Oriented Programming (OOP)?',
+      options: [
+        'Organizing software design around procedures and functions.',
+        'Organizing software design around classes and objects.',
+        'Simplifying code through declarative statements.',
+        'Avoiding the use of methods and functions.'
+      ],
+      correctAnswer: 'Organizing software design around classes and objects.'
+    },
+    {
+      text: 'Which of the following is NOT a benefit of Object-Oriented Programming?',
+      options: [
+        'Improved code organization.',
+        'Code reusability through inheritance and polymorphism.',
+        'Easier debugging and maintainability.',
+        'More complex code without structure.'
+      ],
+      correctAnswer: 'More complex code without structure.'
+    },
+    {
+      text: 'Which programming paradigm focuses on composing functions to construct programs?',
+      options: [
+        'Object-Oriented Programming',
+        'Functional Programming',
+        'Procedural Programming',
+        'Imperative Programming'
+      ],
+      correctAnswer: 'Functional Programming'
+    }
+  ];  
+   
+   userAnswers: string[] = [];
+ 
+   // Method to handle answer selection
+   selectAnswer(questionIndex: number, answer: string) {
+     this.userAnswers[questionIndex] = answer;
+   }
+ 
+   // Method to submit answers and check if they are correct
+   submitAnswers() {
+     const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+     if (allCorrect) {
+       this.showNextSection('s9');
+     } else {
+       Swal.fire({
+         title: 'Incorrect Answers',
+         text: 'Please answer all questions correctly before completing the lesson.',
+         icon: 'error',
+         confirmButtonText: 'Try Again'
+       });
+     }
+   }
+ }
   
