@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 10;
+  totalSections: number = 11;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,4 +243,60 @@ triggerConfetti() {
     }
   });
 }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is runtime polymorphism in Java?',
+      options: [
+        'Deciding which method to use at compile time.',
+        'Deciding which method to use at runtime based on the object type.',
+        'Using method overloading to achieve polymorphism.',
+        'Method overriding does not contribute to runtime polymorphism.'
+      ],
+      correctAnswer: 'Deciding which method to use at runtime based on the object type.'
+    },
+    {
+      text: 'What is dynamic method dispatch?',
+      options: [
+        'Determining the method to invoke at compile time.',
+        'Choosing a method at runtime based on the actual object type.',
+        'Binding methods statically to their parent class.',
+        'Calling methods based on the class type, not the object type.'
+      ],
+      correctAnswer: 'Choosing a method at runtime based on the actual object type.'
+    },
+    {
+      text: 'What is late binding in Java?',
+      options: [
+        'Determining the method to call during compile time.',
+        'Assigning the method to execute only during runtime.',
+        'Binding methods that are static or final.',
+        'Assigning methods based on class type at compile time.'
+      ],
+      correctAnswer: 'Assigning the method to execute only during runtime.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s11');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }

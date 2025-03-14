@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 6;
+  totalSections: number = 7;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,4 +243,60 @@ triggerConfetti() {
     }
   });
 }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the purpose of an abstract class in Java?',
+      options: [
+        'An abstract class can be instantiated directly.',
+        'An abstract class provides implementations for all methods.',
+        'An abstract class cannot be instantiated directly and may have abstract methods.',
+        'An abstract class is the same as an interface.'
+      ],
+      correctAnswer: 'An abstract class cannot be instantiated directly and may have abstract methods.'
+    },
+    {
+      text: 'What does the instanceof operator do in Java?',
+      options: [
+        'It checks if an object is an instance of a specific class or subclass.',
+        'It checks if an object is an instance of an abstract class.',
+        'It converts a superclass reference to a subclass reference.',
+        'It checks the type of an object during compile time.'
+      ],
+      correctAnswer: 'It checks if an object is an instance of a specific class or subclass.'
+    },
+    {
+      text: 'What is the result of upcasting in Java?',
+      options: [
+        'It allows you to assign a subclass object to a reference of its parent class.',
+        'It allows you to assign a parent class object to a reference of its subclass.',
+        'It automatically creates an instance of the subclass.',
+        'It prevents polymorphism from occurring.'
+      ],
+      correctAnswer: 'It allows you to assign a subclass object to a reference of its parent class.'
+    }
+  ];  
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s7');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }

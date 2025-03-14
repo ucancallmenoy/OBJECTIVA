@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 7;
+  totalSections: number = 8;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,4 +243,60 @@ triggerConfetti() {
     }
   });
 }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the difference between static and dynamic polymorphism in Java?',
+      options: [
+        'Static polymorphism is method overriding, dynamic polymorphism is method overloading.',
+        'Static polymorphism occurs at runtime, dynamic polymorphism at compile-time.',
+        'Static polymorphism is method overloading, dynamic polymorphism is method overriding.',
+        'Static polymorphism allows method overriding, dynamic polymorphism allows method overloading.'
+      ],
+      correctAnswer: 'Static polymorphism is achieved through method overloading, while dynamic polymorphism is achieved through method overriding.'
+    },
+    {
+      text: 'In the dynamic polymorphism example, what will be the output when the following line of code is executed: myAnimal.sound(); after myAnimal is assigned a new Dog object?',
+      options: [
+        'Animal makes a sound',
+        'Dog barks',
+        'Cat meows',
+        'Error: Method not found'
+      ],
+      correctAnswer: 'Dog barks'
+    },
+    {
+      text: 'In the Employee example, which subclass is responsible for the "Engineer is developing a software" output?',
+      options: [
+        'Employee',
+        'Manager',
+        'Engineer',
+        'Intern'
+      ],
+      correctAnswer: 'Engineer'
+    }
+  ];  
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }

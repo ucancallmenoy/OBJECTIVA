@@ -273,7 +273,31 @@ public class Main {{'{'}}
             <p>When multiple classes implement the same interface but provide different implementations of its methods. This enables a single interface to define a set of behaviors that can be used interchangeably, supporting loose coupling and code reusability in applications such as dependency injection and event handling.</p>
         </div>
         <div class="button-container">
-            <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()" *ngIf="visibleSections === 12">
+            <img src="assets/next.png" (click)="showNextSection('s12')" *ngIf="visibleSections === 12" class="next-image" alt="Next">
           </div>
     </section>
+
+    <section id="s12" class="lesson-section" *ngIf="visibleSections >= 13">
+        <div class="content-container">
+            <h2 class="text-center mb-4">Check Your Understanding</h2>
+            <div *ngFor="let question of questions; let i = index">
+            <p>{{ question.text }}</p>
+            <div *ngFor="let option of question.options">
+              <input type="radio" [name]="'question' + i" [value]="option" (change)="selectAnswer(i, option)">
+              {{ option }}
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <button (click)="submitAnswers()" >Submit Answers</button>
+          </div>
+        </div>
+      </section>
+    
+      <section id="s13" class="lesson-section" *ngIf="visibleSections >= 14">
+        <div class="content-container">
+          <h1>Congratulations!</h1>
+          <p>You have successfully completed the lesson.</p>
+          <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()">
+        </div>
+      </section>
 </div>

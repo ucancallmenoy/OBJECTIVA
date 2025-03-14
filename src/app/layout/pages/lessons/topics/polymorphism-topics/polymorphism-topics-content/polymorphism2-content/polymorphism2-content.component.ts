@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 10;
+  totalSections: number = 11;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,4 +243,60 @@ triggerConfetti() {
     }
   });
 }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is method overloading in Java?',
+      options: [
+        'When a method has the same name but different return types.',
+        'When two methods in the same class have different names.',
+        'When two or more methods in the same class have the same name but different parameter lists.',
+        'When a method is called multiple times with the same parameters.'
+      ],
+      correctAnswer: 'When two or more methods in the same class have the same name but different parameter lists.'
+    },
+    {
+      text: 'Which of the following is true about constructor overloading?',
+      options: [
+        'It allows the creation of objects using multiple constructors with the same parameters.',
+        'It allows the creation of objects using constructors with different parameter lists.',
+        'It is used to define methods with the same name.',
+        'It allows a class to have multiple methods with the same name and parameter list.'
+      ],
+      correctAnswer: 'It allows the creation of objects using constructors with different parameter lists.'
+    },
+    {
+      text: 'What happens during type promotion in Java?',
+      options: [
+        'A larger data type is automatically converted to a smaller data type.',
+        'A smaller data type is automatically converted to a larger data type.',
+        'A data type is manually promoted using casting.',
+        'Type promotion does not occur in Java.'
+      ],
+      correctAnswer: 'A smaller data type is automatically converted to a larger data type.'
+    }
+  ];  
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s11');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }

@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 7;
+  totalSections: number = 8;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,4 +243,60 @@ triggerConfetti() {
     }
   });
 }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the main benefit of using interfaces in Java?',
+      options: [
+        'Interfaces allow multiple inheritance in Java.',
+        'Interfaces provide a blueprint that allows different classes to implement the same methods.',
+        'Interfaces allow a class to have multiple constructors.',
+        'Interfaces are only used for type safety and do not support polymorphism.'
+      ],
+      correctAnswer: 'Interfaces provide a blueprint that allows different classes to implement the same methods.'
+    },
+    {
+      text: 'How does using interfaces help achieve loose coupling in Java?',
+      options: [
+        'It allows classes to depend on the specific implementation of another class.',
+        'It allows classes to only depend on the interface, not the implementation details.',
+        'It forces classes to implement methods from multiple classes.',
+        'It requires classes to be tightly connected to their implementations.'
+      ],
+      correctAnswer: 'It allows classes to only depend on the interface, not the implementation details.'
+    },
+    {
+      text: 'What is the result of using interface-based polymorphism in Java?',
+      options: [
+        'Different objects that implement the same interface can be treated as the same type.',
+        'Polymorphism is only possible with abstract classes, not interfaces.',
+        'All classes that implement an interface must have the same methods.',
+        'Only one class can implement an interface at a time.'
+      ],
+      correctAnswer: 'Different objects that implement the same interface can be treated as the same type.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }

@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 12;
+  totalSections: number = 13;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,4 +243,60 @@ triggerConfetti() {
     }
   });
 }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the key difference between method overloading and method overriding in Java?',
+      options: [
+        'Method overloading occurs at runtime, while method overriding occurs at compile-time.',
+        'Method overloading allows methods to have different names, while method overriding keeps the same name.',
+        'Method overloading involves changing the method signature (parameters), while method overriding involves redefining the method in a subclass with the same signature.',
+        'Method overloading occurs only in abstract classes, while method overriding happens in concrete classes.'
+      ],
+      correctAnswer: 'Method overloading involves changing the method signature (parameters), while method overriding involves redefining the method in a subclass with the same signature.'
+    },
+    {
+      text: 'In the Pet Care Center program, what does method overloading allow us to do?',
+      options: [
+        'It allows different pets to make their own sound.',
+        'It allows us to calculate the food requirement based on different parameters, such as weight and age.',
+        'It allows us to assign pets to different food bowls.',
+        'It allows us to create multiple subclasses for different pets.'
+      ],
+      correctAnswer: 'It allows us to calculate the food requirement based on different parameters, such as weight and age.'
+    },
+    {
+      text: 'What is the role of method overriding in the Pet Care Center program?',
+      options: [
+        'It allows pets to have different methods for calculating food requirements.',
+        'It allows pets to make their own unique sounds when prompted, such as "Bark" for dogs and "Meow" for cats.',
+        'It allows the same method to be called with different parameters.',
+        'It allows the Pet class to be instantiated directly.'
+      ],
+      correctAnswer: 'It allows pets to make their own unique sounds when prompted, such as "Bark" for dogs and "Meow" for cats.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s13');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }
