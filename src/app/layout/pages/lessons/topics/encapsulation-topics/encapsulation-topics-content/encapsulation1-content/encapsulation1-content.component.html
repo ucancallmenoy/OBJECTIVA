@@ -135,26 +135,55 @@
     </section>
 
     <section id="s9" class="lesson-section" *ngIf="visibleSections >= 10">
-      <div class="content-container">
-          <h2 class="text-center mb-4">Check Your Understanding</h2>
-          <div *ngFor="let question of questions; let i = index">
-          <p>{{ question.text }}</p>
-          <div *ngFor="let option of question.options">
-            <input type="radio" [name]="'question' + i" [value]="option" (change)="selectAnswer(i, option)">
-            {{ option }}
+      <div class="content-container quiz-container">
+        <h2 class="quiz-title">Check Your Understanding</h2>
+        <div class="quiz-content">
+          <div class="question-card" *ngFor="let question of questions; let i = index">
+            <p class="question-text">{{ i + 1 }}. {{ question.text }}</p>
+            <div class="options-container">
+              <div class="option" *ngFor="let option of question.options">
+                <label class="option-label">
+                  <input type="radio" 
+                         [name]="'question' + i" 
+                         [value]="option" 
+                         (change)="selectAnswer(i, option)">
+                  <span class="option-text">{{ option }}</span>
+                </label>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="text-center mt-3">
-          <button (click)="submitAnswers()" >Submit Answers</button>
+          <div class="submit-container">
+            <button class="submit-btn" (click)="submitAnswers()">
+              <i class="fas fa-check-circle me-2"></i>Submit Answers
+            </button>
+          </div>
         </div>
       </div>
     </section>
   
     <section id="s10" class="lesson-section" *ngIf="visibleSections >= 11">
-      <div class="content-container">
-        <h1>Congratulations!</h1>
-        <p>You have successfully completed the lesson.</p>
-        <img src="assets/finish.png" class="next-image" (click)="showCompletionPopup()">
+      <div class="content-container completion-container">
+        <div class="completion-content">
+          <div class="completion-header">
+            <i class="fas fa-trophy trophy-icon"></i>
+            <h1>Congratulations!</h1>
+          </div>
+          <p class="completion-message">You have successfully completed the lesson on Understanding Abstraction!</p>
+          <div class="completion-details">
+            <div class="completion-stat">
+              <i class="fas fa-star"></i>
+              <span>Lesson Completed</span>
+            </div>
+            <div class="completion-stat">
+              <i class="fas fa-check-circle"></i>
+              <span>Knowledge Verified</span>
+            </div>
+          </div>
+          <div class="next-steps">
+            <img src="assets/finish.png" class="finish-image" (click)="showCompletionPopup()" alt="Finish">
+            <p class="next-hint">Click the coffee bag to continue your journey!</p>
+          </div>
+        </div>
       </div>
     </section>
 

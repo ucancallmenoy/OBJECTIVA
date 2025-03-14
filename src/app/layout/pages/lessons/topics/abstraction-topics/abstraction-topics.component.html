@@ -3,28 +3,89 @@
     <h2 class="pb-2 border-bottom">ABSTRACTION</h2>
     <div class="features-container">
       <div class="feature-box" (click)="lesson1Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['abstraction-lesson-1']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-lightbulb"></i></div>
         <h3>Understanding Abstraction</h3>
         <p>Click to view lesson</p>
+        <!-- Progress Tracker -->
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('abstraction-lesson-1')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('abstraction-lesson-1') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson2Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['abstraction-lesson-2']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
         <h3>Abstract Classes</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('abstraction-lesson-2')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('abstraction-lesson-2') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson3Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['abstraction-lesson-3']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-cogs"></i></div>
         <h3>Interfaces</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('abstraction-lesson-3')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('abstraction-lesson-3') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson4Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['abstraction-lesson-4']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fab fa-java"></i></div>
         <h3>Implementation in Java</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('abstraction-lesson-4')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('abstraction-lesson-4') }}%</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

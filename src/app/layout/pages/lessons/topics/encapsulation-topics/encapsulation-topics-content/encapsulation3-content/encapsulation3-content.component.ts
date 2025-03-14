@@ -19,7 +19,7 @@ export class Encapsulation3ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 10;
+      totalSections: number = 11;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -132,7 +132,7 @@ export class Encapsulation3ContentComponent {
             // Save progress before navigating away
             this.saveProgress();
             // Navigate back to the topics page
-            this.router.navigate(['/lessons/topics/encapsulation']);
+            window.location.href = '/lessons/topics/encapsulation';
           }
         });
       }

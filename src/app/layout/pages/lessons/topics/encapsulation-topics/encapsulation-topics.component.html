@@ -3,34 +3,109 @@
     <h2 class="pb-2 border-bottom">ENCAPSULATION</h2>
     <div class="features-container">
       <div class="feature-box" (click)="lesson1Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['encapsulation-lesson-1']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-shield-alt"></i></div>
         <h3>Understanding Encapsulation</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('encapsulation-lesson-1')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('encapsulation-lesson-1') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson2Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['encapsulation-lesson-2']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-key"></i></div>
         <h3>Access Modifiers</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('encapsulation-lesson-2')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('encapsulation-lesson-2') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson3Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['encapsulation-lesson-3']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-tools"></i></div>
         <h3>Getters and Setters</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('encapsulation-lesson-3')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('encapsulation-lesson-3') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson5Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['encapsulation-lesson-4']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-check-circle"></i></div>
         <h3>Data Validation</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('encapsulation-lesson-4')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('encapsulation-lesson-4') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson6Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['encapsulation-lesson-5']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fab fa-java"></i></div>
         <h3>Implementation in Java</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('encapsulation-lesson-5')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('encapsulation-lesson-5') }}%</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

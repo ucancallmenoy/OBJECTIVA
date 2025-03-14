@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 6;
+  totalSections: number = 7;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -133,7 +133,7 @@ visibleSections: number = 1;
         // Save progress before navigating away
         this.saveProgress();
         // Navigate back to the topics page
-        this.router.navigate(['/lessons/topics/inheritance']);
+        window.location.href = '/lessons/topics/inheritance';
       }
     });
   }

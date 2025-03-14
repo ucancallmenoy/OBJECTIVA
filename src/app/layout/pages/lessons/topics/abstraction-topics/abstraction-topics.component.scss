@@ -44,7 +44,6 @@
     gap: 30px;
     max-width: 1200px;
     padding: 20px;
-    margin-top: 69px;
   }
   
   .feature-box {
@@ -140,4 +139,46 @@
     .check-icon {
         font-size: 1.2em; /* Slightly smaller check icon */
     }
+}
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.circular-progress {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.progress-ring-background {
+  fill: none;
+  stroke: #e6e6e6;
+  stroke-width: 2.5;
+}
+
+.progress-ring-indicator {
+  fill: none;
+  stroke: #4CAF50;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
 }

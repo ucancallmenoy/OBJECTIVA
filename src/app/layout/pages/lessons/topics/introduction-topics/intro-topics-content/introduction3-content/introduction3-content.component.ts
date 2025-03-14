@@ -18,7 +18,7 @@ export class Introduction3ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 16;
+      totalSections: number = 17;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -131,7 +131,7 @@ export class Introduction3ContentComponent {
             // Save progress before navigating away
             this.saveProgress();
             // Navigate back to the topics page
-            this.router.navigate(['/lessons/topics/introduction']);
+            window.location.href = '/lessons/topics/introduction';
           }
         });
       }

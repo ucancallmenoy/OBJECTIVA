@@ -3,40 +3,130 @@
     <h2 class="pb-2 border-bottom">POLYMORPHISM</h2>
     <div class="features-container">
       <div class="feature-box" (click)="lesson1Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['polymorphism-lesson-1']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-shapes"></i></div>
         <h3>Understanding Polymorphism</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('polymorphism-lesson-1')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('polymorphism-lesson-1') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson2Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['polymorphism-lesson-2']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-code"></i></div>
         <h3>Compile-time Polymorphism (Static)</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('polymorphism-lesson-2')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('polymorphism-lesson-2') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson3Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['polymorphism-lesson-3']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-play-circle"></i></div>
         <h3>Runtime Polymorphism (Dynamic)</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('polymorphism-lesson-3')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('polymorphism-lesson-3') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson4Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['polymorphism-lesson-4']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-tools"></i></div>
         <h3>Advanced Polymorphic Concepts</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('polymorphism-lesson-4')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('polymorphism-lesson-4') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson5Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['polymorphism-lesson-5']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fas fa-link"></i></div>
         <h3>Polymorphism with Interfaces</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('polymorphism-lesson-5')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('polymorphism-lesson-5') }}%</div>
+          </div>
+        </div>
       </div>
       <div class="feature-box" (click)="lesson6Overview()">
-        <div class="check-icon" *ngIf="lessonProgress['polymorphism-lesson-6']"><i class="fas fa-check"></i></div>
         <div class="icon"><i class="fab fa-java"></i></div>
         <h3>Implementation in Java</h3>
         <p>Click to view lesson</p>
+        <div class="progress-container">
+          <div class="circular-progress">
+            <svg viewBox="0 0 36 36" class="progress-ring">
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-background"/>
+              <path d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                class="progress-ring-indicator"
+                [style.stroke-dasharray]="getProgressCircle('polymorphism-lesson-6')"/>
+            </svg>
+            <div class="percentage">{{ getProgressPercentage('polymorphism-lesson-6') }}%</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

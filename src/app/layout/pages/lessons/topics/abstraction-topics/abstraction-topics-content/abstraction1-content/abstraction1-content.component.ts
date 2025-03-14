@@ -19,7 +19,7 @@ export class Abstraction1ContentComponent implements OnInit {
   // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 11;
+  totalSections: number = 12;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -132,7 +132,7 @@ export class Abstraction1ContentComponent implements OnInit {
         // Save progress before navigating away
         this.saveProgress();
         // Navigate back to the topics page
-        this.router.navigate(['/lessons/topics/abstraction']);
+        window.location.href = '/lessons/topics/abstraction';
       }
     });
   }
