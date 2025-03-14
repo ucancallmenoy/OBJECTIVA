@@ -19,7 +19,7 @@ export class Encapsulation1ContentComponent {
   // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 9;
+    totalSections: number = 10;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -242,5 +242,61 @@ export class Encapsulation1ContentComponent {
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What does encapsulation mean in programming?',
+      options: [
+        'Combining data and methods into one unit.',
+        'Hiding all methods from the program.',
+        'Making all data public.',
+        'Separating data from methods.'
+      ],
+      correctAnswer: 'Combining data and methods into one unit.'
+    },
+    {
+      text: 'How does encapsulation improve security?',
+      options: [
+        'It hides data from outside access.',
+        'It makes data visible to everyone.',
+        'It removes methods from the class.',
+        'It allows direct access to all data.'
+      ],
+      correctAnswer: 'It hides data from outside access.'
+    },
+    {
+      text: 'Which is a real-world example of encapsulation?',
+      options: [
+        'A mobile phone where you use the screen without seeing the inner parts.',
+        'A car where you open the engine to drive.',
+        'A TV that shows all its internal parts.',
+        'A vending machine where you see the money inside.'
+      ],
+      correctAnswer: 'A mobile phone where you use the screen without seeing the inner parts.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s10');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

@@ -19,7 +19,7 @@ export class Encapsulation3ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 9;
+      totalSections: number = 10;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -242,5 +242,61 @@ export class Encapsulation3ContentComponent {
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the purpose of getters and setters?',
+      options: [
+        'To directly access and modify private fields.',
+        'To provide controlled access to private fields.',
+        'To create new methods in a class.',
+        'To store data in arrays.'
+      ],
+      correctAnswer: 'To provide controlled access to private fields.'
+    },
+    {
+      text: 'How should you name a getter method for a property "name"?',
+      options: [
+        'setName()',
+        'getName()',
+        'get[name]()',
+        'isName()'
+      ],
+      correctAnswer: 'getName()'
+    },
+    {
+      text: 'Why is validation important in setter methods?',
+      options: [
+        'To improve program speed.',
+        'To prevent invalid data from being assigned to a field.',
+        'To allow access to all fields.',
+        'To hide fields from users.'
+      ],
+      correctAnswer: 'To prevent invalid data from being assigned to a field.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s10');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

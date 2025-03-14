@@ -19,7 +19,7 @@ export class Encapsulation2ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 7;
+      totalSections: number = 8;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -243,5 +243,60 @@ export class Encapsulation2ContentComponent {
       }
     });
   }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the default access modifier in Java?',
+      options: [
+        'Public',
+        'Private',
+        'Protected',
+        'Package-private (no modifier)'
+      ],
+      correctAnswer: 'Package-private (no modifier)'
+    },
+    {
+      text: 'What does the private access modifier do?',
+      options: [
+        'Makes members accessible to all classes.',
+        'Makes members accessible only within the same class.',
+        'Makes members accessible to subclasses in other packages.',
+        'Makes members accessible only within the same package.'
+      ],
+      correctAnswer: 'Makes members accessible only within the same class.'
+    },
+    {
+      text: 'Which access modifier allows access to a method only from within the same package or subclasses?',
+      options: [
+        'Public',
+        'Private',
+        'Protected',
+        'Default'
+      ],
+      correctAnswer: 'Protected'
+    }
+  ];  
   
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }

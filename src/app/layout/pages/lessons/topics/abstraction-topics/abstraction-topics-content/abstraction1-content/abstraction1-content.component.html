@@ -199,7 +199,7 @@ class Dog extends Animal {{'{'}}
 
     <section id="s10" class="lesson-section" *ngIf="visibleSections >= 11">
       <div class="content-container">
-        <h2>Check Your Understanding</h2>
+        <h2 class="text-center mb-4">Check Your Understanding</h2>
         <div *ngFor="let question of questions; let i = index">
           <p>{{ question.text }}</p>
           <div *ngFor="let option of question.options">
@@ -207,7 +207,9 @@ class Dog extends Animal {{'{'}}
             {{ option }}
           </div>
         </div>
-        <button (click)="submitAnswers()">Submit Answers</button>
+        <div class="text-center mt-3">
+          <button (click)="submitAnswers()" >Submit Answers</button>
+        </div>
       </div>
     </section>
   

@@ -19,7 +19,7 @@ export class Encapsulation5ContentComponent {
   // PROGRESS TRACKER -- START
     
       // Total number of sections
-      totalSections: number = 10;
+      totalSections: number = 11;
     
       // Progress tracking
       progressPercentage: number = 0;
@@ -242,5 +242,61 @@ export class Encapsulation5ContentComponent {
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'Why is data validation important in encapsulation?',
+      options: [
+        'To ensure only valid data enters the system and maintains object integrity.',
+        'To allow direct access to object data.',
+        'To make objects more complex.',
+        'To reduce the performance of the system.'
+      ],
+      correctAnswer: 'To ensure only valid data enters the system and maintains object integrity.'
+    },
+    {
+      text: 'What is a common way to validate an email in Java?',
+      options: [
+        'Check if the email contains the @ symbol.',
+        'Check if the email ends with ".com".',
+        'Check if the email is longer than 10 characters.',
+        'Check if the email contains digits.'
+      ],
+      correctAnswer: 'Check if the email contains the @ symbol.'
+    },
+    {
+      text: 'What happens if invalid data is provided to a setter method?',
+      options: [
+        'The object state may become inconsistent.',
+        'The setter will automatically correct the invalid data.',
+        'An exception is thrown to prevent the invalid data.',
+        'The setter ignores the invalid data.'
+      ],
+      correctAnswer: 'An exception is thrown to prevent the invalid data.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s11');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

@@ -145,15 +145,17 @@ public class AnimalKingdom {{'{'}}
 
     <section id="s7" class="lesson-section" *ngIf="visibleSections >= 8">
         <div class="content-container">
-          <h2>Check Your Understanding</h2>
-          <div *ngFor="let question of questions; let i = index">
+            <h2 class="text-center mb-4">Check Your Understanding</h2>
+            <div *ngFor="let question of questions; let i = index">
             <p>{{ question.text }}</p>
             <div *ngFor="let option of question.options">
               <input type="radio" [name]="'question' + i" [value]="option" (change)="selectAnswer(i, option)">
               {{ option }}
             </div>
           </div>
-          <button (click)="submitAnswers()">Submit Answers</button>
+          <div class="text-center mt-3">
+            <button (click)="submitAnswers()" >Submit Answers</button>
+          </div>
         </div>
       </section>
     

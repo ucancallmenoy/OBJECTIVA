@@ -19,7 +19,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
   
     // Total number of sections
-    totalSections: number = 11;
+    totalSections: number = 12;
   
     // Progress tracking
     progressPercentage: number = 0;
@@ -243,5 +243,60 @@ visibleSections: number = 1;
       }
     });
   }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What is the primary purpose of encapsulation in Java?',
+      options: [
+        'To hide data and provide controlled access.',
+        'To make data publicly accessible.',
+        'To allow direct modification of data fields.',
+        'To speed up code execution.'
+      ],
+      correctAnswer: 'To hide data and provide controlled access.'
+    },
+    {
+      text: 'How should you name the setter method for a field "age"?',
+      options: [
+        'getAge()',
+        'setAge()',
+        'ageSetter()',
+        'setValueAge()'
+      ],
+      correctAnswer: 'setAge()'
+    },
+    {
+      text: 'What is a key best practice when implementing encapsulation?',
+      options: [
+        'Use private fields and provide public methods for access.',
+        'Use public fields and no methods.',
+        'Avoid validation of data in setter methods.',
+        'Make all fields public.'
+      ],
+      correctAnswer: 'Use private fields and provide public methods for access.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
 
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s12');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
+  }
 }
