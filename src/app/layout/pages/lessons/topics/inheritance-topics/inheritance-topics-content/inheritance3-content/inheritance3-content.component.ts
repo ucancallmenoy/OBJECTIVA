@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 7;
+  totalSections: number = 8;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,5 +243,61 @@ visibleSections: number = 1;
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is the primary advantage of single inheritance in Java?',
+      options: [
+        'Allows a class to inherit from multiple classes.',
+        'Enables a class to reuse and extend functionality from one parent class.',
+        'Allows classes to be public.',
+        'Prevents inheritance of parent class methods.'
+      ],
+      correctAnswer: 'Enables a class to reuse and extend functionality from one parent class.'
+    },
+    {
+      text: 'What type of inheritance allows a class to inherit from another class, which itself inherits from another class?',
+      options: [
+        'Single Inheritance',
+        'Multilevel Inheritance',
+        'Hierarchical Inheritance',
+        'Multiple Inheritance'
+      ],
+      correctAnswer: 'Multilevel Inheritance'
+    },
+    {
+      text: 'Why does Java not support multiple inheritance directly?',
+      options: [
+        'It complicates the design of the class.',
+        'It can lead to method conflicts and ambiguity (diamond problem).',
+        'It allows only one parent class per child class.',
+        'It is less efficient than other types of inheritance.'
+      ],
+      correctAnswer: 'It can lead to method conflicts and ambiguity (diamond problem).'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 7;
+  totalSections: number = 8;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,5 +243,61 @@ visibleSections: number = 1;
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'In single inheritance, what is the purpose of the "extends" keyword in Java?',
+      options: [
+        'It creates a new instance of a class.',
+        'It allows a class to inherit from another class.',
+        'It makes all methods static.',
+        'It defines an interface for a class.'
+      ],
+      correctAnswer: 'It allows a class to inherit from another class.'
+    },
+    {
+      text: 'What does the "super()" keyword do in a subclass constructor?',
+      options: [
+        'It calls the constructor of the parent class.',
+        'It initializes all variables in the parent class.',
+        'It prevents the subclass from inheriting the parent class.',
+        'It creates a new instance of the subclass.'
+      ],
+      correctAnswer: 'It calls the constructor of the parent class.'
+    },
+    {
+      text: 'What is an example of proper "is-a" relationship in inheritance?',
+      options: [
+        'A Dog is a type of Animal.',
+        'A Dog is a type of Car.',
+        'A Dog is a type of Machine.',
+        'A Dog is a type of Plant.'
+      ],
+      correctAnswer: 'A Dog is a type of Animal.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

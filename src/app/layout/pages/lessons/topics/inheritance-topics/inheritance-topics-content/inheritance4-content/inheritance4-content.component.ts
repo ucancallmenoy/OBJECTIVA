@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 5;
+  totalSections: number = 6;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,5 +243,61 @@ visibleSections: number = 1;
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+   questions = [
+    {
+      text: 'What is method overriding in Java?',
+      options: [
+        'Subclass provides its own implementation of a superclass method.',
+        'Multiple methods with the same name in the same class.',
+        'Changing method signature in subclass.',
+        'Preventing method access from superclass.'
+      ],
+      correctAnswer: 'Subclass provides its own implementation of a superclass method.'
+    },
+    {
+      text: 'What does @Override annotation do?',
+      options: [
+        'Indicates method overriding in subclass.',
+        'Makes methods in subclass private.',
+        'Checks for method overloading errors.',
+        'Adds functionality to superclass methods.'
+      ],
+      correctAnswer: 'Indicates method overriding in subclass.'
+    },
+    {
+      text: 'How does the super keyword work in method overriding?',
+      options: [
+        'Refers to the immediate parent class for methods/fields.',
+        'Refers to all ancestor classes.',
+        'Makes parent methods private.',
+        'Used for method overloading only.'
+      ],
+      correctAnswer: 'Refers to the immediate parent class for methods/fields.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s6');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

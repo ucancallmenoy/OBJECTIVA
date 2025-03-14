@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 10;
+  totalSections: number = 11;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -242,5 +242,61 @@ visibleSections: number = 1;
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What does inheritance allow in object-oriented programming?',
+      options: [
+        'Code reuse and creating hierarchies.',
+        'Making all classes public.',
+        'Enabling direct access to object data.',
+        'Making all methods static.'
+      ],
+      correctAnswer: 'Code reuse and creating hierarchies.'
+    },
+    {
+      text: 'In which type of inheritance does one class inherit from another, which in turn is inherited by a third class?',
+      options: [
+        'Single Inheritance',
+        'Multilevel Inheritance',
+        'Hierarchical Inheritance',
+        'Multiple Inheritance'
+      ],
+      correctAnswer: 'Multilevel Inheritance'
+    },
+    {
+      text: 'Which real-world example best illustrates inheritance?',
+      options: [
+        'A motorcycle inherits features from a vehicle class.',
+        'A car inherits features from an airplane class.',
+        'A tree inherits features from a rock.',
+        'A chair inherits features from a table.'
+      ],
+      correctAnswer: 'A motorcycle inherits features from a vehicle class.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s11');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 7;
+  totalSections: number = 8;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,5 +243,61 @@ visibleSections: number = 1;
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'How is inheritance implemented in Java?',
+      options: [
+        'By using the implements keyword.',
+        'By using the extends keyword.',
+        'By using the super keyword.',
+        'By using the this keyword.'
+      ],
+      correctAnswer: 'By using the extends keyword.'
+    },
+    {
+      text: 'What does constructor chaining in Java refer to?',
+      options: [
+        'Calling a method from the parent class constructor.',
+        'Calling the parent class constructor from the child class constructor.',
+        'Calling the child class constructor before the parent class constructor.',
+        'Calling a constructor without parameters.'
+      ],
+      correctAnswer: 'Calling the parent class constructor from the child class constructor.'
+    },
+    {
+      text: 'What is the purpose of using the super keyword in Java inheritance?',
+      options: [
+        'To refer to the child class.',
+        'To call methods and constructors from the parent class.',
+        'To initialize variables in the child class.',
+        'To override parent class methods.'
+      ],
+      correctAnswer: 'To call methods and constructors from the parent class.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s8');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }

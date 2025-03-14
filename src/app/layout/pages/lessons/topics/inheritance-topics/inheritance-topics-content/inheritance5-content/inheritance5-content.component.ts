@@ -20,7 +20,7 @@ visibleSections: number = 1;
 // PROGRESS TRACKER -- START
 
   // Total number of sections
-  totalSections: number = 8;
+  totalSections: number = 9;
 
   // Progress tracking
   progressPercentage: number = 0;
@@ -243,5 +243,61 @@ visibleSections: number = 1;
         height: 100
       }
     });
+  }
+// Questions for "Check Your Understanding"
+  showQuestions: boolean = false;
+  questions = [
+    {
+      text: 'What does the "final" keyword prevent in Java?',
+      options: [
+        'Prevents method overloading.',
+        'Prevents inheritance and method overriding.',
+        'Prevents object creation.',
+        'Prevents variable initialization.'
+      ],
+      correctAnswer: 'Prevents inheritance and method overriding.'
+    },
+    {
+      text: 'Which method in Java is used to compare two objects for equality?',
+      options: [
+        'hashCode()',
+        'toString()',
+        'equals()',
+        'getClass()'
+      ],
+      correctAnswer: 'equals()'
+    },
+    {
+      text: 'What does the "instanceof" operator check in Java?',
+      options: [
+        'If an object is an instance of a specific class or subclass.',
+        'If an object is a subclass of another.',
+        'If an object is an array.',
+        'If two objects are equal.'
+      ],
+      correctAnswer: 'If an object is an instance of a specific class or subclass.'
+    }
+  ];
+  
+  userAnswers: string[] = [];
+
+  // Method to handle answer selection
+  selectAnswer(questionIndex: number, answer: string) {
+    this.userAnswers[questionIndex] = answer;
+  }
+
+  // Method to submit answers and check if they are correct
+  submitAnswers() {
+    const allCorrect = this.questions.every((question, index) => question.correctAnswer === this.userAnswers[index]);
+    if (allCorrect) {
+      this.showNextSection('s9');
+    } else {
+      Swal.fire({
+        title: 'Incorrect Answers',
+        text: 'Please answer all questions correctly before completing the lesson.',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    }
   }
 }
